@@ -17,9 +17,9 @@ body {
 }
 
 .login-form {
-    width: 500px;
+    width: 400px;
     margin: 0 auto;
-    height: 360px;
+    height: 320px;
 }
 
 h1 {
@@ -45,6 +45,7 @@ input {
 }
 
 button {
+    margin-top: 25px;
     width: 100%;
     padding: 10px;
     background-color: #0077B6;
