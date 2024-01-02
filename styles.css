@@ -17,8 +17,9 @@ body {
 }
 
 .login-form {
-    max-width: 300px;
+    width: 500px;
     margin: 0 auto;
+    height: 360px;
 }
 
 h1 {
