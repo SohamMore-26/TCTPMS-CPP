@@ -1,24 +1,23 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 body {
-    font-family: 'Montserrat', sans-serif;   
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    /* background-color: #CAF0F8; */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background-color: #CAF0F8
 }
 
-.bg-image{
-    position: absolute; 
-    height: 100%; 
+.bg-image {
+    position: absolute;
+    height: 100%;
     width: 100%;
     background-image: url("images/blob-scene-haikei.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(3px);
+    filter: blur(5px);
     z-index: -1;
 }
 
@@ -27,7 +26,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(144, 224, 239);
     padding: 20px;
-    
+    align-items: center;
+    width: 500px;
+    margin: auto;
 }
 
 .login-form {
@@ -71,4 +72,12 @@ button {
 
 button:hover {
     background-color: #0077B6;
+}
+
+h2 {
+    margin-bottom: 200px;
+    margin-left: 20px;
+    margin-top: 30px;
+    font-size: 30px ;
+    font-family: 'Caveat', cursive;
 }
