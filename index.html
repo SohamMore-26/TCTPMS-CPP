@@ -8,22 +8,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/970acd6ae4.js" crossorigin="anonymous"></script>
     <title>Login Page</title>
 </head>
 
 <body>
-    <div class="bg-image"></div>
-        <h2>Teacher's Companion: Teaching and Monitoring System</h2>
+    <div class="header">Teacher's Companion</div>
     <div class="login-container">
         <form class="login-form">
             <h1>Login</h1>
-            <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter your Username" name="username" required>
-
+            <label for="username" >Username:</label>
+            
+            <div>
+                <input type="text" id="username" class="username" placeholder="Enter your Username" name="username" required>
+                <div class="icon-user"><i class="fa-solid fa-user"></i></div>
+            </div>
+            
             <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter your Password" name="password" required>
-
-            <button type="submit">Login</button>
+            <div>
+                <input type="password" id="password" class="password" placeholder="Enter your Password" name="password" required>
+                <div class="icon-pass"><i class="fa-solid fa-lock"></i></div>
+            </div>
+            
+            <button type="submit" class="btt">Login</button>
         </form>
     </div>
 </body>
