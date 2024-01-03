@@ -9,17 +9,7 @@ body {
     padding: 0px;
     background-color: #CAF0F8;
     flex-direction: column;
-}
-
-
-.header{
-    padding: 50px; 
-    margin: auto;
-    font-size: 50px;
-    font-family: Verdana;
-    font-weight:bold ;
-    color: #03045E;
-    text-shadow: 0 0 4px  #333;
+    margin-top: 150px;
 }
 
 
@@ -30,12 +20,12 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
     align-items: center;
-    width: 500px;
+    width: 400px;
     margin: auto;
 }
 
 .login-form {
-    width: 400px;
+    width: 350px;
     margin: 0 auto;
     height: 320px;
 }
