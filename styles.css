@@ -15,7 +15,8 @@ body {
 
 .login-container {
     position: relative;
-    background-color: #90e1ef;
+    background-color: aliceblue;
+    /* background-color: #90e1ef; */
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -70,9 +71,10 @@ input {
     margin-top: 5px;
     margin-bottom: 15px;
     box-sizing: border-box;
-    border: 1px solid #ffffff;
+    border: 1px solid black;
+    /* border: 1px solid #ffffff; */
     border-radius: 10px;
-    background-color: #CAF0F8;
+    background-color: #f1f8fa;
 }
 
 .username::after {
