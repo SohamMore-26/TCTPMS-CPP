@@ -156,3 +156,37 @@ h3 {
     margin-right: 25px;
     margin-left: 10px;
 }
+
+.bt_c_cont{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 40px;
+}
+.main_c_cont_cr{
+    margin: 10px;
+    width:100%;
+    margin-right: 40px;
+    height: 500px;
+}
+
+.bt_cont{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.icon i{
+    margin-right: 30px;
+}
+.btn_card{
+    background-color: #E9FBFF;
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+}
