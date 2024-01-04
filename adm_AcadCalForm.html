@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Teacher Module
+    </title>
+</head>
+
+<body>
+    <div >
+        <form class="login-form">
+            <h1>Academic Calendar</h1>
+            <b><label for="username" >Semester :</label></b>
+            
+            <div>
+                <input type="text" id="semester" class="username" placeholder="Enter Semester No." name="semid" required>
+                
+            </div>
+            
+           
+            
+            <b><label for="username" >Branch :</label></b>
+            <div>
+                <input type="text" id="branch"  placeholder="Enter Branch" name="branch" required>   
+            </div>
+            
+            <b><label for="scheme" >Scheme :</label></b>
+            <div>
+                <input type="text" id="scheme"  placeholder="Enter Scheme" name="scheme" required>   
+            </div>
+            
+            <b><label for="Acedemic Year">Academic Year :</label></b>
+            <div>
+               <h5> <label for="from" >From</label> 
+                <input type="date" id="AYstdate"  name="AYfrom" required>
+                <label for="to" >To</label> 
+                <input type="date" id="AYenddate"  name="AYto" required></h5>
+            </div>
+
+            <b><label for="Semester Duration">Semester Duration :</label></b>
+            <div>
+                <h5><label for="stsem" >Start Date</label> 
+                <input type="date" id="semst"  name="semst" required>
+                <label for="endsem" >End Date</label> 
+                <input type="date" id="semend"  name="semend" required></h5>
+            </div>
+
+            <b><label for="classtest-1">Class Test - 1 Schedule :</label></b>
+            <div>
+                <h5> <label for="ctfrom" >From</label> 
+                <input type="date" id="ctst"  name="ctst" required>
+                <label for="ctto" >To</label> 
+                <input type="date" id="ctend"  name="ctend" required></h5>
+            </div>
+
+            <b><label for="classtest-2">Class Test - 2 Schedule :</label></b>
+            <div>
+                <h5><label for="ct2from" >From</label> 
+                <input type="date" id="ct2st"  name="ct2st" required>
+                <label for="ct2to" >To</label> 
+                <input type="date" id="ct2end"  name="ct2end" required></h5>
+            </div>
+
+            <b><label for="PE">Practical Examination Schedule :</label></b>
+            <div>
+                <h5><label for="PEfrom" >From</label> 
+                <input type="date" id="PEst"  name="PEst" required>
+                <label for="PEto" >To</label> 
+                <input type="date" id="PEend"  name="PEend" required></h5>
+            </div>
+
+            <b><label for="TH">Theory Examination Schedule :</label></b>
+            <div>
+                <h5><label for="THfrom" >From</label> 
+                <input type="date" id="THst"  name="THst" required>
+                <label for="THto" >To</label> 
+                <input type="date" id="THend"  name="THend" required></h5>
+            </div>
+
+            <button type="submit" class="btt">Add</button>
+        </form>
+    </div>
+</body>
+
+</html>
