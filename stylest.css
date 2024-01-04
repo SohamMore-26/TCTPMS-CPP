@@ -6,7 +6,6 @@ body {
 }
 
 button {
-    margin-top: 25px;
     width: 90px;
     height: 30px;
     padding: 20px, 20px;
@@ -15,7 +14,6 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-left: 70%;
     font-size: 20px;
 }
 
@@ -49,13 +47,10 @@ button:hover {
 }
 
 li {
-    padding-top: 50px;
+    padding-top: 20px;
     list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: left;
-
-
 }
 
 
@@ -78,12 +73,24 @@ a {
 .main-card{
     display: flex;
     flex-direction: column;
-    margin-top: -140px;
+    justify-content: flex-start;
 }
 .card {
     background-color: #E9FBFF;
     width: 1000px;
     height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+}
+.w_card {
+    background-color: #E9FBFF;
+    width: 100%;
+    height: 50px;
+    color: rgb(20, 101, 214);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -98,4 +105,54 @@ h3 {
     margin-top: 30px;
     font-size: 25px;
     margin-left: -60px;
+}
+
+.sidebar{
+    background-color: #E9FBFF;
+    width: 400px;
+    border-radius: 8px;
+    height: 80vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin:20px;
+}
+
+.main_cont{
+    display: flex;
+}
+
+.main_c_cont{
+    margin: 10px;
+    width:100%;
+    margin-right: 40px;
+}
+
+.m_card {
+    background-color: #E9FBFF;
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+}
+
+.material-symbols-outlined{
+    margin-right: 5px;
+}
+
+.lgt_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100px;
+    height: 70px;
+}
+
+.nav_head {
+    display: flex;
+    justify-content:space-between ;
+    margin-right: 25px;
+    margin-left: 10px;
 }
