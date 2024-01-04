@@ -6,10 +6,8 @@ body {
 }
 
 button {
-    width: 90px;
-    height: 30px;
     padding: 20px, 20px;
-    background-color: #48CAE4;
+    background-color: rgb(20, 101, 214);
     color: black;
     border: none;
     border-radius: 8px;
@@ -26,11 +24,11 @@ td {
     padding-left: 15px;
 }
 
-button:hover {
-    background-color: #0077B6;
+.buttton:hover {
+    background-color: rgb(26, 88, 188);
 }
 
-.btt:hover {
+button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -184,4 +182,16 @@ h3 {
     flex-direction: column;
     justify-content: center;
     margin: 10px;
+}
+
+#button_lg {
+    width: 90px;
+    height: 50px;
+    padding: 20px, 20px;
+    background-color: rgb(20, 101, 214);
+    color: rgb(208, 208, 208);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
 }
