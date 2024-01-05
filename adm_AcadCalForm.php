@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +65,7 @@
     </div>
     <h1 id="h1">Academic Calendar</h1>
 
-    <form action="" class="aca-form">
+    <form action="process.php" method="post" class="aca-form">
         <div class="container1">
             <b><label for="semester" class="label">Semester :</label></b>
             <select id="semester" name="sem" class="sem">
@@ -168,7 +169,7 @@
 
         </div>
         <div class="container1">
-            <button type="submit" class="btt" class="button">Add</button>
+            <button type="submit" name="submit" class="btt" class="button">Add</button>
             <button type="submit" class="btt1" class="button1">Cancel</button>
         </div>
     </form>
