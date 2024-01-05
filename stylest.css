@@ -97,7 +97,7 @@ a {
     margin: 10px;
 }
 
-h3 {
+.main_c_cont h3 {
     padding: 120px;
     display: flex;
     margin-top: 30px;
@@ -194,4 +194,45 @@ h3 {
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
+}
+
+.main_c_cont span{
+    margin-right:10px ;
+}
+
+.popup {
+    background-color: #E9FBFF;
+    width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, center 0.4s;
+}
+.open_popup{
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(1)
+}
+
+.popup h2{
+    font-size: 2em;
+}
+
+
+.popup h4{
+    font-size: 1.5em;
+}
+.popup button{
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: rgb(20, 101, 214);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: #CAF0F8;
 }
