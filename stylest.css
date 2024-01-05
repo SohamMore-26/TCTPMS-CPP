@@ -232,7 +232,32 @@ a {
     width: 100%;
     padding: 10px;
     margin-top: 30px;
+    margin:20px;
     background-color: rgb(20, 101, 214);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     color: #CAF0F8;
+}
+
+.button_cont{
+    display: flex;
+    justify-content: space-between;
+}
+
+.request{
+    display: flex;
+    background-color: #E9FBFF;
+    width: 90%;
+    height: 70px;
+    /* margin: 10px; */
+    border-radius: 30px;
+    box-shadow: inset -3px -3px 7px #c7c7c773,
+    inset 3px 3px 5px rgba(0, 0, 0, 0.418);
+    text-align:center;
+    padding: 10px;
+    margin: auto;
+    align-items: center;
+}
+
+.request p{
+    font-size: 1.5em;
 }
