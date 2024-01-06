@@ -352,8 +352,7 @@ a {
     margin-top: 20px;
     /* margin-left: 25px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    
+    border-radius: 10px; 
 }
 
 .sem {
@@ -369,4 +368,22 @@ a {
 }
 .label{
     margin-left: 15px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th , td {
+    padding: 10px 20px;
+  }
+
+  table{
+    margin-top: 20px;
+  }
+
+  td{
+    text-align-last: center;
+    font-size: 20px ;
+    font-weight: 200;
 }
