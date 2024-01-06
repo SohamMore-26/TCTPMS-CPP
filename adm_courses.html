@@ -63,7 +63,7 @@
         </div>
         <div class="bt_c_cont">
             <div class="contain_scroll">
-                <div class="main_c_cont_cr">
+                <div class="main_c_cont_cr" id="main_c_cont_cr">
                     <div class="w_card">
                         <h3>
                             <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
@@ -92,11 +92,42 @@
                         </h3>
                     </div>
                 </div>
+
+                <div class="add_course, add_course_hid" id="add_course">
+                    <div class="w_card">
+                        <h3>
+                            <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
+                                    error
+                                </span></div> No Existing Cources
+                        </h3>
+                    </div>
+                    <div class="m_card">
+                        <h3>
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1stster Courses
+                        </h3>
+                    </div>
+                    <div class="m_card">
+                        <h3>
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1st ter Courses
+                        </h3>
+                    </div>
+                    <div class="m_card">
+                        <h3>
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1stster Courses
+                        </h3>
+                    </div>
+                    <div class="m_card">
+                        <h3>
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1stster Courses
+                        </h3>
+                    </div>
+                </div>
+
             </div>
 
             <div class="bt_cont">
                 <div class="btn_card">
-                    <h3>
+                    <h3 onclick="showAdd()">
                         <div class="icon"><i class="fa-solid fa-book"></i></div> Add new Course
                     </h3>
                 </div>
@@ -115,6 +146,16 @@
 
 
     </div>
+
+    <script>
+        let cards = document.getElementById("main_c_cont_cr");
+        let add_cr = document.getElementById("add_course");
+
+        function showAdd(){
+            cards.classList.add("main_c_cont_cr_hid");
+            add_cr.classList.remove("add_course_hid");
+        }
+    </script>
 
 </body>
 

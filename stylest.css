@@ -148,6 +148,18 @@ a {
     width: 100%;
     margin-right: 40px;
 }
+.main_c_cont_cr_hid{
+    display: none;
+}
+.add_course {
+    margin: -10px;
+    width: 100%;
+    margin-right: 40px;
+}
+
+.add_course_hid{
+    display: none;
+}
 
 .main_c_cont_t {
     margin: 10px;
