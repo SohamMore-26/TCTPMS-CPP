@@ -108,11 +108,27 @@ a {
     margin-left: -60px;
 }
 
+.main_c_cont_cr h3 {
+    padding-left: 70px;
+    display: flex;
+    margin-top: 30px;
+    font-size: 25px;
+    margin-left: 0px;
+}
+
+.bt_cont h3 {
+    padding-left: 70px;
+    display: flex;
+    margin-top: 30px;
+    font-size: 25px;
+    margin-left: 0px;
+}
+
 .sidebar {
     background-color: #E9FBFF;
     width: 400px;
     border-radius: 8px;
-    height: 80vh;
+    height: 600px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin: 20px;
 }
@@ -123,6 +139,12 @@ a {
 
 .main_c_cont {
     margin: 10px;
+    width: 100%;
+    margin-right: 40px;
+}
+
+.main_c_cont_cr {
+    margin: -10px;
     width: 100%;
     margin-right: 40px;
 }
@@ -173,14 +195,13 @@ a {
     flex-direction: column;
     width: 100%;
     margin-right: 40px;
-    justify-content: space-between;
     margin-bottom: 10px;
 }
 
 .bt_cont {
     display: flex;
     width: 100%;
-
+    margin-left: 10px;
 }
 
 .icon i {
@@ -212,6 +233,14 @@ a {
 }
 
 .main_c_cont span {
+    margin-right: 10px;
+}
+
+.main_c_cont_cr span {
+    margin-right: 10px;
+}
+
+.main_c_cont_t span {
     margin-right: 10px;
 }
 
@@ -366,24 +395,41 @@ a {
     border-radius: 10px;
     background-color: #f1f8fa;
 }
-.label{
+
+.label {
     margin-left: 15px;
 }
-table, th, td {
+
+table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
-  }
+}
 
-  th , td {
+th,
+td {
     padding: 10px 20px;
-  }
+}
 
-  table{
+table {
     margin-top: 20px;
-  }
+}
 
-  td{
+td {
     text-align-last: center;
-    font-size: 20px ;
+    font-size: 20px;
     font-weight: 200;
+}
+
+.contain_scroll {
+    width: 94.50%;
+    padding: 20px;
+    height: 60%;
+    box-shadow: inset -3px -3px 7px #c7c7c773,
+        inset 3px 3px 5px rgba(0, 0, 0, 0.418);
+        border-radius: 10px;
+    margin: 20px;
+    margin-right: 40px;
+    overflow: auto
 }
