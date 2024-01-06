@@ -347,12 +347,12 @@ a {
 }
 
 .timeTableHead {
-    width: 1070px;
-    display: flexbox;
+    width: 100%;
+    display: block;
     margin-top: 20px;
-    /* margin-left: 25px; */
+    margin-right: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 .sem {
