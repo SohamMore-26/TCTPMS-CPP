@@ -151,10 +151,8 @@ a {
 .main_c_cont_cr_hid{
     display: none;
 }
-.add_course {
-    
+.add_course {   
     width: 100%;
-    margin-right: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -189,7 +187,7 @@ a {
 
 .add_course_card {
     background-color: #E9FBFF;
-    width: 70%;
+    width: 100%;
     height:330px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
