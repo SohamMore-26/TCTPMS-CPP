@@ -94,13 +94,99 @@
                 </div>
 
                 <div class="add_course, add_course_hid" id="add_course">
-                    <div class="m_card">
-                        <h3>
-                            <div >
-                               Add Course 
+
+                    <div class="add_course_card_cont">
+
+                        <div class="add_course_card">
+
+                            <form action="" class="aca-form">
+                                <div class="name_cont">
+                                    <div class="name">
+                                        <b><label for="semester" class="label">Semester:</label></b>
+                                        <select id="semester" name="sem" class="sem">
+                                            <option value="">Select Semester</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                        </select>
+                                    </div>
+                                    <div class="name">
+                                        <b><label for="branch" class="label">Branch:</label></b>
+                                        <select id="branch" name="branch" class="sem">
+                                            <option value="">Select Branch</option>
+                                            <option value="computer engineering">Computer Engineering</option>
+                                            <option value="civil engineering">Civil Engineering</option>
+                                            <option value="mechanical engineering">Mechanical Engineering</option>
+                                        </select>
+                                    </div>
+                                    <div class="name">
+                                        <b><label for="scheme" class="label">Scheme:</label></b>
+                                        <select id="scheme" name="scheme" class="sem">
+                                            <option value="">Select Scheme</option>
+                                            <option value="a">A</option>
+                                            <option value="b">B</option>
+                                            <option value="c">C</option>
+                                            <option value="d">D</option>
+                                            <option value="e">E</option>
+                                            <option value="f">F</option>
+                                            <option value="g">G</option>
+                                            <option value="h">H</option>
+                                            <option value="i">I</option>
+                                            <option value="k">K</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="name_cont">
+                                    <div class="name">
+                                        <b><label for="firstName" class="label">Course Name :</label></b>
+                                        <input class="sem" type="text" id="firstName" name="firstName"
+                                            placeholder="Enter First Name" required>
+                                    </div>
+                                    <div class="name">
+                                        <b><label for="middleName" class="label">Course Abrevation :</label></b>
+                                        <input class="sem" type="text" id="middleName" name="middleName"
+                                            placeholder="Enter Middle Name" required>
+                                    </div>
+                                    <div class="name">
+                                        <b><label for="lastName" class="label">Course Code :</label></b>
+                                        <input class="sem" type="text" id="lastName" name="lastName"
+                                            placeholder="Enter Last Name" required>
+                                    </div>
+                                </div>
+
+                                <div class="name_cont">
+                                    <div class="name">
+                                        <b><label for="teacher_id" class="label">Lectures p/w :</label></b>
+                                        <input class="sem" type="text" id="teacher_id" name="teacher_id"
+                                            placeholder="Enter Teacher ID" required>
+                                    </div>
+
+                                    <div class="name">
+                                        <b><label for="teacher_id" class="label">Practicals p/w :</label></b>
+                                        <input class="sem" type="text" id="teacher_id" name="teacher_id"
+                                            placeholder="Enter Teacher ID" required>
+                                    </div>
+
+                                    <div class="name">
+                                        <b><label for="branch" class="label">Tutorials p/w :</label></b>
+                                        <input class="sem" type="text" id="branch" name="branch"
+                                            placeholder="Enter Branch" required>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="buttons">
+                                <button type="submit" name="submit" class="" class="button">Add</button>
+                                <button type="submit" class="" class="button1">Back</button>
                             </div>
-                        </h3>
+                        </div>
+
                     </div>
+
+
                 </div>
 
             </div>
@@ -131,7 +217,7 @@
         let cards = document.getElementById("main_c_cont_cr");
         let add_cr = document.getElementById("add_course");
 
-        function showAdd(){
+        function showAdd() {
             cards.classList.add("main_c_cont_cr_hid");
             add_cr.classList.remove("add_course_hid");
         }

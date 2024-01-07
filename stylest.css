@@ -128,7 +128,7 @@ a {
     background-color: #E9FBFF;
     width: 400px;
     border-radius: 8px;
-    height: 600px;
+    height: 640px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin: 20px;
 }
@@ -152,9 +152,13 @@ a {
     display: none;
 }
 .add_course {
-    margin: -10px;
+    
     width: 100%;
     margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .add_course_hid{
@@ -181,6 +185,24 @@ a {
     flex-direction: column;
     justify-content: center;
     margin: 10px;
+}
+
+.add_course_card {
+    background-color: #E9FBFF;
+    width: 70%;
+    height:330px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    padding: 20px;
+}
+
+.add_course_card_cont{
+    display: flex;
+    justify-content: center;
 }
 
 .material-symbols-outlined {
@@ -367,6 +389,11 @@ a {
     height: 30px;
     border-radius: 8px;
 }
+.name select{
+    width: 180px;
+    height: 33px;
+    border-radius: 8px;
+}
 
 .form_c_cont select {
     width: 180px;
@@ -437,11 +464,48 @@ td {
 .contain_scroll {
     width: 94.50%;
     padding: 20px;
+    padding-bottom: 10px;
     height: 60%;
     box-shadow: inset -3px -3px 7px #c7c7c773,
         inset 3px 3px 5px rgba(0, 0, 0, 0.418);
         border-radius: 10px;
     margin: 20px;
     margin-right: 40px;
-    overflow: auto
+    overflow: auto;
+}
+
+.branch_cont{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.branch_cont b{
+display: flex;
+align-items: center;
+}
+
+.branch_cont select{
+    padding: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin:10px
+}
+
+.buttons button{
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    color: #CAF0F8;
 }
