@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/970acd6ae4.js" crossorigin="anonymous"></script>
     <title>Admin Course Module
     </title>
+    
 </head>
 
 <body>
@@ -64,13 +65,13 @@
         <div class="bt_c_cont">
             <div class="contain_scroll">
                 <div class="main_c_cont_cr" id="main_c_cont_cr">
-                    <div class="w_card">
+                    <!-- <div class="w_card">
                         <h3>
                             <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
                                     error
                                 </span></div> No Existing Cources
                         </h3>
-                    </div>
+                    </div> -->
                     <div class="m_card">
                         <h3>
                             <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1st Semester Courses
@@ -189,7 +190,7 @@
                             <form action="" class="aca-form">
                                 <div class="name_cont">
                                     <div class="name">
-                                        <b><label for="firstName" class="">Course Name :</label></b>
+                                        <b><label for="firstName" class="">Course Code :</label></b>
                                         <input class="" type="text" id="firstName" name="firstName"
                                             placeholder="Enter First Name" required>
                                     </div>
@@ -306,30 +307,7 @@
 
     </div>
 
-    <script>
-        let cards = document.getElementById("main_c_cont_cr");
-        let add_cr = document.getElementById("add_course");
-        let del_cr = document.getElementById("upd_course");
-
-        function showAdd() {
-            cards.classList.add("main_c_cont_cr_hid");
-            add_cr.classList.remove("add_course_hid");
-            del_cr.classList.add("upd_course_hid");
-        }
-
-        function showDel() {
-            cards.classList.add("main_c_cont_cr_hid");
-            add_cr.classList.add("add_course_hid");
-            del_cr.classList.remove("upd_course_hid");
-        }
-
-        function showMain() {
-            cards.classList.remove("main_c_cont_cr_hid");
-            add_cr.classList.add("add_course_hid");
-            del_cr.classList.add("upd_course_hid");
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>

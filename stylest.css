@@ -411,7 +411,7 @@ a {
 
 .name_r {
     display: flex;
-
+    flex-direction: column;
 }
 
 .name_cont {
