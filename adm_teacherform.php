@@ -64,7 +64,7 @@
         <div class="main_c_cont_t">
             <div class="form_cont">
                 <h1 id="h1">Create a Teacher</h1>
-                <form action="" class="aca-form">
+                <form method="post" class="aca-form">
                     <div class="form_c_cont">
                         <div class="name_cont">
                             <div class="name">
@@ -87,7 +87,7 @@
                         <div class="name_cont">
                             <div class="name">
                                 <b><label for="teacher_id" class="label">Teacher ID :</label></b>
-                                <input class="sem" type="text" id="teacher_id" name="teacher_id"
+                                <input class="sem" type="text" id="teacher_id" name="teacherId"
                                     placeholder="Enter Teacher ID" required>
                             </div>
 
@@ -135,7 +135,7 @@
                             
                         </div>
                         <div class="form_button_cont">
-                            <button type="submit" class="btt" class="button">Add</button>
+                            <button type="submit" class="btt" class="button" name="addTeacher">Add</button>
                             <button type="submit" class="btt1" class="button1">Cancel</button>
                         </div>
 
@@ -152,3 +152,28 @@
 </body>
 
 </html>
+<?php
+
+    include "config.php";
+    if(isset($_POST['addTeacher']))
+	{
+		extract($_POST);
+
+		$add = mysqli_query($con,"INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate`) VALUES ('$name','$phone','$address','$email','$password')") or die(mysqli_error($con));
+
+		if($add)
+		{
+			echo "<script>";
+		echo "alert('Successfully Register...');";
+		echo 'window.location.href="login.php";';
+		echo "</script>";
+		}
+		else
+		{
+			echo "<script>";
+			echo "alert('ERROR ! Registration Fail..!')";
+			echo "</script>";
+		}
+	}
+
+?>
