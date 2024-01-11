@@ -118,16 +118,16 @@
                                 <b><label for="currentStatus" class="label">Current Status :</label></b>
                                 <div class="radio_cont">
                                     <input class="sem1" type="radio" id="currentStatus" name="currentStatus"
-                                        value="teaching" required>
+                                        value="Teaching" required>
                                     Teaching
                                     <input class="sem1" type="radio" id="currentStatus" name="currentStatus"
-                                        value="retried" required>
+                                        value="Retried" required>
                                     Retried
                                 </div>
                             </div>
                             <div class="name">
                                 <b><label for="leavingDate" class="label">Leaving Date :</label></b>
-                                <input class="sem" type="date" id="leavingDate" name="leavingDate" required>
+                                <input class="sem" type="date" id="leavingDate" name="leavingDate">
                             </div>
                         </div>
 
@@ -159,19 +159,18 @@
 	{
 		extract($_POST);
 
-		$add = mysqli_query($con,"INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate`) VALUES ('$name','$phone','$address','$email','$password')") or die(mysqli_error($con));
+		$add = mysqli_query($con,"INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$currentStatus','$leavingDate')") or die(mysqli_error($con));
 
 		if($add)
 		{
-			echo "<script>";
-		echo "alert('Successfully Register...');";
-		echo 'window.location.href="login.php";';
+		echo "<script>";
+		echo "alert('Successfully Added...');";
 		echo "</script>";
 		}
 		else
 		{
 			echo "<script>";
-			echo "alert('ERROR ! Registration Fail..!')";
+			echo "alert('ERROR ! Fail..!')";
 			echo "</script>";
 		}
 	}
