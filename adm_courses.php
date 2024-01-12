@@ -54,12 +54,12 @@
                             group
                         </span> Teacher</ul>
                 </a>
-                <hr>
+                <!-- <hr>
                 <a href="adm_approvals.html">
                     <ul><span class="material-symbols-outlined">
                             pending_actions
                         </span> Approvals</ul>
-                </a>
+                </a> -->
             </li>
         </div>
         <div class="bt_c_cont">
@@ -101,7 +101,7 @@
                                 <div class="name_cont">
                                     <div class="name">
                                         <b><label for="semester" class="label">Semester:</label></b>
-                                        <select id="semester" name="sem" class="sem">
+                                        <select id="semester" name="semester" class="sem">
                                             <option value="">Select Semester</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -182,12 +182,12 @@
                                             placeholder="Enter Teaching Hours" required>
                                     </div>
                                 </div>
+                                <div class="buttons">
+                                    <button type="submit" name="addCourse" class="" class="button">Add</button>
+                                    <button type="submit" class="" class="button1" onclick="showMain()">Back</button>
+                                </div>
                             </form>
 
-                            <div class="buttons">
-                                <button type="submit" name="addCourse" class="" class="button">Add</button>
-                                <button type="submit" class="" class="button1" onclick="showMain()">Back</button>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -5,13 +5,15 @@ body {
     background-color: #CAF0F8;
 }
 
-.contain_scroll::-webkit-scrollbar{
+.contain_scroll::-webkit-scrollbar {
     width: 10px;
 }
-.contain_scroll::-webkit-scrollbar-track{
+
+.contain_scroll::-webkit-scrollbar-track {
     background: #CAF0F8;
 }
-.contain_scroll::-webkit-scrollbar-thumb{
+
+.contain_scroll::-webkit-scrollbar-thumb {
     background: #92e8fa;
 }
 
@@ -52,6 +54,10 @@ button:hover {
     border-radius: 8px;
     height: 80vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.title_div h1 {
+    text-shadow: rgb(0, 0, 0) 2px, 7px, 5px;
 }
 
 li {
@@ -158,10 +164,12 @@ a {
     width: 100%;
     margin-right: 40px;
 }
-.main_c_cont_cr_hid{
+
+.main_c_cont_cr_hid {
     display: none;
 }
-.add_course {   
+
+.add_course {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -169,11 +177,11 @@ a {
     align-items: center;
 }
 
-.add_course_hid{
+.add_course_hid {
     display: none;
 }
 
-.upd_course {   
+.upd_course {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -181,7 +189,7 @@ a {
     align-items: center;
 }
 
-.upd_course_hid{
+.upd_course_hid {
     display: none;
 }
 
@@ -207,10 +215,23 @@ a {
     margin: 10px;
 }
 
+.wel_card {
+    background-color: #E9FBFF;
+    width: 97.6%;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+}
+
 .add_course_card {
     background-color: #E9FBFF;
     width: 100%;
-    height:330px;
+    height: 330px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -220,7 +241,7 @@ a {
     padding: 20px;
 }
 
-.add_course_card_cont{
+.add_course_card_cont {
     display: flex;
     justify-content: center;
 }
@@ -228,7 +249,7 @@ a {
 .upd_course_card {
     background-color: #E9FBFF;
     width: 100%;
-    height:50px;
+    height: 50px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -239,13 +260,13 @@ a {
     padding: 20px;
 }
 
-.upd_course_card_cont{
+.upd_course_card_cont {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
-.upd_course_card_cont input{
+.upd_course_card_cont input {
     margin-top: 5px;
 }
 
@@ -433,7 +454,8 @@ a {
     height: 30px;
     border-radius: 8px;
 }
-.name select{
+
+.name select {
     width: 180px;
     height: 33px;
     border-radius: 8px;
@@ -501,7 +523,7 @@ table {
 
 td {
     text-align-last: center;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 200;
 }
 
@@ -512,24 +534,24 @@ td {
     height: 60%;
     box-shadow: inset -3px -3px 7px #c7c7c773,
         inset 3px 3px 5px rgba(0, 0, 0, 0.418);
-        border-radius: 10px;
+    border-radius: 10px;
     margin: 20px;
     margin-right: 40px;
     overflow: auto;
     overflow-x: hidden;
 }
 
-.branch_cont{
+.branch_cont {
     display: flex;
     justify-content: space-evenly;
 }
 
-.branch_cont b{
-display: flex;
-align-items: center;
+.branch_cont b {
+    display: flex;
+    align-items: center;
 }
 
-.branch_cont select{
+.branch_cont select {
     padding: 8px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -541,15 +563,37 @@ align-items: center;
     background-color: #f1f8fa;
 }
 
-.buttons{
+.buttons {
     display: flex;
     justify-content: space-around;
-    margin:10px
+    margin: 10px
 }
 
-.buttons button{
+.buttons button {
     width: 100px;
     height: 40px;
     padding: 10px;
     color: #CAF0F8;
+}
+
+.timeTableHeader {
+    text-align: center;
+    margin-top: -35px;
+
+}
+
+.dialog {
+    display: grid;
+    width: 300px;
+    padding: 50px;
+}
+
+.timeTableButton {
+    margin-top: 20px;
+    margin-left: 70px;
+    width: 50%;
+}
+
+.tdContant{
+    display: flex;
 }
