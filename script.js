@@ -31,6 +31,10 @@ function openDialog(element) {
   if (elementValue === "Practical") {
     document.getElementById('myDialogP').showModal();
   }
+  if (elementValue === "Tutorial") {
+    document.getElementById('myDialogTu').showModal();
+  }
+
   console.log(elementID);
   console.log(elementValue);
 }

@@ -120,44 +120,50 @@
                         <td>07:30 AM</td>
                         <td>
                             <div class="tdContant"><input type="radio" id="1" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory"> Theory
-                                <input type="radio" id="1" name="ThPr" onclick="openDialog(this)"
-                                    value="Practical">Practical
+                                    value="Theory"> Th
+                                <input type="radio" id="1" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="7" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory">Theory
-                                <input type="radio" id="7" name="ThPr" onclick="openDialog(this)"
-                                    value="Practical">Practical
+                                    value="Theory"> Th
+                                <input type="radio" id="7" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="13" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory">Theory
-                                <input type="radio" id="13" name="ThPr" onclick="openDialog(this)"
-                                    value="Practical">Practical
+                                    value="Theory"> Th
+                                <input type="radio" id="13" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="19" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory">Theory
-                                <input type="radio" id="19" name="ThPr" onclick="openDialog(this)"
-                                    value="Practical">Practical
+                                    value="Theory"> Th
+                                <input type="radio" id="19" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="25" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory">Theory
-                                <input type="radio" id="25" name="ThPr" onclick="openDialog(this)"
-                                    value="Practical">Practical
+                                    value="Theory"> Th
+                                <input type="radio" id="25" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="31" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory">Theory
-                                <input type="radio" id="31" name="ThPr" onclick="openDialog(this)"
-                                    value="Practical">Practical
+                                    value="Theory"> Th
+                                <input type="radio" id="31" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
 
@@ -166,44 +172,56 @@
                         <td>08:30 AM</td>
                         <td>
                             <div class="tdContant"><input type="radio" id="2" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory"> Theory
+                                    value="Theory"> Th
                                 <input type="radio" id="2" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="8" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory"> Theory
+                                    value="Theory"> Th
                                 <input type="radio" id="8" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="14" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory"> Theory
+                                    value="Theory"> Th
                                 <input type="radio" id="14" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="20" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory"> Theory
+                                    value="Theory"> Th
                                 <input type="radio" id="20" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="26" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory"> Theory
+                                    value="Theory"> Th
                                 <input type="radio" id="26" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant"><input type="radio" id="32" name="ThPr" onclick="openDialog(this)"
-                                    value="Theory"> Theory
+                                    value="Theory"> Th
                                 <input type="radio" id="32" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
 
@@ -216,49 +234,61 @@
                         <td>10:00 AM</td>
                         <td>
                             <div class="tdContant">
-                                <input type="radio" id="3" name="ThPr" onclick="openDialog(this)" value="Theory"> Theory
+                                <input type="radio" id="3" name="ThPr" onclick="openDialog(this)" value="Theory"> Th
                                 <input type="radio" id="3" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="3" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="9" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="9" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="9" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="15" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="15" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="15" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="21" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="21" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="21" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="27" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="27" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="27" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="33" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="33" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="33" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
 
@@ -268,49 +298,61 @@
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="4" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="4" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="4" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="10" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="10" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="10" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="16" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="16" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="16" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="22" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="22" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="22" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="28" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="28" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="28" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="34" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="34" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="34" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
 
@@ -324,49 +366,60 @@
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="5" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="5" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="5" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="11" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="11" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="11" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="17" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="17" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="17" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="23" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="23" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
-                            </div>
+                                Pr
+                                <input type="radio" id="23" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="29" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="29" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="29" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="35" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="35" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="35" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                     </tr>
@@ -375,49 +428,61 @@
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="6" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="6" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="6" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="12" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="12" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="12" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="18" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="18" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="18" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="24" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="24" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tdContant">
-                                <input type="radio" id="30" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
-                                <input type="radio" id="30" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="24" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
                         <td>
                             <div class="tdContant">
                                 <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Theory">
-                                Theory
+                                Th
                                 <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Practical">
-                                Practical
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tdContant">
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Theory">
+                                Th
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Practical">
+                                Pr
+                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                Tu
                             </div>
                         </td>
 
@@ -426,26 +491,27 @@
             </center>
 
             <dialog id="myDialog">
+                <form action="">
+                    <div class="dialog">
+                        <h2 class="timeTableHeader">Theory Time Table</h2>
+                        <b><label for="slot" class="label">Slot :</label></b>
+                        <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required>
+                        <b><label for="time_day" class="label">Day :</label></b>
+                        <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
+                            required>
+                        <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
+                        <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
+                            required>
+                        <b><label for="time_course" class="label">Course Abrevation :</label></b>
+                        <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                            required>
+                        <div class="buttons">
+                            <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
+                            <button class="timeTableButton" onclick="closeDialog()">Close</button>
+                        </div>
 
-                <div class="dialog">
-                        <form method="post">
-                            <h2 class="timeTableHeader">Theory Time Table</h2>
-                            <b><label for="slot" class="label">Slot :</label></b>
-                            <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required>
-                            <b><label for="time_day" class="label">Day :</label></b>
-                            <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
-                                required>
-                            <b><label for="time_ThPr" class="label">Theory / Practical :</label></b>
-                            <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
-                                required>
-                            <b><label for="time_course" class="label">Course Abrevation :</label></b>
-                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
-                                required>
-                                <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
-                                <button class="timeTableButton" onclick="closeDialog()">Close</button>
-
-                        </form>
-                </div>
+                    </div>
+                </form>
             </dialog>
 
             <dialog id="myDialogP">
@@ -454,13 +520,35 @@
                     <h2 class="timeTableHeader">Practical Time Table</h2>
                     <b><label for="time_day" class="label">Day :</label></b>
                     <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday" required>
-                    <b><label for="time_ThPr" class="label">Theory / Practical :</label></b>
+                    <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
                     <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
                         required>
                     <b><label for="time_course" class="label">Course Abrevation :</label></b>
                     <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
                         required>
-                    <button class="timeTableButton" onclick="closeDialogP()">Close</button>
+                    <div class="buttons">
+                        <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
+                        <button class="timeTableButton" onclick="closeDialogP()">Close</button>
+                    </div>
+
+                </div>
+            </dialog>
+
+            <dialog id="myDialogTu">
+                <div class="dialog">
+                    <h2 class="timeTableHeader">Tutorial Time Table</h2>
+                    <b><label for="time_day" class="label">Day :</label></b>
+                    <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday" required>
+                    <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
+                    <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
+                        required>
+                    <b><label for="time_course" class="label">Course Abrevation :</label></b>
+                    <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                        required>
+                    <div class="buttons">
+                        <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
+                        <button class="timeTableButton" onclick="closeDialogTu()">Close</button>
+                    </div>
                 </div>
             </dialog>
 

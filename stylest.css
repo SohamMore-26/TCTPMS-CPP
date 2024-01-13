@@ -584,14 +584,31 @@ td {
 
 .dialog {
     display: flex;
+    flex-direction: column ;
     width: 400px;
     padding: 50px;
 }
 
 .timeTableButton {
-    margin-top: 20px;
-    margin-left: 70px;
-    width: 50%;
+    width: 90%;
+    padding: 10px;
+    margin-top: 30px;
+    margin: 20px;
+    background-color: rgb(20, 101, 214);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: #CAF0F8;
+}
+
+.dialog .sem{
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
 }
 
 .tdContant{
