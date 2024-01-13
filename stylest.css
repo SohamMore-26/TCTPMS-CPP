@@ -583,7 +583,7 @@ td {
 }
 
 .dialog {
-    /* display: flex; */
+    display: flex;
     width: 400px;
     padding: 50px;
 }
