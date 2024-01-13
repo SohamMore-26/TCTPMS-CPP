@@ -583,8 +583,8 @@ td {
 }
 
 .dialog {
-    display: grid;
-    width: 300px;
+    /* display: flex; */
+    width: 400px;
     padding: 50px;
 }
 
@@ -595,5 +595,8 @@ td {
 }
 
 .tdContant{
+    display: flex;
+}
+.timeTable_Button{
     display: flex;
 }

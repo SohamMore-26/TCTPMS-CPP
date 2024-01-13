@@ -428,16 +428,23 @@
             <dialog id="myDialog">
 
                 <div class="dialog">
-                    <h2 class="timeTableHeader">Theory Time Table</h2>
-                    <b><label for="time_day" class="label">Day :</label></b>
-                    <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday" required>
-                    <b><label for="time_ThPr" class="label">Theory / Practical :</label></b>
-                    <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
-                        required>
-                    <b><label for="time_course" class="label">Course Abrevation :</label></b>
-                    <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
-                        required>
-                    <button class="timeTableButton" onclick="closeDialog()">Close</button>
+                        <form method="post">
+                            <h2 class="timeTableHeader">Theory Time Table</h2>
+                            <b><label for="slot" class="label">Slot :</label></b>
+                            <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required>
+                            <b><label for="time_day" class="label">Day :</label></b>
+                            <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
+                                required>
+                            <b><label for="time_ThPr" class="label">Theory / Practical :</label></b>
+                            <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
+                                required>
+                            <b><label for="time_course" class="label">Course Abrevation :</label></b>
+                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                                required>
+                                <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
+                                <button class="timeTableButton" onclick="closeDialog()">Close</button>
+
+                        </form>
                 </div>
             </dialog>
 
@@ -465,3 +472,28 @@
 </body>
 
 </html>
+
+<?php
+
+    include "config.php";
+    if(isset($_POST['addTimeTable']))
+	{
+		extract($_POST);
+
+		$add = mysqli_query($con,"INSERT INTO `timetable`(`time_day`, `time_Thpr`, `time_course`) VALUES ('$time_day','$time_ThPr','$time_course')") or die(mysqli_error($con));
+
+		if($add)
+		{
+		echo "<script>";
+		echo "alert('Successfully Added...');";
+		echo "</script>";
+		}
+		else
+		{
+			echo "<script>";
+			echo "alert('ERROR ! Fail..!')";
+			echo "</script>";
+		}
+	}
+
+?>
