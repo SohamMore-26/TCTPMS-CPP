@@ -47,3 +47,6 @@ function closeDialog() {
 function closeDialogP() {
   document.getElementById('myDialogP').close();
 }
+function closeDialogTu() {
+  document.getElementById('myDialogTu').close();
+}

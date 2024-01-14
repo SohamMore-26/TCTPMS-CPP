@@ -491,7 +491,7 @@
             </center>
 
             <dialog id="myDialog">
-                <form action="">
+                <form method="post">
                     <div class="dialog">
                         <h2 class="timeTableHeader">Theory Time Table</h2>
                         <b><label for="slot" class="label">Slot :</label></b>
@@ -516,6 +516,7 @@
 
             <dialog id="myDialogP">
 
+                <form method="post">
                 <div class="dialog">
                     <h2 class="timeTableHeader">Practical Time Table</h2>
                     <b><label for="time_day" class="label">Day :</label></b>
@@ -523,15 +524,22 @@
                     <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
                     <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
                         required>
-                    <b><label for="time_course" class="label">Course Abrevation :</label></b>
+                    <b><label for="" class="label">Batch 1 :</label></b>
+                    <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                        required>
+                    <b><label for="time_course" class="label">Batch 2  :</label></b>
+                    <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                        required>
+                    <b><label for="time_course" class="label">Batch 3 :</label></b>
                     <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
                         required>
                     <div class="buttons">
                         <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
                         <button class="timeTableButton" onclick="closeDialogP()">Close</button>
                     </div>
-
+                    
                 </div>
+                </form>
             </dialog>
 
             <dialog id="myDialogTu">
