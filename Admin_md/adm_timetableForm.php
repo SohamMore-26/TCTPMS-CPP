@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylest.css">
+    <link rel="stylesheet" href="/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Time Table Form
@@ -24,41 +24,41 @@
     <div class="main_cont">
         <div class="sidebar">
             <li>
-                <a href="adm_home.html">
-                    <ul><span class="material-symbols-outlined">
-                            home
-                        </span> Home</ul>
-                </a>
-                <hr>
-                <a href="adm_timetable.html">
-                    <ul><span class="material-symbols-outlined">
-                            today
-                        </span> Time Table</ul>
-                </a>
-                <hr>
-                <a href="adm_courses.html">
-                    <ul><span class="material-symbols-outlined">
-                            menu_book
-                        </span> Courses</ul>
-                </a>
-                <hr>
-                <a href="adm_AcademicCal.html">
-                    <ul><span class="material-symbols-outlined">
-                            calendar_clock
-                        </span> Academic Calendar</ul>
-                </a>
-                <hr>
-                <a href="">
-                    <ul><span class="material-symbols-outlined">
-                            group
-                        </span> Teacher</ul>
-                </a>
-                <hr>
-                <a href="">
-                    <ul><span class="material-symbols-outlined">
-                            pending_actions
-                        </span> Approvals</ul>
-                </a>
+                <div class="side_card">
+                    <a href="adm_home.html">
+                        <ul><span class="material-symbols-outlined">
+                                home
+                            </span> Home</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="adm_timetable.html">
+                        <ul><span class="material-symbols-outlined">
+                                today
+                            </span> Time Table</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="adm_courses.html">
+                        <ul><span class="material-symbols-outlined">
+                                menu_book
+                            </span> Courses</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="adm_AcademicCal.html">
+                        <ul><span class="material-symbols-outlined">
+                                calendar_clock
+                            </span> Academic Calendar</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="adm_teacher.html">
+                        <ul><span class="material-symbols-outlined">
+                                group
+                            </span> Teacher</ul>
+                    </a>
+                </div>
             </li>
         </div>
 
@@ -563,25 +563,21 @@
 
 <?php
 
-    include "config.php";
-    if(isset($_POST['addTimeTable']))
-	{
-		extract($_POST);
+include "config.php";
+if (isset($_POST['addTimeTable'])) {
+    extract($_POST);
 
-		$add = mysqli_query($con,"INSERT INTO `timetable`(`time_day`, `time_Thpr`, `time_course`) VALUES ('$time_day','$time_ThPr','$time_course')") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `timetable`(`time_day`, `time_Thpr`, `time_course`) VALUES ('$time_day','$time_ThPr','$time_course')") or die(mysqli_error($con));
 
-		if($add)
-		{
-		echo "<script>";
-		echo "alert('Successfully Added...');";
-		echo "</script>";
-		}
-		else
-		{
-			echo "<script>";
-			echo "alert('ERROR ! Fail..!')";
-			echo "</script>";
-		}
-	}
+    if ($add) {
+        echo "<script>";
+        echo "alert('Successfully Added...');";
+        echo "</script>";
+    } else {
+        echo "<script>";
+        echo "alert('ERROR ! Fail..!')";
+        echo "</script>";
+    }
+}
 
 ?>
