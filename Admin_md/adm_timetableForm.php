@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/stylest.css">
+    <link rel="stylesheet" href="stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Time Table Form
@@ -122,7 +122,7 @@
                             <div class="tdContant"><input type="radio" id="1" name="ThPr" onclick="openDialog(this)"
                                     value="Theory"> Th
                                 <input type="radio" id="1" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="1" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -130,7 +130,7 @@
                             <div class="tdContant"><input type="radio" id="7" name="ThPr" onclick="openDialog(this)"
                                     value="Theory"> Th
                                 <input type="radio" id="7" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="7" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -138,7 +138,7 @@
                             <div class="tdContant"><input type="radio" id="13" name="ThPr" onclick="openDialog(this)"
                                     value="Theory"> Th
                                 <input type="radio" id="13" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="13" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -146,7 +146,7 @@
                             <div class="tdContant"><input type="radio" id="19" name="ThPr" onclick="openDialog(this)"
                                     value="Theory"> Th
                                 <input type="radio" id="19" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="19" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -154,7 +154,7 @@
                             <div class="tdContant"><input type="radio" id="25" name="ThPr" onclick="openDialog(this)"
                                     value="Theory"> Th
                                 <input type="radio" id="25" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="25" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -162,7 +162,7 @@
                             <div class="tdContant"><input type="radio" id="31" name="ThPr" onclick="openDialog(this)"
                                     value="Theory"> Th
                                 <input type="radio" id="31" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="31" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -175,7 +175,7 @@
                                     value="Theory"> Th
                                 <input type="radio" id="2" name="ThPr" onclick="openDialog(this)" value="Practical">
                                 Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="2" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -184,7 +184,7 @@
                                     value="Theory"> Th
                                 <input type="radio" id="8" name="ThPr" onclick="openDialog(this)" value="Practical">
                                 Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="8" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -193,7 +193,7 @@
                                     value="Theory"> Th
                                 <input type="radio" id="14" name="ThPr" onclick="openDialog(this)" value="Practical">
                                 Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="14" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -202,7 +202,7 @@
                                     value="Theory"> Th
                                 <input type="radio" id="20" name="ThPr" onclick="openDialog(this)" value="Practical">
                                 Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="20" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -211,7 +211,7 @@
                                     value="Theory"> Th
                                 <input type="radio" id="26" name="ThPr" onclick="openDialog(this)" value="Practical">
                                 Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="26" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -220,7 +220,7 @@
                                     value="Theory"> Th
                                 <input type="radio" id="32" name="ThPr" onclick="openDialog(this)" value="Practical">
                                 Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="32" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -467,11 +467,11 @@
                         </td>
                         <td>
                             <div class="tdContant">
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Theory">
+                                <input type="radio" id="30" name="ThPr" onclick="openDialog(this)" value="Theory">
                                 Th
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Practical">
+                                <input type="radio" id="30" name="ThPr" onclick="openDialog(this)" value="Practical">
                                 Pr
-                                <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">
+                                <input type="radio" id="30" name="ThPr" onclick="openDialog(this)" value="Tutorial">
                                 Tu
                             </div>
                         </td>
@@ -495,13 +495,13 @@
                     <div class="dialog">
                         <h2 class="timeTableHeader">Theory Time Table</h2>
                         <b><label for="slot" class="label">Slot :</label></b>
-                        <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required>
+                        <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required disabled="">
                         <b><label for="time_day" class="label">Day :</label></b>
                         <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
-                            required>
+                            required disabled="">
                         <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
                         <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
-                            required>
+                            required disabled="">
                         <b><label for="time_course" class="label">Course Abrevation :</label></b>
                         <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
                             required>
@@ -519,11 +519,14 @@
                 <form method="post">
                 <div class="dialog">
                     <h2 class="timeTableHeader">Practical Time Table</h2>
+                    
+                    <b><label for="slot" class="label">Slot :</label></b>
+                        <input class="sem" type="text" id="Slot" name="slot" placeholder="For.eg: Slot: 1" required disabled="">
                     <b><label for="time_day" class="label">Day :</label></b>
-                    <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday" required>
+                    <input class="sem" type="text" id="Time_day" name="time_day" placeholder="For.eg: Monday" required disabled="">
                     <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
-                    <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
-                        required>
+                    <input class="sem" type="text" id="Time_ThPr" name="time_ThPr"
+                        required disabled="">
                     <b><label for="" class="label">Batch 1 :</label></b>
                     <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
                         required>
@@ -545,11 +548,13 @@
             <dialog id="myDialogTu">
                 <div class="dialog">
                     <h2 class="timeTableHeader">Tutorial Time Table</h2>
+                    <b><label for="slot" class="label">Slot :</label></b>
+                    <input class="sem" type="text" id="slotTu" name="slot" placeholder="For.eg: Slot: 1" required disabled="">
                     <b><label for="time_day" class="label">Day :</label></b>
-                    <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday" required>
+                    <input class="sem" type="text" id="time_dayTu" name="time_day" placeholder="For.eg: Monday" required disabled="">
                     <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
-                    <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
-                        required>
+                    <input class="sem" type="text" id="time_ThPrTu" name="time_ThPr" placeholder="For.eg: Theory"
+                        required disabled="">
                     <b><label for="time_course" class="label">Course Abrevation :</label></b>
                     <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
                         required>
