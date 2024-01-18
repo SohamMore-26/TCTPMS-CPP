@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/stylest.css">
+    <link rel="stylesheet" href="stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Academic Time Table
@@ -66,7 +66,7 @@
             <h1 id="h1">Academic Calendar</h1>
             <div class="branch_cont">
                 <b><label for="semester" class="label">Semester:</label></b>
-                <select id="semester" name="sem" class="sem">
+                <select id="semester" name="semester" class="sem">
                     <option value="">Select Semester</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -99,7 +99,7 @@
                     <option value="k">K</option>
                 </select>
             </div>
-            <form action="process.php" method="post" class="">
+            <form  method="post">
                 <div class="cont_r_l">
                     <div class="cont_right">
                         <div class="label1">
@@ -108,9 +108,9 @@
                         <div class="">
 
                             <b><label for="from" class="label">From :</label></b>
-                            <input class="sem" type="date" id="from" name="aystdatefrom" required>
+                            <input class="sem" type="text" id="from" name="aystdatefrom" required>
                             <b><label for="to" class="label">To :</label></b>
-                            <input class="sem" type="date" id="to" name="aystdateto" required>
+                            <input class="sem" type="text" id="to" name="aystdateto" required>
 
                         </div>
 
@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button type="submit" name="submit" class="btt" class="button">Add</button>
+                    <button type="submit" name="addCal" class="btt" class="button">Add</button>
                     <button type="submit" class="btt1" class="button1">Cancel</button>
                 </div>
             </form>
@@ -186,3 +186,28 @@
 </body>
 
 </html>
+
+<?php
+
+    include "config.php";
+    if(isset($_POST['addCal']))
+	{
+		extract($_POST);
+
+		$add = mysqli_query($con,"INSERT INTO `academic_cal`(`semester`, `branch`, `scheme`, `aystdatefrom`, `aystdateto`, `stsemfrom`, `stfromto`, `ct1from`, `ct1to`, `ct2from`, `ct2to`, `prefrom`, `preto`, `thfrom`, `thto`) VALUES ('$semester','$branch','$scheme','$aca_year_from','$aca_year_to','$sem_duration_from','$sem_duration_to','$class_test1_from','$class_test1_to','$class_test2_from','$class_test2_to','$practical_exam_from	','$practical_exam_to','$theory_exam_from','$theory_exam_to')") or die(mysqli_error($con));
+
+		if($add)
+		{
+		echo "<script>";
+		echo "alert('Successfully Added...');";
+		echo "</script>";
+		}
+		else
+		{
+			echo "<script>";
+			echo "alert('ERROR ! Fail..!')";
+			echo "</script>";
+		}
+	}
+
+?>
