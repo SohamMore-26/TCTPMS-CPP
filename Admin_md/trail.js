@@ -21,7 +21,7 @@ for (let j = 0; j < noOfLec; j++)
     let day = lecDate.getDate();
     let month = lecDate.getMonth()+1;
     let year = lecDate.getFullYear();
-    console.log(day.toString().padStart(2,'0'),"/",month.toString().padStart(2,'0'),"/",year.toString().padStart(2,'0'))
+    console.log("Lec.",j+1,"    ",day.toString().padStart(2,'0'),"/",month.toString().padStart(2,'0'),"/",year.toString().padStart(2,'0'))
     let tempDate=lecDate.getDate()+diffArr[k]
 
     lecDate.setDate(tempDate)

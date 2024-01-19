@@ -491,8 +491,8 @@
             </center>
 
             <dialog id="myDialog">
+                <form method="post">
                 <div class="dialog">
-                        <form method="post">
                         <h2 class="timeTableHeader">Theory Time Table</h2>
                         <b><label for="slot" class="label">Slot :</label></b>
                         <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required
@@ -511,16 +511,16 @@
                             <button class="timeTableButton" onclick="closeDialog()">Close</button>
                         </div>
 
-                    </form>
-                        </div>
+                    </div>
+                </form>
             </dialog>
 
             <dialog id="myDialogP">
 
+                <form method="post">
                 <div class="dialog">
                     <h2 class="timeTableHeader">Practical Time Table</h2>
                     
-                    <form method="post">
                         <b><label for="slot" class="label">Slot :</label></b>
                         <input class="sem" type="text" id="Slot" name="slot" placeholder="For.eg: Slot: 1" required
                             disabled="">
@@ -540,16 +540,16 @@
                             <button class="timeTableButton" onclick="closeDialogP()">Close</button>
                         </div>
 
-                    </form>
                     </div>
+                </form>
             </dialog>
 
             <dialog id="myDialogTu">
+                <form method="post">
                 <div class="dialog">
                     <h2 class="timeTableHeader">Tutorial Time Table</h2>
-                    <form method="post">
                     <b><label for="slot" class="label">Slot :</label></b>
-                    <input class="sem" type="text" id="slotTu" name="slot" placeholder="For.eg: Slot: 1" required
+                    <input class="sem" type="text" id="slotTu" name="slottu" placeholder="For.eg: Slot: 1" required
                         disabled="">
                     <b><label for="time_day" class="label">Day :</label></b>
                     <input class="sem" type="text" id="time_dayTu" name="time_day" placeholder="For.eg: Monday" required
@@ -564,8 +564,8 @@
                         <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
                         <button class="timeTableButton" onclick="closeDialogTu()">Close</button>
                     </div>
-                    </form>
                 </div>
+            </form>
             </dialog>
 
 
@@ -588,7 +588,7 @@ if(isset($_POST['addTimeTable'])) {
     // if(isset($semester, $branch, $division,$slot, $acaYear, $time_day, $time_ThPr, $time_course, $batch1, $batch2, $batch3)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slot', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')") or die(mysqli_error($con));
+        $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slottu', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')") or die(mysqli_error($con));
 
         if($add) {
             echo "<script>";
