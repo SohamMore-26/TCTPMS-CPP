@@ -1,29 +1,31 @@
-// var currentDate = new Date("2024-01-18")
-// let newDate= currentDate.getDate()+17;
-// currentDate.setDate(newDate);
-// console.log(currentDate.toDateString())
+var lecDate = new Date("2024-01-02")
 
-let datesArr=[2,3,3,9]
+let datesArr=[2,3,6,9]
 let diffArr=[]
 
 
 for (let i = 1; i < datesArr.length; i++) 
 {
-    
-    console.log(datesArr[i])
-    console.log(datesArr[i-1])
     let a = datesArr[i]-datesArr[i-1]
-    diffArr.push(a)
-    
+    diffArr.push(a)   
 }
 
 let k =0;
 
-console.log(diffArr)
-for (let j = datesArr.length; j < 20; j++) 
+let noOfLec = 48
+
+console.log(lecDate.toDateString())
+
+for (let j = 1; j < noOfLec; j++) 
 {
-    datesArr[j]=diffArr[k]+datesArr[j-1]
+    let tempDate=lecDate.getDate()+diffArr[k]
+
+    lecDate.setDate(tempDate)
+    
+    console.log(lecDate.toDateString())
+
     k++
+
     if (k == diffArr.length) 
     {
         k=0;
@@ -32,4 +34,4 @@ for (let j = datesArr.length; j < 20; j++)
 }
 
 
-console.log(datesArr)
+
