@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylest.css">
+    <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Academic Time Table
@@ -63,6 +63,7 @@
             </li>
         </div>
         <div class="main_c_cont_at">
+            <form  method="post">
             <h1 id="h1">Academic Calendar</h1>
             <div class="branch_cont">
                 <b><label for="semester" class="label">Semester:</label></b>
@@ -79,29 +80,28 @@
                 <b><label for="branch" class="label">Branch:</label></b>
                 <select id="branch" name="branch" class="sem">
                     <option value="">Select Branch</option>
-                    <option value="computer engineering">Computer Engineering</option>
-                    <option value="civil engineering">Civil Engineering</option>
-                    <option value="mechanical engineering">Mechanical Engineering</option>
+                    <option value="Computer engineering">Computer Engineering</option>
+                    <option value="Civil engineering">Civil Engineering</option>
+                    <option value="Mechanical engineering">Mechanical Engineering</option>
                 </select>
 
                 <b><label for="scheme" class="label">Scheme:</label></b>
                 <select id="scheme" name="scheme" class="sem">
                     <option value="">Select Scheme</option>
-                    <option value="a">A</option>
-                    <option value="b">B</option>
-                    <option value="c">C</option>
-                    <option value="d">D</option>
-                    <option value="e">E</option>
-                    <option value="f">F</option>
-                    <option value="g">G</option>
-                    <option value="h">H</option>
-                    <option value="i">I</option>
-                    <option value="k">K</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="K">K</option>
                 </select>
             </div>
-            <form  method="post">
-                <div class="cont_r_l">
-                    <div class="cont_right">
+            <div class="cont_r_l">
+                <div class="cont_right">
                         <div class="label1">
                             <b><label>Academic Year :</label></b>
                         </div>
@@ -177,37 +177,43 @@
                     <button type="submit" name="addCal" class="btt" class="button">Add</button>
                     <button type="submit" class="btt1" class="button1">Cancel</button>
                 </div>
+                
             </form>
-
+            </div>
         </div>
-    </div>
-
+        
 
 </body>
 
 </html>
 
 <?php
+include "config.php";
 
-    include "config.php";
-    if(isset($_POST['addCal']))
-	{
-		extract($_POST);
+if(isset($_POST['addCal'])) {
+    // Extract form data
+    extract($_POST);
 
-		$add = mysqli_query($con,"INSERT INTO `academic_cal`(`semester`, `branch`, `scheme`, `aystdatefrom`, `aystdateto`, `stsemfrom`, `stfromto`, `ct1from`, `ct1to`, `ct2from`, `ct2to`, `prefrom`, `preto`, `thfrom`, `thto`) VALUES ('$semester','$branch','$scheme','$aca_year_from','$aca_year_to','$sem_duration_from','$sem_duration_to','$class_test1_from','$class_test1_to','$class_test2_from','$class_test2_to','$practical_exam_from	','$practical_exam_to','$theory_exam_from','$theory_exam_to')") or die(mysqli_error($con));
+    // Check if required variables are set
+    if(isset($semester, $branch, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
 
-		if($add)
-		{
-		echo "<script>";
-		echo "alert('Successfully Added...');";
-		echo "</script>";
-		}
-		else
-		{
-			echo "<script>";
-			echo "alert('ERROR ! Fail..!')";
-			echo "</script>";
-		}
-	}
+        // Insert data into the database
+        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`branch`,`scheme`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$branch', '$scheme', '$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
 
+        if($add) {
+            echo "<script>";
+            echo "alert('Successfully Added...');";
+            echo "</script>";
+        } else {
+            echo "<script>";
+            echo "alert('ERROR ! Fail..!')";
+            echo "</script>";
+        }
+
+    } else {
+        echo "<script>";
+        echo "alert('One or more required fields are missing. Please fill in all the fields.');";
+        echo "</script>";
+    }
+}
 ?>
