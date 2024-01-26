@@ -39,7 +39,7 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_courses.html">
+                    <a href="adm_courses.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
                             </span> Courses</ul>

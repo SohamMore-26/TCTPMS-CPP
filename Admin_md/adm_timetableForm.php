@@ -39,7 +39,7 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_courses.html">
+                    <a href="adm_courses.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
                             </span> Courses</ul>
@@ -493,16 +493,16 @@
             <dialog id="myDialog">
                 <form method="post">
                 <div class="dialog">
-                        <h2 class="timeTableHeader">Theory Time Table</h2>
+                    <h2 class="timeTableHeader">Theory Time Table</h2>
                         <b><label for="slot" class="label">Slot :</label></b>
                         <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required
-                            disabled="">
+                            >
                         <b><label for="time_day" class="label">Day :</label></b>
                         <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
-                            required disabled="">
+                            required>
                         <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
                         <input class="sem" type="text" id="time_ThPr" name="time_ThPr" placeholder="For.eg: Theory"
-                            required disabled="">
+                            required>
                         <b><label for="time_course" class="label">Course Abrevation :</label></b>
                         <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
                             required>
@@ -511,24 +511,23 @@
                             <button class="timeTableButton" onclick="closeDialog()">Close</button>
                         </div>
 
-                    </div>
+                </div>
                 </form>
-            </dialog>
+                </dialog>
 
             <dialog id="myDialogP">
-
+                
                 <form method="post">
                 <div class="dialog">
                     <h2 class="timeTableHeader">Practical Time Table</h2>
                     
                         <b><label for="slot" class="label">Slot :</label></b>
-                        <input class="sem" type="text" id="Slot" name="slot" placeholder="For.eg: Slot: 1" required
-                            disabled="">
+                        <input class="sem" type="text" id="Slot" name="slot" placeholder="For.eg: Slot: 1" required>
                         <b><label for="time_day" class="label">Day :</label></b>
                         <input class="sem" type="text" id="Time_day" name="time_day" placeholder="For.eg: Monday"
-                            required disabled="">
+                            required>
                         <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
-                        <input class="sem" type="text" id="Time_ThPr" name="time_ThPr" required disabled="">
+                        <input class="sem" type="text" id="Time_ThPr" name="time_ThPr" required>
                         <b><label for="" class="label">Batch 1 :</label></b>
                         <input class="sem" type="text" id="batch1" name="batch1" placeholder="For.eg: STE" required>
                         <b><label for="time_course" class="label">Batch 2 :</label></b>
@@ -539,24 +538,22 @@
                             <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
                             <button class="timeTableButton" onclick="closeDialogP()">Close</button>
                         </div>
-
+                        
                     </div>
                 </form>
-            </dialog>
+                </dialog>
 
-            <dialog id="myDialogTu">
+            <dialog id = "myDialogTu">
                 <form method="post">
                 <div class="dialog">
-                    <h2 class="timeTableHeader">Tutorial Time Table</h2>
+                        <h2 class="timeTableHeader">Tutorial Time Table</h2>
                     <b><label for="slot" class="label">Slot :</label></b>
-                    <input class="sem" type="text" id="slotTu" name="slottu" placeholder="For.eg: Slot: 1" required
-                        disabled="">
+                    <input class="sem" type="text" id="slotTu" name="slot" placeholder="For.eg: Slot: 1" required>
                     <b><label for="time_day" class="label">Day :</label></b>
-                    <input class="sem" type="text" id="time_dayTu" name="time_day" placeholder="For.eg: Monday" required
-                        disabled="">
+                    <input class="sem" type="text" id="time_dayTu" name="time_day" placeholder="For.eg: Monday" required>
                     <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
                     <input class="sem" type="text" id="time_ThPrTu" name="time_ThPr" placeholder="For.eg: Theory"
-                        required disabled="">
+                        required>
                     <b><label for="time_course" class="label">Course Abrevation :</label></b>
                     <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
                         required>
@@ -588,7 +585,7 @@ if(isset($_POST['addTimeTable'])) {
     // if(isset($semester, $branch, $division,$slot, $acaYear, $time_day, $time_ThPr, $time_course, $batch1, $batch2, $batch3)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slottu', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')") or die(mysqli_error($con));
+        $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slot', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')") or die(mysqli_error($con));
 
         if($add) {
             echo "<script>";
