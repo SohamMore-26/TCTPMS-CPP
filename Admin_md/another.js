@@ -1,19 +1,32 @@
-let date=[new Date("2024-01-02"),new Date("2024-01-03"),new Date("2024-01-06")]
+let dates=[new Date("2024-01-02"),new Date("2024-01-03"),new Date("2024-01-06")]
+
+let newDates = datesGenerate(dates,48)
+
+console.log(newDates)
 
 
-let noOfLec=48
-
-let tempDate,tdate
-
-for (let i = 0; i < noOfLec; i++) 
+function datesGenerate(date ,noOfLec) 
 {
-    tdate = new Date(date[i])
+    let tempDate,tdate 
 
-    console.log(tdate.toDateString())
-    
-    tempDate=tdate.getDate()+7
+    for (let i = 0; i < noOfLec; i++) 
+    {
+        tdate = new Date(date[i])
 
-    tdate.setDate(tempDate)
+        // console.log(tdate.toDateString())
     
-    date.push(tdate)
+        tempDate=tdate.getDate()+7
+
+        tdate.setDate(tempDate)
+    
+        date.push(tdate)
+
+    }
+    return date
+
 }
+
+
+
+
+
