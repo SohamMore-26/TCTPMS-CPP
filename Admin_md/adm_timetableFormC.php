@@ -131,11 +131,11 @@
             {
                 console.log("Theory");
             }
-            elseif(itemid == "Pr")
+            else if(itemid == "Pr")
             {
                 console.log("Pratical");
             }
-            elseif(itemid == "Tu")
+            else if(itemid == "Tu")
             {
                 console.log("Tutorial");
             }
