@@ -125,10 +125,21 @@
 
     <script>
         function openDialog(item){
-
         let itemid = item.id
         console.log(itemid)
-        }
+            if(itemid == "Th")
+            {
+                console.log("Theory");
+            }
+            elseif(itemid == "Pr")
+            {
+                console.log("Pratical");
+            }
+            elseif(itemid == "Tu")
+            {
+                console.log("Tutorial");
+            }
+         }
         
 
     </script>
