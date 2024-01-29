@@ -23,37 +23,43 @@
         </div>
     </div>
     <div class="main_cont">
-        <div class="sidebar">
+    <div class="sidebar">
             <li>
-                <a href="adm_home.html">
-                    <ul><span class="material-symbols-outlined">
-                            home
-                        </span> Home</ul>
-                </a>
-                <hr>
-                <a href="adm_timetable.html">
-                    <ul><span class="material-symbols-outlined">
-                            today
-                        </span> Time Table</ul>
-                </a>
-                <hr>
-                <a href="adm_courses.html">
-                    <ul><span class="material-symbols-outlined">
-                            menu_book
-                        </span> Courses</ul>
-                </a>
-                <hr>
-                <a href="adm_AcademicCal.html">
-                    <ul><span class="material-symbols-outlined">
-                            calendar_clock
-                        </span> Academic Calendar</ul>
-                </a>
-                <hr>
-                <a href="adm_teacher.html">
-                    <ul><span class="material-symbols-outlined">
-                            group
-                        </span> Teacher</ul>
-                </a>
+                <div class="side_card">
+                    <a href="adm_home.html">
+                        <ul><span class="material-symbols-outlined">
+                                home
+                            </span> Home</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="adm_timetable.html">
+                        <ul><span class="material-symbols-outlined">
+                                today
+                            </span> Time Table</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="adm_courses.php">
+                        <ul><span class="material-symbols-outlined">
+                                menu_book
+                            </span> Courses</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="adm_AcademicCal.html">
+                        <ul><span class="material-symbols-outlined">
+                                calendar_clock
+                            </span> Academic Calendar</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="">
+                        <ul><span class="material-symbols-outlined">
+                                group
+                            </span> Teacher</ul>
+                    </a>
+                </div>
             </li>
         </div>
         <div class="bt_c_cont">
@@ -73,17 +79,27 @@
                     </div>
                     <div class="m_card">
                         <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1st Semester Courses
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>2nd Semester Courses
                         </h3>
                     </div>
                     <div class="m_card">
                         <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1st Semester Courses
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>3rd Semester Courses
                         </h3>
                     </div>
                     <div class="m_card">
                         <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1st Semester Courses
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>4th Semester Courses
+                        </h3>
+                    </div>
+                    <div class="m_card">
+                        <h3>
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>5th Semester Courses
+                        </h3>
+                    </div>
+                    <div class="m_card">
+                        <h3>
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>6th Semester Courses
                         </h3>
                     </div>
                 </div>
@@ -304,11 +320,6 @@
                 <div class="btn_card">
                     <h3 onclick="showAdd()">
                         <div class="icon"><i class="fa-solid fa-book"></i></div> Add new Course
-                    </h3>
-                </div>
-                <div class="btn_card">
-                    <h3 onclick="showDel()">
-                        <div class="icon"><i class="fa-solid fa-book"></i></div> Update a Course
                     </h3>
                 </div>
             </div>
