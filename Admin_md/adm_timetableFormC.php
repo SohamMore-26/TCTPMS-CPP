@@ -135,6 +135,23 @@
             console.log(itemid)
         }
 
+        function openDialog(item){
+        let itemid = item.id
+        console.log(itemid)
+            if(itemid == "Th")
+            {
+                console.log("Theory");
+            }
+            else if(itemid == "Pr")
+            {
+                console.log("Pratical");
+            }
+            else if(itemid == "Tu")
+            {
+                console.log("Tutorial");
+            }
+         }
+        
 
     </script>
 
