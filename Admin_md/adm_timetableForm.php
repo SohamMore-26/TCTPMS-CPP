@@ -585,7 +585,7 @@ if(isset($_POST['addTimeTable'])) {
     // if(isset($semester, $branch, $division,$slot, $acaYear, $time_day, $time_ThPr, $time_course, $batch1, $batch2, $batch3)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slot', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')") or die(mysqli_error($con));
+        $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slot', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')");
 
         if($add) {
             echo "<script>";
@@ -596,6 +596,6 @@ if(isset($_POST['addTimeTable'])) {
             echo "alert('ERROR ! Fail..!')";
             echo "</script>";
         }
-
+    // }
 }
 ?>
