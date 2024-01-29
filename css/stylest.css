@@ -344,6 +344,32 @@ a {
     padding: 20px;
 }
 
+.form_card {
+    background-color: #CAF0F8;
+    width: 97.6%;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.formdiv{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
 .add_course_card {
     background-color: #E9FBFF;
     width: 100%;
