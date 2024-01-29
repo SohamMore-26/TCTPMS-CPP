@@ -112,11 +112,11 @@
                 <div class="formdiv">
                     <div class="input">
                         <b><label for="type" class="label">Type :</label></b>
-                        <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Theory">Th
+                        <input type="radio" id="Th" name="ThPr" onclick="openDialog(this)" value="Theory">Th
                         
-                        <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
+                        <input type="radio" id="Pr" name="ThPr" onclick="openDialog(this)" value="Practical">Pr
                         
-                        <input type="radio" id="36" name="ThPr" onclick="openDialog(this)" value="Tutorial">Tu
+                        <input type="radio" id="Tu" name="ThPr" onclick="openDialog(this)" value="Tutorial">Tu
                     </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@
 
     <script>
         function openDialog(item){
-            let item = document.getElementsByName("ThPr");
+
         let itemid = item.id
         console.log(itemid)
         }
