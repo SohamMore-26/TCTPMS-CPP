@@ -103,9 +103,21 @@
                             <option value="b">B</option>
                         </select>
                     </div>
+
+                </div>
+                <div class="formdiv">
                     <div class="input">
                         <b><label for="acaYear" class="label">Academic Year :</label></b>
                         <input class="sem" type="text" id="acaYear" name="acaYear" placeholder="Enter Academic Year"
+                            required>
+                    </div>
+                    <div class="input">
+                        <b><label for="slot" class="label">Slot :</label></b>
+                        <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required>
+                    </div>
+                    <div class="input">
+                        <b><label for="time_day" class="label">Day :</label></b>
+                        <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
                             required>
                     </div>
                 </div>
@@ -119,9 +131,31 @@
 
                             <input type="radio" id="Tu" name="ThPr" onclick="openDialog(this)" value="Tutorial">Tu
                         </div>
+                    </div>
+                    <div class="thr thr_hid" id = "thr">
 
-                        
-
+                        <div class="input">
+                            <b><label for="time_course" class="label">Course Abrevation :</label></b>
+                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                                required>
+                        </div>
+                    </div>
+                    <div class="pra pra_hid" id = "pra">
+                        <div class="input">
+                            <b><label for="time_course" class="label">batch1 :</label></b>
+                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                                required>
+                        </div>
+                        <div class="input">
+                            <b><label for="time_course" class="label">batch2 :</label></b>
+                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                                required>
+                        </div>
+                        <div class="input">
+                            <b><label for="time_course" class="label">batch3 :</label></b>
+                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                                required>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,29 +163,21 @@
     </div>
 
     <script>
-        function openDialog(item) {
 
+    let thr =document.getElementById("thr")
+    let pra =document.getElementById("pra")
+        function openDialog(item) {
             let itemid = item.id
-            console.log(itemid)
+            if (itemid == "Th") {
+                thr.classList.remove("thr_hid")
+                pra.classList.add("pra_hid")
+            }
+            else if (itemid == "Pr") {
+                thr.classList.add("thr_hid")
+                pra.classList.remove("pra_hid")
+            }
         }
 
-        function openDialog(item){
-        let itemid = item.id
-        console.log(itemid)
-            if(itemid == "Th")
-            {
-                console.log("Theory");
-            }
-            else if(itemid == "Pr")
-            {
-                console.log("Pratical");
-            }
-            else if(itemid == "Tu")
-            {
-                console.log("Tutorial");
-            }
-         }
-        
 
     </script>
 

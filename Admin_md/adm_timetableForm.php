@@ -510,7 +510,6 @@
                             <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
                             <button class="timeTableButton" onclick="closeDialog()">Close</button>
                         </div>
-
                 </div>
                 </form>
                 </dialog>

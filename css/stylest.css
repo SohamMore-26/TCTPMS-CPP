@@ -760,3 +760,25 @@ td {
 .timeTable_Button {
     display: flex;
 }
+
+.thr{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pra{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pra_hid{
+    display: none;
+}
+
+.thr_hid{
+    display: none;
+}
+
+.input select{
+    width: 175px;
+}
