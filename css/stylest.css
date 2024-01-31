@@ -424,6 +424,28 @@ a {
     height: 70px;
 }
 
+.lgt_div .button{
+    padding: 10px;
+    background-color: rgb(80, 132, 206);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    width:100px;
+}
+
+.form_card .button{
+    padding: 10px;
+    background-color: rgb(80, 132, 206);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    width:100px;
+}
+
 .nav_head {
     display: flex;
     justify-content: space-between;

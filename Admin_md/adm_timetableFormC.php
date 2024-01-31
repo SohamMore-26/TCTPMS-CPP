@@ -18,7 +18,7 @@
             <h1>Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="submit" id="button" class="btt">Logout</button>
+            <button type="submit" id="button" class="button">Logout</button>
         </div>
     </div>
     <div class="main_cont">
@@ -132,40 +132,47 @@
                             <input type="radio" id="Tu" name="ThPr" onclick="openDialog(this)" value="Tutorial">Tu
                         </div>
                     </div>
-                    <div class="thr thr_hid" id = "thr">
+                    <div class="thr thr_hid" id="thr">
 
                         <div class="input">
-                            <b><label for="time_course" class="label">Course Abrevation :</label></b>
-                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
-                                required>
+                            <b><label for="sub" class="label">Course Abrevation :</label></b>
+                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
                         </div>
                     </div>
-                    <div class="pra pra_hid" id = "pra">
+                    <div class="pra pra_hid" id="pra">
                         <div class="input">
-                            <b><label for="time_course" class="label">batch1 :</label></b>
-                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
-                                required>
+                            <b><label for="sub" class="label">batch1 :</label></b>
+                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
                         </div>
                         <div class="input">
-                            <b><label for="time_course" class="label">batch2 :</label></b>
-                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
-                                required>
+                            <b><label for="sub" class="label">batch2 :</label></b>
+                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
                         </div>
                         <div class="input">
-                            <b><label for="time_course" class="label">batch3 :</label></b>
-                            <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
-                                required>
+                            <b><label for="sub" class="label">batch3 :</label></b>
+                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
                         </div>
                     </div>
                 </div>
+                <div>
+                    <button type="submit" class="button" name="addTeacher" onclick="add_tt()">Add</button>
+                </div>
+                <table id="timetableDisplay" class="formdiv">
+                    <!-- Existing timetable slots will be displayed here -->
+                </table>
             </div>
         </div>
     </div>
 
     <script>
 
-    let thr =document.getElementById("thr")
-    let pra =document.getElementById("pra")
+        let thr = document.getElementById("thr")
+        let pra = document.getElementById("pra")
+
+        let day = document.getElementById('time_day').value;
+        let slot = document.getElementById('slot').value;
+        let subject = document.getElementById('subject').value;
+
         function openDialog(item) {
             let itemid = item.id
             if (itemid == "Th") {
@@ -176,7 +183,26 @@
                 thr.classList.add("thr_hid")
                 pra.classList.remove("pra_hid")
             }
+            else if (itemid == "Tu") {
+                thr.classList.remove("thr_hid")
+                pra.classList.add("pra_hid")
+            }
         }
+
+
+        function add_tt() {
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `<td>${day}</td><td>${slot}</td><td>${subject}</td>`;
+
+            // Append the row to the timetable display area
+            const timetableDisplay = document.getElementById('timetableDisplay');
+            timetableDisplay.appendChild(newRow);
+
+            // Clear the form for the next entry
+            document.getElementById('timetableForm').reset();
+        }
+
 
 
     </script>
