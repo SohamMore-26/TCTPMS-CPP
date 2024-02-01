@@ -63,6 +63,7 @@
         </div>
         <div class="main_c_cont">
             <div class="form_card">
+                <form method="post">
                 <center>
                     <h1 id="h1">Add Time Table</h1>
                 </center>
@@ -83,24 +84,24 @@
                         <b><label for="scheme" class="label">Scheme :</label></b>
                         <select id="scheme" name="scheme" class="sem">
                             <option value="">Select Scheme</option>
-                            <option value="a">A</option>
-                            <option value="b">B</option>
-                            <option value="c">C</option>
-                            <option value="d">D</option>
-                            <option value="e">E</option>
-                            <option value="f">F</option>
-                            <option value="g">G</option>
-                            <option value="h">H</option>
-                            <option value="i">I</option>
-                            <option value="k">K</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                            <option value="I">I</option>
+                            <option value="K">K</option>
                         </select>
                     </div>
                     <div class="input">
                         <b><label for="division" class="label">Division :</label></b>
                         <select id="division" name="division" class="sem">
                             <option value="">Select Division</option>
-                            <option value="a">A</option>
-                            <option value="b">B</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
                         </select>
                     </div>
 
@@ -136,30 +137,31 @@
 
                         <div class="input">
                             <b><label for="sub" class="label">Course Abrevation :</label></b>
-                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
+                            <input class="sem" type="text" id="sub" name="time_course" placeholder="For.eg: STE">
                         </div>
                     </div>
                     <div class="pra pra_hid" id="pra">
                         <div class="input">
                             <b><label for="sub" class="label">batch1 :</label></b>
-                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
+                            <input class="sem" type="text" id="batch1" name="batch1" placeholder="For.eg: STE">
                         </div>
                         <div class="input">
                             <b><label for="sub" class="label">batch2 :</label></b>
-                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
+                            <input class="sem" type="text" id="batch2" name="batch2" placeholder="For.eg: STE">
                         </div>
                         <div class="input">
                             <b><label for="sub" class="label">batch3 :</label></b>
-                            <input class="sem" type="text" id="sub" name="sub" placeholder="For.eg: STE" required>
+                            <input class="sem" type="text" id="batch3" name="batch3" placeholder="For.eg: STE">
                         </div>
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="button" name="addTeacher" onclick="add_tt()">Add</button>
+                    <button type="submit" class="button" name="addTimeTable">Add</button>
                 </div>
                 <table id="timetableDisplay" class="formdiv">
                     <!-- Existing timetable slots will be displayed here -->
                 </table>
+            </form>
             </div>
         </div>
     </div>
@@ -222,7 +224,7 @@ if (isset($_POST['addTimeTable'])) {
     // if(isset($semester, $branch, $division,$slot, $acaYear, $time_day, $time_ThPr, $time_course, $batch1, $batch2, $batch3)) {
 
     // Insert data into the database
-    $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slottu', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `timetable`(`semester`,`scheme`,`division`,`aca_year`,`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$semester','$scheme','$division','$acaYear','$slot', '$time_day', '$ThPr', '$time_course', '$batch1', '$batch2', '$batch3')") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";

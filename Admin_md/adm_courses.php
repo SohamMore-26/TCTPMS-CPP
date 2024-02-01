@@ -62,46 +62,22 @@
                 </div>
             </li>
         </div>
+        <?php
+		include "config.php";
+		$view = mysqli_query($con, "select * from courseinfo") or die(mysqli_error($con));
+		?>
         <div class="bt_c_cont">
             <div class="contain_scroll">
                 <div class="main_c_cont_cr" id="main_c_cont_cr">
-                    <!-- <div class="w_card">
-                        <h3>
-                            <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
-                                    error
-                                </span></div> No Existing Cources
-                        </h3>
-                    </div> -->
+                 <?php
+                    while ($row = mysqli_fetch_array($view)){
+                        extract($row);?>
                     <div class="m_card">
                         <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>1st Semester Courses
+                            <div class="icon"><i class="fa-solid fa-greater-than"></i><?php echo $row['semester']; ?> th Semester Courses</div> 
                         </h3>
                     </div>
-                    <div class="m_card">
-                        <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>2nd Semester Courses
-                        </h3>
-                    </div>
-                    <div class="m_card">
-                        <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>3rd Semester Courses
-                        </h3>
-                    </div>
-                    <div class="m_card">
-                        <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>4th Semester Courses
-                        </h3>
-                    </div>
-                    <div class="m_card">
-                        <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>5th Semester Courses
-                        </h3>
-                    </div>
-                    <div class="m_card">
-                        <h3>
-                            <div class="icon"><i class="fa-solid fa-greater-than"></i></div>6th Semester Courses
-                        </h3>
-                    </div>
+                <?php}?>
                 </div>
 
                 <div class="add_course , add_course_hid" id="add_course">
