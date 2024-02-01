@@ -62,8 +62,7 @@
                 </div>
             </li>
         </div>
-    </div>
-    </div>
+    
     <?php
 		include "config.php";
 		$view = mysqli_query($con, "select * from courseinfo") or die(mysqli_error($con));
@@ -296,17 +295,18 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="bt_cont">
-        <div class="btn_card">
-            <h3 onclick="showAdd()">
-                <div class="icon"><i class="fa-solid fa-book"></i></div> Add new Course
-            </h3>
+        <div class="bt_cont">
+            <div class="btn_card">
+                <h3 onclick="showAdd()">
+                    <div class="icon"><i class="fa-solid fa-book"></i></div> Add new Course
+                </h3>
+            </div>
         </div>
     </div>
+    
 
+    </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
