@@ -203,6 +203,12 @@ a {
     cursor: pointer;
 }
 
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .academic-form {
     width: 1500px;
     margin: 0px auto;
@@ -237,8 +243,7 @@ a {
 }
 
 .btt {
-    width: 30%;
-    margin-left: 20px;
+    width: 40%;
 }
 
 .btt1 {
