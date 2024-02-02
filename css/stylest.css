@@ -82,9 +82,22 @@ body {
 
 }
 
-button {
-    padding: 20px, 20px;
-    background-color: rgb(80, 132, 206);
+.button{
+    padding: 10px;
+    width:100px;
+    background-color: rgb(20, 101, 214);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.button:hover{
+    padding: 10px;
+    width:100px;
+    background-color: rgb(17, 85, 250);
+    border: #333;
     color: black;
     border: none;
     border-radius: 8px;
@@ -183,7 +196,7 @@ a {
 
 .course_card {
     background-color: #E9FBFF;
-    width: 97.6%;
+    width: 95%;
     height: 500px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
