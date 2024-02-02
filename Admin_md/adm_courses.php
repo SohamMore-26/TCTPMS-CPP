@@ -65,8 +65,7 @@
     
     <?php
 		include "config.php";
-		$view = mysqli_query($con, "select * from courseinfo") or die(mysqli_error($con));
-		?>
+		$view = mysqli_query($con, "select * from courseinfo") or die(mysqli_error($con));?>
 
     <div class="bt_c_cont">
         <div class="contain_scroll">
