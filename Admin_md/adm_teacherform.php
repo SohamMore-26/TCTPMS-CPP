@@ -132,14 +132,34 @@
                         </div>
 
                         <div class="name_cont">
-                            
+                            <div class="nameM">
+                                <b> <label for="myMultiselect">Courses:</label> </b>
+                                <div id="myMultiselect" class="multiselect">
+                                    <div id="mySelectLabel" class="selectBox" onclick="toggleCheckboxArea()">
+                                        <select class="form-select">
+                                            <option>somevalue</option>
+                                        </select>
+                                        <div class="overSelect"></div>
+                                    </div>
+                                    <div id="mySelectOptions">
+                                        <label for="one"><input type="checkbox" id="one"
+                                                onchange="checkboxStatusChange()" value="STE" />STE </label>
+                                        <label for="two"><input type="checkbox" id="two"
+                                                onchange="checkboxStatusChange()" value="AJP" />AJP</label>
+                                        <label for="three"><input type="checkbox" id="three"
+                                                onchange="checkboxStatusChange()" value="ACN" />ACN</label>
+                                        <label for="four"><input type="checkbox" id="four"
+                                                onchange="checkboxStatusChange()" value="OSY" />OSY</label>
+                                        <label for="five"><input type="checkbox" id="five"
+                                                onchange="checkboxStatusChange()" value="EST" />EST</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form_button_cont">
                             <button type="submit" class="btt" class="button" name="addTeacher">Add</button>
                             <button type="submit" class="btt1" class="button1">Cancel</button>
                         </div>
-
-
                     </div>
                 </form>
             </div>
@@ -148,31 +168,90 @@
 
     </div>
     </div>
+    <script>
+        window.onload = (event) => {
+            initMultiselect();
+        };
+
+        function initMultiselect() {
+            checkboxStatusChange();
+
+            document.addEventListener("click", function (evt) {
+                var flyoutElement = document.getElementById('myMultiselect'),
+                    targetElement = evt.target; // clicked element
+
+                do {
+                    if (targetElement == flyoutElement) {
+                        // This is a click inside. Do nothing, just return.
+                        //console.log('click inside');
+                        return;
+                    }
+
+                    // Go up the DOM
+                    targetElement = targetElement.parentNode;
+                } while (targetElement);
+
+                // This is a click outside.
+                toggleCheckboxArea(true);
+                //console.log('click outside');
+            });
+        }
+
+        function checkboxStatusChange() {
+            var multiselect = document.getElementById("mySelectLabel");
+            var multiselectOption = multiselect.getElementsByTagName('option')[0];
+
+            var values = [];
+            var checkboxes = document.getElementById("mySelectOptions");
+            var checkedCheckboxes = checkboxes.querySelectorAll('input[type=checkbox]:checked');
+
+            for (const item of checkedCheckboxes) {
+                var checkboxValue = item.getAttribute('value');
+                values.push(checkboxValue);
+            }
+
+            var dropdownValue = "Nothing is selected";
+            if (values.length > 0) {
+                dropdownValue = values.join(', ');
+            }
+
+            multiselectOption.innerText = dropdownValue;
+        }
+
+        function toggleCheckboxArea(onlyHide = false) {
+            var checkboxes = document.getElementById("mySelectOptions");
+            var displayValue = checkboxes.style.display;
+
+            if (displayValue != "block") {
+                if (onlyHide == false) {
+                    checkboxes.style.display = "block";
+                }
+            } else {
+                checkboxes.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 
 </html>
 <?php
 
-    include "config.php";
-    if(isset($_POST['addTeacher']))
-	{
-		extract($_POST);
+include "config.php";
+if (isset($_POST['addTeacher'])) {
+    extract($_POST);
 
-		$add = mysqli_query($con,"INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$currentStatus','$leavingDate')") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$currentStatus','$leavingDate')") or die(mysqli_error($con));
 
-		if($add)
-		{
-		echo "<script>";
-		echo "alert('Successfully Added...');";
-		echo "</script>";
-		}
-		else
-		{
-			echo "<script>";
-			echo "alert('ERROR ! Fail..!')";
-			echo "</script>";
-		}
-	}
+    if ($add) {
+        echo "<script>";
+        echo "alert('Successfully Added...');";
+        echo "</script>";
+    } else {
+        echo "<script>";
+        echo "alert('ERROR ! Fail..!')";
+        echo "</script>";
+    }
+}
 
 ?>

@@ -264,6 +264,7 @@ a {
         inset 3px 3px 5px rgba(0, 0, 0, 0.418);
     border-radius: 20px;
     margin: 15px;
+    overflow: auto;
 }
 
 .m_card {
@@ -343,6 +344,49 @@ a {
     align-items: center;
     padding: 20px;
 }
+
+.multiselect {
+    width: 100%;
+  }
+  
+  .selectBox {
+    position: relative;
+  }
+  
+  .selectBox select {
+    width: 100%;
+  }
+  
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  #mySelectOptions {
+    display: none;
+    border: 0.5px #7c7c7c solid;
+    background-color: #ffffff;
+    max-height: 150px;
+    overflow-y: scroll;
+  }
+  
+  #mySelectOptions label {
+    display: block;
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    background-color: #ffffff00;
+    padding: 0 2.25rem 0 .75rem;
+    /* padding: .375rem 2.25rem .375rem .75rem; */
+  }
+  
+  #mySelectOptions label:hover {
+    background-color: #1e90ff;
+  }
 
 .form_card {
     background-color: #CAF0F8;
@@ -595,6 +639,11 @@ a {
     flex-direction: column;
 }
 
+.nameM {
+    display: flex;
+    flex-direction: column;
+}
+
 .name_r {
     display: flex;
     flex-direction: column;
@@ -616,6 +665,12 @@ a {
 
 .name input {
     width: 180px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.nameM input {
+    width: 20px;
     height: 30px;
     border-radius: 8px;
 }
