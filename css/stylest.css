@@ -31,6 +31,10 @@ body {
     overflow: auto;
 }
 
+.hid{
+    display: none;
+}
+
 .branch_cont {
     display: flex;
     margin-right: 25px;
@@ -175,6 +179,18 @@ a {
     flex-direction: column;
     justify-content: center;
     margin: 10px;
+}
+
+.course_card {
+    background-color: #E9FBFF;
+    width: 97.6%;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 .main_c_cont h3 {
@@ -568,6 +584,17 @@ a {
     transition: transform 0.4s, center 0.4s;
 }
 
+.popup_C {
+    display: block;
+    background-color: #E9FBFF;
+    width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 30px;
+    color: #333;
+}
+
 .open_popup {
     visibility: visible;
     transform: translate(-50%, -50%) scale(1)
@@ -760,6 +787,19 @@ td {
     overflow: auto;
     overflow-x: hidden;
 }
+.C_contain_scroll {
+    width: 94.50%;
+    padding: 20px;
+    padding-bottom: 10px;
+    height: 90%;
+    box-shadow: inset -3px -3px 7px #c7c7c773,
+        inset 3px 3px 5px rgba(0, 0, 0, 0.418);
+    border-radius: 10px;
+    margin: 20px;
+    margin-right: 40px;
+    overflow: auto;
+    overflow-x: hidden;
+}
 
 .branch_cont {
     display: flex;
@@ -860,3 +900,4 @@ td {
 .input select{
     width: 175px;
 }
+
