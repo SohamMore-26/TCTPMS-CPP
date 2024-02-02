@@ -45,7 +45,7 @@
                             </span> Courses</ul>
                     </a>
                 </div>
-<!-- 
+                <!-- 
                 <div class="side_card">
                     <a href="tch_AcademicCal.html">
                         <ul><span class="material-symbols-outlined">
@@ -70,8 +70,8 @@
                 </a> -->
             </li>
         </div>
-        <div class="main_c_cont">
-            <div class="m_card">
+        <div class="main_c_cont hid" id="cont_M">
+            <div class="m_card" onclick="openPopup()">
                 <h3>
                     <div class="icon"><span class="material-symbols-outlined">
                             menu_book
@@ -79,9 +79,28 @@
                 </h3>
             </div>
         </div>
+
+        <!-- <div class="C_contain_scroll" id="cont_C">
+            <div class="course_card">
+                    <h2>SoftWare Testing </h2>
+                    <h4>Course Code: 123456 </h4>
+                    <h4>Designation: Lecturer </h4>
+                    <h4>Branch: Co</h4>
+                    <h4>Status: Teaching</h4>
+                    <button type="button"> Back </button>
+            </div>
+        </div> -->
+
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let cont_main = document.getElementById("cont_M")
+        let cont_c = document.getElementById("cont_C")
+        function openPopup() {
+            cont_main.classList.add("hid")
+            cont_c.classList.remove("hid")
+        }
+    </script>
 </body>
 
 </html>
