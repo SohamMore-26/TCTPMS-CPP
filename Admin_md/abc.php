@@ -23,4 +23,9 @@ extract($row);
     echo " Semester Start Date : $sem_duration_from " ;
     echo "           ";
     echo " Semester End Date : $sem_duration_to  " ;
+    
+    echo "<script>";
+    echo "var semDurationFrom = '$sem_duration_from';";
+    echo "console.log(semDurationFrom);";
+    echo "</script>";
     }?>
