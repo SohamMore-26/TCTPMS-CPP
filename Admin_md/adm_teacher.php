@@ -60,7 +60,9 @@
                 </div>
             </li>
         </div>
-        
+        <?php
+		include "config.php";
+		$view = mysqli_query($con, "select * from teacherinfo") or die(mysqli_error($con));?>
         <div class="main_c_cont">
             <!-- <div class="w_card">
                 <h3>
@@ -78,29 +80,36 @@
                     </h3>
                 </a>
             </div>
-            <div class="m_card" onclick="openPopup()">
+            <?php while ($row = mysqli_fetch_array($view)) { extract($row); $id = $row['id'];  ?>
+            <div class="m_card" id = <?php echo $id?> onclick="openPopup(this)">
                 <h3>
                     <div class="icon"><span class="material-symbols-outlined">
                             person
-                        </span></div> Nishad Patel
+                        </span></div> <?php echo $row['firstName']; ?>  <?php echo $row['lastName'];  echo $id?>
                 </h3>
             </div>
-
+            <?php } ?>
             <div class="popup" id="popup">
-                <h2>Nishad Patel</h2>
-                <h4>Teacher ID: 123456 </h4>
-                <h4>Designation: Lecturer </h4>
-                <h4>Branch: Co</h4>
-                <h4>Status: Teaching</h4>
-                <button type="button" onclick="closePopup()"> Close </button>
+            <?php
+		include "config.php";
+		$view1 = mysqli_query($con, "select * from teacherinfo where id = $id") or die(mysqli_error($con));?>
+        <?php while ($row1 = mysqli_fetch_array($view1)) { extract($row1);?>
+            <h2><?php echo $row1['firstName']; ?>  <?php echo $row1['lastName']; ?></h2>
+            <h4>Teacher ID: 123456 </h4>
+            <h4>Designation: Lecturer </h4>
+            <h4>Branch: Co</h4>
+            <h4>Status: Teaching</h4>
+            <button type="button" onclick="closePopup()"> Close </button>
+            <?php } ?>
             </div>
         </div>
     </div>
 
     <script>
         let popup = document.getElementById("popup");
-        function openPopup() {
+        function openPopup(element) { 
             popup.classList.add("open_popup");
+            id = element.id;
         }
         function closePopup() {
             popup.classList.remove("open_popup");

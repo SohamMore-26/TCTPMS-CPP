@@ -25,8 +25,8 @@ function openDialog(element) {
 
   let elementID = element.id;
   let elementValue = element.value;
-  let elementDay = checkDay(elementID); 
-  
+  let elementDay = checkDay(elementID);
+
   // console.log(elementID);
   // console.log(elementValue);
   // console.log(elementDay);
@@ -59,24 +59,24 @@ function openDialog(element) {
 }
 
 function checkDay(elementID) {
-  var elementDay; 
+  var elementDay;
   if (elementID >= 1 && elementID <= 6) {
     elementDay = "Monday";
   }
   else if (elementID >= 7 && elementID <= 12) {
-     elementDay = "Tuesday";
+    elementDay = "Tuesday";
   }
   else if (elementID >= 13 && elementID <= 18) {
-     elementDay = "Wednesday";
+    elementDay = "Wednesday";
   }
   else if (elementID >= 19 && elementID <= 24) {
     let elementDay = "Thusday";
   }
   else if (elementID >= 25 && elementID <= 30) {
-     elementDay = "Friday";
+    elementDay = "Friday";
   }
   else if (elementID >= 31 && elementID <= 36) {
-     elementDay = "Saturaday";
+    elementDay = "Saturaday";
   }
   else {
   }
@@ -96,27 +96,28 @@ function closeDialogTu() {
 }
 
 function checkDay(elementID) {
-  var elementDay; 
+  var elementDay;
   if (elementID >= 1 && elementID <= 6) {
     elementDay = "Monday";
   }
   else if (elementID >= 7 && elementID <= 12) {
-     elementDay = "Tuesday";
+    elementDay = "Tuesday";
   }
   else if (elementID >= 13 && elementID <= 18) {
-     elementDay = "Wednesday";
+    elementDay = "Wednesday";
   }
   else if (elementID >= 19 && elementID <= 24) {
     let elementDay = "Thusday";
   }
   else if (elementID >= 25 && elementID <= 30) {
-     elementDay = "Friday";
+    elementDay = "Friday";
   }
   else if (elementID >= 31 && elementID <= 36) {
-     elementDay = "Saturaday";
+    elementDay = "Saturaday";
   }
   else {
   }
 
   return elementDay;
 }
+
