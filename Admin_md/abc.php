@@ -12,9 +12,15 @@
 
 <?php
 	include "config.php";
-	$view = mysqli_query($con, "select * from timetable") or die(mysqli_error($con));
+	$view = mysqli_query($con, "select * from academic_cal where id = '11'") or die(mysqli_error($con));
     ?>
 
-<?php { extract($row);?>
-    $aca_year = $row['aca_year'];$aca_year = $row['aca_year'];
-    echo $aca_year;<?php } ?>
+<?php while ($row = mysqli_fetch_array($view)) {
+extract($row);
+    $sem_duration_from = $row['sem_duration_from'];
+    $sem_duration_to = $row['sem_duration_to'];
+   
+    echo " Semester Start Date : $sem_duration_from " ;
+    echo "           ";
+    echo " Semester End Date : $sem_duration_to  " ;
+    }?>
