@@ -23,17 +23,17 @@
         </div>
     </div>
     <div class="main_cont">
-        <div class="sidebar">
+    <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="adm_home.html">
+                    <a href="adm_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.html">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span> Time Table</ul>
@@ -47,14 +47,14 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.html">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
                             </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="">
+                    <a href="adm_teacher.php">
                         <ul><span class="material-symbols-outlined">
                                 group
                             </span> Teacher</ul>
