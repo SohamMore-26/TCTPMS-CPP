@@ -11,6 +11,3 @@
     // }
 
 ?>
-
-
-<!-- localhost , user , password , database_name -->

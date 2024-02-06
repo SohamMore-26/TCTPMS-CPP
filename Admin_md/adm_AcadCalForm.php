@@ -189,9 +189,9 @@ if(isset($_POST['addCal'])) {
         $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
 
         if($add) {
-            // Redirect to a different page to prevent form resubmission
-            header("Location: success_page.php"); // Change "success_page.php" to your desired success page
-            exit(); // Ensure script execution stops after redirect
+            echo "<script>";
+            echo "alert(' Data Inserted Successfully !!')";
+            echo "</script>";
         } else {
             echo "<script>";
             echo "alert('ERROR ! Fail..!')";
@@ -205,5 +205,4 @@ if(isset($_POST['addCal'])) {
     }
 }
 ?>
-
 
