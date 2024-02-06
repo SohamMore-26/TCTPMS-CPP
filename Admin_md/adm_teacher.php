@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Admin Home Module
     </title>
 </head>
@@ -60,6 +60,10 @@
                 </div>
             </li>
         </div>
+        <?php
+		include "config.php";
+		$view = mysqli_query($con, "select * from teacherinfo") or die(mysqli_error($con));
+		?>
         <div class="main_c_cont">
             <!-- <div class="w_card">
                 <h3>
@@ -77,37 +81,44 @@
                     </h3>
                 </a>
             </div>
-            
-            <div class="m_card">
-                <a href="adm_view_tch.html">
-                    <h3>
-                    <div class="icon"><span class="material-symbols-outlined">
-                            person
-                        </span></div>
-                    </h3>
-                </a>
-                
-            </div>
 
-            <!-- <div class="popup" id="popup">
-            <h2></h2>
-            <h4>Teacher ID:  </h4>
-            <h4>Designation:  </h4>
-            <h4>Branch: </h4>
-            <h4>Status: </h4>
-            <button type="button" onclick="closePopup()"> Close </button>
-            </div> -->
+            <h3> View Teacher : </h3>
+         
+            <table >
+                    <tr>
+                        <th>Name</th>
+                        <th>Teacher Id</th>
+                        <th>Designation</th>
+                        <th>Branch</th>
+                        <th>Action</th>
+            
+                    </tr>
+                    <?php
+                        while ($row = mysqli_fetch_array($view)) {
+                          extract($row); ?>
+                          <tr>
+                            <td>
+                              <?php echo $row['firstName']; ?> <?php echo $row['middleName']; ?> <?php echo $row['lastName']; ?> 
+                            </td>
+                            <td>
+                              <?php echo $row['teacherId']; ?>
+                            </td>
+                            <td>
+                              <?php echo $row['designation']; ?>
+                            </td>
+                            <td>
+                              <?php echo $row['branch']; ?>
+                            </td>
+                            <td>
+                              <a href="update_teacher.html"> Update </a> /  <a href="delete_teacher.html"> Delete </a>
+                            </td>
+                           
+                          </tr>
+                        <?php } ?>
+                </table>
         </div>
     </div>
-    <!-- <script>
-        let popup = document.getElementById("popup");
-        function openPopup() { 
-            popup.classList.add("open_popup");
-        }
-        function closePopup() {
-            popup.classList.remove("open_popup");
-        }
-    </script> -->
+   
 </body>
 
 </html>

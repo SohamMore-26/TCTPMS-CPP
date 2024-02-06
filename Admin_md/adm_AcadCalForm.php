@@ -69,20 +69,8 @@
                 <b><label for="semester" class="label">Semester:</label></b>
                 <select id="semester" name="semester" class="sem">
                     <option value="">Select Semester</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-
-                <b><label for="branch" class="label">Branch:</label></b>
-                <select id="branch" name="branch" class="sem">
-                    <option value="">Select Branch</option>
-                    <option value="Computer engineering">Computer Engineering</option>
-                    <option value="Civil engineering">Civil Engineering</option>
-                    <option value="Mechanical engineering">Mechanical Engineering</option>
+                    <option value="Odd">Odd</option>
+                    <option value="Even">Even</option>
                 </select>
 
                 <b><label for="scheme" class="label">Scheme:</label></b>
@@ -195,15 +183,15 @@ if(isset($_POST['addCal'])) {
     extract($_POST);
 
     // Check if required variables are set
-    if(isset($semester, $branch, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
+    if(isset($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`branch`,`scheme`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$branch', '$scheme', '$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
+        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
 
         if($add) {
-            echo "<script>";
-            echo "alert('Successfully Added...');";
-            echo "</script>";
+            // Redirect to a different page to prevent form resubmission
+            header("Location: success_page.php"); // Change "success_page.php" to your desired success page
+            exit(); // Ensure script execution stops after redirect
         } else {
             echo "<script>";
             echo "alert('ERROR ! Fail..!')";
@@ -217,3 +205,5 @@ if(isset($_POST['addCal'])) {
     }
 }
 ?>
+
+

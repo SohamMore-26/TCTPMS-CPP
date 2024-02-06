@@ -31,7 +31,7 @@ body {
     overflow: auto;
 }
 
-.hid{
+.hid {
     display: none;
 }
 
@@ -82,22 +82,22 @@ body {
 
 }
 
-.button{
+.button {
     padding: 10px;
-    width:100px;
+    width: 100px;
     background-color: rgb(0, 0, 0);
     color: #e4faff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
-    
+
 }
 
 
-.button:hover{
+.button:hover {
     padding: 10px;
-    width:100px;
+    width: 100px;
     background-color: rgb(17, 85, 250);
     border: #333;
     border: none;
@@ -378,33 +378,33 @@ a {
 
 .multiselect {
     width: 100%;
-  }
-  
-  .selectBox {
+}
+
+.selectBox {
     position: relative;
-  }
-  
-  .selectBox select {
+}
+
+.selectBox select {
     width: 100%;
-  }
-  
-  .overSelect {
+}
+
+.overSelect {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-  }
-  
-  #mySelectOptions {
+}
+
+#mySelectOptions {
     display: none;
     border: 0.5px #7c7c7c solid;
     background-color: #ffffff;
     max-height: 150px;
     overflow-y: scroll;
-  }
-  
-  #mySelectOptions label {
+}
+
+#mySelectOptions label {
     display: block;
     font-weight: normal;
     display: block;
@@ -413,11 +413,11 @@ a {
     background-color: #ffffff00;
     padding: 0 2.25rem 0 .75rem;
     /* padding: .375rem 2.25rem .375rem .75rem; */
-  }
-  
-  #mySelectOptions label:hover {
+}
+
+#mySelectOptions label:hover {
     background-color: #1e90ff;
-  }
+}
 
 .form_card {
     background-color: #CAF0F8;
@@ -432,7 +432,7 @@ a {
     overflow: auto;
 }
 
-.formdiv{
+.formdiv {
     width: 100%;
     height: 100px;
     display: flex;
@@ -441,7 +441,7 @@ a {
     justify-content: space-evenly;
 }
 
-.input{
+.input {
     display: flex;
     flex-direction: column;
 }
@@ -500,7 +500,7 @@ a {
     height: 70px;
 }
 
-.lgt_div .button{
+.lgt_div .button {
     padding: 10px;
     background-color: rgb(80, 132, 206);
     color: black;
@@ -508,10 +508,10 @@ a {
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
-    width:100px;
+    width: 100px;
 }
 
-.form_card .button{
+.form_card .button {
     padding: 10px;
     background-color: rgb(80, 132, 206);
     color: black;
@@ -519,7 +519,7 @@ a {
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
-    width:100px;
+    width: 100px;
 }
 
 .nav_head {
@@ -802,6 +802,7 @@ td {
     overflow: auto;
     overflow-x: hidden;
 }
+
 .C_contain_scroll {
     width: 94.50%;
     padding: 20px;
@@ -894,25 +895,24 @@ td {
     display: flex;
 }
 
-.thr{
+.thr {
     display: flex;
     justify-content: space-between;
 }
 
-.pra{
+.pra {
     display: flex;
     justify-content: space-between;
 }
 
-.pra_hid{
+.pra_hid {
     display: none;
 }
 
-.thr_hid{
+.thr_hid {
     display: none;
 }
 
-.input select{
+.input select {
     width: 175px;
 }
-
