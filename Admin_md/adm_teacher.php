@@ -78,30 +78,28 @@
                 </a>
             </div>
             
-                 <div class="m_card" onclick="openPopup()">
-                <h3>
+            <div class="m_card">
+                <a href="adm_view_tch.html">
+                    <h3>
                     <div class="icon"><span class="material-symbols-outlined">
                             person
                         </span></div>
-                </h3>
-            </div></a>
+                    </h3>
+                </a>
+                
+            </div>
 
-            <div class="popup" id="popup">
-            <?php 
-		include "config.php";
-        ?>
-
+            <!-- <div class="popup" id="popup">
             <h2></h2>
             <h4>Teacher ID:  </h4>
             <h4>Designation:  </h4>
             <h4>Branch: </h4>
             <h4>Status: </h4>
             <button type="button" onclick="closePopup()"> Close </button>
-
-            </div>
+            </div> -->
         </div>
     </div>
-    <script>
+    <!-- <script>
         let popup = document.getElementById("popup");
         function openPopup() { 
             popup.classList.add("open_popup");
@@ -109,7 +107,7 @@
         function closePopup() {
             popup.classList.remove("open_popup");
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
