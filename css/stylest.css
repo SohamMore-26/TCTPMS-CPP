@@ -85,7 +85,7 @@ body {
 .button {
     padding: 10px;
     width: 100px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(20, 101, 214, 0.933);
     color: #e4faff;
     border: none;
     border-radius: 8px;
@@ -98,7 +98,7 @@ body {
 .button:hover {
     padding: 10px;
     width: 100px;
-    background-color: rgb(17, 85, 250);
+    background-color: rgb(29, 94, 186);
     border: #333;
     border: none;
     border-radius: 8px;
@@ -456,7 +456,7 @@ a {
     flex-direction: column;
     justify-content: center;
     margin: 10px;
-    padding: 20px;
+    padding: 60px;
 }
 
 .add_course_card_cont {
@@ -804,17 +804,19 @@ td {
 }
 
 .C_contain_scroll {
+    display: flex;
     width: 94.50%;
     padding: 20px;
     padding-bottom: 10px;
     height: 90%;
-    box-shadow: inset -3px -3px 7px #c7c7c773,
-        inset 3px 3px 5px rgba(0, 0, 0, 0.418);
+    box-shadow: inset -3px -3px 7px #c7c7c773, inset 3px 3px 5px rgba(0, 0, 0, 0.418);
     border-radius: 10px;
     margin: 20px;
     margin-right: 40px;
     overflow: auto;
     overflow-x: hidden;
+    align-items: center;
+    flex-direction: column;
 }
 
 .branch_cont {
