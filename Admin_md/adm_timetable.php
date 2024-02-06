@@ -24,14 +24,14 @@
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="adm_home.html">
+                    <a href="adm_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.html">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span> Time Table</ul>
@@ -45,14 +45,14 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.html">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
                             </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_teacher.html">
+                    <a href="adm_teacher.php">
                         <ul><span class="material-symbols-outlined">
                                 group
                             </span> Teacher</ul>
@@ -61,13 +61,33 @@
             </li>
         </div>
         <div class="main_c_cont">
-            <div class="wel_card">
-               <h1>Welcome</h1>
+            <!-- <div class="w_card">
+                <h3>
+                    <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
+                            error
+                        </span></div> No Existing TimeTable
+                </h3>
+            </div> -->
+            <div class="m_card">
+                <a href="adm_timetableForm.php">
+                    <h3>
+                        <div class="icon"><span class="material-symbols-outlined">
+                                add
+                            </span></div> Add New Time Table
+                    </h3>
+                </a>
+
+            </div>
+            <div class="m_card">
+                <h3>
+                    <div class="icon"><span class="material-symbols-outlined">
+                            today
+                        </span></div> Sem 6 Div A TimeTable
+                </h3>
             </div>
         </div>
     </div>
 
-        <script src="script.js"></script>
 </body>
 
 </html>

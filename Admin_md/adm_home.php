@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Academic Calendar
+    <title>Admin Home Module
     </title>
 </head>
 
@@ -20,19 +20,18 @@
             <button type="button" id="button_lg" class="button">Logout</button>
         </div>
     </div>
-
     <div class="main_cont">
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="adm_home.html">
+                    <a href="adm_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.html">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span> Time Table</ul>
@@ -46,14 +45,14 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.html">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
                             </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_teacher.html">
+                    <a href="adm_teacher.php">
                         <ul><span class="material-symbols-outlined">
                                 group
                             </span> Teacher</ul>
@@ -62,16 +61,13 @@
             </li>
         </div>
         <div class="main_c_cont">
-            <div class="m_card">
-                <a href="adm_AcadCalForm.php"><h3>
-                    <div class="icon"><span class="material-symbols-outlined">
-                            add
-                        </span></div> Add Academic Calendar
-                </h3></a>
+            <div class="wel_card">
+               <h1>Welcome</h1>
             </div>
         </div>
     </div>
 
+        <script src="script.js"></script>
 </body>
 
 </html>
