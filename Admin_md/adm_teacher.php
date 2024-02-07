@@ -82,9 +82,9 @@
                 </a>
             </div>
 
-            <h3> View Teacher : </h3>
-         
-            <table >
+            <div class="tb_card">
+                <h3> View Teacher : </h3>
+                <table >
                     <tr>
                         <th>Name</th>
                         <th>Teacher Id</th>
@@ -116,6 +116,10 @@
                           </tr>
                         <?php } ?>
                 </table>
+            </div>
+
+         
+            
         </div>
     </div>
    
