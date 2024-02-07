@@ -74,9 +74,9 @@
                 </h3></a>
             </div>
        
-        <h3> View Teacher : </h3>
-        
-        <table >
+            <div class="tb_card">
+            <h3> View Academic Calendar : </h3>
+        <table>
             <tr>
                 <th>Semester</th>
                 <th>Scheme</th>
@@ -123,7 +123,7 @@
                     
                 </tr>
                 <?php } ?>
-            </table>
+                </table>
             </div>
         </div>
         </body>
