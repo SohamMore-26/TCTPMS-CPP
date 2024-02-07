@@ -61,13 +61,6 @@
             </li>
         </div>
         <div class="main_c_cont">
-            <!-- <div class="w_card">
-                <h3>
-                    <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
-                            error
-                        </span></div> No Existing TimeTable
-                </h3>
-            </div> -->
             <div class="m_card">
                 <a href="adm_timetableForm.php">
                     <h3>

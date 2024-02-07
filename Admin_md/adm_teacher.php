@@ -110,7 +110,7 @@
                               <?php echo $row['branch']; ?>
                             </td>
                             <td>
-                              <a href="update_teacher.html"> Update </a> /  <a href="delete_teacher.html"> Delete </a>
+                              <a href="update_teacher.php?id=<?php echo $id;?>"> Update </a> /  <a href="delete_teacher.php?id=<?php echo $id;?>"> Delete </a>
                             </td>
                            
                           </tr>

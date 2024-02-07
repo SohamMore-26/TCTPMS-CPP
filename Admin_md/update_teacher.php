@@ -61,6 +61,15 @@
                 </div>
             </li>
         </div>
+
+        <?php
+                        include "config.php";
+                        if (isset($_GET['id'])) {
+                            $view = mysqli_query($con, "select * from teacherinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+                            $row = mysqli_fetch_array($view);
+                        }
+                        ?>
+
         <div class="main_c_cont_t">
             <div class="form_cont">
                 <h1 id="h1">Create a Teacher</h1>
@@ -70,17 +79,17 @@
                             <div class="name">
                                 <b><label for="firstName" class="label">First Name :</label></b>
                                 <input class="sem" type="text" id="firstName" name="firstName"
-                                    placeholder="Enter First Name" required>
+                                    value="<?php echo $row['firstName']; ?>" required>
                             </div>
                             <div class="name">
                                 <b><label for="middleName" class="label">Middle Name :</label></b>
                                 <input class="sem" type="text" id="middleName" name="middleName"
-                                    placeholder="Enter Middle Name" required>
+                                value="<?php echo $row['middleName']; ?>" required>
                             </div>
                             <div class="name">
                                 <b><label for="lastName" class="label">Last Name :</label></b>
                                 <input class="sem" type="text" id="lastName" name="lastName"
-                                    placeholder="Enter Last Name" required>
+                                value="<?php echo $row['lastName']; ?>" required>
                             </div>
                         </div>
 
@@ -88,12 +97,12 @@
                             <div class="name">
                                 <b><label for="teacher_id" class="label">Teacher ID :</label></b>
                                 <input class="sem" type="text" id="teacher_id" name="teacherId"
-                                    placeholder="Enter Teacher ID" required>
+                                value="<?php echo $row['teacherId']; ?>" required>
                             </div>
 
                             <div class="name">
                                 <b><label for="designation" class="label">Designation :</label></b>
-                                <select id="designation" name="designation" class="sem">
+                                <select id="designation" name="designation" class="sem" value="<?php echo $row['designation']; ?>">
                                     <option value="">Select Designation</option>
                                     <option value="Lecturer">Lecturer</option>
                                     <option value="Head of Department">Head of Department</option>
@@ -103,7 +112,7 @@
 
                             <div class="name">
                                 <b><label for="branch" class="label">Branch :</label></b>
-                                <input class="sem" type="text" id="branch" name="branch" placeholder="Enter Branch"
+                                <input class="sem" type="text" id="branch" name="branch" value="<?php echo $row['branch']; ?>"
                                     required>
                             </div>
                         </div>
@@ -111,7 +120,7 @@
                         <div class="name_cont">
                             <div class="name">
                                 <b><label for="joiningDate" class="label">Joining Date :</label></b>
-                                <input class="sem" type="date" id="joiningDate" name="joiningDate" required>
+                                <input class="sem" type="date" id="joiningDate" name="joiningDate" value="<?php echo $row['joiningDate']; ?>" required>
                             </div>
 
                             <div class="name_r">
@@ -127,12 +136,12 @@
                             </div>
                             <div class="name">
                                 <b><label for="leavingDate" class="label">Leaving Date :</label></b>
-                                <input class="sem" type="date" id="leavingDate" name="leavingDate">
+                                <input class="sem" type="date" id="leavingDate" name="leavingDate" value="<?php echo $row['leavingDate']; ?>">
                             </div>
                         </div>
 
                         <div class="form_button_cont">
-                            <button type="submit"  class="button" name="addTeacher">Add</button>
+                            <button type="submit"  class="button" name="updateTeacher">Add</button>
                             <button type="button" href="adm_teacher.php" class="button" >Cancel</button>
                         </div>
                     </div>
@@ -143,84 +152,20 @@
 
     </div>
     </div>
-    <script>
-        window.onload = (event) => {
-            initMultiselect();
-        };
-
-        function initMultiselect() {
-            checkboxStatusChange();
-
-            document.addEventListener("click", function (evt) {
-                var flyoutElement = document.getElementById('myMultiselect'),
-                    targetElement = evt.target; // clicked element
-
-                do {
-                    if (targetElement == flyoutElement) {
-                        // This is a click inside. Do nothing, just return.
-                        //console.log('click inside');
-                        return;
-                    }
-
-                    // Go up the DOM
-                    targetElement = targetElement.parentNode;
-                } while (targetElement);
-
-                // This is a click outside.
-                toggleCheckboxArea(true);
-                //console.log('click outside');
-            });
-        }
-
-        function checkboxStatusChange() {
-            var multiselect = document.getElementById("mySelectLabel");
-            var multiselectOption = multiselect.getElementsByTagName('option')[0];
-
-            var values = [];
-            var checkboxes = document.getElementById("mySelectOptions");
-            var checkedCheckboxes = checkboxes.querySelectorAll('input[type=checkbox]:checked');
-
-            for (const item of checkedCheckboxes) {
-                var checkboxValue = item.getAttribute('value');
-                values.push(checkboxValue);
-            }
-
-            var dropdownValue = "Nothing is selected";
-            if (values.length > 0) {
-                dropdownValue = values.join(', ');
-            }
-
-            multiselectOption.innerText = dropdownValue;
-        }
-
-        function toggleCheckboxArea(onlyHide = false) {
-            var checkboxes = document.getElementById("mySelectOptions");
-            var displayValue = checkboxes.style.display;
-
-            if (displayValue != "block") {
-                if (onlyHide == false) {
-                    checkboxes.style.display = "block";
-                }
-            } else {
-                checkboxes.style.display = "none";
-            }
-        }
-    </script>
-
 </body>
 
 </html>
 <?php
 
 include "config.php";
-if (isset($_POST['addTeacher'])) {
+if (isset($_POST['updateTeacher'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$currentStatus','$leavingDate')") or die(mysqli_error($con));
+    $add = mysqli_query($con, "UPDATE `teacherinfo` SET `firstName`='$firstName',`middleName`='$middleName', `lastName`='$lastName',`teacherId`='$teacherId',`car_comp`='$car_comp',`designation`='$designation',`branch`='$branch',`joiningDate`='$joiningDate',`currentStatus`='$currentStatus',`leavingDate`='$leavingDate' WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";
-        echo "alert('Successfully Added...');";
+        echo "alert('Successfully Updated');";
         echo "</script>";
     } else {
         echo "<script>";
@@ -228,5 +173,3 @@ if (isset($_POST['addTeacher'])) {
         echo "</script>";
     }
 }
-
-?>
