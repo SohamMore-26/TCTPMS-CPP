@@ -310,6 +310,21 @@ a {
     margin: 10px;
 }
 
+.tb_card {
+    background-color: #E9FBFF;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .side_card {
     background-color: #e4faff;
     height: 40px;
