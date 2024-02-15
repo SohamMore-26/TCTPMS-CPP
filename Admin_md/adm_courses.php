@@ -68,18 +68,16 @@
          $view = mysqli_query($con, "select * from courseinfo") or die(mysqli_error($con)); ?>
 
 
-<div class="bt_cont">
+<div class="main_c_cont">
     <div class="btn_card">
         <a href="adm_add_courses.php">
             <h3>
                 <div class="icon"><i class="fa-solid fa-book"></i></div> Add new Course
             </h3>
-        </a>
-        
+        </a>  
     </div>
-</div>
-</div>
-            <table>
+    <div class="tb_card">
+        <table>
                 <tr>
                     <th>Course Title</th>
                     <th>Course Abbrevation</th>
@@ -131,6 +129,11 @@
         </tr>
         <?php } ?>
     </table>
+    </div>
+    
+</div>
+</div>
+            
 
 
 
