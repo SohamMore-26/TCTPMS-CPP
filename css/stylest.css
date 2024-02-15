@@ -785,7 +785,6 @@ a {
 table,
 th,
 td {
-    border: 1px solid black;
     border-collapse: collapse;
 }
 
@@ -933,3 +932,32 @@ td {
 .input select {
     width: 175px;
 }
+
+.tablecss table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  /* Style the table header */
+.tablecss  th {
+    background-color: #b6f2ff;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-bottom: 1px solid #b6f2ff;
+  }
+  
+  
+  /* Style the table cells */
+.tablecss  td {
+    background-color: #caf0f8c2;
+    padding: 8px;
+    border-bottom: 1px solid #caf0f8;
+  }
+  
+  /* Hover effect */
+.tablecss  tr:hover {
+    background-color: rgba(180, 212, 243, 0.957);
+  }

@@ -74,7 +74,7 @@
                 </h3></a>
             </div>
        
-            <div class="tb_card">
+            <div class="tb_card tablecss">
             <h3> View Academic Calendar : </h3>
         <table>
             <tr>
