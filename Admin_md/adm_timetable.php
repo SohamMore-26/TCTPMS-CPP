@@ -71,12 +71,26 @@
                 </a>
 
             </div>
-            <div class="m_card">
-                <h3>
-                    <div class="icon"><span class="material-symbols-outlined">
-                            today
-                        </span></div> Sem 6 Div A TimeTable
-                </h3>
+            <?php
+		include "config.php";
+		$view = mysqli_query($con, "select * from timetable") or die(mysqli_error($con));
+		?>
+            <div class="tb_card">
+                <table>
+                <?php
+                        while ($row = mysqli_fetch_array($view)) {
+                          extract($row); ?>
+                <tr>
+                    <td>
+                        <?php echo $row['course'];
+
+                        echo  $row['batch1']; echo $row['batch2']; echo $row['batch3'];?>
+
+                    </td>
+                    
+                </tr>
+                <?php } ?>
+                            </table>
             </div>
         </div>
     </div>
