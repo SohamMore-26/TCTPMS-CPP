@@ -76,7 +76,7 @@
             </h3>
         </a>  
     </div>
-    <div class="tb_card">
+    <div class="tb_card tablecss">
         <table>
                 <tr>
                     <th>Course Title</th>

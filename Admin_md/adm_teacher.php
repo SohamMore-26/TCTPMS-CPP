@@ -82,9 +82,9 @@
                 </a>
             </div>
 
-            <div class="tb_card">
+            <div class="tb_card tablecss">
                 <h3> View Teacher : </h3>
-                <table >
+                <table>
                     <tr>
                         <th>Name</th>
                         <th>Teacher Id</th>
