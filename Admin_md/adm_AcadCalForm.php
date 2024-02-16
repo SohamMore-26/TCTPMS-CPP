@@ -197,7 +197,7 @@ if (isset($_POST['addCal'])) {
     if (isset($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
+        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
 
         if ($add) {
             echo "<script>";
