@@ -124,18 +124,11 @@
                                 <?php echo $row['scheme']; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.html">
-                                    <span class="material-symbols-outlined">
-                                        edit
-                                    </span></a>
+                                <a href="update_teacher.html"> Update </a>
                             </td>
                             <td>
-                                <a href="delete_teacher.html">
-                                    <span class="material-symbols-outlined">
-                                        delete
-                                    </span></a>
+                                <a href="delete_teacher.html"> Delete </a>
                             </td>
-
                         </tr>
                     <?php } ?>
                 </table>

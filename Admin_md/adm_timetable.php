@@ -108,7 +108,7 @@
                     </tr>
                     <tr>
 
-                        <td>07:30 AM</td>
+                        <td>07:30 AM To 08:30 AM</td>
                         <?php
                         while ($row1 = mysqli_fetch_array($view1)) {
                             extract($row1); ?>
@@ -131,7 +131,7 @@
 
                     </tr>
                     <tr>
-                        <td>08:30 AM</td>
+                        <td>08:30 AM To 09:30 AM</td>
                         <?php
                         while ($row2 = mysqli_fetch_array($view2)) {
                             extract($row2); ?>
@@ -154,11 +154,11 @@
 
                     </tr>
                     <tr>
-                        <td>09:30 AM</td>
+                        <td>09:30 AM To 10:00 AM</td>
                         <td colspan="6">Break</td>
                     </tr>
                     <tr>
-                        <td>10:00 AM</td>
+                        <td>10:00 AM To 11:00 AM</td>
                         <?php
                         while ($row3 = mysqli_fetch_array($view3)) {
                             extract($row3); ?>
@@ -180,7 +180,7 @@
                         <?php } ?>
                     </tr>
                     <tr>
-                        <td>11:00 AM</td>
+                        <td>11:00 AM To 12:00 PM</td>
                         <?php
                         while ($row4 = mysqli_fetch_array($view4)) {
                             extract($row4); ?>
@@ -202,11 +202,11 @@
                         <?php } ?>
                     </tr>
                     <tr>
-                        <td>12:00 PM</td>
+                        <td>12:00 PM To 12:10 PM</td>
                         <td colspan="6">Break</td>
                     </tr>
                     <tr>
-                        <td>12:10 PM</td>
+                        <td>12:10 PM To 01:10 PM</td>
                         <?php
                         while ($row5 = mysqli_fetch_array($view5)) {
                             extract($row5); ?>
@@ -228,7 +228,7 @@
                         <?php } ?>
                     </tr>
                     <tr>
-                        <td>01:10 PM</td>
+                        <td>01:10 PM To 02:10 PM</td>
                         <?php
                         while ($row6 = mysqli_fetch_array($view6)) {
                             extract($row6); ?>
