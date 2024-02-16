@@ -86,6 +86,7 @@
                 <h3> View Teacher : </h3>
                 <table>
                     <tr>
+                        <th>Sr.No.</th>
                         <th>Name</th>
                         <th>Teacher Id</th>
                         <th>Designation</th>
@@ -95,9 +96,13 @@
 
                     </tr>
                     <?php
+                    $i=1;
                     while ($row = mysqli_fetch_array($view)) {
                         extract($row); ?>
                         <tr>
+                            <td>
+                            <?php echo $i++; ?>
+                            </td>
                             <td>
                                 <?php echo $row['firstName']; ?>
                                 <?php echo $row['middleName']; ?>
@@ -113,16 +118,15 @@
                                 <?php echo $row['branch']; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.php?id=<?php echo $id; ?>"> 
+                                <a href="update_teacher.php?id=<?php echo $id; ?>">
                                     <span class="material-symbols-outlined">
                                         edit
-                                    </span> 
-                                </a> 
+                                    </span>
+                                </a>
                             </td>
                             <td>
-                                <a href="delete_teacher.php?id=<?php echo $id; ?>"> 
-                                    <span
-                                        class="material-symbols-outlined">
+                                <a href="delete_teacher.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
                                         delete
                                     </span>
                                 </a>
