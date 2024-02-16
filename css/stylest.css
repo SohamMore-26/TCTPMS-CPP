@@ -78,7 +78,7 @@ body {
 }
 
 .label1 {
-    margin-left: 25px;
+    margin-left: 20px;
 
 }
 
@@ -939,13 +939,13 @@ td {
 
 .tablecss{
     width: 100%;
-    margin-left: 25px;
 }
 
 .tablecss table {
     width: 90%;
     border-collapse: collapse;
     border-spacing: 0;
+    border: 2px solid #aad7ff;
   }
   
   /* Style the table header */
@@ -955,7 +955,7 @@ td {
     font-weight: bold;
     text-align: center;
     padding: 8px;
-    border-bottom: 1px solid #b6f2ff;
+    border: 2px solid #aad7ff;
   }
   
   
@@ -963,7 +963,7 @@ td {
 .tablecss  td {
     background-color: #caf0f8c2;
     padding: 8px;
-    border-bottom: 1px solid #caf0f8;
+    border: 2px solid #aad7ff;
   }
   
   /* Hover effect */
