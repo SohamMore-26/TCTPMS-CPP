@@ -329,6 +329,21 @@ a {
     padding-bottom: 20px;
 }
 
+.t_tb_card {
+    background-color: #E9FBFF;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .side_card {
     background-color: #e4faff;
     height: 40px;
@@ -937,6 +952,42 @@ td {
     width: 175px;
 }
 
+.t_tablecss{
+    width: 100%;
+}
+
+.t_tablecss table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid #aad7ff;
+  }
+  
+  /* Style the table header */
+
+.t_tablecss th {
+    background-color: #b6f2ff;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border: 2px solid #aad7ff;
+    width: 150px;
+  }
+  
+  
+  /* Style the table cells */
+.t_tablecss  td {
+    background-color: #caf0f8c2;
+    padding: 8px;
+    border: 2px solid #aad7ff;
+  }
+  
+  /* Hover effect */
+.t_tablecss  tr:hover {
+    background-color: rgba(180, 212, 243, 0.957);
+  }
+
 .tablecss{
     width: 100%;
 }
@@ -967,6 +1018,6 @@ td {
   }
   
   /* Hover effect */
-.tablecss  tr:hover {
+.t_tablecss  tr:hover {
     background-color: rgba(180, 212, 243, 0.957);
   }

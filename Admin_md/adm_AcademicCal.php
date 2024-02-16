@@ -22,7 +22,7 @@
     </div>
 
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -88,7 +88,8 @@
                         <th>Class Test 2 From-To</th>
                         <th>Practical Exam From-To</th>
                         <th>Theory Exam From-To</th>
-                        <th>Action</th>
+                        <th>Update</th>
+                        <th>Delete</th>
 
                     </tr>
                     <?php
@@ -126,8 +127,15 @@
                                 <?php echo $row['theory_exam_to']; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.html"> Update </a> / <a href="delete_cal.php?id=<?php echo $id; ?>">
-                                    Delete </a>
+                                <a href="update_teacher.html"> <span class="material-symbols-outlined">
+                                        edit
+                                    </span> </a>
+                            </td>
+                            <td>
+                                <a href="delete_cal.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
+                                        delete
+                                    </span></a>
                             </td>
 
                         </tr>
