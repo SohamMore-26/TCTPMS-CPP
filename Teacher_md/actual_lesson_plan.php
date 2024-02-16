@@ -112,7 +112,9 @@
             let month = newDates[i].getMonth() + 1;
             let year = newDates[i].getFullYear();
 
-            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea></textarea></td><td><input type="date"></td><td><textarea></textarea></td><td><input type="checkbox"></td><td>'+i+1+'</td><td><a href="">Remarks</a></td></tr>';
+            let per = (i+1)/48*100
+
+            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea></textarea></td><td><input type="date"></td><td><textarea></textarea></td><td><input type="checkbox"></td><td>'+per.toFixed(2)+'</td><td><a href="">Remarks</a></td></tr>';
         }
         table += '</tbody></table>';
 
