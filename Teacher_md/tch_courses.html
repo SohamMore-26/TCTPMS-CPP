@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <div class="C_contain_scroll hid" id="cont_C">
+        <div class="C_contain_scroll_hid" id="cont_C">
             <div class="course_card">
                     <h2>SoftWare Testing </h2>
                     <h4>Course Code: 123456 </h4>
@@ -90,9 +90,7 @@
                     <div style="display: flex; justify-content:space-between; width:300px; ">
                         <a href="tch_courses.html"><button type="button" class="button" > Back </button></a>
                         <a href="tch_add_syl.html"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
-                    </div>
-                    
-                    
+                    </div>         
             </div>
         </div>
 
@@ -102,8 +100,10 @@
         let cont_main = document.getElementById("cont_M")
         let cont_c = document.getElementById("cont_C")
         function openPopup() {
-            cont_main.classList.add("hid")
-            cont_c.classList.remove("hid")
+            cont_main.classList.add("main_c_cont_hid")
+            cont_main.classList.remove("main_c_cont")
+            cont_c.classList.remove("C_contain_scroll_hid")
+            cont_c.classList.add("C_contain_scroll")
         }
     </script>
 </body>

@@ -103,22 +103,22 @@
                             <?php echo $row['aca_year_from']; ?> - <?php echo $row['aca_year_to']; ?>
                         </td>
                         <td>
-                             <?php echo $row['sem_duration_from']; ?> - <?php echo $row['sem_duration_to']; ?>
+                             <?php echo $row['sem_duration_from']; ?> to <?php echo $row['sem_duration_to']; ?>
                         </td>
                         <td>
-                             <?php echo $row['class_test1_from']; ?> - <?php echo $row['class_test1_to']; ?>
+                             <?php echo $row['class_test1_from']; ?> to <?php echo $row['class_test1_to']; ?>
                         </td>
                         <td>
-                             <?php echo $row['class_test2_from']; ?> - <?php echo $row['class_test2_to']; ?>
+                             <?php echo $row['class_test2_from']; ?> to <?php echo $row['class_test2_to']; ?>
                         </td>
                         <td>
-                             <?php echo $row['practical_exam_from']; ?> - <?php echo $row['practical_exam_to']; ?>
+                             <?php echo $row['practical_exam_from']; ?> to <?php echo $row['practical_exam_to']; ?>
                         </td>
                         <td>
-                             <?php echo $row['theory_exam_from']; ?> - <?php echo $row['theory_exam_to']; ?>
+                             <?php echo $row['theory_exam_from']; ?> to <?php echo $row['theory_exam_to']; ?>
                         </td>
                     <td>
-                      <a href="update_teacher.html"> Update </a> /  <a href="delete_teacher.html"> Delete </a>
+                      <a href="update_teacher.html"> Update </a> /  <a href="delete_cal.php?id=<?php echo $id;?>"> Delete </a>
                     </td>
                     
                 </tr>
