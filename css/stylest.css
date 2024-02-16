@@ -31,7 +31,7 @@ body {
     overflow: auto;
 }
 
-.hid {
+.C_contain_scroll_hid {
     display: none;
 }
 
@@ -260,6 +260,10 @@ a {
 }
 
 .main_c_cont_cr_hid {
+    display: none;
+}
+
+.main_c_cont_hid {
     display: none;
 }
 
