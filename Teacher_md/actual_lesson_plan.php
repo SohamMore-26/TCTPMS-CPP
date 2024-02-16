@@ -72,15 +72,15 @@
             </li>
         </div>
 
-        <div class="tb_card tablecss">
+        <div class="tablecss" style="overflow:auto">
             <div id="Lesson"></div>
         </div>
     </div>
 
     <script>
         let dates = [new Date("2024-01-02"), new Date("2024-01-03"), new Date("2024-01-06")]
-
-        let newDates = datesGenerate(dates, 48)
+        let totalLecture = 48
+        let newDates = datesGenerate(dates, totalLecture-3)
 
         // console.log(newDates)
 
@@ -112,7 +112,7 @@
             let month = newDates[i].getMonth() + 1;
             let year = newDates[i].getFullYear();
 
-            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea></textarea></td><td><input type="date"></td><td><textarea></textarea></td><td><input type="checkbox"></td><td></td><td><a href="">Remarks</a></td></tr>';
+            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea></textarea></td><td><input type="date"></td><td><textarea></textarea></td><td><input type="checkbox"></td><td>'+i+1+'</td><td><a href="">Remarks</a></td></tr>';
         }
         table += '</tbody></table>';
 
