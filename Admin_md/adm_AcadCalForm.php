@@ -19,11 +19,11 @@
             <h1>Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="submit" id="button" class="btt">Logout</button>
+            <button type="submit" id="button_lg" class="button">Logout</button>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -64,106 +64,109 @@
         </div>
         <div class="main_c_cont_at">
             <form method="post">
-                <h1 id="h1">Academic Calendar</h1>
-                <div class="branch_cont">
-                    <b><label for="semester" class="label">Semester:</label></b>
-                    <select id="semester" name="semester" class="sem">
-                        <option value="">Select Semester</option>
-                        <option value="Odd">Odd</option>
-                        <option value="Even">Even</option>
-                    </select>
+                <div style="margin-top:100px" >
+                    <h1 id="h1">Add Academic Calendar</h1>
+                    <div class="branch_cont">
+                        <b><label for="semester" class="label">Semester:</label></b>
+                        <select id="semester" name="semester" class="sem">
+                            <option value="">Select Semester</option>
+                            <option value="Odd">Odd</option>
+                            <option value="Even">Even</option>
+                        </select>
 
-                    <b><label for="scheme" class="label">Scheme:</label></b>
-                    <select id="scheme" name="scheme" class="sem">
-                        <option value="">Select Scheme</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                        <option value="I">I</option>
-                        <option value="K">K</option>
-                    </select>
-                </div>
-                <div class="cont_r_l">
-                    <div class="cont_right">
-                        <div class="label1">
-                            <b><label>Academic Year :</label></b>
-                        </div>
-                        <div class="">
+                        <b><label for="scheme" class="label">Scheme:</label></b>
+                        <select id="scheme" name="scheme" class="sem">
+                            <option value="">Select Scheme</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                            <option value="I">I</option>
+                            <option value="K">K</option>
+                        </select>
+                    </div>
+                    <div class="cont_r_l">
+                        <div class="cont_right">
+                            <div class="label1">
+                                <b><label>Academic Year :</label></b>
+                            </div>
+                            <div class="">
 
-                            <b><label for="from" class="label">From :</label></b>
-                            <input class="sem" type="text" id="from" name="aystdatefrom" required>
-                            <b><label for="to" class="label">To :</label></b>
-                            <input class="sem" type="text" id="to" name="aystdateto" required>
+                                <b><label for="from" class="label">From :</label></b>
+                                <input class="sem" type="text" id="from" name="aystdatefrom" required>
+                                <b><label for="to" class="label1">To :</label></b>
+                                <input class="sem" type="text" id="to" name="aystdateto" required>
 
+                            </div>
+
+                            <div class="label1">
+                                <b><label>Semester Duration :</label></b>
+                            </div>
+                            <div class="">
+                                <b><label for="stsemfrom" class="label">From :</label></b>
+                                <input class="sem" type="date" id="stsemfrom" name="stsemfrom" required>
+                                <b><label for="stsemto" class="label1">To :</label></b>
+                                <input class="sem" type="date" id="stsemto" name="stfromto" required>
+                            </div>
+                            <div class="label1">
+                                <b><label>Class Test - 1 Schedule :</label></b>
+                            </div>
+                            <div class="">
+                                <b><label for="ct1from" class="label">From :</label></b>
+                                <input class="sem" type="date" id="ct1from" name="ct1from" required>
+                                <b><label for="ct1to" class="label1">To :</label></b>
+                                <input class="sem" type="date" id="ct1to" name="ct1to" required>
+
+                            </div>
                         </div>
 
-                        <div class="label1">
-                            <b><label>Semester Duration :</label></b>
-                        </div>
-                        <div class="">
-                            <b><label for="stsemfrom" class="label">From :</label></b>
-                            <input class="sem" type="date" id="stsemfrom" name="stsemfrom" required>
-                            <b><label for="stsemto" class="label">To :</label></b>
-                            <input class="sem" type="date" id="stsemto" name="stfromto" required>
-                        </div>
-                        <div class="label1">
-                            <b><label>Class Test - 1 Schedule :</label></b>
-                        </div>
-                        <div class="">
-                            <b><label for="ct1from" class="label">From :</label></b>
-                            <input class="sem" type="date" id="ct1from" name="ct1from" required>
-                            <b><label for="ct1to" class="label">To :</label></b>
-                            <input class="sem" type="date" id="ct1to" name="ct1to" required>
+                        <div class="cont_left">
+
+
+                            <div class="label1">
+                                <b><label>Class Test - 2 Schedule :</label></b>
+                            </div>
+                            <div class="">
+                                <b><label for="ct2from" class="label">From :</label></b>
+                                <input class="sem" type="date" id="ct2from" name="ct2from" required>
+                                <b><label for="ct2to" class="label1">To :</label></b>
+                                <input class="sem" type="date" id="ct2to" name="ct2to" required>
+
+                            </div>
+
+                            <div class="label1">
+                                <b><label>Practical Examination Schedule :</label></b>
+                            </div>
+                            <div class="">
+                                <b><label for="prefrom" class="label">From :</label></b>
+                                <input class="sem" type="date" id="prefrom" name="prefrom" required>
+                                <b><label for="preto" class="label1">To :</label></b>
+                                <input class="sem" type="date" id="preto" name="preto" required>
+
+                            </div>
+
+                            <div class="label1">
+                                <b><label>Theory Examination Schedule :</label></b>
+                            </div>
+                            <div class="">
+                                <b><label for="thform" class="label">From :</label></b>
+                                <input class="sem" type="date" id="thfrom" name="thfrom" required>
+                                <b><label for="thto" class="label1">To :</label></b>
+                                <input class="sem" type="date" id="thto" name="thto" required>
+
+                            </div>
 
                         </div>
                     </div>
-
-                    <div class="cont_left">
-
-
-                        <div class="label1">
-                            <b><label>Class Test - 2 Schedule :</label></b>
-                        </div>
-                        <div class="">
-                            <b><label for="ct2from" class="label">From :</label></b>
-                            <input class="sem" type="date" id="ct2from" name="ct2from" required>
-                            <b><label for="ct2to" class="label">To :</label></b>
-                            <input class="sem" type="date" id="ct2to" name="ct2to" required>
-
-                        </div>
-
-                        <div class="label1">
-                            <b><label>Practical Examination Schedule :</label></b>
-                        </div>
-                        <div class="">
-                            <b><label for="prefrom" class="label">From :</label></b>
-                            <input class="sem" type="date" id="prefrom" name="prefrom" required>
-                            <b><label for="preto" class="label">To :</label></b>
-                            <input class="sem" type="date" id="preto" name="preto" required>
-
-                        </div>
-
-                        <div class="label1">
-                            <b><label>Theory Examination Schedule :</label></b>
-                        </div>
-                        <div class="">
-                            <b><label for="thform" class="label">From :</label></b>
-                            <input class="sem" type="date" id="thfrom" name="thfrom" required>
-                            <b><label for="thto" class="label">To :</label></b>
-                            <input class="sem" type="date" id="thto" name="thto" required>
-
-                        </div>
-
+                    <div class="buttons">
+                        <button type="submit" name="addCal" class="button">Add</button>
+                        <button type="submit" class="button">Cancel</button>
                     </div>
-                </div>
-                <div class="buttons">
-                    <button type="submit" name="addCal" class="btt" class="button">Add</button>
-                    <button type="submit" class="btt1" class="button1">Cancel</button>
+
                 </div>
 
             </form>

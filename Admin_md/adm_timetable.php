@@ -98,7 +98,7 @@
             <div class="tb_card tablecss">
                 <table>
                     <tr>
-                        <th>Day/ <br>
+                        <th>Day / <br>
                             Time</th>
                         <th>Monday</th>
                         <th>Tuesday</th>
