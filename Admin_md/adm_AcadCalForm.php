@@ -33,10 +33,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.php">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
-                                today
-                            </span> Time Table</ul>
+                                calendar_clock
+                            </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -47,10 +47,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.php">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
+                                today
+                            </span> Time Table</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -63,33 +63,33 @@
             </li>
         </div>
         <div class="main_c_cont_at">
-            <form  method="post">
-            <h1 id="h1">Academic Calendar</h1>
-            <div class="branch_cont">
-                <b><label for="semester" class="label">Semester:</label></b>
-                <select id="semester" name="semester" class="sem">
-                    <option value="">Select Semester</option>
-                    <option value="Odd">Odd</option>
-                    <option value="Even">Even</option>
-                </select>
+            <form method="post">
+                <h1 id="h1">Academic Calendar</h1>
+                <div class="branch_cont">
+                    <b><label for="semester" class="label">Semester:</label></b>
+                    <select id="semester" name="semester" class="sem">
+                        <option value="">Select Semester</option>
+                        <option value="Odd">Odd</option>
+                        <option value="Even">Even</option>
+                    </select>
 
-                <b><label for="scheme" class="label">Scheme:</label></b>
-                <select id="scheme" name="scheme" class="sem">
-                    <option value="">Select Scheme</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="G">G</option>
-                    <option value="H">H</option>
-                    <option value="I">I</option>
-                    <option value="K">K</option>
-                </select>
-            </div>
-            <div class="cont_r_l">
-                <div class="cont_right">
+                    <b><label for="scheme" class="label">Scheme:</label></b>
+                    <select id="scheme" name="scheme" class="sem">
+                        <option value="">Select Scheme</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="K">K</option>
+                    </select>
+                </div>
+                <div class="cont_r_l">
+                    <div class="cont_right">
                         <div class="label1">
                             <b><label>Academic Year :</label></b>
                         </div>
@@ -165,11 +165,11 @@
                     <button type="submit" name="addCal" class="btt" class="button">Add</button>
                     <button type="submit" class="btt1" class="button1">Cancel</button>
                 </div>
-                
+
             </form>
-            </div>
         </div>
-        
+    </div>
+
 
 </body>
 
@@ -178,17 +178,17 @@
 <?php
 include "config.php";
 
-if(isset($_POST['addCal'])) {
+if (isset($_POST['addCal'])) {
     // Extract form data
     extract($_POST);
 
     // Check if required variables are set
-    if(isset($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
+    if (isset($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
 
         // Insert data into the database
         $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
 
-        if($add) {
+        if ($add) {
             echo "<script>";
             echo "alert(' Data Inserted Successfully !!')";
             echo "</script>";
@@ -205,4 +205,3 @@ if(isset($_POST['addCal'])) {
     }
 }
 ?>
-
