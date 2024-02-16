@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -124,12 +124,11 @@
                                 <?php echo $row['scheme']; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.html"> Update </a>
+                                <a href="update_course.php?id=<?php echo $id; ?>"> Update </a>
                             </td>
                             <td>
-                                <a href="delete_teacher.html"> Delete </a>
+                                <a href="delete_course.php?id=<?php echo $id; ?>"> Delete </a>
                             </td>
-
                         </tr>
                     <?php } ?>
                 </table>
