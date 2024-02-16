@@ -937,6 +937,10 @@ td {
     width: 175px;
 }
 
+.tablecss{
+    width: 100%;
+}
+
 .tablecss table {
     width: 90%;
     border-collapse: collapse;
