@@ -95,11 +95,10 @@
             include "config.php";
             $view6 = mysqli_query($con, "select * from timetable WHERE slot = '6' OR slot = '12' OR slot = '18' OR slot = '24' OR slot = '30' OR slot = '36'") or die(mysqli_error($con));
             ?>
-            <div class="tb_card tablecss">
+            <div class="t_tb_card t_tablecss">
                 <table>
                     <tr>
-                        <th>Day / <br>
-                            Time</th>
+                        <th>Day/Time</th>
                         <th>Monday</th>
                         <th>Tuesday</th>
                         <th>Wednesday</th>
