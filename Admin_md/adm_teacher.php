@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -90,7 +90,8 @@
                         <th>Teacher Id</th>
                         <th>Designation</th>
                         <th>Branch</th>
-                        <th>Action</th>
+                        <th>Update</th>
+                        <th>Delete</th>
 
                     </tr>
                     <?php
@@ -112,8 +113,19 @@
                                 <?php echo $row['branch']; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.php?id=<?php echo $id; ?>"> Update </a> / <a
-                                    href="delete_teacher.php?id=<?php echo $id; ?>"> Delete </a>
+                                <a href="update_teacher.php?id=<?php echo $id; ?>"> 
+                                    <span class="material-symbols-outlined">
+                                        edit
+                                    </span> 
+                                </a> 
+                            </td>
+                            <td>
+                                <a href="delete_teacher.php?id=<?php echo $id; ?>"> 
+                                    <span
+                                        class="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </a>
                             </td>
 
                         </tr>

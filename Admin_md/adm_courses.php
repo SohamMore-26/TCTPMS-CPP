@@ -124,10 +124,10 @@
                                 <?php echo $row['scheme']; ?>
                             </td>
                             <td>
-                                <a href="update_course.php?id=<?php echo $id; ?>"> Update </a>
+                                <a href="update_teacher.html"> Update </a>
                             </td>
                             <td>
-                                <a href="delete_course.php?id=<?php echo $id; ?>"> Delete </a>
+                                <a href="delete_teacher.html"> Delete </a>
                             </td>
                         </tr>
                     <?php } ?>
