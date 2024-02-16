@@ -88,6 +88,14 @@
                             <option value="I">I</option>
                             <option value="K">K</option>
                         </select>
+
+                        <b><label for="branch" class="label">Branch:</label></b>
+                                    <select id="branch" name="branch" class="sem">
+                                        <option value="">Select Branch</option>
+                                        <option value="Computer Engineering">Computer Engineering</option>
+                                        <option value="Civil Engineering">Civil Engineering</option>
+                                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    </select>
                     </div>
                     <div class="cont_r_l">
                         <div class="cont_right">
