@@ -121,7 +121,7 @@
 
             let per = (i+1)/48*100
 
-            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea></textarea></td><td><input type="date"></td><td><textarea></textarea></td><td><input type="checkbox" onClick="validate()"></td><td>'+per.toFixed(2)+'</td><td><a href="">Remarks</a></td></tr>';
+            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea style="width: 250px; height: 140px;"></textarea></td><td><input type="date"></td><td><textarea style="width: 250px; height: 140px;""></textarea></td><td><input type="checkbox" onClick="validate()"></td><td>'+per.toFixed(2)+'</td><td><a href="">Remarks</a></td></tr>';
         }
         table += '</tbody></table>';
 
