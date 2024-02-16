@@ -79,6 +79,7 @@
             <div class="tb_card tablecss">
                 <table>
                     <tr>
+                        <th>Sr.No.</th>
                         <th>Course Title</th>
                         <th>Course Abbrevation</th>
                         <th>Course Code</th>
@@ -93,9 +94,13 @@
 
                     </tr>
                     <?php
+                    $i = 1;
                     while ($row = mysqli_fetch_array($view)) {
                         extract($row); ?>
                         <tr>
+                            <td>
+                                <?php echo $i++; ?>
+                            </td>
                             <td>
                                 <?php echo $row['courseTitle']; ?>
                             </td>
@@ -124,16 +129,15 @@
                                 <?php echo $row['scheme']; ?>
                             </td>
                             <td>
-                                <a href="update_course.php?id=<?php echo $id; ?>"> 
+                                <a href="update_course.php?id=<?php echo $id; ?>">
                                     <span class="material-symbols-outlined">
                                         edit
-                                    </span> 
-                                </a> 
+                                    </span>
+                                </a>
                             </td>
                             <td>
-                                <a href="delete_course.php?id=<?php echo $id; ?>"> 
-                                    <span
-                                        class="material-symbols-outlined">
+                                <a href="delete_course.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
                                         delete
                                     </span>
                                 </a>

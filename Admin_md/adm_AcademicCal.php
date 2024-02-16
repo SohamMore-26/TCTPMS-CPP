@@ -80,6 +80,7 @@
                 <h3> View Academic Calendar : </h3>
                 <table>
                     <tr>
+                        <th>Sr.No.</th>
                         <th>Semester</th>
                         <th>Scheme</th>
                         <th>Academic Year</th>
@@ -93,9 +94,13 @@
 
                     </tr>
                     <?php
+                    $i = 1;
                     while ($row = mysqli_fetch_array($view)) {
                         extract($row); ?>
                         <tr>
+                            <td>
+                                <?php echo $i++; ?>
+                            </td>
                             <td>
                                 <?php echo $row['semester']; ?>
                             </td>
