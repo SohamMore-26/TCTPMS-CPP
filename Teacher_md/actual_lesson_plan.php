@@ -85,6 +85,7 @@
         // console.log(newDates)
 
         let tempDate, tdate
+        
 
         function datesGenerate(date, noOfLec) {
             let tempDate, tdate
@@ -104,6 +105,12 @@
 
         }
 
+        function validate() {
+            let perC = document.getElementById("per");
+            perC.classList.add("visible");
+            perC.classList.remove("hid");
+        }
+
         var text = document.getElementById('Lesson');
         var table = '<table><thead><tr><th>Lecture Number</th><th>Plan Dates</th><th>Planned Topic Coverage</th><th>Actual Dates</th><th>Actual Topic Covered</th><th>Status</th><th>Percentage</th><th>Remarks</th></tr></thead><tbody>';
 
@@ -114,7 +121,7 @@
 
             let per = (i+1)/48*100
 
-            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea></textarea></td><td><input type="date"></td><td><textarea></textarea></td><td><input type="checkbox"></td><td>'+per.toFixed(2)+'</td><td><a href="">Remarks</a></td></tr>';
+            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea></textarea></td><td><input type="date"></td><td><textarea></textarea></td><td><input type="checkbox" onClick="validate()"></td><td id="per" name="per" class=" hid">'+per.toFixed(2)+'</td><td><a href="">Remarks</a></td></tr>';
         }
         table += '</tbody></table>';
 
