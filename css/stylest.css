@@ -3,6 +3,7 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: #CAF0F8;
+    color: #313131;
 }
 
 .contain_scroll::-webkit-scrollbar {
@@ -770,7 +771,6 @@ a {
 }
 
 .form_button_cont button {
-    width: 200px;
     padding: 10px;
     color: #CAF0F8;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
