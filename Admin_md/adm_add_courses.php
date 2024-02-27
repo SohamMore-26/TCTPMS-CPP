@@ -123,9 +123,10 @@
                                 </div>
                                 <div class="name">
                                     <b><label for="courseCode" class="label">Course Code :</label></b>
-                                    <input class="sem" type="text" id="courseCode" name="courseCode"
+                                    <input class="sem" type="" id="courseCode" name="courseCode"
                                         placeholder="Enter Course Code" required>
                                 </div>
+                                
 
                             </div>
 

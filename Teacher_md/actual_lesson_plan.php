@@ -73,14 +73,64 @@
         </div>
 
         <div class="tb_card tablecss" style="overflow:auto">
-            <div class="planned" >
-                <div class="elem" >
-                    Lecture No. 1
-                </div>
+            <div class="planned">
+                <div class="head">
+                    <h1>Lecture No. 1 </h1>
+                    <h1>Planned </h1>
+                    <div class="elements">
+                        <b><label for="topicN" class="label">Date :</label></b>
+                        <input class="sem" type="date">
+                    </div>
 
+                </div>
+                <div class="elements">
+                    <b><label for="unit" class="label">Unit :</label></b>
+                    <input class="sem" type="text" id="unit" name="unit" placeholder="Enter Unit" required>
+                    <b><label for="topicN" class="label">Topic No. :</label></b>
+                    <input class="sem" type="text" id="topicN" name="topicN" placeholder="Enter Topic No" required>
+                </div>
+                <div class="topicField">
+                    <b><label for="unit" class="label">Topic to be Covered :</label></b>
+                    <textarea rows="5" class="sem" id="topic" name="topic" required>
+                        Enter Topic
+                    </textarea>
+                </div>
             </div>
-            <div class="actual" >
-                two
+            <hr>
+            <div class="actual">
+                <div class="planned">
+                    <div class="headact">
+                        <h1>Actual </h1>
+                    </div>
+                    <div class="elements">
+                        <b><label for="unit" class="label">Unit Name :</label></b>
+                        <input class="sem" type="text" id="unit" name="unit" placeholder="Enter Unit Name" required>
+
+                        <b><label for="topicN" class="label">Topic No. :</label></b>
+                        <input class="sem" type="text" id="topicN" name="topicN" placeholder="Enter Topic No" required>
+                    </div>
+                    <div class="topiccont">
+                        <div class="topicField">
+                            <b><label for="unit" class="label">Actual Topics Covered :</label></b>
+                            <textarea rows="5" class="sem" id="topic" name="topic" required>
+                            Enter Topic
+                            </textarea>
+                        </div>
+                        <div class="topicField">
+                            <div class="elements">
+                                <b><label for="unit" class="label">Remarks :</label></b>
+                                <input class="sem" type="text" id="unit" name="unit" placeholder="Enter Remarks">
+                            </div>
+                            <div class="elements">
+                                <b><label for="topicN" class="label">Assignments :</label></b>
+                                <input class="sem" type="text" id="topicN" name="topicN"
+                                    placeholder="Enter Assignments (if any)">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
             <div class="scroll_num">
                 <div>

@@ -157,8 +157,10 @@ ul {
 }
 
 hr {
-    width: 77%;
-    margin-right: 38px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    color: #1e90ff;
 }
 
 a {
@@ -952,7 +954,7 @@ td {
     width: 175px;
 }
 
-.t_tablecss{
+.t_tablecss {
     width: 100%;
 }
 
@@ -961,9 +963,9 @@ td {
     border-collapse: collapse;
     border-spacing: 0;
     border: 2px solid #aad7ff;
-  }
-  
-  /* Style the table header */
+}
+
+/* Style the table header */
 
 .t_tablecss th {
     background-color: #b6f2ff;
@@ -973,22 +975,22 @@ td {
     padding: 8px;
     border: 2px solid #aad7ff;
     width: 150px;
-  }
-  
-  
-  /* Style the table cells */
-.t_tablecss  td {
+}
+
+
+/* Style the table cells */
+.t_tablecss td {
     background-color: #caf0f8c2;
     padding: 8px;
     border: 2px solid #aad7ff;
-  }
-  
-  /* Hover effect */
-.t_tablecss  tr:hover {
-    background-color: rgba(180, 212, 243, 0.957);
-  }
+}
 
-.tablecss{
+/* Hover effect */
+.t_tablecss tr:hover {
+    background-color: rgba(180, 212, 243, 0.957);
+}
+
+.tablecss {
     width: 100%;
 }
 
@@ -997,49 +999,127 @@ td {
     border-collapse: collapse;
     border-spacing: 0;
     border: 2px solid #aad7ff;
-  }
-  
-  /* Style the table header */
-.tablecss  th {
+}
+
+/* Style the table header */
+.tablecss th {
     background-color: #b6f2ff;
     color: #333;
     font-weight: bold;
     text-align: center;
     padding: 8px;
     border: 2px solid #aad7ff;
-  }
-  
-  
-  /* Style the table cells */
-.tablecss  td {
+}
+
+
+/* Style the table cells */
+.tablecss td {
     background-color: #caf0f8c2;
     padding: 8px;
     border: 2px solid #aad7ff;
-  }
-  
-  /* Hover effect */
-.t_tablecss  tr:hover {
+}
+
+/* Hover effect */
+.t_tablecss tr:hover {
     background-color: rgba(180, 212, 243, 0.957);
-  }
+}
 
-.actual{
+.actual {
     display: flex;
     width: 95%;
     height: 47.5%;
 }
 
-.planned{
+.planned {
     display: flex;
+    flex-direction: column;
     width: 95%;
     height: 47.5%;
 }
 
-.scroll_num{
+.scroll_num {
     display: flex;
     flex-direction: row;
     height: 5%;
 }
 
-.elem{
-    display:flex;
+.elem {
+    display: flex;
+}
+
+.elem label {
+    font-size: 20px;
+}
+
+.elem b {
+    font-weight: 100;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elements {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+
+.elements .sem {
+    padding: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin: 5px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+
+.elements label{
+    font-size: 20px;
+}
+
+.topicField{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 50%;
+}
+
+.topicField .sem {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    margin-left: 15px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+
+.topicField label{
+    font-size: 20px;
+}
+
+.topicField textarea{
+    height: auto;
+}
+
+.topiccont{
+    display: flex;
+    flex-direction: row;
+    justify-content:stretch;
 }
