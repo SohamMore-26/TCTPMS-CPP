@@ -116,8 +116,13 @@
                                 <?php echo $row['sem_duration_to']; ?>
                             </td>
                             <td>
-                                <?php echo $row['class_test1_from']; ?> to
-                                <?php echo $row['class_test1_to']; ?>
+                                
+                                <?php
+                                    $newdate = date("d-m-Y", strtotime($class_test1_from));
+                                    echo "$newdate"; ?> to
+                                <?php
+                                    $newdate1 = date("d-m-Y", strtotime($class_test1_to));
+                                    echo "$newdate1"; ?>
                             </td>
                             <td>
                                 <?php echo $row['class_test2_from']; ?> to

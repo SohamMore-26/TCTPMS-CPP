@@ -105,7 +105,7 @@
                             <div class="">
 
                                 <b><label for="from" class="label">From :</label></b>
-                                <input class="sem" type="text" id="from" name="aystdatefrom" required>
+                                <input class="sem" type="text" id="from" name="aystdatefrom"  required>
                                 <b><label for="to" class="label1">To :</label></b>
                                 <input class="sem" type="text" id="to" name="aystdateto" required>
 

@@ -72,12 +72,37 @@
             </li>
         </div>
 
-        <div class="tablecss" style="overflow:auto">
-            <div id="Lesson"></div>
+        <div class="tb_card tablecss" style="overflow:auto">
+            <div class="planned" >
+                <div class="elem" >
+                    Lecture No. 1
+                </div>
+
+            </div>
+            <div class="actual" >
+                two
+            </div>
+            <div class="scroll_num">
+                <div>
+                    1
+                </div>
+                <div>
+                    1
+                </div>
+                <div>
+                    1
+                </div>
+                <div>
+                    1
+                </div>
+                <div>
+                    1
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         let dates = [new Date("2024-01-02"), new Date("2024-01-03"), new Date("2024-01-06")]
         let totalLecture = 48
         let newDates = datesGenerate(dates, totalLecture-3)
@@ -126,7 +151,7 @@
         table += '</tbody></table>';
 
         text.innerHTML = table;
-    </script>
+    </script> -->
 </body>
 
 </html>

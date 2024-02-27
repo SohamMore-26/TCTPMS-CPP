@@ -1021,3 +1021,25 @@ td {
 .t_tablecss  tr:hover {
     background-color: rgba(180, 212, 243, 0.957);
   }
+
+.actual{
+    display: flex;
+    width: 95%;
+    height: 47.5%;
+}
+
+.planned{
+    display: flex;
+    width: 95%;
+    height: 47.5%;
+}
+
+.scroll_num{
+    display: flex;
+    flex-direction: row;
+    height: 5%;
+}
+
+.elem{
+    display:flex;
+}
