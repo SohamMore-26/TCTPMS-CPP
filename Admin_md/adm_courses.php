@@ -33,10 +33,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.php">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
-                                today
-                            </span> Time Table</ul>
+                                calendar_clock
+                            </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -47,10 +47,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.php">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
+                                today
+                            </span> Time Table</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -64,81 +64,97 @@
         </div>
 
         <?php
-         include "config.php";
-         $view = mysqli_query($con, "select * from courseinfo") or die(mysqli_error($con)); ?>
+        include "config.php";
+        $view = mysqli_query($con, "select * from courseinfo") or die(mysqli_error($con)); ?>
 
 
-<div class="main_c_cont">
-    <div class="btn_card">
-        <a href="adm_add_courses.php">
-            <h3>
-                <div class="icon"><i class="fa-solid fa-book"></i></div> Add new Course
-            </h3>
-        </a>  
+        <div class="main_c_cont">
+            <div class="btn_card">
+                <a href="adm_add_courses.php">
+                    <h3>
+                        <div class="icon"><i class="fa-solid fa-add"></i></div> Add new Course
+                    </h3>
+                </a>
+            </div>
+            <div class="tb_card tablecss">
+                <table>
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th>Course Title</th>
+                        <th>Course Abbrevation</th>
+                        <th>Course Code</th>
+                        <th>Lecture per week</th>
+                        <th>Practical per week</th>
+                        <th>Tutorial per week</th>
+                        <th>Branch</th>
+                        <th>Semester</th>
+                        <th>Scheme</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
+                    </tr>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($view)) {
+                        extract($row); ?>
+                        <tr>
+                            <td>
+                                <?php echo $i++; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['courseTitle']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['courseAbrevation']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['courseCode']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['lecturePW']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['practicalPW']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['tutorialPW']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['branch']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['semester']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['scheme']; ?>
+                            </td>
+                            <td>
+                                <a href="update_course.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
+                                        edit
+                                    </span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="delete_course.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+
+        </div>
     </div>
-    <div class="tb_card tablecss">
-        <table>
-                <tr>
-                    <th>Course Title</th>
-                    <th>Course Abbrevation</th>
-                    <th>Course Code</th>
-                    <th>Lecture per week</th>
-                    <th>Practical per week</th>
-                    <th>Tutorial per week</th>
-                    <th>Branch</th>
-                    <th>Semester</th>
-                    <th>Scheme</th>
-                    <th>Action</th>
-                    
-                </tr>
-                <?php
-                        while ($row = mysqli_fetch_array($view)) {
-                            extract($row); ?>
-        <tr>
-            <td>
-                <?php echo $row['courseTitle']; ?>
-            </td>
-            <td>
-                <?php echo $row['courseAbrevation']; ?>
-            </td>
-            <td>
-                <?php echo $row['courseCode']; ?>
-            </td>
-            <td>
-                <?php echo $row['lecturePW']; ?>
-            </td>
-            <td>
-                <?php echo $row['practicalPW']; ?>
-            </td>
-            <td>
-                <?php echo $row['tutorialPW']; ?>
-            </td>
-            <td>
-                <?php echo $row['branch']; ?>
-            </td>
-            <td>
-                <?php echo $row['semester']; ?>
-            </td>
-            <td>
-                <?php echo $row['scheme']; ?>
-            </td>
-            <td>
-                <a href="update_teacher.html"> Update </a> / <a href="delete_teacher.html"> Delete </a>
-            </td>
-            
-        </tr>
-        <?php } ?>
-    </table>
-    </div>
-    
-</div>
-</div>
-            
+
 
 
 
     </div>
-</div>
+    </div>
 
 </body>
 

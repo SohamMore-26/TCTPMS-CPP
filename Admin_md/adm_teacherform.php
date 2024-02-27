@@ -32,10 +32,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.php">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
-                                today
-                            </span> Time Table</ul>
+                                calendar_clock
+                            </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -46,10 +46,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.php">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
+                                today
+                            </span> Time Table</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -132,8 +132,8 @@
                         </div>
 
                         <div class="form_button_cont">
-                            <button type="submit"  class="button" name="addTeacher">Add</button>
-                            <button type="button" href="adm_teacher.php" class="button" >Cancel</button>
+                            <button type="submit" class="button" name="addTeacher">Add</button>
+                            <button type="button" href="adm_teacher.php" class="button">Cancel</button>
                         </div>
                     </div>
                 </form>

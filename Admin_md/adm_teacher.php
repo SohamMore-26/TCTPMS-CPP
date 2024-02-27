@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Admin Home Module
     </title>
 </head>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -31,10 +31,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.php">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
-                                today
-                            </span> Time Table</ul>
+                                calendar_clock
+                            </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -45,10 +45,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.php">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
+                                today
+                            </span> Time Table</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -61,9 +61,9 @@
             </li>
         </div>
         <?php
-		include "config.php";
-		$view = mysqli_query($con, "select * from teacherinfo") or die(mysqli_error($con));
-		?>
+        include "config.php";
+        $view = mysqli_query($con, "select * from teacherinfo") or die(mysqli_error($con));
+        ?>
         <div class="main_c_cont">
             <!-- <div class="w_card">
                 <h3>
@@ -86,43 +86,62 @@
                 <h3> View Teacher : </h3>
                 <table>
                     <tr>
+                        <th>Sr.No.</th>
                         <th>Name</th>
                         <th>Teacher Id</th>
                         <th>Designation</th>
                         <th>Branch</th>
-                        <th>Action</th>
-            
+                        <th>Update</th>
+                        <th>Delete</th>
+
                     </tr>
                     <?php
-                        while ($row = mysqli_fetch_array($view)) {
-                          extract($row); ?>
-                          <tr>
+                    $i=1;
+                    while ($row = mysqli_fetch_array($view)) {
+                        extract($row); ?>
+                        <tr>
                             <td>
-                              <?php echo $row['firstName']; ?> <?php echo $row['middleName']; ?> <?php echo $row['lastName']; ?> 
+                            <?php echo $i++; ?>
                             </td>
                             <td>
-                              <?php echo $row['teacherId']; ?>
+                                <?php echo $row['firstName']; ?>
+                                <?php echo $row['middleName']; ?>
+                                <?php echo $row['lastName']; ?>
                             </td>
                             <td>
-                              <?php echo $row['designation']; ?>
+                                <?php echo $row['teacherId']; ?>
                             </td>
                             <td>
-                              <?php echo $row['branch']; ?>
+                                <?php echo $row['designation']; ?>
                             </td>
                             <td>
-                              <a href="update_teacher.php?id=<?php echo $id;?>"> Update </a> /  <a href="delete_teacher.php?id=<?php echo $id;?>"> Delete </a>
+                                <?php echo $row['branch']; ?>
                             </td>
-                           
-                          </tr>
-                        <?php } ?>
+                            <td>
+                                <a href="update_teacher.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
+                                        edit
+                                    </span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="delete_teacher.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </a>
+                            </td>
+
+                        </tr>
+                    <?php } ?>
                 </table>
             </div>
 
-         
-            
+
+
         </div>
     </div>
-   
+
 </body>
 
 </html>

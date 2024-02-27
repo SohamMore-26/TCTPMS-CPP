@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -32,10 +32,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.php">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
-                                today
-                            </span> Time Table</ul>
+                                calendar_clock
+                            </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -46,10 +46,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.php">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
+                                today
+                            </span> Time Table</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -61,7 +61,6 @@
                 </div>
             </li>
         </div>
-
         <div class="timeTableHead">
             <center>
                 <h1 id="h1">Add Time Table</h1>
@@ -492,11 +491,10 @@
 
             <dialog id="myDialog">
                 <form method="post">
-                <div class="dialog">
-                    <h2 class="timeTableHeader">Theory Time Table</h2>
+                    <div class="dialog">
+                        <h2 class="timeTableHeader">Theory Time Table</h2>
                         <b><label for="slot" class="label">Slot :</label></b>
-                        <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required
-                            >
+                        <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required>
                         <b><label for="time_day" class="label">Day :</label></b>
                         <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
                             required>
@@ -510,16 +508,16 @@
                             <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
                             <button class="timeTableButton" onclick="closeDialog()">Close</button>
                         </div>
-                </div>
+                    </div>
                 </form>
-                </dialog>
+            </dialog>
 
             <dialog id="myDialogP">
-                
+
                 <form method="post">
-                <div class="dialog">
-                    <h2 class="timeTableHeader">Practical Time Table</h2>
-                    
+                    <div class="dialog">
+                        <h2 class="timeTableHeader">Practical Time Table</h2>
+
                         <b><label for="slot" class="label">Slot :</label></b>
                         <input class="sem" type="text" id="Slot" name="slot" placeholder="For.eg: Slot: 1" required>
                         <b><label for="time_day" class="label">Day :</label></b>
@@ -537,31 +535,32 @@
                             <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
                             <button class="timeTableButton" onclick="closeDialogP()">Close</button>
                         </div>
-                        
+
                     </div>
                 </form>
-                </dialog>
+            </dialog>
 
-            <dialog id = "myDialogTu">
+            <dialog id="myDialogTu">
                 <form method="post">
-                <div class="dialog">
+                    <div class="dialog">
                         <h2 class="timeTableHeader">Tutorial Time Table</h2>
-                    <b><label for="slot" class="label">Slot :</label></b>
-                    <input class="sem" type="text" id="slotTu" name="slot" placeholder="For.eg: Slot: 1" required>
-                    <b><label for="time_day" class="label">Day :</label></b>
-                    <input class="sem" type="text" id="time_dayTu" name="time_day" placeholder="For.eg: Monday" required>
-                    <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
-                    <input class="sem" type="text" id="time_ThPrTu" name="time_ThPr" placeholder="For.eg: Theory"
-                        required>
-                    <b><label for="time_course" class="label">Course Abrevation :</label></b>
-                    <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
-                        required>
-                    <div class="buttons">
-                        <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
-                        <button class="timeTableButton" onclick="closeDialogTu()">Close</button>
+                        <b><label for="slot" class="label">Slot :</label></b>
+                        <input class="sem" type="text" id="slotTu" name="slot" placeholder="For.eg: Slot: 1" required>
+                        <b><label for="time_day" class="label">Day :</label></b>
+                        <input class="sem" type="text" id="time_dayTu" name="time_day" placeholder="For.eg: Monday"
+                            required>
+                        <b><label for="time_ThPr" class="label">Theory / Practical / Tutorial:</label></b>
+                        <input class="sem" type="text" id="time_ThPrTu" name="time_ThPr" placeholder="For.eg: Theory"
+                            required>
+                        <b><label for="time_course" class="label">Course Abrevation :</label></b>
+                        <input class="sem" type="text" id="time_course" name="time_course" placeholder="For.eg: STE"
+                            required>
+                        <div class="buttons">
+                            <button type="submit" class="timeTableButton" name="addTimeTable">Add</button>
+                            <button class="timeTableButton" onclick="closeDialogTu()">Close</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
             </dialog>
 
 
@@ -576,25 +575,25 @@
 <?php
 include "config.php";
 
-if(isset($_POST['addTimeTable'])) {
+if (isset($_POST['addTimeTable'])) {
     // Extract form data
     extract($_POST);
 
     // Check if required variables are set
     // if(isset($semester, $branch, $division,$slot, $acaYear, $time_day, $time_ThPr, $time_course, $batch1, $batch2, $batch3)) {
 
-        // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slot', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')");
+    // Insert data into the database
+    $add = mysqli_query($con, "INSERT INTO `timetable`(`slot`,`day`,`th_pr`,`course`,`batch1`,`batch2`,`batch3`) VALUES ('$slot', '$time_day', '$time_ThPr', '$time_course', '$batch1', '$batch2', '$batch3')");
 
-        if($add) {
-            echo "<script>";
-            echo "alert('Successfully Added...');";
-            echo "</script>";
-        } else {
-            echo "<script>";
-            echo "alert('ERROR ! Fail..!')";
-            echo "</script>";
-        }
+    if ($add) {
+        echo "<script>";
+        echo "alert('Successfully Added...');";
+        echo "</script>";
+    } else {
+        echo "<script>";
+        echo "alert('ERROR ! Fail..!')";
+        echo "</script>";
+    }
     // }
 }
 ?>

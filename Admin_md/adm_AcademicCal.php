@@ -22,7 +22,7 @@
     </div>
 
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -32,10 +32,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_timetable.php">
+                    <a href="adm_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
-                                today
-                            </span> Time Table</ul>
+                                calendar_clock
+                            </span> Academic Calendar</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -46,10 +46,10 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.php">
+                    <a href="adm_timetable.php">
                         <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
+                                today
+                            </span> Time Table</ul>
                     </a>
                 </div>
                 <div class="side_card">
@@ -62,70 +62,97 @@
             </li>
         </div>
         <?php
-		include "config.php";
-		$view = mysqli_query($con, "select * from academic_cal") or die(mysqli_error($con));
-		?>  
+        include "config.php";
+        $view = mysqli_query($con, "select * from academic_cal") or die(mysqli_error($con));
+        ?>
         <div class="main_c_cont">
             <div class="m_card">
-                <a href="adm_AcadCalForm.php"><h3>
-                    <div class="icon"><span class="material-symbols-outlined">
-                            add
-                        </span></div> Add Academic Calendar
-                </h3></a>
+                <a href="adm_AcadCalForm.php">
+                    <h3>
+                        <div class="icon"><span class="material-symbols-outlined">
+                                add
+                            </span></div> Add Academic Calendar
+                    </h3>
+                </a>
             </div>
-       
+
             <div class="tb_card tablecss">
-            <h3> View Academic Calendar : </h3>
-        <table>
-            <tr>
-                <th>Semester</th>
-                <th>Scheme</th>
-                <th>Academic Year</th>
-                <th>Semester Duration</th>
-                <th>Class Test 1 From-To</th>
-                <th>Class Test 2 From-To</th>
-                <th>Practical Exam From-To</th>
-                <th>Theory Exam From-To</th>
-                <th>Action</th>
-                
-            </tr>
-            <?php
-                while ($row = mysqli_fetch_array($view)) {
-                  extract($row); ?>
-                  <tr>
-                      <td>
-                          <?php echo $row['semester']; ?> 
-                        </td>
-                        <td>
-                            <?php echo $row['scheme']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['aca_year_from']; ?> - <?php echo $row['aca_year_to']; ?>
-                        </td>
-                        <td>
-                             <?php echo $row['sem_duration_from']; ?> - <?php echo $row['sem_duration_to']; ?>
-                        </td>
-                        <td>
-                             <?php echo $row['class_test1_from']; ?> - <?php echo $row['class_test1_to']; ?>
-                        </td>
-                        <td>
-                             <?php echo $row['class_test2_from']; ?> - <?php echo $row['class_test2_to']; ?>
-                        </td>
-                        <td>
-                             <?php echo $row['practical_exam_from']; ?> - <?php echo $row['practical_exam_to']; ?>
-                        </td>
-                        <td>
-                             <?php echo $row['theory_exam_from']; ?> - <?php echo $row['theory_exam_to']; ?>
-                        </td>
-                    <td>
-                      <a href="update_teacher.html"> Update </a> /  <a href="delete_teacher.html"> Delete </a>
-                    </td>
-                    
-                </tr>
-                <?php } ?>
+                <h3> View Academic Calendar : </h3>
+                <table>
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th>Semester</th>
+                        <th>Scheme</th>
+                        <th>Academic Year</th>
+                        <th>Semester Duration</th>
+                        <th>Class Test 1 From-To</th>
+                        <th>Class Test 2 From-To</th>
+                        <th>Practical Exam From-To</th>
+                        <th>Theory Exam From-To</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
+                    </tr>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($view)) {
+                        extract($row); ?>
+                        <tr>
+                            <td>
+                                <?php echo $i++; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['semester']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['scheme']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['aca_year_from']; ?> -
+                                <?php echo $row['aca_year_to']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['sem_duration_from']; ?> to
+                                <?php echo $row['sem_duration_to']; ?>
+                            </td>
+                            <td>
+                                
+                                <?php
+                                    $newdate = date("d-m-Y", strtotime($class_test1_from));
+                                    echo "$newdate"; ?> to
+                                <?php
+                                    $newdate1 = date("d-m-Y", strtotime($class_test1_to));
+                                    echo "$newdate1"; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['class_test2_from']; ?> to
+                                <?php echo $row['class_test2_to']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['practical_exam_from']; ?> to
+                                <?php echo $row['practical_exam_to']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['theory_exam_from']; ?> to
+                                <?php echo $row['theory_exam_to']; ?>
+                            </td>
+                            <td>
+                                <a href="update_teacher.html"> <span class="material-symbols-outlined">
+                                        edit
+                                    </span> </a>
+                            </td>
+                            <td>
+                                <a href="delete_cal.php?id=<?php echo $id; ?>">
+                                    <span class="material-symbols-outlined">
+                                        delete
+                                    </span></a>
+                            </td>
+
+                        </tr>
+                    <?php } ?>
                 </table>
             </div>
         </div>
-        </body>
-        
-        </html>
+</body>
+
+</html>

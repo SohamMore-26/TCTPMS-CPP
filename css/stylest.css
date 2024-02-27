@@ -3,6 +3,7 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: #CAF0F8;
+    color: #313131;
 }
 
 .contain_scroll::-webkit-scrollbar {
@@ -31,7 +32,7 @@ body {
     overflow: auto;
 }
 
-.hid {
+.C_contain_scroll_hid {
     display: none;
 }
 
@@ -78,7 +79,7 @@ body {
 }
 
 .label1 {
-    margin-left: 25px;
+    margin-left: 20px;
 
 }
 
@@ -156,8 +157,10 @@ ul {
 }
 
 hr {
-    width: 77%;
-    margin-right: 38px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    color: #1e90ff;
 }
 
 a {
@@ -263,6 +266,10 @@ a {
     display: none;
 }
 
+.main_c_cont_hid {
+    display: none;
+}
+
 .add_course {
     width: 100%;
     display: flex;
@@ -311,6 +318,21 @@ a {
 }
 
 .tb_card {
+    background-color: #E9FBFF;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.t_tb_card {
     background-color: #E9FBFF;
     width: 100%;
     height: auto;
@@ -751,7 +773,6 @@ a {
 }
 
 .form_button_cont button {
-    width: 200px;
     padding: 10px;
     color: #CAF0F8;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -933,31 +954,172 @@ td {
     width: 175px;
 }
 
-.tablecss table {
+.t_tablecss {
+    width: 100%;
+}
+
+.t_tablecss table {
     width: 90%;
     border-collapse: collapse;
     border-spacing: 0;
-  }
-  
-  /* Style the table header */
-.tablecss  th {
+    border: 2px solid #aad7ff;
+}
+
+/* Style the table header */
+
+.t_tablecss th {
     background-color: #b6f2ff;
     color: #333;
     font-weight: bold;
     text-align: center;
     padding: 8px;
-    border-bottom: 1px solid #b6f2ff;
-  }
-  
-  
-  /* Style the table cells */
-.tablecss  td {
+    border: 2px solid #aad7ff;
+    width: 150px;
+}
+
+
+/* Style the table cells */
+.t_tablecss td {
     background-color: #caf0f8c2;
     padding: 8px;
-    border-bottom: 1px solid #caf0f8;
-  }
-  
-  /* Hover effect */
-.tablecss  tr:hover {
+    border: 2px solid #aad7ff;
+}
+
+/* Hover effect */
+.t_tablecss tr:hover {
     background-color: rgba(180, 212, 243, 0.957);
-  }
+}
+
+.tablecss {
+    width: 100%;
+}
+
+.tablecss table {
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid #aad7ff;
+}
+
+/* Style the table header */
+.tablecss th {
+    background-color: #b6f2ff;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border: 2px solid #aad7ff;
+}
+
+
+/* Style the table cells */
+.tablecss td {
+    background-color: #caf0f8c2;
+    padding: 8px;
+    border: 2px solid #aad7ff;
+}
+
+/* Hover effect */
+.t_tablecss tr:hover {
+    background-color: rgba(180, 212, 243, 0.957);
+}
+
+.actual {
+    display: flex;
+    width: 95%;
+    height: 47.5%;
+}
+
+.planned {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 47.5%;
+}
+
+.scroll_num {
+    display: flex;
+    flex-direction: row;
+    height: 5%;
+}
+
+.elem {
+    display: flex;
+}
+
+.elem label {
+    font-size: 20px;
+}
+
+.elem b {
+    font-weight: 100;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elements {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+
+.elements .sem {
+    padding: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin: 5px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+
+.elements label{
+    font-size: 20px;
+}
+
+.topicField{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 50%;
+}
+
+.topicField .sem {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    margin-left: 15px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+
+.topicField label{
+    font-size: 20px;
+}
+
+.topicField textarea{
+    height: auto;
+}
+
+.topiccont{
+    display: flex;
+    flex-direction: row;
+    justify-content:stretch;
+}

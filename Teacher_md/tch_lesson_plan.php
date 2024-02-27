@@ -45,7 +45,7 @@
                             </span> Courses</ul>
                     </a>
                 </div>
-                <!-- 
+<!-- 
                 <div class="side_card">
                     <a href="tch_AcademicCal.html">
                         <ul><span class="material-symbols-outlined">
@@ -70,42 +70,55 @@
                 </a> -->
             </li>
         </div>
-        <div class="main_c_cont" id="cont_M">
-            <div class="m_card" onclick="openPopup()">
-                <h3>
-                    <div class="icon"><span class="material-symbols-outlined">
-                            menu_book
-                        </span></div> Emerging Trends
-                </h3>
-            </div>
-        </div>
+        <div class="main_c_cont">
+            <div class="wel_card">
+            <div class="timeTableHead">
+            <center>
+                <h1 id="h1">Create Lesson Plan</h1>
+            </center>
+            <b><label for="semester" class="label">Semester :</label></b>
+            <select id="semester" name="semester" class="sem">
+                <option value="">Select Semester</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
 
-        <div class="C_contain_scroll_hid" id="cont_C">
-            <div class="course_card">
-                    <h2>SoftWare Testing </h2>
-                    <h4>Course Code: 123456 </h4>
-                    <h4>Course Abb: STE</h4>
-                    <h4>Branch: Co</h4>
-                    <h4>NO of lectures: 48</h4>
-                    <div style="display: flex; justify-content:space-between; width:300px; ">
-                        <a href="tch_courses.html"><button type="button" class="button" > Back </button></a>
-                        <a href="tch_add_syl.html"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
-                    </div>         
-            </div>
-        </div>
+            <b><label for="scheme" class="label">Scheme :</label></b>
+            <select id="scheme" name="scheme" class="sem">
+                <option value="">Select Scheme</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+                <option value="f">F</option>
+                <option value="g">G</option>
+                <option value="h">H</option>
+                <option value="i">I</option>
+                <option value="k">K</option>
+            </select>
 
+            <b><label for="division" class="label">Division :</label></b>
+            <select id="division" name="division" class="sem">
+                <option value="">Select Division</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+            </select>
+
+            <b><label for="acaYear" class="label">Academic Year :</label></b>
+            <input class="sem" type="text" id="acaYear" name="acaYear" placeholder="Enter Academic Year" required>
+            <center>
+            <a href="actual_lesson_plan.php"><button type="button" class="button" > Generate </button></a>
+</center>    
+        </div>
+        </div>
     </div>
 
-    <script>
-        let cont_main = document.getElementById("cont_M")
-        let cont_c = document.getElementById("cont_C")
-        function openPopup() {
-            cont_main.classList.add("main_c_cont_hid")
-            cont_main.classList.remove("main_c_cont")
-            cont_c.classList.remove("C_contain_scroll_hid")
-            cont_c.classList.add("C_contain_scroll")
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
