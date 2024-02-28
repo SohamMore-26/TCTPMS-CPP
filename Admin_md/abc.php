@@ -15,7 +15,7 @@
 
 <?php
 include "config.php";
-$view = mysqli_query($con, "select * from academic_cal where id = '11'") or die(mysqli_error($con));
+$view = mysqli_query($con, "select * from academic_cal where sem = '$sem' AND scheme = '$scheme' AND aca_year_from = '$from' AND aca_year_to = '$to'") or die(mysqli_error($con));
 ?>
 
 <?php while ($row = mysqli_fetch_array($view)) {
