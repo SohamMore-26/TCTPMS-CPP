@@ -70,42 +70,86 @@
                 </a> -->
             </li>
         </div>
-        <div class="main_c_cont" id="cont_M">
-            <div class="m_card" onclick="openPopup()">
-                <h3>
-                    <div class="icon"><span class="material-symbols-outlined">
-                            menu_book
-                        </span></div> Emerging Trends
-                </h3>
-            </div>
-        </div>
 
-        <div class="C_contain_scroll_hid" id="cont_C">
+        <div class="C_contain_scroll">
             <div class="course_card">
-                    <h2>SoftWare Testing </h2>
-                    <h4>Course Code: 123456 </h4>
-                    <h4>Course Abb: STE</h4>
-                    <h4>Branch: Co</h4>
-                    <h4>NO of lectures: 48</h4>
-                    <div style="display: flex; justify-content:space-between; width:300px; ">
-                        <a href="tch_courses.html"><button type="button" class="button" > Back </button></a>
-                        <a href="tch_add_syl.html"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
-                    </div>         
+                <h2>Enter Syllabus Data</h2>
+
+                <table class="tablecss ">
+                    <tr>
+                        <th>Lec. No.</th>
+                        <th>Unit</th>
+                        <th>Unit Outcome</th>
+                        <th>Topic</th>
+                        <th>Sub-Topic</th>
+                        <th>Save/add</th>
+                    </tr>
+                    <?php
+// Assuming $id is defined somewhere before the loop
+$id = 123; // Example ID, replace it with your actual ID
+
+// Loop to generate 48 rows
+for ($i = 1; $i <= 48; $i++) {
+    ?>
+    <tr>
+        <td>
+            <?php echo $i; ?>
+        </td>
+        <td>
+            <textarea class="sem" type="text"> </textarea>
+        </td>
+        <td>
+            <textarea class="sem" type="text"> </textarea>
+        </td>
+        <td>
+            <textarea class="sem" type="text"> </textarea>
+        </td>
+        <td>
+            <textarea class="sem" type="text"> </textarea>
+        </td>
+        <td>
+            <a href="update_course.php?id=<?php echo $id; ?>">
+                <span class="material-symbols-outlined">
+                    save
+                </span>
+            </a>
+        </td>
+    </tr>
+    <?php
+}
+?>
+
+                    <!-- <tr >
+                        <td>
+                            2
+                        </td>
+                        <td >
+                            <textarea class="sem" type="text"> </textarea>
+                        </td>
+                        <td>
+                            <textarea class="sem" type="text"> </textarea>
+                        </td>
+                        <td>
+                            <textarea class="sem" type="text"> </textarea>
+                        </td>
+                        <td>
+                            <textarea class="sem" type="text"> </textarea>
+                        </td>
+                        <td>
+                            <a href="update_course.php?id=?php echo $id; ?>">
+                                <span class="material-symbols-outlined">
+                                    save
+                                </span>
+                            </a>
+                        </td>
+                    </tr> -->
+                </table>
+
             </div>
         </div>
 
     </div>
-
-    <script>
-        let cont_main = document.getElementById("cont_M")
-        let cont_c = document.getElementById("cont_C")
-        function openPopup() {
-            cont_main.classList.add("main_c_cont_hid")
-            cont_main.classList.remove("main_c_cont")
-            cont_c.classList.remove("C_contain_scroll_hid")
-            cont_c.classList.add("C_contain_scroll")
-        }
-    </script>
+    
 </body>
 
 </html>
