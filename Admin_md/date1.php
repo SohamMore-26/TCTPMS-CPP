@@ -80,26 +80,114 @@
             $acaYear = $_POST['acaYear'];
             $subject = $_POST['sub'];
 
+            include "config.php";
+            $view = mysqli_query($con, "SELECT * FROM academic_cal WHERE semester = '$semester' AND scheme = '$scheme' AND aca_year_to = '$acaYear'") or die(mysqli_error($con));
+            $view1 = mysqli_query($con, "SELECT teachingHours FROM courseinfo WHERE courseAbrevation = '$subject'") or die(mysqli_error($con));
+            // $view2 = mysqli_query($con, "SELECT course FROM timetable WHERE 	course = '$subject'") or die(mysqli_error($con));
 
-            // echo "Semester: " . $semester . "<br>";
-            // echo "Scheme: " . $scheme . "<br>";
-            // echo "Division: " . $division . "<br>";
-            // echo "Academic Year: " . $acaYear . "<br>";
-            // echo "Subject: " . $subject . "<br>";
-        
+            $row = mysqli_fetch_array($view);
+            $row1 = mysqli_fetch_array($view1);
+            // $row2 = mysqli_fetch_array($view2);
+            
+            extract($row);
+            extract($row1);
+            // extract($row2);
+            
+            
+            // $temp = $row2['course'];
+            // echo $temp;
+            $semstart = $row['sem_duration_from'];
+            $semend = $row['sem_duration_to'];
+            $nfl = $row1['teachingHours'];
 
-        include "config.php";
-        $view = mysqli_query($con, "SELECT * FROM academic_cal WHERE semester = '$semester' AND scheme = '$scheme' AND aca_year_to = '$acaYear'") or die(mysqli_error($con));
 
-
-        $row = mysqli_fetch_array($view);
-        extract($row);
-        $semstart = $row['sem_duration_from'];
-        $semend = $row['sem_duration_to'];
-
-        // echo "Sem Start: " . $semstart . "<br>";
-        // echo "Sem End: " . $semend . "<br>";
-    }
+        }
         ?>
 
-        
+        <script>
+
+
+            let dates = []
+
+
+
+
+            function datesGenerate(date, noOfLec) {
+                let tempDate, tdate
+
+                for (let i = 0; i < noOfLec; i++) {
+                    tdate = new Date(date[i])
+
+                    // console.log(tdate.toDateString())
+
+                    tempDate = tdate.getDate() + 7
+
+                    tdate.setDate(tempDate)
+
+                    date.push(tdate.toDateString())
+
+                }
+                return date
+
+            }
+            var semstart = "<?php echo $semstart; ?>";
+            var semend = "<?php echo $semend; ?>";
+            var nfl = "<?php echo $nfl; ?>";
+            var t1 = "<?php echo $temp; ?>";
+            console.log(semstart);
+            console.log(t1);
+            var temp = new Date(semstart)
+
+            let credits = nfl
+
+            let dt = ["mad", "nis", "pr", "pr", "pr", "pr", "pr", "pr", "pwp", "eti", "mgt", "nolec", "nis", "eti", "mgt", "mgt", "pr", "pr", "pr", "pr", "ede", "ede", "pr", "pr", "mad", "pwp", "pr", "pr", "pr", "pr", "pr", "pr", "eti", "mad", "pwp", "nis"]
+
+            let lc
+
+            let k = 0
+
+            a: for (let i = 0; i < 7; i++) {
+
+                dayWeek = temp.getDay()
+
+                switch (dayWeek) {
+                    case 1: lc = 1
+                        break
+                    case 2: lc = 7
+                        break
+                    case 3: lc = 13
+                        break
+                    case 4: lc = 19
+                        break
+                    case 5: lc = 25
+                        break
+                    case 6: lc = 31
+                        break
+                    case 0: let a = temp.getDate() + 1
+                        temp.setDate(a)
+                        continue a
+
+                }
+
+
+                for (let j = 0; j < 6; j++) {
+                    if (dt[lc - 1] == "nis") {
+                        dates.push(temp.toDateString())
+                    }
+                    lc++
+                }
+                let a = temp.getDate() + 1
+                temp.setDate(a)
+            }
+
+
+
+            let newDates = datesGenerate(dates, nfl - 3)
+
+            console.log(newDates)
+
+
+
+
+
+        </script>
