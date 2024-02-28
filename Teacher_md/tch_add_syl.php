@@ -96,16 +96,16 @@ for ($i = 1; $i <= 48; $i++) {
             <?php echo $i; ?>
         </td>
         <td>
-            <textarea class="sem" type="text"> </textarea>
+            <textarea class="sem" type="text" cols="2"> </textarea>
         </td>
         <td>
-            <textarea class="sem" type="text"> </textarea>
+            <textarea class="sem" type="text" cols="12"> </textarea>
         </td>
         <td>
-            <textarea class="sem" type="text"> </textarea>
+            <textarea class="sem" type="text" cols="12"> </textarea>
         </td>
         <td>
-            <textarea class="sem" type="text"> </textarea>
+            <textarea class="sem" type="text" cols="29" rows="5"> </textarea>
         </td>
         <td>
             <a href="update_course.php?id=<?php echo $id; ?>">
