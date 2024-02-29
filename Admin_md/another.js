@@ -1,10 +1,29 @@
+let dt = ["mad","nis","pr","pr","pr","pr","pr","pr","pwp","eti","mgt","nolec","nis","eti","mgt","mgt","pr","pr","pr","pr","ede","ede","pr","pr","mad","pwp","pr","pr","pr","pr","pr","pr","eti","mad","pwp","nis"]
+let semStartDate = new Date("1-1-2024")
+let semEndDate = new Date("4-9-2024")
 let dates=[]
 
-function datesGenerate(date ,noOfLec,endDate) 
+
+dates = initDates(semStartDate,dt)
+
+let newDates = datesGenerate(dates,48-3,semEndDate)
+
+console.log(newDates)
+
+
+for (let i = 0; i < newDates.length; i++) {
+    console.log(newDates[i], i+1);
+    
+}
+
+
+
+
+function datesGenerate(date ,noOfLec,semEndDate) 
 {
     let tempDate,tdate 
 
-    for (let i = 0; i < noOfLec; i++) 
+    a : for (let i = 0; i < noOfLec; i++) 
     {
         tdate = new Date(date[i])
 
@@ -12,6 +31,15 @@ function datesGenerate(date ,noOfLec,endDate)
         tempDate=tdate.getDate()+7
 
         tdate.setDate(tempDate)
+
+        if (tdate.getTime() > semEndDate.getTime()) 
+        {
+            for (let j = 0; j < noOfLec - i; j++) {
+                date.push("Extra Lecture")
+                
+            }   
+            break a
+        }
 
         date.push(tdate.toDateString())
           
@@ -21,85 +49,77 @@ function datesGenerate(date ,noOfLec,endDate)
 
 }
 
-
-let temp = new Date("1-1-2024")
-let endDate = new Date("4-9-2024")
-
-let credits = 3
-
-let dt = ["mad","nis","pr","pr","pr","pr","pr","pr","pwp","eti","mgt","nolec","nis","eti","mgt","mgt","pr","pr","pr","pr","ede","ede","pr","pr","mad","pwp","pr","pr","pr","pr","pr","pr","eti","mad","pwp","nis"]
-
-let lc
-
-let k=0
-
-a: for (let i = 0; i < 7; i++) 
+function initDates(semStartDate,dt)
 {
+    let date=[]
+    let temp = semStartDate
+
+    let lc
+
+    a: for (let i = 0; i < 7; i++) 
+    {
       
-    dayWeek = temp.getDay()
+        dayWeek = temp.getDay()
 
-    switch(dayWeek)
-    {
-        case 1 : lc=1
-            break
-        case 2 : lc=7
-            break
-        case 3 : lc=13
-            break
-        case 4 : lc=19
-            break
-        case 5 : lc=25
-            break
-        case 6 : lc=31
-            break
-        case 0 :    let a = temp.getDate()+1
-                    temp.setDate(a)
-                    continue a
-        
-    }
-
-
-    for (let j = 0; j < 6; j++) 
-    {
-        if (dt[lc-1] == "nis") 
+        switch(dayWeek)
         {
-            dates.push(temp.toDateString())     
+            case 1 : lc=1
+                break
+            case 2 : lc=7
+                break
+            case 3 : lc=13
+                break
+            case 4 : lc=19
+                break
+            case 5 : lc=25
+                break
+            case 6 : lc=31
+                break
+            case 0 :    let a = temp.getDate()+1
+                        temp.setDate(a)
+                        continue a
+        
         }
-        lc++
+
+
+        for (let j = 0; j < 6; j++) 
+        {
+            if (dt[lc-1] == "nis") 
+            {
+                date.push(temp.toDateString())     
+            }
+            lc++
+        }
+        let a = temp.getDate()+1
+        temp.setDate(a)
     }
-    let a = temp.getDate()+1
-    temp.setDate(a)
-}
 
-
-
-let newDates = datesGenerate(dates,48-3,endDate)
-
-console.log(newDates)
-
-
-
-
-
-
-
-function datesGenerate(date ,noOfLec) 
-{
-    let tempDate,tdate 
-
-    for (let i = 0; i < noOfLec; i++) 
-    {
-        tdate = new Date(date[i])
-
-        // console.log(tdate.toDateString())
-    
-        tempDate=tdate.getDate()+7
-
-        tdate.setDate(tempDate)
-    
-        date.push(tdate.toDateString())
-
-    }
     return date
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
