@@ -87,7 +87,7 @@
                     </tr>
                     <?php
 // Assuming $id is defined somewhere before the loop
-$id = 123; // Example ID, replace it with your actual ID
+$id = 123; 
 
 // Loop to generate 48 rows
 for ($i = 1; $i <= 48; $i++) {
@@ -109,7 +109,7 @@ for ($i = 1; $i <= 48; $i++) {
             <textarea class="sem" type="text" cols="29" rows="5"> </textarea>
         </td>
         <td>
-            <a href="update_course.php?id=<?php echo $id; ?>">
+            <a href="update_course.php?id=<?php echo $id; ?>" method>
                 <span class="material-symbols-outlined">
                     save
                 </span>
