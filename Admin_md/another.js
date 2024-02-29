@@ -8,8 +8,6 @@ dates = initDates(semStartDate,dt)
 
 let newDates = datesGenerate(dates,48-3,semEndDate)
 
-console.log(newDates)
-
 
 for (let i = 0; i < newDates.length; i++) {
     console.log(newDates[i], i+1);
