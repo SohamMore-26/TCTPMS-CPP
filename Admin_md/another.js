@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 let dates=[]
-
-
-
 
 function datesGenerate(date ,noOfLec,endDate) 
 {
@@ -12,7 +8,6 @@ function datesGenerate(date ,noOfLec,endDate)
     {
         tdate = new Date(date[i])
 
-        // console.log(tdate.toDateString())
     
         tempDate=tdate.getDate()+7
 
@@ -26,8 +21,6 @@ function datesGenerate(date ,noOfLec,endDate)
 
 }
 
-=======
->>>>>>> 27998046fffd77ea9d740d5561fbb5528893d9be
 
 let temp = new Date("1-1-2024")
 let endDate = new Date("4-9-2024")
@@ -85,7 +78,7 @@ let newDates = datesGenerate(dates,48-3,endDate)
 console.log(newDates)
 
 
-let dates=[]
+
 
 
 
