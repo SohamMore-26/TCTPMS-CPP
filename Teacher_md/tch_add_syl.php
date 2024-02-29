@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Teacher Home Module
     </title>
+ 
 </head>
 
 <body>
@@ -72,10 +73,10 @@
         </div>
 
         <div class="C_contain_scroll">
-            <div class="course_card">
-                <h2>Enter Syllabus Data</h2>
-
-                <table class="tablecss ">
+            <div class="">
+                
+                <table class="tablecss tb_card">
+                    <h2>Enter Syllabus Data</h2>
                     <tr>
                         <th>Lec. No.</th>
                         <th>Unit</th>
@@ -96,13 +97,13 @@ for ($i = 1; $i <= 48; $i++) {
             <?php echo $i; ?>
         </td>
         <td>
-            <textarea class="sem" type="text" cols="2"> </textarea>
+            <textarea class="sem" type="text" cols="10"> </textarea>
         </td>
         <td>
-            <textarea class="sem" type="text" cols="12"> </textarea>
+            <textarea class="sem" type="text" cols="20"> </textarea>
         </td>
         <td>
-            <textarea class="sem" type="text" cols="12"> </textarea>
+            <textarea class="sem" type="text" cols="30"> </textarea>
         </td>
         <td>
             <textarea class="sem" type="text" cols="29" rows="5"> </textarea>
