@@ -3,7 +3,7 @@ let dates=[]
 
 
 
-function datesGenerate(date ,noOfLec) 
+function datesGenerate(date ,noOfLec,endDate) 
 {
     let tempDate,tdate 
 
@@ -16,8 +16,9 @@ function datesGenerate(date ,noOfLec)
         tempDate=tdate.getDate()+7
 
         tdate.setDate(tempDate)
-    
+
         date.push(tdate.toDateString())
+          
 
     }
     return date
@@ -25,7 +26,8 @@ function datesGenerate(date ,noOfLec)
 }
 
 
-let temp = new Date("1-2-2024")
+let temp = new Date("1-1-2024")
+let endDate = new Date("4-9-2024")
 
 let credits = 3
 
@@ -75,7 +77,7 @@ a: for (let i = 0; i < 7; i++)
 
 
 
-let newDates = datesGenerate(dates,48)
+let newDates = datesGenerate(dates,48-3,endDate)
 
 console.log(newDates)
 
