@@ -1123,3 +1123,18 @@ td {
     flex-direction: row;
     justify-content:stretch;
 }
+
+.tablecss .sem {
+    padding: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    border: .5px solid #7de2ff;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+.sem1{
+    text-align: left;
+}

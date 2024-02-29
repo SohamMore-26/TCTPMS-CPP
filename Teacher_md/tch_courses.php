@@ -88,8 +88,8 @@
                     <h4>Branch: Co</h4>
                     <h4>NO of lectures: 48</h4>
                     <div style="display: flex; justify-content:space-between; width:300px; ">
-                        <a href="tch_courses.html"><button type="button" class="button" > Back </button></a>
-                        <a href="tch_add_syl.html"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
+                        <a href="tch_courses.php"><button type="button" class="button" > Back </button></a>
+                        <a href="tch_add_syl.php"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
                     </div>         
             </div>
         </div>

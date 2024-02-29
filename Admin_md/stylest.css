@@ -621,7 +621,7 @@ a {
 }
 
 .sem {
-    padding: 8px;
+    padding: 1px;
     margin-top: 5px;
     margin-bottom: 15px;
     margin-left: 10px;
@@ -748,4 +748,16 @@ td {
 
 .timeTable_Button {
     display: flex;
+}
+
+.tablecss .sem {
+    padding: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    border: .5px solid #7de2ff;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
 }
