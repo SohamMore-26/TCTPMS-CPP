@@ -79,7 +79,7 @@
                     <h3>
                         <div class="icon"><span class="material-symbols-outlined">
                                 menu_book
-                            </span></div> Emerging Trends
+                            </span></div> Mobile Application Development(Batch A1)
                     </h3>
                 </div>
             </a>

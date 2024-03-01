@@ -165,6 +165,8 @@
         var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Planned Topic Coverage</th><th>Issued By</th><th>Approved By</th><th>Status</th><th>Remarks</th></tr></thead><tbody>';
 
         for (var i = 0; i < newDates.length; i++) {
+
+            
             let day = newDates[i].getDate();
             let month = newDates[i].getMonth() + 1;
             let year = newDates[i].getFullYear();
