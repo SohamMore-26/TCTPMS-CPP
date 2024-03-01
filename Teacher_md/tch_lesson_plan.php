@@ -9,8 +9,6 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Teacher Home Module
     </title>
-
-
 </head>
 
 <body>
@@ -47,7 +45,7 @@
                             </span> Courses</ul>
                     </a>
                 </div>
-<!-- 
+                <!-- 
                 <div class="side_card">
                     <a href="tch_AcademicCal.html">
                         <ul><span class="material-symbols-outlined">
@@ -57,7 +55,7 @@
                 </div> -->
 
                 <div class="side_card">
-                    <a href="tch_lesson_plan.html">
+                    <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 group
                             </span> Lesson Plan</ul>
@@ -65,7 +63,7 @@
                 </div>
 
                 <div class="side_card">
-                    <a href="tch_lab_plan.html">
+                    <a href="tch_lab_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 pending_actions
                             </span> Laboratory Plan</ul>
@@ -73,62 +71,21 @@
                 </div>
             </li>
         </div>
-        <div class="main_c_cont">
-            <div class="wel_card">
-            <div class="timeTableHead">
-            <center>
-                <h1 id="h1">Create Lesson Plan</h1>
-            </center>
-            <b><label for="semester" class="label">Semester :</label></b>
-            <select id="semester" name="semester" class="sem">
-                <option value="">Select Semester</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
+        <div class="main_c_cont" id="cont_M">
+            <a href="fill_lesson_plan.php">
+                <div class="m_card">
+                    <h3>
+                        <div class="icon"><span class="material-symbols-outlined">
+                                menu_book
+                            </span></div> Emerging Trends
+                    </h3>
+                </div>
+            </a>
 
-            <b><label for="scheme" class="label">Scheme :</label></b>
-            <select id="scheme" name="scheme" class="sem">
-                <option value="">Select Scheme</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
-                <option value="d">D</option>
-                <option value="e">E</option>
-                <option value="f">F</option>
-                <option value="g">G</option>
-                <option value="h">H</option>
-                <option value="i">I</option>
-                <option value="k">K</option>
-            </select>
-
-            <b><label for="division" class="label">Division :</label></b>
-            <select id="division" name="division" class="sem">
-                <option value="">Select Division</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-            </select>
-
-            <b><label for="acaYear" class="label">Academic Year :</label></b>
-            <input class="sem" type="text" id="acaYear" name="acaYear" placeholder="Enter Academic Year" required>
-
-            <b><label for="acaYear" class="label">Course Name :</label></b>
-            <input class="sem" type="text" id="cname" name="aname" placeholder="Enter Course Name" required>
-            
-            <b><label for="acaYear" class="label">Course Abbrevation :</label></b>
-            <input class="sem" type="text" id="abb" name="abb" placeholder="Enter Course Abbrevation" required>
-            
-            <center>
-            <a href="fill_lesson_plan.php"><button type="button" class="button" > Generate </button></a>
-</center>    
         </div>
-        </div>
+
+
     </div>
-
-    <script src="script.js"></script>
 </body>
 
 </html>
