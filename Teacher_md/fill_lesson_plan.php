@@ -61,82 +61,129 @@
                                 group
                             </span> Lesson Plan</ul>
                     </a>
+                </div>
 
 
-                    <!-- <hr>
-                <a href="tch_approvals.html">
-                    <ul><span class="material-symbols-outlined">
-                            pending_actions
-                        </span> Approvals</ul>
-                </a> -->
+                <div class="side_card">
+                    <a href="tch_lab_plan.html">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan</ul>
+                    </a>
+                </div>
             </li>
         </div>
 
-        <div class="tablecss" style="overflow:auto">
-            <div id="Lesson"></div>
+        <div class="C_contain_scroll">
+            <div class="">
+
+                <table class="tablecss tb_card">
+                    <form method="post">
+                        <h2>Enter Syllabus Data</h2>
+                        <tr>
+                            <th>Lec. No.</th>
+                            <th>Unit</th>
+                            <th>Unit Outcome</th>
+                            <th>Topic</th>
+                            <th>Sub-Topic</th>
+                            <th>Save/add</th>
+                        </tr>
+                        <?php
+                        // Assuming $id is defined somewhere before the loop
+                        $id = 123;
+
+                        // Loop to generate 48 rows
+                        for ($i = 1; $i <= 48; $i++) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <?php echo $i; ?>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="10" name="unit_name"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20" name="unit_outcome"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="30" name="topic">  </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="29" rows="5" name="sub_topic"> </textarea>
+                                </td>
+                                <td>
+                                    <button type="submit" name="addSyllabus" class="button">Save</button>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </form>
+                </table>
+            </div>
         </div>
+    </div>
+
+    <div class="tablecss" style="overflow:auto">
+        <div id="Lesson"></div>
     </div>
 
     <script>
         // --------------------------------------------------------------------------------------------------------------------------------------
         let temp = new Date()
 
-let credits = 3
+        let credits = 3
 
-let dt = ["mad","nis","pr","pr","pr","pr","pr","pr","pwp","eti","mgt","nolec","nis","eti","mgt","mgt","pr","pr","pr","pr","ede","ede","pr","pr","mad","pwp","pr","pr","pr","pr","pr","pr","eti","mad","pwp","nis"]
+        let dt = ["mad", "nis", "pr", "pr", "pr", "pr", "pr", "pr", "pwp", "eti", "mgt", "nolec", "nis", "eti", "mgt", "mgt", "pr", "pr", "pr", "pr", "ede", "ede", "pr", "pr", "mad", "pwp", "pr", "pr", "pr", "pr", "pr", "pr", "eti", "mad", "pwp", "nis"]
 
-let lc
+        let lc
 
-let k=0
+        let k = 0
 
-a: for (let i = 0; i < 7; i++) 
-{
-    
-    dayWeek = temp.getDay()
+        a: for (let i = 0; i < 7; i++) {
 
-    switch(dayWeek)
-    {
-        case 1 : lc=1
-            break
-        case 2 : lc=7
-            break
-        case 3 : lc=13
-            break
-        case 4 : lc=19
-            break
-        case 5 : lc=25
-            break
-        case 6 : lc=31
-            break
-        case 0 :    let a = temp.getDate()+1
+            dayWeek = temp.getDay()
+
+            switch (dayWeek) {
+                case 1: lc = 1
+                    break
+                case 2: lc = 7
+                    break
+                case 3: lc = 13
+                    break
+                case 4: lc = 19
+                    break
+                case 5: lc = 25
+                    break
+                case 6: lc = 31
+                    break
+                case 0: let a = temp.getDate() + 1
                     temp.setDate(a)
                     continue a
-        
-    }
+
+            }
 
 
-    for (let j = 0; j < 6; j++) 
-    {
-        if (dt[lc-1] == "nis") 
-        {
-            console.log(temp.toDateString());    
+            for (let j = 0; j < 6; j++) {
+                if (dt[lc - 1] == "nis") {
+                    console.log(temp.toDateString());
+                }
+                lc++
+            }
+
+            let a = temp.getDate() + 1
+            temp.setDate(a)
         }
-        lc++
-    }
 
-    let a = temp.getDate()+1
-    temp.setDate(a)
-}
-
-// ------------------------------------------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------------------------------------------------------
         let dates = [new Date("2024-01-02"), new Date("2024-01-03"), new Date("2024-01-06")]
         let totalLecture = 48
-        let newDates = datesGenerate(dates, totalLecture-3)
+        let newDates = datesGenerate(dates, totalLecture - 3)
 
         // console.log(newDates)
 
         let tempDate, tdate
-        
+
 
         function datesGenerate(date, noOfLec) {
             let tempDate, tdate
@@ -170,7 +217,7 @@ a: for (let i = 0; i < 7; i++)
             let month = newDates[i].getMonth() + 1;
             let year = newDates[i].getFullYear();
 
-            let per = (i+1)/48*100
+            let per = (i + 1) / 48 * 100
 
             table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea style="width: 453px; height: 129px;"></textarea></td><td><input type=text</td><td><input type=text></td><td><input type=checkbox></td><td><a href="">Remarks</a></td></tr>';
         }
