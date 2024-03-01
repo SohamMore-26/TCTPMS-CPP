@@ -76,73 +76,47 @@
             <div class="">
 
                 <table class="tablecss tb_card">
-                    <h2>Enter Syllabus Data</h2>
-                    <tr>
-                        <th>Lec. No.</th>
-                        <th>Unit</th>
-                        <th>Unit Outcome</th>
-                        <th>Topic</th>
-                        <th>Sub-Topic</th>
-                        <th>Save/add</th>
-                    </tr>
-                    <?php
-                    // Assuming $id is defined somewhere before the loop
-                    $id = 123;
-
-                    // Loop to generate 48 rows
-                    for ($i = 1; $i <= 48; $i++) {
-                        ?>
+                    <form method="post">
+                        <h2>Enter Syllabus Data</h2>
                         <tr>
-                            <td>
-                                <?php echo $i; ?>
-                            </td>
-                            <td>
-                                <textarea class="sem" type="text" cols="10"> </textarea>
-                            </td>
-                            <td>
-                                <textarea class="sem" type="text" cols="20"> </textarea>
-                            </td>
-                            <td>
-                                <textarea class="sem" type="text" cols="30"> </textarea>
-                            </td>
-                            <td>
-                                <textarea class="sem" type="text" cols="29" rows="5"> </textarea>
-                            </td>
-                            <td>
-                                <a href="update_course.php?id=<?php echo $id; ?>" method>
-                                    <span class="material-symbols-outlined">
-                                        save
-                                    </span>
-                                </a>
-                            </td>
+                            <th>Lec. No.</th>
+                            <th>Unit</th>
+                            <th>Unit Outcome</th>
+                            <th>Topic</th>
+                            <th>Sub-Topic</th>
+                            <th>Save/add</th>
                         </tr>
                         <?php
-                    }
-                    ?>
-                    <!-- <tr >
-                        <td>
-                            2
-                        </td>
-                        <td >
-                            <textarea class="sem" type="text"> </textarea>
-                        </td>
-                        <td>
-                            <textarea class="sem" type="text"> </textarea>
-                        </td>
-                        <td>
-                            <textarea class="sem" type="text"> </textarea>
-                        </td>
-                        <td>
-                            <textarea class="sem" type="text"> </textarea>
-                        </td>
-                        <td>
-                            <a href="update_course.php?id=?php echo $id; ?>">
-                                <span class="material-symbols-outlined">
-                                    save
-                                </span>
-                            </a>
-                        </td>
-                    </tr> -->
+                        // Assuming $id is defined somewhere before the loop
+                        $id = 123;
+
+                        // Loop to generate 48 rows
+                        for ($i = 1; $i <= 48; $i++) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <?php echo $i; ?>
+                                </td>
+                                <td>
+                                    <textarea  class="sem" type="text" cols="10" name="unit_name"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea  class="sem" type="text" cols="20" name="unit_outcome"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea  class="sem" type="text" cols="30" name="topic">  </textarea>
+                                </td>
+                                <td>
+                                    <textarea  class="sem" type="text" cols="29" rows="5" name="sub_topic"> </textarea>
+                                </td>
+                                <td>
+                                    <button type="submit" name="addSyllabus" class="button">Save</button>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </form>
                 </table>
             </div>
         </div>
@@ -150,3 +124,21 @@
 </body>
 
 </html>
+<?php
+
+include "config.php";
+if (isset($_POST['addSyllabus'])) {
+    extract($_POST);
+
+    $add = mysqli_query($con, "INSERT INTO `syllabus`(`course`, `unit_name`, `unit_outcome`, `topic`, `sub_topic`) VALUES ('ETI','$unit_name','$unit_outcome','$topic','$sub_topic')") or die(mysqli_error($con));
+
+    if ($add) {
+        echo "<script>";
+        echo "alert('Successfully Added...');";
+        echo "</script>";
+    } else {
+        echo "<script>";
+        echo "alert('ERROR ! Fail..!')";
+        echo "</script>";
+    }
+} ?>

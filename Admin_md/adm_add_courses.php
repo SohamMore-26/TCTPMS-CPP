@@ -62,7 +62,6 @@
                 </div>
             </li>
         </div>
-
         <div class="C_contain_scroll">
             <h2>Add Course Details</h2>
             <div class="add_course" id="add_course">
@@ -126,7 +125,7 @@
                                     <input class="sem" type="" id="courseCode" name="courseCode"
                                         placeholder="Enter Course Code" required>
                                 </div>
-                                
+
 
                             </div>
 
@@ -187,15 +186,15 @@
                                         placeholder="Enter Total Credits" required>
                                 </div>
                                 <div class="name">
-                                    <!-- <b><label for="totalcredits" class="label">Total Credits :</label></b>
-                                    <input class="sem" type="text" id="totalcredits" name="totalcredits"
-                                        placeholder="Enter IKS Hours" required> -->
+                                    <b><label for="teacher" class="label">Course Teacher:</label></b>
+                                    <input class="sem" type="text" id="teacher" name="teacher"
+                                        placeholder="Enter Course Teacher" required>
                                 </div>
 
                             </div>
                             <div class="buttons">
                                 <button type="submit" name="addCourse" class="button">Add</button>
-                                <button type="submit" class="button" onclick="showMain()">Back</button>
+                               <a href="adm_courses.php"> <button type="button" class="button">Back</button></a>
                             </div>
                         </form>
 
@@ -219,7 +218,7 @@ include "config.php";
 if (isset($_POST['addCourse'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `courseType`, `lecturePW`, `practicalPW`, `tutorialPW`,`self_learning_hours`, `teachingHours`, `iks_hours`, `total_credits`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$courseType','$lecturePW','$practicalPW','$tutorialPW','$selfhours','$teachingHours','$ikshours','$totalcredits')") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `courseType`, `lecturePW`, `practicalPW`, `tutorialPW`,`self_learning_hours`, `teachingHours`, `iks_hours`, `total_credits` , `total_credits`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$courseType','$lecturePW','$practicalPW','$tutorialPW','$selfhours','$teachingHours','$ikshours','$totalcredits','$teacher' )") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";

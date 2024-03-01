@@ -1,51 +1,82 @@
+let batch1Pr = ["","","nis","nis","","","pwp","pwp","","","","","","","","","ede","ede","","","","","mad","mad","","","cpe","cpe","cpe","cpe","mad","mad","","","",""]
+let batch2Pr = ["","","mad","mad","nis","nis","mad","mad","","","","","","","","","ede","ede","pwp","pwp","","","","","","","cpe","cpe","cpe","cpe","","","","","",""]
+let batch3Pr = ["","","pwp","pwp","mad","mad","nis","nis","","","","","","","","","ede","ede","mad","mad","","","","","","","cpe","cpe","cpe","cpe","","","","","",""]
 
-let temp = new Date("1-2-2024")
+let semStartDate = new Date("1-1-2024")
 
-let credits = 3
+let b1PrDates = getPracticalDates(batch1Pr,semStartDate,1,"pwp")
+let b2PrDates = getPracticalDates(batch2Pr,semStartDate,2,"mad")
+let b3PrDates = getPracticalDates(batch3Pr,semStartDate,1,"nis")
 
-let dt = ["mad","nis","pr","pr","pr","pr","pr","pr","pwp","eti","mgt","nolec","nis","eti","mgt","mgt","pr","pr","pr","pr","ede","ede","pr","pr","mad","pwp","pr","pr","pr","pr","pr","pr","eti","mad","pwp","nis"]
 
-let lc
 
-let k=0
+console.log(" Dates for Batch -1 : ",b1PrDates);
+console.log(" Dates for Batch -2 : ",b2PrDates);
+console.log(" Dates for Batch -3 : ",b3PrDates);
 
-a: for (let i = 0; i < 7; i++) 
+
+
+function getPracticalDates(batchPr,semStartDate,prCredits,subject)
 {
-      
-    dayWeek = temp.getDay()
+    let temp = semStartDate
+    let slotNo
+    let bPrDates = []
 
-    switch(dayWeek)
+    a: for (let i = 0; i < 7; i++) 
     {
-        case 1 : lc=1
-            break
-        case 2 : lc=7
-            break
-        case 3 : lc=13
-            break
-        case 4 : lc=19
-            break
-        case 5 : lc=25
-            break
-        case 6 : lc=31
-            break
-        case 0 :    let a = temp.getDate()+1
-                    temp.setDate(a)
-                    continue a
-        
-    }
+        dayWeek = temp.getDay()
 
-
-    for (let j = 0; j < 6; j++) 
-    {
-        if (dt[lc-1] == "nis") 
+        switch(dayWeek)
         {
-            console.log(temp.toDateString());    
+            case 1 : slotNo=1
+                break
+            case 2 : slotNo=7
+                break
+            case 3 : slotNo=13
+                break
+            case 4 : slotNo=19
+            break
+            case 5 : slotNo=25
+                break
+            case 6 : slotNo=31
+                break
+            case 0 :    let a = temp.getDate()+1
+                        temp.setDate(a)
+                        continue a
+        
         }
-        lc++
+        for (let j = 0; j < 6; j+=2) 
+        {
+        
+            if (batchPr[slotNo-1] == subject) 
+            {
+                bPrDates.push(temp.toDateString())
+            }
+            slotNo+=2
+        
+        }
+        let a = temp.getDate()+1
+        temp.setDate(a)
+    
     }
 
-    let a = temp.getDate()+1
-    temp.setDate(a)
+    let tempDate
+    
+
+
+    for (let k = 0;  k <  (16*prCredits-prCredits); k++) 
+    {
+        temp = new Date(bPrDates[k])
+
+        tempDate = temp.getDay() + 7 
+
+        temp.setDate(tempDate)
+
+        bPrDates.push(temp.toDateString())
+    
+    }
+
+    return bPrDates
 }
 
 

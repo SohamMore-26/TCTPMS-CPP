@@ -89,6 +89,7 @@
                         <th>Branch</th>
                         <th>Semester</th>
                         <th>Scheme</th>
+                        <th>Teacher</th>
                         <th>Update</th>
                         <th>Delete</th>
 
@@ -127,6 +128,9 @@
                             </td>
                             <td>
                                 <?php echo $row['scheme']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['teacher']; ?>
                             </td>
                             <td>
                                 <a href="update_course.php?id=<?php echo $id; ?>">
