@@ -85,7 +85,7 @@
                             <th>Unit Outcome</th>
                             <th>Topic</th>
                             <th>Sub-Topic</th>
-                            <th>Save/add</th>
+                            <th>Save/add,</th>
                         </tr>
                         <?php
                         // Assuming $id is defined somewhere before the loop

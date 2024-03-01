@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
@@ -103,8 +103,13 @@
 
                             <div class="name">
                                 <b><label for="branch" class="label">Branch :</label></b>
-                                <input class="sem" type="text" id="branch" name="branch" placeholder="Enter Branch"
-                                    required>
+                                <select id="branch" name="branch" class="sem">
+                                    <option value="">Select Branch</option>
+                                    <option value="All Branch">All Branch</option>
+                                    <option value="Computer Engineering">Computer Engineering</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                </select>
                             </div>
                         </div>
 
@@ -129,8 +134,15 @@
                                 <b><label for="leavingDate" class="label">Leaving Date :</label></b>
                                 <input class="sem" type="date" id="leavingDate" name="leavingDate">
                             </div>
-                        </div>
 
+                        </div>
+                        <div class="name_r">
+                            <div class="name">
+                                <b><label for="password" class="label">Password :</label></b>
+                                <input class="sem" type="text" id="password" name="password"
+                                    placeholder="Assign Password">
+                            </div>
+                        </div>
                         <div class="form_button_cont">
                             <button type="submit" class="button" name="addTeacher">Add</button>
                             <button type="button" href="adm_teacher.php" class="button">Cancel</button>
@@ -216,7 +228,7 @@ include "config.php";
 if (isset($_POST['addTeacher'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$currentStatus','$leavingDate')") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate` ,`password`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$currentStatus','$leavingDate' ,'$password')") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";
