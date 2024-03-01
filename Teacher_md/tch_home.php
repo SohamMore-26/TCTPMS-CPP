@@ -20,12 +20,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 </head>
 
 <body>
-    <?php
-    include "config.php";
-    if (isset($_SESSION['id'])) {
-        $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
-    }
-    ?>
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
@@ -37,7 +31,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     <div class="main_cont">
         <div class="sidebar">
             <li>
-                <div class="side_card">
+                <div class=" side_card">
                     <a href="tch_home.html">
                         <ul><span class="material-symbols-outlined">
                                 home
@@ -59,23 +53,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Courses</ul>
                     </a>
                 </div>
-                <!-- 
-                <div class="side_card">
-                    <a href="tch_AcademicCal.html">
-                        <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
-                    </a>
-                </div> -->
-
                 <div class="side_card">
                     <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 group
-                            </span> Lesson Plan</ul>
+                            </span> Lesson plan</ul>
                     </a>
                 </div>
-
                 <div class="side_card">
                     <a href="tch_lab_plan.php">
                         <ul><span class="material-symbols-outlined">
@@ -85,25 +69,16 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                 </div>
             </li>
         </div>
-        <div class="main_c_cont" id="cont_M">
-            <?php
-            while ($row = mysqli_fetch_array($view)) {
-                extract($row); ?>
-                <a href="tch_one_course.php?id=<?php echo $id; ?>">
-                    <div class="m_card">
-                    <h3>
-                        <div class="icon"><span class="material-symbols-outlined">
-                                menu_book
-                            </span></div>
-                        <?php echo $row['courseTitle']; ?>
-                    </h3>
-                </div>
-                </a>
-                
-            <?php } ?>
-        </div>
+        <div class="main_c_cont">
+           
+            <div class="wel_card">
+                <h1>Welcome <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] .$_SESSION['lastName']; ?></h1>
+            </div>
 
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

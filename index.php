@@ -10,9 +10,13 @@ if (isset($_POST['login'])) {
         $login = true;
         session_start();
         $_SESSION['loggedin'] = true;
+        $_SESSION['id'] = $fetch['id'];
+        $_SESSION['firstName'] = $fetch['firstName'];
+        $_SESSION['middleName'] = $fetch['middleName'];
+        $_SESSION['lastName'] = $fetch['lastName'];
         $_SESSION['designation'] = $fetch['designation'];
         if ($_SESSION['designation'] == "Lecturer") {
-            header("location: Teacher_md/tch_home.html");
+            header("location: Teacher_md/tch_home.php");
         } elseif ($_SESSION['designation'] == "Head of Department") {
             header("location: Hod_md\hod_home.html");
         } else {
