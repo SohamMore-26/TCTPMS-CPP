@@ -74,13 +74,15 @@
             </li>
         </div>
         <div class="main_c_cont" id="cont_M">
-            <div class="m_card" onclick="openPopup()">
-                <h3>
-                    <div class="icon"><span class="material-symbols-outlined">
-                            menu_book
-                        </span></div> Emerging Trends
-                </h3>
-            </div>
+        <a href="fill_lab_plan.php">
+                <div class="m_card">
+                    <h3>
+                        <div class="icon"><span class="material-symbols-outlined">
+                                menu_book
+                            </span></div> Mobile Application Development(Batch A1)
+                    </h3>
+                </div>
+            </a>
         </div>
 
 
