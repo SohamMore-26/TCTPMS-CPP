@@ -61,14 +61,15 @@
                                 group
                             </span> Lesson Plan</ul>
                     </a>
+                </div>
 
-
-                    <!-- <hr>
-                <a href="tch_approvals.html">
-                    <ul><span class="material-symbols-outlined">
-                            pending_actions
-                        </span> Approvals</ul>
-                </a> -->
+                <div class="side_card">
+                    <a href="tch_lab_plan.html">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan</ul>
+                    </a>
+                </div>
             </li>
         </div>
 
@@ -130,23 +131,6 @@
 
                     </div>
 
-                </div>
-            </div>
-            <div class="scroll_num">
-                <div>
-                    1
-                </div>
-                <div>
-                    1
-                </div>
-                <div>
-                    1
-                </div>
-                <div>
-                    1
-                </div>
-                <div>
-                    1
                 </div>
             </div>
         </div>
