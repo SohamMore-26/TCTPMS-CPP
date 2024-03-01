@@ -9,6 +9,8 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Teacher Home Module
     </title>
+
+
 </head>
 
 <body>
@@ -39,7 +41,7 @@
                 </div>
 
                 <div class="side_card">
-                    <a href="tch_courses.html">
+                    <a href="tch_courses.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
                             </span> Courses</ul>
@@ -111,8 +113,15 @@
 
             <b><label for="acaYear" class="label">Academic Year :</label></b>
             <input class="sem" type="text" id="acaYear" name="acaYear" placeholder="Enter Academic Year" required>
+
+            <b><label for="acaYear" class="label">Course Name :</label></b>
+            <input class="sem" type="text" id="cname" name="aname" placeholder="Enter Course Name" required>
+            
+            <b><label for="acaYear" class="label">Course Abbrevation :</label></b>
+            <input class="sem" type="text" id="abb" name="abb" placeholder="Enter Course Abbrevation" required>
+            
             <center>
-            <a href="actual_lesson_plan.php"><button type="button" class="button" > Generate </button></a>
+            <a href="fill_lesson_plan.php"><button type="button" class="button" > Generate </button></a>
 </center>    
         </div>
         </div>
