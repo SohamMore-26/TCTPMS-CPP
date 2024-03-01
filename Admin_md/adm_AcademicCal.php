@@ -112,29 +112,40 @@
                                 <?php echo $row['aca_year_to']; ?>
                             </td>
                             <td>
-                                <?php echo $row['sem_duration_from']; ?> to
-                                <?php echo $row['sem_duration_to']; ?>
+
+                                <?php $newdate2 = date("d-m-Y", strtotime($sem_duration_from));
+                                echo "$newdate2"; ?> to
+                                <?php $newdate3 = date("d-m-Y", strtotime($sem_duration_to));
+                                echo "$newdate3"; ?>
                             </td>
                             <td>
-                                
+
                                 <?php
-                                    $newdate = date("d-m-Y", strtotime($class_test1_from));
-                                    echo "$newdate"; ?> to
+                                $newdate = date("d-m-Y", strtotime($class_test1_from));
+                                echo "$newdate"; ?> to
                                 <?php
-                                    $newdate1 = date("d-m-Y", strtotime($class_test1_to));
-                                    echo "$newdate1"; ?>
+                                $newdate1 = date("d-m-Y", strtotime($class_test1_to));
+                                echo "$newdate1"; ?>
                             </td>
                             <td>
-                                <?php echo $row['class_test2_from']; ?> to
-                                <?php echo $row['class_test2_to']; ?>
+
+                                <?php $newdate4 = date("d-m-Y", strtotime($class_test2_from));
+                                echo "$newdate4"; ?> to
+                                <?php $newdate5 = date("d-m-Y", strtotime($class_test2_to));
+                                echo "$newdate5"; ?>
                             </td>
                             <td>
-                                <?php echo $row['practical_exam_from']; ?> to
-                                <?php echo $row['practical_exam_to']; ?>
+                                <?php $newdate6 = date("d-m-Y", strtotime($practical_exam_from));
+                                echo "$newdate6"; ?> to
+                                <?php $newdate7 = date("d-m-Y", strtotime($practical_exam_to));
+                                echo "$newdate7"; ?>
                             </td>
                             <td>
-                                <?php echo $row['theory_exam_from']; ?> to
-                                <?php echo $row['theory_exam_to']; ?>
+
+                                <?php $newdate8 = date("d-m-Y", strtotime($theory_exam_from));
+                                echo "$newdate8"; ?> to
+                                <?php $newdate9 = date("d-m-Y", strtotime($theory_exam_to));
+                                echo "$newdate9"; ?>
                             </td>
                             <td>
                                 <a href="update_teacher.html"> <span class="material-symbols-outlined">

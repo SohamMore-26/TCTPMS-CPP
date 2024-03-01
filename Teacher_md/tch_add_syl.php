@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Teacher Home Module
     </title>
- 
+
 </head>
 
 <body>
@@ -74,7 +74,7 @@
 
         <div class="C_contain_scroll">
             <div class="">
-                
+
                 <table class="tablecss tb_card">
                     <h2>Enter Syllabus Data</h2>
                     <tr>
@@ -86,40 +86,39 @@
                         <th>Save/add</th>
                     </tr>
                     <?php
-// Assuming $id is defined somewhere before the loop
-$id = 123; 
+                    // Assuming $id is defined somewhere before the loop
+                    $id = 123;
 
-// Loop to generate 48 rows
-for ($i = 1; $i <= 48; $i++) {
-    ?>
-    <tr>
-        <td>
-            <?php echo $i; ?>
-        </td>
-        <td>
-            <textarea class="sem" type="text" cols="10"> </textarea>
-        </td>
-        <td>
-            <textarea class="sem" type="text" cols="20"> </textarea>
-        </td>
-        <td>
-            <textarea class="sem" type="text" cols="30"> </textarea>
-        </td>
-        <td>
-            <textarea class="sem" type="text" cols="29" rows="5"> </textarea>
-        </td>
-        <td>
-            <a href="update_course.php?id=<?php echo $id; ?>" method>
-                <span class="material-symbols-outlined">
-                    save
-                </span>
-            </a>
-        </td>
-    </tr>
-    <?php
-}
-?>
-
+                    // Loop to generate 48 rows
+                    for ($i = 1; $i <= 48; $i++) {
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $i; ?>
+                            </td>
+                            <td>
+                                <textarea class="sem" type="text" cols="10"> </textarea>
+                            </td>
+                            <td>
+                                <textarea class="sem" type="text" cols="20"> </textarea>
+                            </td>
+                            <td>
+                                <textarea class="sem" type="text" cols="30"> </textarea>
+                            </td>
+                            <td>
+                                <textarea class="sem" type="text" cols="29" rows="5"> </textarea>
+                            </td>
+                            <td>
+                                <a href="update_course.php?id=<?php echo $id; ?>" method>
+                                    <span class="material-symbols-outlined">
+                                        save
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
                     <!-- <tr >
                         <td>
                             2
@@ -145,12 +144,9 @@ for ($i = 1; $i <= 48; $i++) {
                         </td>
                     </tr> -->
                 </table>
-
             </div>
         </div>
-
     </div>
-    
 </body>
 
 </html>
