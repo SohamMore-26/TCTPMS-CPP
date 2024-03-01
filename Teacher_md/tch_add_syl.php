@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="side_card">
-                    <a href="tch_courses.html">
+                    <a href="tch_courses.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
                             </span> Courses</ul>
@@ -56,7 +56,7 @@
                 </div> -->
 
                 <div class="side_card">
-                    <a href="tch_lesson_plan.html">
+                    <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 group
                             </span> Lesson Plan</ul>
