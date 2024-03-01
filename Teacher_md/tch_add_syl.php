@@ -63,12 +63,13 @@
                     </a>
                 </div>
 
-                <!-- <hr>
-                <a href="tch_approvals.html">
-                    <ul><span class="material-symbols-outlined">
-                            pending_actions
-                        </span> Approvals</ul>
-                </a> -->
+                <div class="side_card">
+                    <a href="tch_lab_plan.html">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan</ul>
+                    </a>
+                </div>
             </li>
         </div>
 
@@ -118,12 +119,9 @@
                         ?>
                     </form>
                 </table>
-
             </div>
         </div>
-
     </div>
-
 </body>
 
 </html>
