@@ -85,9 +85,9 @@
 
         <div class="C_contain_scroll_hid" id="cont_C">
             <div class="course_card">
-                    <h2>SoftWare Testing </h2>
-                    <h4>Course Code: 123456 </h4>
-                    <h4>Course Abb: STE</h4>
+                    <h2>Emerging Trends in Computer and Information Technology </h2>
+                    <h4>Course Code: 22618 </h4>
+                    <h4>Course Abb: ETI</h4>
                     <h4>Branch: Co</h4>
                     <h4>NO of lectures: 48</h4>
                     <div style="display: flex; justify-content:space-between; width:300px; ">
