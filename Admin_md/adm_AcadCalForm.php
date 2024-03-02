@@ -19,7 +19,7 @@
             <h1>Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="submit" id="button_lg" class="button">Logout</button>
+           <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">

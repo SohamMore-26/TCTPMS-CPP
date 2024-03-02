@@ -18,11 +18,11 @@
             <h1>Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="submit" id="button" class="button">Logout</button>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="adm_home.php">
