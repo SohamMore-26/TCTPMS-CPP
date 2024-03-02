@@ -25,14 +25,14 @@
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.html">
+                    <a href="tch_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.html">
+                    <a href="tch_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -48,7 +48,7 @@
                 </div>
                 <!-- 
                 <div class="side_card">
-                    <a href="tch_AcademicCal.html">
+                    <a href="tch_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
                             </span> Academic Calendar</ul>
@@ -162,7 +162,7 @@
         }
 
         var text = document.getElementById('Lesson');
-        var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Planned Topic Coverage</th><th>Issued By</th><th>Approved By</th><th>Status</th><th>Remarks</th></tr></thead><tbody>';
+        var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Planned Topic Coverage</th><th>Issued By</th><th>Approved By</th><th>Status</th><th>Remarks</th><th>Save</th></tr></thead><tbody>';
 
         for (var i = 0; i < newDates.length; i++) {
 
@@ -173,7 +173,7 @@
 
             let per = (i + 1) / 48 * 100
 
-            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea style="width: 453px; height: 129px;"></textarea></td><td><input type=text</td><td><input type=text></td><td><input type=checkbox></td><td><a href="">Remarks</a></td></tr>';
+            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea style="width: 453px; height: 129px;"></textarea></td><td><input type=text</td><td><input type=text></td><td><input type=checkbox></td><td><a href="">Remarks</a></td><td><button type="submit" name="" class="button">Save</button> </td></tr>';
         }
         table += '</tbody></table>';
 

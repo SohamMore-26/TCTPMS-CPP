@@ -24,14 +24,14 @@
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.html">
+                    <a href="tch_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.html">
+                    <a href="tch_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -47,7 +47,7 @@
                 </div>
                 <!-- 
                 <div class="side_card">
-                    <a href="tch_AcademicCal.html">
+                    <a href="tch_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
                             </span> Academic Calendar</ul>

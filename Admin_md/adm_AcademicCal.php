@@ -148,7 +148,7 @@
                                 echo "$newdate9"; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.html"> <span class="material-symbols-outlined">
+                                <a href="update_teacher.php"> <span class="material-symbols-outlined">
                                         edit
                                     </span> </a>
                             </td>
