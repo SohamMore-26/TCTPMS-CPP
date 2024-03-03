@@ -120,7 +120,7 @@
                                     <option value="">Select Branch</option>
                                     <option value="CO">CO</option>
                                     <option value="ME">ME</option>
-                                    <option value="CE">CE</option>  
+                                    <option value="CE">CE</option>
                                 </select>
                             </div>
 
@@ -130,7 +130,7 @@
                         <div class="formdiv">
                             <div class="input">
                                 <b><label for="division" class="label">Division :</label></b>
-                                <select id="division" name="division" class="sem">
+                                <select id="division" name="division" class="sem" onclick="selectsub()">
                                     <option value="">Select Division</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
@@ -196,11 +196,26 @@
                                 <input type="radio" id="Tu" name="ThPr" onclick="openDialog(this)" value="Tutorial">Tu
                             </div>
                         </div>
+                        
                         <div class="thr thr_hid" id="thr">
 
                             <div class="input">
                                 <b><label for="sub" class="label">Course Abrevation :</label></b>
-                                <input class="sem" type="text" id="sub" name="time_course" placeholder="For.eg: STE">
+                                <?php
+                            include "config.php";
+                            $view = mysqli_query($con, "select * from courseinfo Where branch = 'CO' AND semester = '6' AND scheme = 'I'") or die(mysqli_error($con));
+                            ?>
+                                <select id="sub" name="time_course" class="sem">
+                                    <option value="">Select Subject</option>
+                                    <?php
+
+                                    while ($row = mysqli_fetch_array($view)) {
+                                        extract($row); ?>
+                                        <option value="<?php echo $row['courseTitle']; ?>">
+                                            <?php echo $row['courseTitle']; ?>
+                                        <?php } ?>
+                                </select>
+                                <!-- <input class="sem" type="text" id="sub" name="time_course" placeholder="For.eg: STE"> -->
                             </div>
                         </div>
                         <div class="pra pra_hid" id="pra">
@@ -300,10 +315,28 @@
             // Clear the form for the next entry
             document.getElementById('timetableForm').reset();
         }
+
+
+        function selectsub() {
+            var sem = document.getElementById("semester").value;
+            var branch = document.getElementById("branch").value;
+            var sch = document.getElementById("scheme").value;
+
+            document.cookie = "sem=" + sem;
+            document.cookie = "branch=" + branch;
+            document.cookie = "sch=" + sch;
+        }
+
+
     </script>
 </body>
 
 </html>
+<?php
+$sem = $_COOKIE['sem'];
+$branch = $_COOKIE['branch'];
+$sch = $_COOKIE['sch'];
+?>
 
 <?php
 include "config.php";
