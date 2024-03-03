@@ -27,9 +27,7 @@ function openDialog(element) {
   let elementValue = element.value;
   let elementDay = checkDay(elementID);
 
-  // console.log(elementID);
-  // console.log(elementValue);
-  // console.log(elementDay);
+
   if (elementValue === "Theory") {
     document.getElementById('myDialog').showModal();
 
@@ -51,11 +49,6 @@ function openDialog(element) {
     document.getElementById("time_ThPrTu").value = elementValue;
   }
 
-
-
-  console.log(elementID);
-  console.log(elementValue);
-  console.log(elementDay);
 }
 
 function checkDay(elementID) {

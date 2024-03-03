@@ -108,8 +108,7 @@
                                 <?php echo $row['scheme']; ?>
                             </td>
                             <td>
-                                <?php echo $row['aca_year_from']; ?> -
-                                <?php echo $row['aca_year_to']; ?>
+                                <?php echo $row['aca_year']; ?> 
                             </td>
                             <td>
 

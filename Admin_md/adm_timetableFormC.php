@@ -68,58 +68,121 @@
                         <h1 id="h1">Add Time Table</h1>
                     </center>
                     <div class="formdiv">
-                        <div class="input">
-                            <b><label for="semester" class="label">Semester :</label></b>
-                            <select id="semester" name="semester" class="sem">
-                                <option value="">Select Semester</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-                        <div class="input">
-                            <b><label for="scheme" class="label">Scheme :</label></b>
-                            <select id="scheme" name="scheme" class="sem">
-                                <option value="">Select Scheme</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
-                                <option value="F">F</option>
-                                <option value="G">G</option>
-                                <option value="H">H</option>
-                                <option value="I">I</option>
-                                <option value="K">K</option>
-                            </select>
-                        </div>
-                        <div class="input">
-                            <b><label for="division" class="label">Division :</label></b>
-                            <select id="division" name="division" class="sem">
-                                <option value="">Select Division</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                            </select>
+                        <?php
+                        include "config.php";
+                        $view = mysqli_query($con, "select * from academic_cal") or die(mysqli_error($con));
+                        ?>
+                        <div class="formdiv">
+                            <div class="input">
+                                <b><label for="acaYear" class="label">Academic Year :</label></b>
+                                <select id="acaYear" name="acaYear" class="sem">
+                                    <option value="">Select Academic Year</option>
+                                    <?php
+
+                                    while ($row = mysqli_fetch_array($view)) {
+                                        extract($row); ?>
+                                        <option value="<?php echo $row['aca_year']; ?>">
+                                            <?php echo $row['aca_year']; ?>
+                                        <?php } ?>
+                                </select>
+                            </div>
+                            <div class="input">
+                                <b><label for="semester" class="label">Semester :</label></b>
+                                <select id="semester" name="semester" class="sem">
+                                    <option value="">Select Semester</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                            </div>
+                            <div class="input">
+                                <b><label for="scheme" class="label">Scheme :</label></b>
+                                <select id="scheme" name="scheme" class="sem">
+                                    <option value="">Select Scheme</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="G">G</option>
+                                    <option value="H">H</option>
+                                    <option value="I">I</option>
+                                    <option value="K">K</option>
+                                </select>
+                            </div>
+                            <div class="input">
+                                <b><label for="branch" class="label">Branch :</label></b>
+                                <select id="branch" name="branch" class="sem">
+                                    <option value="">Select Branch</option>
+                                    <option value="CO">CO</option>
+                                    <option value="ME">ME</option>
+                                    <option value="CE">CE</option>  
+                                </select>
+                            </div>
+
+
                         </div>
 
-                    </div>
-                    <div class="formdiv">
-                        <div class="input">
-                            <b><label for="acaYear" class="label">Academic Year :</label></b>
-                            <input class="sem" type="text" id="acaYear" name="acaYear" placeholder="Enter Academic Year"
-                                required>
-                        </div>
-                        <div class="input">
-                            <b><label for="slot" class="label">Slot :</label></b>
-                            <input class="sem" type="text" id="slot" name="slot" placeholder="For.eg: Slot: 1" required>
-                        </div>
-                        <div class="input">
-                            <b><label for="time_day" class="label">Day :</label></b>
-                            <input class="sem" type="text" id="time_day" name="time_day" placeholder="For.eg: Monday"
-                                required>
+                        <div class="formdiv">
+                            <div class="input">
+                                <b><label for="division" class="label">Division :</label></b>
+                                <select id="division" name="division" class="sem">
+                                    <option value="">Select Division</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                </select>
+                            </div>
+                            <div class="input">
+                                <b><label for="slot" class="label">Slot :</label></b>
+                                <select id="slot" name="slot" class="sem" onchange="setDay(this)">
+                                    <option value="">Select Slot</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                    <option value="33">33</option>
+                                    <option value="34">34</option>
+                                    <option value="35">35</option>
+                                    <option value="36">36</option>
+                                </select>
+                            </div>
+                            <div class="input">
+                                <b><label for="time_day" class="label">Day :</label></b>
+                                <input class="sem" type="text" id="time_day" name="time_day"
+                                    placeholder="For.eg: Monday" required>
+                            </div>
                         </div>
                     </div>
                     <div class="formdiv">
@@ -189,6 +252,40 @@
                 thr.classList.remove("thr_hid")
                 pra.classList.add("pra_hid")
             }
+        }
+
+        function setDay(element) {
+
+            let elementValue = element.value;
+            let elementDay = checkSlot(elementValue);
+
+            document.getElementById("time_day").value = elementDay;
+        }
+
+        function checkSlot(elementValue) {
+            var elementDay;
+            if (elementValue >= 1 && elementValue <= 6) {
+                elementDay = "Monday";
+            }
+            else if (elementValue >= 7 && elementValue <= 12) {
+                elementDay = "Tuesday";
+            }
+            else if (elementValue >= 13 && elementValue <= 18) {
+                elementDay = "Wednesday";
+            }
+            else if (elementValue >= 19 && elementValue <= 24) {
+                elementDay = "Thusday";
+            }
+            else if (elementValue >= 25 && elementValue <= 30) {
+                elementDay = "Friday";
+            }
+            else if (elementValue >= 31 && elementValue <= 36) {
+                elementDay = "Saturaday";
+            }
+            else {
+            }
+            return elementDay;
+            console.log(elementDay);
         }
 
         function add_tt() {
