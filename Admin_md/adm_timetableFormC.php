@@ -67,7 +67,7 @@
                     <center>
                         <h1 id="h1">Add Time Table</h1>
                     </center>
-                    <div class="formdiv">
+                    <div class="">
                         <?php
                         include "config.php";
                         $view = mysqli_query($con, "select * from academic_cal") or die(mysqli_error($con));
