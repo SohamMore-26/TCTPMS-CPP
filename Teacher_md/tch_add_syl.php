@@ -94,8 +94,10 @@
                             $row = mysqli_fetch_array($view);
                         }
                         extract($row);
+
+                        $lc = $row['teachingHours'];
                         // Loop to generate 48 rows
-                        for ($i = 1; $i <= 48; $i++) {
+                        for ($i = 1; $i <= $lc; $i++) {
                             ?>
                             <tr>
                                 <td>

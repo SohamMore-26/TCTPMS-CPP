@@ -24,14 +24,16 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     include "config.php";
     if (isset($_SESSION['id'])) {
         $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
+        $row = mysqli_fetch_array($view);
     }
+
     ?>
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -88,27 +90,27 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
         <div class="main_c_cont">
             <?php
             include "config.php";
-            $view1 = mysqli_query($con, "select * from timetable WHERE semester = '" . $_GET['id'] . "' AND  slot = '1' AND slot = '7' AND slot = '13' AND slot = '19' AND slot = '25' AND slot = '31'") or die(mysqli_error($con));
+            $view1 = mysqli_query($con, "select * from timetable WHERE slot = '1' OR slot = '7' OR slot = '13' OR slot = '19' OR slot = '25' OR slot = '31'") or die(mysqli_error($con));
             ?>
             <?php
             include "config.php";
-            $view2 = mysqli_query($con, "select * from timetable WHERE semester = '" . $_GET['id'] . "' AND slot = '2' AND slot = '8' AND slot = '14' AND slot = '20' AND slot = '26' AND slot = '32'") or die(mysqli_error($con));
+            $view2 = mysqli_query($con, "select * from timetable WHERE slot = '2' OR slot = '8' OR slot = '14' OR slot = '20' OR slot = '26' OR slot = '32'") or die(mysqli_error($con));
             ?>
             <?php
             include "config.php";
-            $view3 = mysqli_query($con, "select * from timetable WHERE semester = '" . $_GET['id'] . "' AND slot = '3' AND slot = '9' AND slot = '15' AND slot = '21' AND slot = '27' AND slot = '33'") or die(mysqli_error($con));
+            $view3 = mysqli_query($con, "select * from timetable WHERE slot = '3' OR slot = '9' OR slot = '15' OR slot = '21' OR slot = '27' OR slot = '33'") or die(mysqli_error($con));
             ?>
             <?php
             include "config.php";
-            $view4 = mysqli_query($con, "select * from timetable WHERE semester = '" . $_GET['id'] . "' AND slot = '4' AND slot = '10' AND slot = '16' AND slot = '22' AND slot = '28' AND slot = '34'") or die(mysqli_error($con));
+            $view4 = mysqli_query($con, "select * from timetable WHERE slot = '4' OR slot = '10' OR slot = '16' OR slot = '22' OR slot = '28' OR slot = '34'") or die(mysqli_error($con));
             ?>
             <?php
             include "config.php";
-            $view5 = mysqli_query($con, "select * from timetable WHERE semester = '" . $_GET['id'] . "' AND slot = '5' AND slot = '11' AND slot = '17' AND slot = '23' AND slot = '29' AND slot = '35'") or die(mysqli_error($con));
+            $view5 = mysqli_query($con, "select * from timetable WHERE slot = '5' OR slot = '11' OR slot = '17' OR slot = '23' OR slot = '29' OR slot = '35'") or die(mysqli_error($con));
             ?>
             <?php
             include "config.php";
-            $view6 = mysqli_query($con, "select * from timetable WHERE semester = '" . $_GET['id'] . "' AND slot = '6' AND slot = '12' AND slot = '18' AND slot = '24' AND slot = '30' AND slot = '36'") or die(mysqli_error($con));
+            $view6 = mysqli_query($con, "select * from timetable WHERE slot = '6' OR slot = '12' OR slot = '18' OR slot = '24' OR slot = '30' OR slot = '36'") or die(mysqli_error($con));
             ?>
             <div class="t_tb_card t_tablecss">
                 <table>
