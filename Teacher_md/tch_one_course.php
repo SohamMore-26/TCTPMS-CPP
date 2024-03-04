@@ -80,10 +80,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                 </div>
             </li>
         </div>
-        <?php
-                        
-
-                        ?>
+  
         <div class="C_contain_scroll">
             <div class="course_card">
             <?php
@@ -101,7 +98,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                     
                     <div style="display: flex; justify-content:space-between; width:300px; ">
                         <a href="tch_courses.php"><button type="button" class="button" > Back </button></a>
-                        <a href="tch_add_syl.php"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
+                        <a href="tch_add_syl.php?id=<?php echo $id; ?>"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
                     </div>         
             </div>
         </div>
