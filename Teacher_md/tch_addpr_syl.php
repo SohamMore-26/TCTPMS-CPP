@@ -94,7 +94,7 @@
                         }
                         extract($row);
 
-                        $lc = $row['teachingHours'];
+                        $lc = $row['practicalHours'];
                         // Loop to generate 48 rows
                         for ($i = 1; $i <= $lc; $i++) {
                             ?>
