@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Teacher Home Module
     </title>
+
 </head>
 
 <body>
@@ -71,25 +72,59 @@
                 </div>
             </li>
         </div>
-        <?php
-        include "config.php";
-        if (isset($_SESSION['id'])) {
-            $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
-        }
-        ?>
-        <div class="main_c_cont" id="cont_M">
-            <a href="fill_lab_plan.php?id=<?php echo $id; ?>">
-                <div class="m_card">
-                    <h3>
-                        <div class="icon"><span class="material-symbols-outlined">
-                                menu_book
-                            </span></div> Mobile Application Development(Batch A1)
-                    </h3>
-                </div>
-            </a>
+
+        <div class="C_contain_scroll">
+            <div class="">
+
+                <table class="tablecss tb_card">
+                    <form method="post" action="insert.php">
+                        <h2>Enter Syllabus Data</h2>
+                        <tr>
+                            <th>Practical No.</th>
+                            <th>Course</th>
+                            <th>Unit no.</th>
+                            <th>Practical Outcome</th>
+                            <th>Practical Name</th>
+                        </tr>
+                        <?php
+                        include "config.php";
+                        if (isset($_GET['id'])) {
+                            $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+                            $row = mysqli_fetch_array($view);
+                        }
+                        extract($row);
+
+                        $lc = $row['teachingHours'];
+                        // Loop to generate 48 rows
+                        for ($i = 1; $i <= $lc; $i++) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <input class="sem" type="text" name="lecno[]" value="<?php echo $i; ?>">
+                                </td>
+                                <td>
+                                    <input class="sem" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="10" name="unit_name[]"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20" name="unit_outcome[]"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="30" name="topic[]">  </textarea>
+                                </td>
+                               
+                            
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        <input type="submit" name="addSyllabus" class="button">
+                    </form>
+                </table>
+            </div>
         </div>
-
-
     </div>
 </body>
 
