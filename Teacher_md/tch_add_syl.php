@@ -74,7 +74,7 @@
         </div>
 
         <div class="C_contain_scroll">
-            <div class="">
+            <div style="display: flex;align-items:center;flex-direction: column;">
 
                 <table class="tablecss tb_card">
                     <form method="post" action="insert.php">
@@ -101,10 +101,10 @@
                             ?>
                             <tr>
                                 <td>
-                                    <input class="sem" type="text" name="lecno[]" value="<?php echo $i; ?>">
+                                    <input class="seml" type="text" name="lecno[]" value="<?php echo $i; ?>">
                                 </td>
                                 <td>
-                                    <input class="sem" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
+                                    <input class="sema" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="10" name="unit_name[]"> </textarea>
@@ -118,15 +118,14 @@
                                 <td>
                                     <textarea class="sem" type="text" cols="29" rows="5" name="sub_topic[]"> </textarea>
                                 </td>
-                                <td>
-                                </td>
                             </tr>
                             <?php
                         }
                         ?>
-                        <input type="submit" name="addSyllabus" class="button">
+                        
                     </form>
                 </table>
+                <input type="submit" name="addSyllabus" class="button">
             </div>
         </div>
     </div>
