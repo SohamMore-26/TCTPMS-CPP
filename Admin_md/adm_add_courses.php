@@ -169,6 +169,11 @@
                                         placeholder="Enter Teaching Hours" required>
                                 </div>
                                 <div class="name">
+                                    <b><label for="practicalHours" class="label">Practical Hours :</label></b>
+                                    <input class="sem" type="text" id="teachingHours" name="practicalHours"
+                                        placeholder="Enter Practical Hours" required>
+                                </div>
+                                <div class="name">
                                     <b><label for="selfhours" class="label">Self Learning Hours :</label></b>
                                     <input class="sem" type="text" id="selfhours" name="selfhours"
                                         placeholder="Enter Teaching Hours" required>
@@ -218,7 +223,7 @@ include "config.php";
 if (isset($_POST['addCourse'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `courseType`, `lecturePW`, `practicalPW`, `tutorialPW`,`selfhours`, `teachingHours`, `ikshours`, `totalcredits` , `teacher`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$courseType','$lecturePW','$practicalPW','$tutorialPW','$selfhours','$teachingHours','$ikshours','$totalcredits','$teacher' )") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `courseType`, `lecturePW`, `practicalPW`, `tutorialPW`,`selfhours`, `teachingHours`,`practicalHours`, `ikshours`, `totalcredits` , `teacher`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$courseType','$lecturePW','$practicalPW','$tutorialPW','$selfhours','$teachingHours','$practicalHours','$ikshours','$totalcredits','$teacher' )") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";
