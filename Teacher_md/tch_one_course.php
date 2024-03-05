@@ -89,7 +89,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                 $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
                 $row = mysqli_fetch_array($view);
             }
-                        extract($row);?>
+                        extract($row);
+                        $lc = $row['teachingHours'];
+                        $pr = $row['practicalHours'];
+                        ?>
                     <h2><?php echo $row['courseTitle']; ?> </h2>
                     <h4>Course Code: <?php echo $row['courseCode']; ?> </h4>
                     <h4>Course Abb: <?php echo $row['courseAbrevation']; ?></h4>
