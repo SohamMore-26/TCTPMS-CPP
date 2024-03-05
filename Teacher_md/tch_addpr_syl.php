@@ -77,8 +77,8 @@
             <div class="">
 
                 <table class="tablecss tb_card">
-                    <form method="post" action="insert.php">
-                        <h2>Enter Syllabus Data</h2>
+                    <form method="post" action="insertpr.php">
+                        <h2>Enter Practical Syllabus </h2>
                         <tr>
                             <th>Practical No.</th>
                             <th>Course</th>
@@ -94,8 +94,10 @@
                         }
                         extract($row);
 
-                        $lc = $row['teachingHours'];
-                        // Loop to generate 48 rows
+                        $lc = $row['practicalHours'];
+
+                        $coursecode = $row['courseCode'];
+
                         for ($i = 1; $i <= $lc; $i++) {
                             ?>
                             <tr>
@@ -106,13 +108,13 @@
                                     <input class="sem" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="10" name="unit_name[]"> </textarea>
+                                    <textarea class="sem" type="text" cols="10" name="unit_no[]"> </textarea>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20" name="unit_outcome[]"> </textarea>
+                                    <textarea class="sem" type="text" cols="20" name="pr_outcome[]"> </textarea>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="30" name="topic[]">  </textarea>
+                                    <textarea class="sem" type="text" cols="30" name="pr_topic[]">  </textarea>
                                 </td>
                                
                             
@@ -120,7 +122,7 @@
                             <?php
                         }
                         ?>
-                        <input type="submit" name="addSyllabus" class="button">
+                        <input type="submit" name="addPrSyllabus" class="button">
                     </form>
                 </table>
             </div>

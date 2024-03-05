@@ -123,9 +123,9 @@
                         }
                         ?>
                         
-                    </form>
+                    
                 </table>
-                <input type="submit" name="addSyllabus" class="button">
+                <input type="submit" name="addSyllabus" class="button"></form>
             </div>
         </div>
     </div>
