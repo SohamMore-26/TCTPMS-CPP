@@ -19,7 +19,7 @@
             <h1>Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="submit" id="button_lg" class="button">Logout</button>
+           <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -70,8 +70,9 @@
                         <b><label for="semester" class="label">Semester:</label></b>
                         <select id="semester" name="semester" class="sem">
                             <option value="">Select Semester</option>
-                            <option value="Odd">Odd</option>
-                            <option value="Even">Even</option>
+                            <option value="1st Sem">1st Sem</option>
+                            <option value="Odd (3,5)">Odd (3,5)</option>
+                            <option value="Even (2,4,6)">Even (2,4,6)</option>
                         </select>
 
                         <b><label for="scheme" class="label">Scheme:</label></b>
@@ -190,7 +191,7 @@ if (isset($_POST['addCal'])) {
     if (isset($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year_from`,`aca_year_to`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom', '$aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
+        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
 
         if ($add) {
             echo "<script>";

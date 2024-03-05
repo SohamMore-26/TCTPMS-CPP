@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    $showError = "Login Failed...!";
+    header("location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,70 +15,79 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Admin Home Module
+    <title>Teacher Home Module
     </title>
 </head>
 
 <body>
+    <?php
+    include "config.php";
+    if (isset($_SESSION['id'])) {
+        $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
+        $row = mysqli_fetch_array($view);
+    }
+
+    ?>
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="adm_home.php">
+                    <a href="tch_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="adm_AcademicCal.php">
+                    <a href="tch_timetable.php">
                         <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
+                                today
+                            </span>View Time Table</ul>
                     </a>
                 </div>
+
                 <div class="side_card">
-                    <a href="adm_courses.php">
+                    <a href="tch_courses.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
                             </span> Courses</ul>
                     </a>
                 </div>
+                <!-- 
                 <div class="side_card">
-                    <a href="adm_timetable.php">
+                    <a href="tch_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
-                                today
-                            </span> Time Table</ul>
+                                calendar_clock
+                            </span> Academic Calendar</ul>
                     </a>
-                </div>
+                </div> -->
+
                 <div class="side_card">
-                    <a href="adm_teacher.php">
+                    <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 group
-                            </span> Teacher</ul>
+                            </span> Lesson Plan</ul>
+                    </a>
+                </div>
+
+                <div class="side_card">
+                    <a href="tch_lab_plan.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan</ul>
                     </a>
                 </div>
             </li>
         </div>
         <div class="main_c_cont">
-            <div class="m_card">
-                <a href="adm_timetableForm.php">
-                    <h3>
-                        <div class="icon"><span class="material-symbols-outlined">
-                                add
-                            </span></div> Add New Time Table
-                    </h3>
-                </a>
-
-            </div>
             <?php
             include "config.php";
             $view1 = mysqli_query($con, "select * from timetable WHERE slot = '1' OR slot = '7' OR slot = '13' OR slot = '19' OR slot = '25' OR slot = '31'") or die(mysqli_error($con));
@@ -252,8 +269,8 @@
                 </table>
             </div>
         </div>
-    </div>
 
+    </div>
 </body>
 
 </html>

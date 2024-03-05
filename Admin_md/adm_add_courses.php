@@ -19,7 +19,7 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="button" id="button_lg" class="btt">Logout</button>
+        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -218,7 +218,7 @@ include "config.php";
 if (isset($_POST['addCourse'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `courseType`, `lecturePW`, `practicalPW`, `tutorialPW`,`self_learning_hours`, `teachingHours`, `iks_hours`, `total_credits` , `total_credits`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$courseType','$lecturePW','$practicalPW','$tutorialPW','$selfhours','$teachingHours','$ikshours','$totalcredits','$teacher' )") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `courseType`, `lecturePW`, `practicalPW`, `tutorialPW`,`selfhours`, `teachingHours`, `ikshours`, `totalcredits` , `teacher`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$courseType','$lecturePW','$practicalPW','$tutorialPW','$selfhours','$teachingHours','$ikshours','$totalcredits','$teacher' )") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";

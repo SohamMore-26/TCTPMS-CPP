@@ -18,21 +18,21 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="button" id="button_lg" class="button">Logout</button>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.html">
+                    <a href="tch_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.html">
+                    <a href="tch_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -48,7 +48,7 @@
                 </div>
                 <!-- 
                 <div class="side_card">
-                    <a href="tch_AcademicCal.html">
+                    <a href="tch_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
                             </span> Academic Calendar</ul>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="side_card">
-                    <a href="tch_lab_plan.html">
+                    <a href="tch_lab_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 pending_actions
                             </span> Laboratory Plan</ul>
@@ -77,46 +77,54 @@
             <div class="">
 
                 <table class="tablecss tb_card">
-                    <form method="post">
+                    <form method="post" action="insert.php">
                         <h2>Enter Syllabus Data</h2>
                         <tr>
                             <th>Lec. No.</th>
+                            <th>Course</th>
                             <th>Unit</th>
                             <th>Unit Outcome</th>
                             <th>Topic</th>
                             <th>Sub-Topic</th>
-                            <th>Save/add.,</th>
                         </tr>
                         <?php
-                        // Assuming $id is defined somewhere before the loop
-                        $id = 123;
+                        include "config.php";
+                        if (isset($_GET['id'])) {
+                            $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+                            $row = mysqli_fetch_array($view);
+                        }
+                        extract($row);
 
+                        $lc = $row['teachingHours'];
                         // Loop to generate 48 rows
-                        for ($i = 1; $i <= 48; $i++) {
+                        for ($i = 1; $i <= $lc; $i++) {
                             ?>
                             <tr>
                                 <td>
-                                    <?php echo $i; ?>
+                                    <input class="sem" type="text" name="lecno[]" value="<?php echo $i; ?>">
                                 </td>
                                 <td>
-                                    <textarea  class="sem" type="text" cols="10" name="unit_name"> </textarea>
+                                    <input class="sem" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
                                 </td>
                                 <td>
-                                    <textarea  class="sem" type="text" cols="20" name="unit_outcome"> </textarea>
+                                    <textarea class="sem" type="text" cols="10" name="unit_name[]"> </textarea>
                                 </td>
                                 <td>
-                                    <textarea  class="sem" type="text" cols="30" name="topic">  </textarea>
+                                    <textarea class="sem" type="text" cols="20" name="unit_outcome[]"> </textarea>
                                 </td>
                                 <td>
-                                    <textarea  class="sem" type="text" cols="29" rows="5" name="sub_topic"> </textarea>
+                                    <textarea class="sem" type="text" cols="30" name="topic[]">  </textarea>
                                 </td>
                                 <td>
-                                    <button type="submit" name="addSyllabus" class="button">Save</button>
+                                    <textarea class="sem" type="text" cols="29" rows="5" name="sub_topic[]"> </textarea>
+                                </td>
+                                <td>
                                 </td>
                             </tr>
                             <?php
                         }
                         ?>
+                        <input type="submit" name="addSyllabus" class="button">
                     </form>
                 </table>
             </div>
@@ -125,21 +133,3 @@
 </body>
 
 </html>
-<?php
-
-include "config.php";
-if (isset($_POST['addSyllabus'])) {
-    extract($_POST);
-
-    $add = mysqli_query($con, "INSERT INTO `syllabus`(`course`, `unit_name`, `unit_outcome`, `topic`, `sub_topic`) VALUES ('ETI','$unit_name','$unit_outcome','$topic','$sub_topic')") or die(mysqli_error($con));
-
-    if ($add) {
-        echo "<script>";
-        echo "alert('Successfully Added...');";
-        echo "</script>";
-    } else {
-        echo "<script>";
-        echo "alert('ERROR ! Fail..!')";
-        echo "</script>";
-    }
-} ?>

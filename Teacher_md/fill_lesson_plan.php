@@ -18,21 +18,21 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="button" id="button_lg" class="button">Logout</button>
+        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.html">
+                    <a href="tch_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.html">
+                    <a href="tch_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -48,7 +48,7 @@
                 </div>
                 <!-- 
                 <div class="side_card">
-                    <a href="tch_AcademicCal.html">
+                    <a href="tch_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
                             </span> Academic Calendar</ul>
@@ -154,6 +154,15 @@
             return date
 
         }
+        function getIndianDateFormat(date) {
+                const options = {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                };
+                return date.toLocaleDateString('en-IN', options);
+            }
+
 
         function validate() {
             let perC = document.getElementById("per");
@@ -162,16 +171,19 @@
         }
 
         var text = document.getElementById('Lesson');
-        var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Planned Topic Coverage</th><th>Issued By</th><th>Approved By</th><th>Status</th><th>Remarks</th></tr></thead><tbody>';
+        var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Planned Topic Coverage</th><th>Issued By</th><th>Approved By</th><th>Status</th><th>Remarks</th><th>Save</th></tr></thead><tbody>';
 
         for (var i = 0; i < newDates.length; i++) {
-            let day = newDates[i].getDate();
-            let month = newDates[i].getMonth() + 1;
-            let year = newDates[i].getFullYear();
+            let indianDate = getIndianDateFormat(new Date(newDates[i]));
+
+            
+            // let day = newDates[i].getDate();
+            // let month = newDates[i].getMonth() + 1;
+            // let year = newDates[i].getFullYear();
 
             let per = (i + 1) / 48 * 100
 
-            table += '<tr><td>' + (i + 1) + '</td><td>' + day.toString() + '/' + month.toString() + '/' + year.toString() + '</td><td><textarea style="width: 453px; height: 129px;"></textarea></td><td><input type=text</td><td><input type=text></td><td><input type=checkbox></td><td><a href="">Remarks</a></td></tr>';
+            table += '<tr><td>' + (i + 1) + '</td><td>' + indianDate + '</td><td><textarea style="width: 453px; height: 129px;"></textarea></td><td><input type=text</td><td><input type=text></td><td><input type=checkbox></td><td><a href="">Remarks</a></td><td><button type="submit" name="" class="button">Save</button> </td></tr>';
         }
         table += '</tbody></table>';
 

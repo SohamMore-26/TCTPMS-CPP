@@ -17,7 +17,7 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="button" id="button_lg" class="button">Logout</button>
+        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
 
@@ -108,8 +108,7 @@
                                 <?php echo $row['scheme']; ?>
                             </td>
                             <td>
-                                <?php echo $row['aca_year_from']; ?> -
-                                <?php echo $row['aca_year_to']; ?>
+                                <?php echo $row['aca_year']; ?> 
                             </td>
                             <td>
 
@@ -148,7 +147,7 @@
                                 echo "$newdate9"; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.html"> <span class="material-symbols-outlined">
+                                <a href="update_teacher.php"> <span class="material-symbols-outlined">
                                         edit
                                     </span> </a>
                             </td>
