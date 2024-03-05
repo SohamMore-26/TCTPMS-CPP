@@ -91,23 +91,41 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             }
                         extract($row);
                         $lc = $row['teachingHours'];
-                        $pr = $row['practicalHours'];
+                        $pr = $row['practicalHours']; 
                         ?>
+
                     <h2><?php echo $row['courseTitle']; ?> </h2>
                     <h4>Course Code: <?php echo $row['courseCode']; ?> </h4>
                     <h4>Course Abb: <?php echo $row['courseAbrevation']; ?></h4>
                     <h4>Branch: <?php echo $row['branch']; ?></h4>
                     <h4>No of lectures: <?php echo $row['teachingHours']; ?></h4>
+
                     
-                    <div style="display: flex; justify-content:space-between; width:300px; ">
+                    
+                    <div style="button_cont">
                         <a href="tch_courses.php"><button type="button" class="button" > Back </button></a>
-                        <a href="tch_add_syl.php?id=<?php echo $id; ?>"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
-                        <a href="tch_addpr_syl.php?id=<?php echo $id; ?>"><button type="button" class="button" style="width: auto;" > Add syllabus </button></a>
+                        <a href="tch_add_syl.php?id=<?php echo $id; ?>"><button id="addth" type="button" class="button hid" style="width: auto;" >Add Theory syllabus </button></a>
+                        <a href="tch_addpr_syl.php?id=<?php echo $id; ?>"><button id="addpr" type="button" class="button hid" style="width: auto;" >Add Practical syllabus </button></a>
                     </div>         
             </div>
         </div>
 
     </div>
+
+    <script>
+        let theo = document.getElementById("addth");
+        let prac = document.getElementById("addpr");
+        let ph = '<?php echo $row['practicalHours']; ?>';
+        let th = '<?php echo $row['teachingHours']; ?>';
+        if (ph > 0) {
+            console.log(ph);
+            prac.classList.remove("hid");
+        }
+        if (th > 0) {
+            console.log(th);
+            theo.classList.remove("hid");
+        }
+    </script>
 
 </body>
 

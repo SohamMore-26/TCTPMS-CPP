@@ -32,6 +32,10 @@ body {
     overflow: auto;
 }
 
+.hid{
+    display: none;
+}
+
 .C_contain_scroll_hid {
     display: none;
 }

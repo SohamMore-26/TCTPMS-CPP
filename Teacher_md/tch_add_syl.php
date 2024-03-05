@@ -101,7 +101,7 @@
                             ?>
                             <tr>
                                 <td>
-                                    <input class="sem1" type="text" name="lecno[]" value="<?php echo $i; ?>">
+                                    <input class="seml" type="text" name="lecno[]" value="<?php echo $i; ?>">
                                 </td>
                                 <td>
                                     <input class="sema" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
