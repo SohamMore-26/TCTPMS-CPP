@@ -1,2 +1,4 @@
-
-console.log(" Dates for Batch -3 : ",b3PrDates);
+or(let j = i;j<date.length;j++)
+            // {
+            //     date.pop()
+            // }

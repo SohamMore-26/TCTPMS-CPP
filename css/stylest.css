@@ -1135,6 +1135,33 @@ td {
     border-radius: 10px;
     background-color: #f1f8fa;
 }
+
+.tablecss .seml {
+    padding: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    width:35px;
+    box-sizing: border-box;
+    border: .5px solid #7de2ff;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+
+.tablecss .sema {
+    padding: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    width:50px;
+    box-sizing: border-box;
+    border: .5px solid #7de2ff;
+    /* border: 1px solid #ffffff; */
+    border-radius: 10px;
+    background-color: #f1f8fa;
+}
+
 .sem1{
     text-align: left;
 }

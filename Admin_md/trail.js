@@ -1,6 +1,7 @@
 let batch1Pr = ["","","nis","nis","","","pwp","pwp","","","","","","","","","ede","ede","","","","","mad","mad","","","cpe","cpe","cpe","cpe","mad","mad","","","",""]
 let batch2Pr = ["","","mad","mad","nis","nis","mad","mad","","","","","","","","","ede","ede","pwp","pwp","","","","","","","cpe","cpe","cpe","cpe","","","","","",""]
 let batch3Pr = ["","","pwp","pwp","mad","mad","nis","nis","","","","","","","","","ede","ede","mad","mad","","","","","","","cpe","cpe","cpe","cpe","","","","","",""]
+let batchpr2 = ["","","pwp","pwp","mad","mad","nis","nis","","","","","","","","","ede","ede","mad","mad","","","","","","","cpe","cpe","cpe","cpe","","","","","",""]
 
 let semStartDate = new Date("1-1-2024")
 
@@ -9,10 +10,16 @@ let b2PrDates = getPracticalDates(batch2Pr,semStartDate,2,"mad")
 let b3PrDates = getPracticalDates(batch3Pr,semStartDate,1,"nis")
 
 
+// lastDate = new Date("")
+
+
 
 console.log(" Dates for Batch -1 : ",b1PrDates);
-console.log(" Dates for Batch -2 : ",b2PrDates);
-console.log(" Dates for Batch -3 : ",b3PrDates);
+
+
+
+// b1PrDates=regenerateDates(b1PrDates,batchpr2,lastDate)
+
 
 
 
@@ -50,6 +57,7 @@ function getPracticalDates(batchPr,semStartDate,prCredits,subject)
         
             if (batchPr[slotNo-1] == subject) 
             {
+                console.log(temp.toDateString())
                 bPrDates.push(temp.toDateString())
             }
             slotNo+=2
@@ -79,6 +87,28 @@ function getPracticalDates(batchPr,semStartDate,prCredits,subject)
     return bPrDates
 }
 
+
+function regenerateDates(date,batchpr2,lastDate)
+{
+    let finalDates;
+
+    for(let i = 0 ; i<date.length; i++)
+    {
+        if (date[i]==lastDate.toDateString()) 
+        {
+
+            finalDates=getPracticalDates(batchpr2,lastDate,2,"mad")
+            date.splice(i)
+
+            date=date.concat(finalDates)
+            break 
+        }
+    }
+    
+
+    return date
+
+}
 
 
 
