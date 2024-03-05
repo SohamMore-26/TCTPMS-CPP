@@ -1,6 +1,8 @@
 let dt = ["mad","nis","pr","pr","pr","pr","pr","pr","pwp","eti","mgt","nolec","nis","eti","mgt","mgt","pr","pr","pr","pr","ede","ede","pr","pr","mad","pwp","pr","pr","pr","pr","pr","pr","eti","mad","pwp","nis"]
+let dt2 = ["mad","nis","pr","pr","pr","pr","pr","pr","pwp","eti","mgt","nolec","nis","eti","mgt","mgt","pr","pr","pr","pr","ede","ede","pr","pr","mad","nis","pr","pr","pr","pr","pr","pr","eti","mad","pwp","pwp"]
 let semStartDate = new Date("1-1-2024")
 let semEndDate = new Date("4-9-2024")
+let lastDate = new Date("2-21-2024")
 let dates=[]
 
 
@@ -8,9 +10,17 @@ dates = initDates(semStartDate,dt)
 
 let newDates = datesGenerate(dates,48-3,semEndDate)
 
-
 for (let i = 0; i < newDates.length; i++) {
     console.log(newDates[i], i+1);
+    
+}
+
+let finalDates = regenerateDates(newDates,lastDate,semEndDate,dt2)
+console.log("\n\n");
+
+for (let i = 0; i < finalDates.length; i++) 
+{
+    console.log(finalDates[i], i+1);
     
 }
 
@@ -93,6 +103,31 @@ function initDates(semStartDate,dt)
     }
 
     return date
+}
+
+function regenerateDates(date,lastDate,semEndDate,dt2)
+{
+    let genDates,finalDates;
+
+    for(let i = 0 ; i<date.length; i++)
+    {
+        if (date[i]==lastDate.toDateString()) 
+        {
+            genDates= initDates(lastDate,dt2)
+
+            finalDates = datesGenerate(genDates,date.length-i-3,semEndDate)
+
+            date.splice(i)
+
+            date=date.concat(finalDates)
+            break 
+        }
+    }
+    
+
+    return date
+
+
 }
 
 
