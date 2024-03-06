@@ -76,9 +76,9 @@
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;">
 
+                <h2>Enter Practical Syllabus </h2>
                 <form method="post" action="insertpr.php">
                 <table class="tablecss tb_card">
-                        <h2>Enter Practical Syllabus </h2>
                         <tr>
                             <th>Practical No.</th>
                             <th>Unit no.</th>
@@ -107,7 +107,7 @@
                                 </td>
                                 
                                 <td>
-                                    <textarea class="seml" type="text" cols="10" name="unit_no[]"> </textarea>
+                                    <textarea class="sema" type="text" cols="10" name="unit_no[]"> </textarea>
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="20" name="course_outcome[]"> </textarea>
@@ -118,17 +118,14 @@
                                 <td>
                                     <textarea class="sem" type="text" cols="30" name="pr_topic[]">  </textarea>
                                 </td>
-                               
-                            
                             </tr>
                             <?php
                         }
                         ?>
-                        
                     </form>
                 </table>
-                <input type="submit" name="addSyllabus" class="button">
             </div>
+            <input type="submit" name="addSyllabus" class="button">
         </div>
     </div>
 </body>
