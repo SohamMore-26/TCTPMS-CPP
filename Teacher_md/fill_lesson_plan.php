@@ -18,7 +18,7 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -74,87 +74,87 @@
             </li>
         </div>
 
-       
-
-    <div class="tablecss" style="overflow:auto">
-        <div id="Lesson"></div>
-    </div>
-
-    <script>
-        // --------------------------------------------------------------------------------------------------------------------------------------
-        let temp = new Date()
-
-        let credits = 3
-
-        let dt = ["mad", "nis", "pr", "pr", "pr", "pr", "pr", "pr", "pwp", "eti", "mgt", "nolec", "nis", "eti", "mgt", "mgt", "pr", "pr", "pr", "pr", "ede", "ede", "pr", "pr", "mad", "pwp", "pr", "pr", "pr", "pr", "pr", "pr", "eti", "mad", "pwp", "nis"]
-
-        let lc
-
-        let k = 0
-
-        a: for (let i = 0; i < 7; i++) {
-
-            dayWeek = temp.getDay()
-
-            switch (dayWeek) {
-                case 1: lc = 1
-                    break
-                case 2: lc = 7
-                    break
-                case 3: lc = 13
-                    break
-                case 4: lc = 19
-                    break
-                case 5: lc = 25
-                    break
-                case 6: lc = 31
-                    break
-                case 0: let a = temp.getDate() + 1
-                    temp.setDate(a)
-                    continue a
-
-            }
 
 
-            for (let j = 0; j < 6; j++) {
-                if (dt[lc - 1] == "nis") {
-                    console.log(temp.toDateString());
+        <div class="tablecss" style="overflow:auto">
+            <div id="Lesson"></div>
+        </div>
+
+        <script>
+            // --------------------------------------------------------------------------------------------------------------------------------------
+            let temp = new Date()
+
+            let credits = 3
+
+            let dt = ["mad", "nis", "pr", "pr", "pr", "pr", "pr", "pr", "pwp", "eti", "mgt", "nolec", "nis", "eti", "mgt", "mgt", "pr", "pr", "pr", "pr", "ede", "ede", "pr", "pr", "mad", "pwp", "pr", "pr", "pr", "pr", "pr", "pr", "eti", "mad", "pwp", "nis"]
+
+            let lc
+
+            let k = 0
+
+            a: for (let i = 0; i < 7; i++) {
+
+                dayWeek = temp.getDay()
+
+                switch (dayWeek) {
+                    case 1: lc = 1
+                        break
+                    case 2: lc = 7
+                        break
+                    case 3: lc = 13
+                        break
+                    case 4: lc = 19
+                        break
+                    case 5: lc = 25
+                        break
+                    case 6: lc = 31
+                        break
+                    case 0: let a = temp.getDate() + 1
+                        temp.setDate(a)
+                        continue a
+
                 }
-                lc++
+
+
+                for (let j = 0; j < 6; j++) {
+                    if (dt[lc - 1] == "nis") {
+                        console.log(temp.toDateString());
+                    }
+                    lc++
+                }
+
+                let a = temp.getDate() + 1
+                temp.setDate(a)
             }
 
-            let a = temp.getDate() + 1
-            temp.setDate(a)
-        }
+            // ------------------------------------------------------------------------------------------------------------------------------------------------
+            let dates = [new Date("2024-01-02"), new Date("2024-01-03"), new Date("2024-01-06")]
+            let totalLecture = 48
+            let newDates = datesGenerate(dates, totalLecture - 3)
 
-        // ------------------------------------------------------------------------------------------------------------------------------------------------
-        let dates = [new Date("2024-01-02"), new Date("2024-01-03"), new Date("2024-01-06")]
-        let totalLecture = 48
-        let newDates = datesGenerate(dates, totalLecture - 3)
+            // console.log(newDates)
 
-        // console.log(newDates)
-
-        let tempDate, tdate
-
-
-        function datesGenerate(date, noOfLec) {
             let tempDate, tdate
 
-            for (let i = 0; i < noOfLec; i++) {
-                tdate = new Date(date[i])
 
-                // console.log(tdate.toDateString())
-                tempDate = tdate.getDate() + 7
+            function datesGenerate(date, noOfLec) {
+                let tempDate, tdate
 
-                tdate.setDate(tempDate)
+                for (let i = 0; i < noOfLec; i++) {
+                    tdate = new Date(date[i])
 
-                date.push(tdate)
+                    // console.log(tdate.toDateString())
+                    tempDate = tdate.getDate() + 7
+
+                    tdate.setDate(tempDate)
+
+                    date.push(tdate)
+
+                }
+                return date
 
             }
-            return date
-
-        }
-        function getIndianDateFormat(date) {
+            function getIndianDateFormat(date) {
                 const options = {
                     day: '2-digit',
                     month: '2-digit',
@@ -164,31 +164,36 @@
             }
 
 
-        function validate() {
-            let perC = document.getElementById("per");
-            perC.classList.add("visible");
-            perC.classList.remove("hid");
-        }
+            function validate() {
+                let perC = document.getElementById("per");
+                perC.classList.add("visible");
+                perC.classList.remove("hid");
+            }
 
-        var text = document.getElementById('Lesson');
-        var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Planned Topic Coverage</th><th>Issued By</th><th>Approved By</th><th>Status</th><th>Remarks</th><th>Save</th></tr></thead><tbody>';
+            var text = document.getElementById('Lesson');
+            var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Course Outcome</th><th>Unit Outcome</th><th>Planned Topic</th><th>Planned Sub-topic</th><th>Save</th></tr></thead><tbody>';
 
-        for (var i = 0; i < newDates.length; i++) {
-            let indianDate = getIndianDateFormat(new Date(newDates[i]));
+            for (var i = 0; i < newDates.length; i++) {
+                let indianDate = getIndianDateFormat(new Date(newDates[i]));
 
-            
-            // let day = newDates[i].getDate();
-            // let month = newDates[i].getMonth() + 1;
-            // let year = newDates[i].getFullYear();
+                <?php
+                include "config.php"; // Include your database configuration file
+                
+                // Fetch data from the database
+                $view = mysqli_query($con, "SELECT * FROM syllabus WHERE course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
 
-            let per = (i + 1) / 48 * 100
+                // Loop through fetched data and embed it into JavaScript for dynamic table generation
+                while ($row = mysqli_fetch_array($view)) {
+                
+                    // Embed fetched data into JavaScript
+                    echo "table += '<tr><td>{$row['lecture_no']}</td><td><input class=\"sem\" type=\"text\" value=\"$indianDate\"></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['course_outcome']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['unit_outcome']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['topic']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['sub_topic']}</textarea></td><td><button type=\"submit\" name=\"\" class=\"button\">Save</button></td></tr>';";
+                }
+                ?>
+            }
+            table += '</tbody></table>';
 
-            table += '<tr><td>' + (i + 1) + '</td><td>' + indianDate + '</td><td><textarea style="width: 453px; height: 129px;"></textarea></td><td><input type=text</td><td><input type=text></td><td><input type=checkbox></td><td><a href="">Remarks</a></td><td><button type="submit" name="" class="button">Save</button> </td></tr>';
-        }
-        table += '</tbody></table>';
-
-        text.innerHTML = table;
-    </script>
+            text.innerHTML = table;
+        </script>
 </body>
 
 </html>
