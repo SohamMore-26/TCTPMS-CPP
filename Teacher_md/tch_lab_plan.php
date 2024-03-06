@@ -45,8 +45,8 @@
                             </span> Courses</ul>
                     </a>
                 </div>
-                <!-- 
-                <div class="side_card">
+                 
+                <!-- <div class="side_card">
                     <a href="tch_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
                                 calendar_clock
@@ -73,20 +73,26 @@
         </div>
         <?php
         include "config.php";
-        if (isset($_SESSION['id'])) {
-            $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
+        session_start();
+        if (isset($_SESSION['firstName'])) {
+            $view = mysqli_query($con, "SELECT * FROM courseinfo WHERE teacher = '" . $_SESSION['firstName'] . "' AND practicalHours > 0") or die(mysqli_error($con));
         }
         ?>
         <div class="main_c_cont" id="cont_M">
-            <a href="fill_lab_plan.php?id=<?php echo $id; ?>">
-                <div class="m_card">
-                    <h3>
-                        <div class="icon"><span class="material-symbols-outlined">
-                                menu_book
-                            </span></div> Mobile Application Development(Batch A1)
-                    </h3>
-                </div>
-            </a>
+        <?php
+            while ($row = mysqli_fetch_array($view)) {
+                extract($row); ?>
+                <a href="fill_lab_plan.php?id=<?php echo $id; ?>">
+                    <div class="m_card">
+                        <h3>
+                            <div class="icon"><span class="material-symbols-outlined">
+                                    menu_book
+                                </span></div>
+                            <?php echo $row['courseTitle'] ?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)
+                        </h3>
+                    </div>
+                </a>
+                <?php }?>
         </div>
 
 

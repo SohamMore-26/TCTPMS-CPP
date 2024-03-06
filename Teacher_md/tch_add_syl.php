@@ -13,6 +13,13 @@
 </head>
 
 <body>
+    <?php
+    include "config.php";
+    if (isset($_GET['id'])) {
+        $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+        $row = mysqli_fetch_array($view);
+    }
+    extract($row); ?>
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
@@ -78,7 +85,7 @@
 
                 <table class="tablecss tb_card">
                     <form method="post" action="insert.php">
-                        <h2>Enter Syllabus Data</h2>
+                        <h2>Enter Syllabus of <?php echo $row['courseTitle']?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)</h2>
                         <tr>
                             <th>Lec. No.</th>
                             <th>Unit Name</th>
@@ -87,14 +94,8 @@
                             <th>Topic</th>
                             <th>Sub-Topic</th>
                         </tr>
-                        <?php
-                        include "config.php";
-                        if (isset($_GET['id'])) {
-                            $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
-                            $row = mysqli_fetch_array($view);
-                        }
-                        extract($row);
 
+                        <?php
                         $lc = $row['teachingHours'];
                         // Loop to generate 48 rows
                         for ($i = 1; $i <= $lc; $i++) {
