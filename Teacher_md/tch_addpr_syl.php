@@ -74,7 +74,7 @@
         </div>
 
         <div class="C_contain_scroll">
-            <div class="">
+            <div style="display: flex;align-items:center;flex-direction: column;">
 
                 <form method="post" action="insertpr.php">
                 <table class="tablecss tb_card">
@@ -98,6 +98,7 @@
 
                         $coursecode = $row['courseCode'];
 
+                        // Loop to generate 48 rows
                         for ($i = 1; $i <= $lc; $i++) {
                             ?>
                             <tr>
@@ -106,7 +107,7 @@
                                 </td>
                                 
                                 <td>
-                                    <textarea class="sem" type="text" cols="10" name="unit_no[]"> </textarea>
+                                    <textarea class="seml" type="text" cols="10" name="unit_no[]"> </textarea>
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="20" name="course_outcome[]"> </textarea>
@@ -123,9 +124,10 @@
                             <?php
                         }
                         ?>
-                    <input type="submit" name="addPrSyllabus" class="button">
-                    </table>
-                </form>
+                        
+                    </form>
+                </table>
+                <input type="submit" name="addSyllabus" class="button">
             </div>
         </div>
     </div>
