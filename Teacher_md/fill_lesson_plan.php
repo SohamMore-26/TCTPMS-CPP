@@ -90,16 +90,16 @@
             include "config.php";
             if (isset($_GET['course'])) {
                 $view = mysqli_query($con, "select * from syllabus where course ='" . $_GET['course'] . "' ") or die(mysqli_error($con));
-                $row = mysqli_fetch_array($view);
             }
-            extract($row);
             ?>
             <?php
             while ($row = mysqli_fetch_array($view)) {
-                extract($row); ?>
+                extract($row);
+                $lec = $row['lecno'] ?>
+
                 <tr>
                     <td><input type=text class="sem" value="<?php echo $row['lecno'] ?>"></td>
-                    <td><input type=text class="sem" value=""></td>
+                    <td><input id="<?php echo $row['lecno']; ?>" type=text class="sem" value=""></td>
                     <td><textarea class="sem"><?php echo $row['course_outcome'] ?></textarea></td>
                     <td><textarea class="sem"><?php echo $row['unit_outcome'] ?></textarea></td>
                     <td><textarea class="sem"><?php echo $row['unit_name'] ?></textarea></td>
@@ -204,19 +204,16 @@
             var text = document.getElementById('Lesson');
             var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Course Outcome</th><th>Unit Outcome</th><th>Unit Name</th><th>Planned Topic</th><th>Planned Sub Topic</th><th>Status</th><th>Save</th></tr></thead><tbody>';
 
-            for (var i = 0; i < newDates.length; i++) {
+
+            for (var i = 1; i <= i++ ) {
                 let indianDate = getIndianDateFormat(new Date(newDates[i]));
 
 
-                // let day = newDates[i].getDate();
-                // let month = newDates[i].getMonth() + 1;
-                // let year = newDates[i].getFullYear();
-
-                let per = (i + 1) / 48 * 100
-
-                // document.getElementById('date').innerHTML = indianDate; 
+                document.getElementById(i).value = indianDate;
 
             }
+
+
 
 
 
