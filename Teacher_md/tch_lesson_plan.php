@@ -1,3 +1,10 @@
+<?php
+    include "config.php";
+    session_start(); 
+    if (isset($_SESSION['id'])) {
+        $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,16 +79,21 @@
             </li>
         </div>
         <div class="main_c_cont" id="cont_M">
-            <a href="fill_lesson_plan.php">
-                <div class="m_card">
+            <?php
+            while ($row = mysqli_fetch_array($view)) {
+                extract($row); ?>
+                <a href="fill_lesson_plan.php?course=<?php echo $courseAbrevation; ?>">
+                    <div class="m_card">
                     <h3>
                         <div class="icon"><span class="material-symbols-outlined">
                                 menu_book
-                            </span></div> Emerging Trends
+                            </span></div>
+                        <?php echo $row['courseTitle']; ?>
                     </h3>
                 </div>
-            </a>
-
+                </a>
+                
+            <?php } ?>
         </div>
 
 

@@ -76,13 +76,13 @@
         <div class="C_contain_scroll">
             <div class="">
 
+                <form method="post" action="insertpr.php">
                 <table class="tablecss tb_card">
-                    <form method="post" action="insertpr.php">
                         <h2>Enter Practical Syllabus </h2>
                         <tr>
                             <th>Practical No.</th>
-                            <th>Course</th>
                             <th>Unit no.</th>
+                            <th>Course Outcome</th>
                             <th>Practical Outcome</th>
                             <th>Practical Name</th>
                         </tr>
@@ -102,13 +102,14 @@
                             ?>
                             <tr>
                                 <td>
-                                    <input class="sem" type="text" name="lecno[]" value="<?php echo $i; ?>">
+                                    <input class="sema" type="text" name="lecno[]" value="<?php echo $i; ?>">
                                 </td>
-                                <td>
-                                    <input class="sem" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
-                                </td>
+                                
                                 <td>
                                     <textarea class="sem" type="text" cols="10" name="unit_no[]"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20" name="course_outcome[]"> </textarea>
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="20" name="pr_outcome[]"> </textarea>
@@ -122,9 +123,9 @@
                             <?php
                         }
                         ?>
-                        <input type="submit" name="addPrSyllabus" class="button">
-                    </form>
-                </table>
+                    <input type="submit" name="addPrSyllabus" class="button">
+                    </table>
+                </form>
             </div>
         </div>
     </div>

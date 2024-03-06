@@ -81,8 +81,8 @@
                         <h2>Enter Syllabus Data</h2>
                         <tr>
                             <th>Lec. No.</th>
-                            <th>Course</th>
-                            <th>Unit</th>
+                            <th>Unit Name</th>
+                            <th>Course Outcome</th>
                             <th>Unit Outcome</th>
                             <th>Topic</th>
                             <th>Sub-Topic</th>
@@ -101,13 +101,14 @@
                             ?>
                             <tr>
                                 <td>
-                                    <input class="sem1" type="text" name="lecno[]" value="<?php echo $i; ?>">
+                                    <input class="sema" type="text" name="lecno[]" value="<?php echo $i; ?>">
                                 </td>
-                                <td>
-                                    <input class="sema" type="text" cols="10" name="course[]" value="<?php echo $row['courseAbrevation']; ?>">
-                                </td>
+
                                 <td>
                                     <textarea class="sem" type="text" cols="10" name="unit_name[]"> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20" name="course_outcome[]"> </textarea>
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="20" name="unit_outcome[]"> </textarea>
@@ -122,8 +123,8 @@
                             <?php
                         }
                         ?>
-                        
-                    
+
+
                 </table>
                 <input type="submit" name="addSyllabus" class="button"></form>
             </div>
