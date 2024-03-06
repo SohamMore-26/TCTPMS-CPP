@@ -102,7 +102,6 @@
                             <tr>
                                 <td>
                                     <input class="sema" type="text" name="lecno[]" value="<?php echo $i; ?>">
-                                    <input class="seml" type="text" name="lecno[]" value="<?php echo $i; ?>">
                                 </td>
 
                                 <td>
