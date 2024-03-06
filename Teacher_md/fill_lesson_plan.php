@@ -74,42 +74,11 @@
             </li>
         </div>
 
-        <table>
-            <tr>
-                <th>Lec. No.</th>
-                <th>Planed Dates</th>
-                <th>Course Outcome</th>
-                <th>Unit Outcome</th>
-                <th>Unit Name</th>
-                <th>Planned Topic</th>
-                <th>Planned Sub Topic</th>
-                <th>Status</th>
-                <th>Save</th>
-            </tr>
-            <?php
-            include "config.php";
-            if (isset($_GET['course'])) {
-                $view = mysqli_query($con, "select * from syllabus where course ='" . $_GET['course'] . "' ") or die(mysqli_error($con));
-            }
-            ?>
-            <?php
-            while ($row = mysqli_fetch_array($view)) {
-                extract($row);
-                $lec = $row['lecno'] ?>
 
-                <tr>
-                    <td><input type=text class="sem" value="<?php echo $row['lecno'] ?>"></td>
-                    <td><input id="<?php echo $row['lecno']; ?>" type=text class="sem" value=""></td>
-                    <td><textarea class="sem"><?php echo $row['course_outcome'] ?></textarea></td>
-                    <td><textarea class="sem"><?php echo $row['unit_outcome'] ?></textarea></td>
-                    <td><textarea class="sem"><?php echo $row['unit_name'] ?></textarea></td>
-                    <td><textarea class="sem"><?php echo $row['topic'] ?></textarea></textarea></td>
-                    <td><textarea class="sem"><?php echo $row['sub_topic'] ?></textarea></textarea></td>
-                    <td><input type=checkbox></td>
-                    <td><button type="submit" name="" class="button">Save</button> </td>
-                </tr>
-            <?php } ?>
-        </table>
+
+        <div class="tablecss" style="overflow:auto">
+            <div id="Lesson"></div>
+        </div>
 
         <script>
             // --------------------------------------------------------------------------------------------------------------------------------------
@@ -202,21 +171,28 @@
             }
 
             var text = document.getElementById('Lesson');
-            var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Course Outcome</th><th>Unit Outcome</th><th>Unit Name</th><th>Planned Topic</th><th>Planned Sub Topic</th><th>Status</th><th>Save</th></tr></thead><tbody>';
+            var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Course Outcome</th><th>Unit Outcome</th><th>Planned Topic</th><th>Planned Sub-topic</th><th>Save</th></tr></thead><tbody>';
 
-
-            for (var i = 1; i <= i++ ) {
+            for (var i = 0; i < newDates.length; i++) {
                 let indianDate = getIndianDateFormat(new Date(newDates[i]));
 
+                <?php
+                include "config.php"; // Include your database configuration file
+                
+                // Fetch data from the database
+                $view = mysqli_query($con, "SELECT * FROM syllabus WHERE course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
 
-                document.getElementById(i).value = indianDate;
-
+                // Loop through fetched data and embed it into JavaScript for dynamic table generation
+                while ($row = mysqli_fetch_array($view)) {
+                
+                    // Embed fetched data into JavaScript
+                    echo "table += '<tr><td>{$row['lecture_no']}</td><td><input class=\"sem\" type=\"text\" value=\"$indianDate\"></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['course_outcome']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['unit_outcome']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['topic']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['sub_topic']}</textarea></td><td><button type=\"submit\" name=\"\" class=\"button\">Save</button></td></tr>';";
+                }
+                ?>
             }
+            table += '</tbody></table>';
 
-
-
-
-
+            text.innerHTML = table;
         </script>
 </body>
 
