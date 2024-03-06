@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>HOD Home Module
+    <title>Admin Home Module
     </title>
 </head>
 
@@ -17,7 +17,7 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="button" id="button_lg" class="button">Logout</button>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -54,14 +54,41 @@
                 </div>
             </li>
         </div>
-        <div class="main_c_cont">
-            <div class="wel_card">
-                <h1>Welcome</h1>
-            </div>
+        <?php
+        include "config.php";
+        $view = mysqli_query($con, "select * from teacherinfo where firstName != 'Admin'") or die(mysqli_error($con));
+        ?>
+        <div class="C_contain_scroll">
+            <!-- <div class="w_card">
+                <h3>
+                    <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
+                            error
+                        </span></div> No Existing Teachers
+                </h3>
+            </div> -->
+            <?php
+            $i = 1;
+            while ($row = mysqli_fetch_array($view)) {
+                extract($row); ?>
+                <div class="m_card">
+                    <a href="adm_teacherform.php">
+                        <h3>
+                            Prof.
+                            <?php echo $row['firstName']; ?>
+                            <?php echo $row['middleName']; ?>
+                            <?php echo $row['lastName']; ?>
+                        </h3>
+                    </a>
+                </div>
+            <?php } ?>
+
         </div>
+
+
+
+    </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 
 </html>
