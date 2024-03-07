@@ -71,7 +71,7 @@
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>
                 <div class="m_card">
-                    <a href="adm_teacherform.php">
+                    <a href="hod_one_course.php?id=<?php echo $firstName; ?>">
                         <h3>
                             Prof.
                             <?php echo $row['firstName']; ?>
