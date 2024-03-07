@@ -19,7 +19,7 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -63,6 +63,12 @@
             </li>
         </div>
         <div class="C_contain_scroll">
+            <?php
+            include "config.php";
+            $view = mysqli_query($con, "select * from teacherinfo") or die(mysqli_error($con));
+
+
+            ?>
             <h2>Add Course Details</h2>
             <div class="add_course" id="add_course">
                 <div class="add_course_card_cont">
@@ -192,14 +198,26 @@
                                 </div>
                                 <div class="name">
                                     <b><label for="teacher" class="label">Course Teacher:</label></b>
-                                    <input class="sem" type="text" id="teacher" name="teacher"
+                                    <select class="sem" type="text" id="teacher" name="teacher"
                                         placeholder="Enter Course Teacher" required>
+                                        <option value="">Select Course Type</option>
+                                        <?php
+                                        $i = 1;
+                                        while ($row = mysqli_fetch_array($view)) {
+                                            extract($row);
+                                            $name = $row['firstName'];
+                                            $initial = strtoupper(substr($name, 0, 1));
+                                            ?>
+                                            <option value="<?php echo $row['teacherId']; ?>">
+                                                <?php echo $initial ?>.<?php echo $row['middleName']; ?> <?php echo $row['lastName']; ?>
+                                            </option>
+                                        <?php } ?>
                                 </div>
 
                             </div>
                             <div class="buttons">
                                 <button type="submit" name="addCourse" class="button">Add</button>
-                               <a href="adm_courses.php"> <button type="button" class="button">Back</button></a>
+                                <a href="adm_courses.php"> <button type="button" class="button">Back</button></a>
                             </div>
                         </form>
 
@@ -228,7 +246,7 @@ if (isset($_POST['addCourse'])) {
     if ($add) {
         echo "<script>";
         echo "alert('Successfully Added...');";
-        echo "</script>";
+        echo "</>";
     } else {
         echo "<script>";
         echo "alert('ERROR ! Fail..!')";

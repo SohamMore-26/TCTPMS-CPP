@@ -62,7 +62,7 @@
         </div>
         <div class="main_c_cont">
             <div class="m_card">
-                <a href="adm_timetableForm.php">
+                <a href="adm_timetableFormC.php">
                     <h3>
                         <div class="icon"><span class="material-symbols-outlined">
                                 add

@@ -29,17 +29,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
         </div>
     </div>
     <div class="main_cont">
-        <div class="sidebar">
+    <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.php">
+                    <a href="hod_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.php">
+                    <a href="tch_timetable.html">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -50,31 +50,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                     <a href="tch_courses.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
-                            </span> Courses</ul>
+                            </span>Approvals</ul>
                     </a>
                 </div>
-                <!-- 
                 <div class="side_card">
-                    <a href="tch_AcademicCal.php">
-                        <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
-                    </a>
-                </div> -->
-
-                <div class="side_card">
-                    <a href="tch_lesson_plan.php">
+                    <a href="hod_teacher.php">
                         <ul><span class="material-symbols-outlined">
                                 group
-                            </span> Lesson Plan</ul>
-                    </a>
-                </div>
-
-                <div class="side_card">
-                    <a href="tch_lab_plan.php">
-                        <ul><span class="material-symbols-outlined">
-                                pending_actions
-                            </span> Laboratory Plan</ul>
+                            </span> View Progress</ul>
                     </a>
                 </div>
             </li>

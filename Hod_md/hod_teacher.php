@@ -70,7 +70,7 @@
             $i = 1;
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>
-                <div class="m_card">
+                <div class="m_card" style="padding:10px">
                     <a href="hod_one_course.php?id=<?php echo $firstName; ?>">
                         <h3>
                             Prof.
