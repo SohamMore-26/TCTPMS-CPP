@@ -86,6 +86,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             </li>
         </div>
         <div class="main_c_cont" id="cont_M">
+            <h1>Courses</h1>
             <?php
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>
@@ -95,7 +96,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                         <div class="icon"><span class="material-symbols-outlined">
                                 menu_book
                             </span></div>
-                        <?php echo $row['courseTitle']; ?>
+                        <?php echo $row['courseTitle']; ?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)
                     </h3>
                 </div>
                 </a>

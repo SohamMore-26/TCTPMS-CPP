@@ -24,7 +24,7 @@
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.html">
+                    <a href="hod_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
