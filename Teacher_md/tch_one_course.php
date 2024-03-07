@@ -83,30 +83,52 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
         <div class="C_contain_scroll">
             <div class="course_card">
-            <?php
-            include "config.php";
-            if (isset($_GET['id'])) {
-                $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
-                $row = mysqli_fetch_array($view);
-            }
-                        extract($row);
-                        $lc = $row['teachingHours'];
-                        $pr = $row['practicalHours']; 
-                        ?>
+                <?php
+                include "config.php";
+                if (isset($_GET['id'])) {
+                    $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+                    $row = mysqli_fetch_array($view);
+                }
+                extract($row);
+                $lc = $row['teachingHours'];
+                $pr = $row['practicalHours'];
+                ?>
 
-                    <h2><?php echo $row['courseTitle']; ?> </h2>
-                    <h4>Course Code: <?php echo $row['courseCode']; ?> </h4>
-                    <h4>Course Abb: <?php echo $row['courseAbrevation']; ?></h4>
-                    <h4>Branch: <?php echo $row['branch']; ?></h4>
-                    <h4>No of lectures: <?php echo $row['teachingHours']; ?></h4>
+                <h2>
+                    <?php echo $row['courseTitle']; ?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)
+                </h2>
+                <h4>Course Code:
+                    <?php echo $row['courseCode']; ?>
+                </h4>
+                <h4>Course Abb:
+                    <?php echo $row['courseAbrevation']; ?>
+                </h4>
+                <h4>Branch:
+                    <?php echo $row['branch']; ?>
+                </h4>
+                <h4>
+                <?php 
+                    if($row['teachingHours'] > 0 &&  $row['practicalHours'] > 0){
+                        echo "No of lectures :" . $row['teachingHours']."<br><br>";         
+                        echo "No of practicals :" . $row['practicalHours'];
+                    }
+                    elseif( $row['teachingHours'] > 0){
+                        echo "No of lectures :" . $row['teachingHours'];         
+                    }
+                    else{
+                        echo "No of practicals :" . $row['practicalHours'];
+                    }
+                ?>
+                </h4>
 
-                    
-                    
-                    <div style="button_cont">
-                        <a href="tch_courses.php"><button type="button" class="button" > Back </button></a>
-                        <a href="tch_add_syl.php?id=<?php echo $id; ?>"><button id="addth" type="button" class="button hid" style="width: auto;" >Add Theory syllabus </button></a>
-                        <a href="tch_addpr_syl.php?id=<?php echo $id; ?>"><button id="addpr" type="button" class="button hid" style="width: auto;" >Add Practical syllabus </button></a>
-                    </div>         
+
+                <div style="button_cont">
+                    <a href="tch_courses.php"><button type="button" class="button"> Back </button></a>
+                    <a href="tch_add_syl.php?id=<?php echo $id; ?>"><button id="addth" type="button" class="button hid"
+                            style="width: auto;">Add Theory syllabus </button></a>
+                    <a href="tch_addpr_syl.php?id=<?php echo $id; ?>"><button id="addpr" type="button"
+                            class="button hid" style="width: auto;">Add Practical syllabus </button></a>
+                </div>
             </div>
         </div>
 

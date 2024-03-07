@@ -12,7 +12,13 @@
 </head>
 
 <body>
-
+    <?php
+    include "config.php";
+    if (isset($_GET['course'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+        $row = mysqli_fetch_array($view);
+    }
+    extract($row); ?>
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
@@ -73,127 +79,73 @@
                 </div>
             </li>
         </div>
+        <?php
+        include "config.php";
+        if (isset($_GET['course'])) {
+            $view1 = mysqli_query($con, "select * from syllabus where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+        } ?>
+        <div class="C_contain_scroll">
+            <div style="display: flex;align-items:center;flex-direction: column;">
 
+                <table class="tablecss tb_card">
+                    <form method="post" action="insert.php">
+                        <h2>Enter Lesson Plan of
+                            <?php echo $row['courseTitle'] ?> (<?php echo $row['branch'] ?><?php echo $row['semester'] ?><?php echo $row['scheme'] ?>)
+                        </h2>
+                        <tr>
+                            <th>Lec. No.</th>
+                            <th>Unit Name</th>
+                            <th>Course Outcome</th>
+                            <th>Unit Outcome</th>
+                            <th>Topic</th>
+                            <th>Sub-Topic</th>
+                            <th>Teaching Aids</th>
+                            <th>Add PPTS</th>
+                        </tr>
+                        <?php
+                        while ($row1 = mysqli_fetch_array($view1)) {
+                            extract($row1); ?>
+                            <tr>
+                                <td>
+                                    <input class="sema" type="text" name="lecno[]" value="<?php echo $row1['lecno']; ?>">
+                                </td>
 
-
-        <div class="tablecss" style="overflow:auto">
-            <div id="Lesson"></div>
+                                <td>
+                                    <textarea class="sem" type="text" cols="10"
+                                        name="unit_name[]"> <?php echo $row1['unit_name']; ?> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20"
+                                        name="course_outcome[]"> <?php echo $row1['course_outcome']; ?> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20"
+                                        name="unit_outcome[]"> <?php echo $row1['unit_outcome']; ?> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="30"
+                                        name="topic[]"> <?php echo $row1['topic']; ?>  </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="29" rows="5"
+                                        name="sub_topic[]"><?php echo $row1['sub_topic']; ?> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="29" rows="5"
+                                        name="teaching_aids[]"> </textarea>
+                                </td>
+                                <td>
+                                    <input type="file">
+                                </td>
+                            </tr>
+                        <?php } ?>
+                </table>
+                <input type="submit" name="addSyllabus" class="button">
+                </form>
+            </div>
         </div>
 
-        <script>
-            // --------------------------------------------------------------------------------------------------------------------------------------
-            let temp = new Date()
 
-            let credits = 3
-
-            let dt = ["mad", "nis", "pr", "pr", "pr", "pr", "pr", "pr", "pwp", "eti", "mgt", "nolec", "nis", "eti", "mgt", "mgt", "pr", "pr", "pr", "pr", "ede", "ede", "pr", "pr", "mad", "pwp", "pr", "pr", "pr", "pr", "pr", "pr", "eti", "mad", "pwp", "nis"]
-
-            let lc
-
-            let k = 0
-
-            a: for (let i = 0; i < 7; i++) {
-
-                dayWeek = temp.getDay()
-
-                switch (dayWeek) {
-                    case 1: lc = 1
-                        break
-                    case 2: lc = 7
-                        break
-                    case 3: lc = 13
-                        break
-                    case 4: lc = 19
-                        break
-                    case 5: lc = 25
-                        break
-                    case 6: lc = 31
-                        break
-                    case 0: let a = temp.getDate() + 1
-                        temp.setDate(a)
-                        continue a
-
-                }
-
-
-                for (let j = 0; j < 6; j++) {
-                    if (dt[lc - 1] == "nis") {
-                        console.log(temp.toDateString());
-                    }
-                    lc++
-                }
-
-                let a = temp.getDate() + 1
-                temp.setDate(a)
-            }
-
-            // ------------------------------------------------------------------------------------------------------------------------------------------------
-            let dates = [new Date("2024-01-02"), new Date("2024-01-03"), new Date("2024-01-06")]
-            let totalLecture = 48
-            let newDates = datesGenerate(dates, totalLecture - 3)
-
-            // console.log(newDates)
-
-            let tempDate, tdate
-
-
-            function datesGenerate(date, noOfLec) {
-                let tempDate, tdate
-
-                for (let i = 0; i < noOfLec; i++) {
-                    tdate = new Date(date[i])
-
-                    // console.log(tdate.toDateString())
-                    tempDate = tdate.getDate() + 7
-
-                    tdate.setDate(tempDate)
-
-                    date.push(tdate)
-
-                }
-                return date
-
-            }
-            function getIndianDateFormat(date) {
-                const options = {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                };
-                return date.toLocaleDateString('en-IN', options);
-            }
-
-
-            function validate() {
-                let perC = document.getElementById("per");
-                perC.classList.add("visible");
-                perC.classList.remove("hid");
-            }
-
-            var text = document.getElementById('Lesson');
-            var table = '<table><thead><tr><th>Lec. No.</th><th>Planed Dates</th><th>Course Outcome</th><th>Unit Outcome</th><th>Planned Topic</th><th>Planned Sub-topic</th><th>Save</th></tr></thead><tbody>';
-
-            for (var i = 0; i < newDates.length; i++) {
-                let indianDate = getIndianDateFormat(new Date(newDates[i]));
-
-                <?php
-                include "config.php"; // Include your database configuration file
-                
-                // Fetch data from the database
-                $view = mysqli_query($con, "SELECT * FROM syllabus WHERE course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
-
-                // Loop through fetched data and embed it into JavaScript for dynamic table generation
-                while ($row = mysqli_fetch_array($view)) {
-                
-                    // Embed fetched data into JavaScript
-                    echo "table += '<tr><td>{$row['lecture_no']}</td><td><input class=\"sem\" type=\"text\" value=\"$indianDate\"></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['course_outcome']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['unit_outcome']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['topic']}</textarea></td><td><textarea class=\"sem\" style=\"width: 453px; height: 129px;\">{$row['sub_topic']}</textarea></td><td><button type=\"submit\" name=\"\" class=\"button\">Save</button></td></tr>';";
-                }
-                ?>
-            }
-            table += '</tbody></table>';
-
-            text.innerHTML = table;
-        </script>
 </body>
 
 </html>

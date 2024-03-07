@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    $showError = "Login Failed...!";
+    header("location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,14 +25,14 @@
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-            <button type="button" id="button_lg" class="button">Logout</button>
+            <a href="\TCTPMS-CPP\logout.php"><button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.html">
+                    <a href="hod_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
@@ -56,7 +64,7 @@
         </div>
         <div class="main_c_cont">
             <div class="wel_card">
-                <h1>Welcome</h1>
+                <h1>Welcome <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] .$_SESSION['lastName']; ?></h1>
             </div>
         </div>
     </div>
