@@ -88,12 +88,15 @@
             <div style="display: flex;align-items:center;flex-direction: column;">
 
                 <table class="tablecss tb_card">
-                    <form method="post" action="insert.php">
+                    <form method="post" action="insert_lesson.php">
                         <h2>Enter Lesson Plan of
-                            <?php echo $row['courseTitle'] ?> (<?php echo $row['branch'] ?><?php echo $row['semester'] ?><?php echo $row['scheme'] ?>)
+                            <?php echo $row['courseTitle'] ?> (
+                            <?php echo $row['branch'] ?>
+                            <?php echo $row['semester'] ?>
+                            <?php echo $row['scheme'] ?>)
                         </h2>
                         <tr>
-                            <th>Lec. No.</th>
+                            <th>Planned Date</th>
                             <th>Unit Name</th>
                             <th>Course Outcome</th>
                             <th>Unit Outcome</th>
@@ -107,9 +110,8 @@
                             extract($row1); ?>
                             <tr>
                                 <td>
-                                    <input class="sema" type="text" name="lecno[]" value="<?php echo $row1['lecno']; ?>">
+                                    <input class="sem" type="date" name="planned_date[]">
                                 </td>
-
                                 <td>
                                     <textarea class="sem" type="text" cols="10"
                                         name="unit_name[]"> <?php echo $row1['unit_name']; ?> </textarea>
@@ -131,8 +133,7 @@
                                         name="sub_topic[]"><?php echo $row1['sub_topic']; ?> </textarea>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="29" rows="5"
-                                        name="teaching_aids[]"> </textarea>
+                                    <textarea class="sem" type="text" cols="29" rows="5" name="teaching_aids[]"> </textarea>
                                 </td>
                                 <td>
                                     <input type="file">
