@@ -65,7 +65,7 @@
         <div class="C_contain_scroll">
             <?php
             include "config.php";
-            $view = mysqli_query($con, "select * from teacherinfo") or die(mysqli_error($con));
+            $view = mysqli_query($con, "select * from teacherinfo where firstName != 'Admin'") or die(mysqli_error($con));
 
 
             ?>
@@ -92,9 +92,9 @@
                                     <select id="branch" name="branch" class="sem">
                                         <option value="">Select Branch</option>
                                         <option value="All Branch">All Branch</option>
-                                        <option value="Computer Engineering">Computer Engineering</option>
-                                        <option value="Civil Engineering">Civil Engineering</option>
-                                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                        <option value="CO">CO</option>
+                                        <option value="CE">CE</option>
+                                        <option value="ME">ME</option>
                                     </select>
                                 </div>
                                 <div class="name">
@@ -200,20 +200,19 @@
                                     <b><label for="teacher" class="label">Course Teacher:</label></b>
                                     <select class="sem" type="text" id="teacher" name="teacher"
                                         placeholder="Enter Course Teacher" required>
-                                        <option value="">Select Course Type</option>
+                                        <option value="">Select Teacher</option>
                                         <?php
                                         $i = 1;
                                         while ($row = mysqli_fetch_array($view)) {
                                             extract($row);
                                             $name = $row['firstName'];
                                             $initial = strtoupper(substr($name, 0, 1));
-                                            ?>
-                                            <option value="<?php echo $row['teacherId']; ?>">
-                                                <?php echo $initial ?>.<?php echo $row['middleName']; ?> <?php echo $row['lastName']; ?>
-                                            </option>
-                                        <?php } ?>
+                                            echo "<option value=\"$row[teacherId]\">$initial$row[middleName] $row[lastName]</option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-
+                                
                             </div>
                             <div class="buttons">
                                 <button type="submit" name="addCourse" class="button">Add</button>

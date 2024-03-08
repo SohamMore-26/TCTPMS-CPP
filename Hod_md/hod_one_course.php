@@ -84,10 +84,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
         </div>
 
     </div>
-    <script>
-        let a = '<?php echo $_GET['id'] ?>';
-        console.log(a);
-    </script>
 </body>
 
 </html>
