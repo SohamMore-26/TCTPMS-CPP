@@ -203,7 +203,7 @@
                                 <b><label for="sub" class="label">Course Abrevation :</label></b>
                                 <?php
                             include "config.php";
-                            $view = mysqli_query($con, "select * from courseinfo Where branch = 'CO' AND semester = '6' AND scheme = 'I'") or die(mysqli_error($con));
+                            $view = mysqli_query($con, "select * from courseinfo ") or die(mysqli_error($con));
                             ?>
                                 <select id="sub" name="time_course" class="sem">
                                     <option value="">Select Subject</option>
@@ -211,8 +211,8 @@
 
                                     while ($row = mysqli_fetch_array($view)) {
                                         extract($row); ?>
-                                        <option value="<?php echo $row['courseTitle']; ?>">
-                                            <?php echo $row['courseTitle']; ?>
+                                        <option value="<?php echo $row['courseAbrevation']; ?>">
+                                            <?php echo $row['courseAbrevation']; ?>
                                         <?php } ?>
                                 </select>
                                 <!-- <input class="sem" type="text" id="sub" name="time_course" placeholder="For.eg: STE"> -->

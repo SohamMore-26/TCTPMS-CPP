@@ -11,6 +11,7 @@ if (isset($_POST['login'])) {
         session_start();
         $_SESSION['loggedin'] = true;
         $_SESSION['id'] = $fetch['id'];
+        $_SESSION['teacherId'] = $fetch['teacherId'];
         $_SESSION['firstName'] = $fetch['firstName'];
         $_SESSION['middleName'] = $fetch['middleName'];
         $_SESSION['lastName'] = $fetch['lastName'];
