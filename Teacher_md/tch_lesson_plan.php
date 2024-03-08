@@ -2,7 +2,7 @@
     include "config.php";
     session_start(); 
     if (isset($_SESSION['id'])) {
-        $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
+        $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['teacherId'] . "'") or die(mysqli_error($con));
     }
     ?>
 <!DOCTYPE html>

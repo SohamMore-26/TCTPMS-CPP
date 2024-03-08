@@ -75,7 +75,7 @@
         include "config.php";
         session_start();
         if (isset($_SESSION['firstName'])) {
-            $view = mysqli_query($con, "SELECT * FROM courseinfo WHERE teacher = '" . $_SESSION['firstName'] . "' AND practicalHours > 0") or die(mysqli_error($con));
+            $view = mysqli_query($con, "SELECT * FROM courseinfo WHERE teacher = '" . $_SESSION['teacherId'] . "' AND practicalHours > 0") or die(mysqli_error($con));
         }
         ?>
         <div class="main_c_cont" id="cont_M">
