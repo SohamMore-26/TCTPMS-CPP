@@ -103,6 +103,8 @@
                             <tr>
                                 <td>
                                     <input class="sema" type="text" name="lecno[]" value="<?php echo $i; ?>">
+                                    <input class="sema" type="text" name="sub[]" value="<?php echo $row['courseAbrevation']?>" style="display: none;">
+                                    <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode']?>" style="display: none;" > 
                                 </td>
 
                                 <td>
@@ -127,7 +129,7 @@
 
 
                 </table>
-                <input type="submit" name="addSyllabus" class="button"></form>
+                 <input type="submit" name="addSyllabus" class="button"></form>
             </div>
         </div>
     </div>
