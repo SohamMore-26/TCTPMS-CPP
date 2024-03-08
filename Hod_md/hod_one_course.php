@@ -15,7 +15,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Teacher Home Module
+    <title>HOD Monitor Module
     </title>
 </head>
 
@@ -84,10 +84,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
         </div>
 
     </div>
-    <script>
-        let a = '<?php echo $_GET['id'] ?>';
-        console.log(a);
-    </script>
 </body>
 
 </html>
