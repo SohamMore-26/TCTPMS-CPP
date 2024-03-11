@@ -45,7 +45,7 @@
                             </span> Courses</ul>
                     </a>
                 </div>
-                 
+
                 <!-- <div class="side_card">
                     <a href="tch_AcademicCal.php">
                         <ul><span class="material-symbols-outlined">
@@ -80,7 +80,7 @@
         ?>
         <div class="main_c_cont" id="cont_M">
             <h1 style="margin-left:15px ; margin-top:0px">Laboratory Plan</h1>
-        <?php
+            <?php
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>
                 <a href="fill_lab_plan.php?id=<?php echo $id; ?>">
@@ -89,11 +89,14 @@
                             <div class="icon"><span class="material-symbols-outlined">
                                     menu_book
                                 </span></div>
-                            <?php echo $row['courseTitle'] ?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)
+                            <?php echo $row['courseTitle'] ?> (
+                            <?php echo $row['branch'] ?>
+                            <?php echo $row['semester'] ?>
+                            <?php echo $row['scheme'] ?>)
                         </h3>
                     </div>
                 </a>
-                <?php }?>
+            <?php } ?>
         </div>
 
 
