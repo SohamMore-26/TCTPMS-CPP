@@ -106,9 +106,9 @@
                                 <select id="branch" name="branch" class="sem">
                                     <option value="">Select Branch</option>
                                     <option value="All Branch">All Branch</option>
-                                    <option value="Computer Engineering">Computer Engineering</option>
-                                    <option value="Civil Engineering">Civil Engineering</option>
-                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    <option value="CO">CO</option>
+                                    <option value="CE">CE</option>
+                                    <option value="ME">ME</option>
                                 </select>
                             </div>
                         </div>
