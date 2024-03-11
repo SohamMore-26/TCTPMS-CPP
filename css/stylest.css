@@ -55,6 +55,7 @@ body {
     justify-content: center;
     box-shadow: -3px -3px 7px #c7c7c7ae, 3px 3px 5px rgba(0, 0, 0, 0.418);
     border-radius: 20px;
+    background-color: #e9fbff;
 }
 
 .cont_right {
@@ -505,6 +506,24 @@ a {
     justify-content: center;
 }
 
+.add_tt_card {
+    background-color: #E9FBFF;
+    width: 84.5%;
+    height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    padding: 60px;
+}
+
+.add_tt_card_cont {
+    display: flex;
+    justify-content: center;
+}
+
 .upd_course_card {
     background-color: #E9FBFF;
     width: 100%;
@@ -554,8 +573,8 @@ a {
 
 .form_card .button {
     padding: 10px;
-    background-color: rgb(80, 132, 206);
-    color: black;
+    background-color: rgb(20, 101, 214);
+    color: #cbcbcb;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -715,6 +734,7 @@ a {
         3px 3px 5px rgba(0, 0, 0, 0.418);
     border-radius: 10px;
     flex-direction: column;
+    background-color: #e9fbff;
 }
 
 .name {

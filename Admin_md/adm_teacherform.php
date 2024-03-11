@@ -118,8 +118,21 @@
                                 <b><label for="joiningDate" class="label">Joining Date :</label></b>
                                 <input class="sem" type="date" id="joiningDate" name="joiningDate" required>
                             </div>
-
                             <div class="name_r">
+                                <div class="name">
+                                    <b><label for="password" class="label">Password :</label></b>
+                                    <input class="sem" type="text" id="password" name="password"
+                                        placeholder="Assign Password">
+                                </div>
+                            </div>
+                            <!-- <div class="name">
+                                <b><label for="leavingDate" class="label">Leaving Date :</label></b>
+                                <input class="sem" type="date" id="leavingDate" name="leavingDate">
+                            </div> -->
+
+                        </div>
+                        <div class="name_cont">
+                            <!-- <div class="name_r">
                                 <b><label for="currentStatus" class="label">Current Status :</label></b>
                                 <div class="radio_cont">
                                     <input class="sem1" type="radio" id="currentStatus" name="currentStatus"
@@ -129,19 +142,8 @@
                                         value="Retried" required>
                                     Retried
                                 </div>
-                            </div>
-                            <div class="name">
-                                <b><label for="leavingDate" class="label">Leaving Date :</label></b>
-                                <input class="sem" type="date" id="leavingDate" name="leavingDate">
-                            </div>
-
-                        </div>
-                        <div class="name_r">
-                            <div class="name">
-                                <b><label for="password" class="label">Password :</label></b>
-                                <input class="sem" type="text" id="password" name="password"
-                                    placeholder="Assign Password">
-                            </div>
+                            </div> -->
+                            
                         </div>
                         <div class="form_button_cont">
                             <button type="submit" class="button" name="addTeacher">Add</button>
