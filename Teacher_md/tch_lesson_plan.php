@@ -80,7 +80,7 @@
         </div>
 
         <div class="main_c_cont" id="cont_M">
-            <h1> Lesson Plan </h1>
+            <h1 style="margin-left:15px ; margin-top:0px"> Lesson Plan </h1>
             <?php
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>
