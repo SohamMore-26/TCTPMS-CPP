@@ -3,12 +3,6 @@ session_start();
 include "config.php";
 $a = $_SESSION['firstName'] . " " . $_SESSION['middleName'] . " " . $_SESSION['lastName'];
 
-$view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['firstName'] . "'") or die(mysqli_error($con));
-$row = mysqli_fetch_array($view);
-
-extract($row);
-$sub = $row["courseAbrevation"];
-$code = $row["courseCode"];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -19,6 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Loop through each set of data submitted
     for ($i = 0; $i < count($_POST['unit_name']); $i++) {
         $lecno = $i+1;
+        $sub = $_POST['sub'][$i];
+        $code = $_POST['code'][$i];
         $planned_date = $_POST['planned_date'][$i];
         $unit_name = $_POST['unit_name'][$i];
         $course_outcome = $_POST['course_outcome'][$i];

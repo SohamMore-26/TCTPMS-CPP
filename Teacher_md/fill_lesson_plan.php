@@ -85,15 +85,11 @@
             $view1 = mysqli_query($con, "select * from syllabus where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column;">
-
+            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 480px;">
                 <table class="tablecss tb_card">
                     <form method="post" action="insert_lesson.php">
                         <h2>Enter Lesson Plan of
-                            <?php echo $row['courseTitle'] ?> (
-                            <?php echo $row['branch'] ?>
-                            <?php echo $row['semester'] ?>
-                            <?php echo $row['scheme'] ?>)
+                            <?php echo $row['courseTitle'] ?> (<?php echo $row['branch'] ?><?php echo $row['semester'] ?><?php echo $row['scheme'] ?>)
                         </h2>
                         <tr>
                             <th>Planned Date</th>
@@ -111,6 +107,8 @@
                             <tr>
                                 <td>
                                     <input class="sem" type="date" name="planned_date[]">
+                                    <input class="sema" type="text" name="sub[]" value="<?php echo $row['courseAbrevation']?>" style="display: none;">
+                                    <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode']?>" style="display: none;" > 
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="10"
@@ -145,7 +143,7 @@
                 </form>
             </div>
         </div>
-
+    </div>
 
 </body>
 
