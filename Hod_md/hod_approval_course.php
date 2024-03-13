@@ -25,11 +25,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             <h1 id="h1">Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="hod_home.php">
@@ -62,25 +62,37 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                 </div>
             </li>
         </div>
-        <?php
-        include "config.php";
-        $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_GET['id'] . "'") or die(mysqli_error($con));//change when teacher's first name changed
-        ?>
         <div class="main_c_cont" id="cont_M">
             <?php
-            while ($row = mysqli_fetch_array($view)) {
-                extract($row); ?>
-                <a href="tch_one_course.php?id=<?php echo $id; ?>">
-                    <div class="m_card">
-                    <h3>
-                        <div class="icon"><span class="material-symbols-outlined">
-                                menu_book
-                            </span></div>
-                        <?php echo $row['courseTitle']; ?>
-                    </h3>
-                </div>
-                </a>
-            <?php } ?>
+            include "config.php";
+            $qry = mysqli_query($con, "SELECT * FROM lesson_plan WHERE flag = 'Not approved'") or die(mysqli_error($con));
+            $techs = [];
+            while ($row = mysqli_fetch_array($qry)) {
+                $techs[] = "'" . $row['course'] . "'";
+            }
+            $techs_str = implode(',', $techs);
+            if ($techs_str != null) {
+                $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_GET['id'] . "' AND courseAbrevation IN ($techs_str)") or die(mysqli_error($con));
+                while ($row = mysqli_fetch_array($view)) {
+                    ?>
+                    <a href="hod_approve_form.php?course=<?php echo $row['courseAbrevation'] ?>">
+                        <div class="m_card">
+                            <h3>
+                                <div class="icon">
+                                    <span class="material-symbols-outlined">menu_book</span>
+                                </div>
+                                <?php echo $row['courseTitle']; ?>
+                            </h3>
+                        </div>
+                    </a>
+                    <?php
+                }
+            }
+            else
+                echo '<div class="m_card"><h3>No Approvals Pending</h3></div>'
+            ?>
+
+
         </div>
 
     </div>

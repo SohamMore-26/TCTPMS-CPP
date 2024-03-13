@@ -1,21 +1,3 @@
-<?php
-include "config.php";
-if (isset($_GET['course'])) {
-    $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
-    $row2 = mysqli_fetch_array($view1);
-}
-
-extract($row2);
-$x=$row2['course'];
-if ($row2['flag'] == "Approved") {
-?>
-    <script>
-    window.location.href="actual_lesson_plan.php?course=<?php echo $x; ?>";
-    </script>
-<?php
-}
-else{
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,7 +87,7 @@ else{
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column; margin-left: 480px;">
                 <table class="tablecss tb_card">
-                    <form method="post" action="insert_lesson.php">
+                    <form method="post" action="approve_lesson.php">
                         <h2>Enter Lesson Plan of
                             <?php echo $row['courseTitle'] ?> (
                             <?php echo $row['branch'] ?>
@@ -138,8 +120,8 @@ else{
                                         name="unit_name[]"> <?php echo $row1['unit_name']; ?> </textarea>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20"
-                                        name="course_outcome[]"> <?php echo $row1['course_outcome']; ?> </textarea>
+                                    <textarea class="sem" type="text" cols="20" name="course_outcome[]"
+                                        disabled> <?php echo $row1['course_outcome']; ?> </textarea>
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="20"
@@ -157,12 +139,14 @@ else{
                                     <textarea class="sem" type="text" cols="29" rows="5" name="teaching_aids[]"> </textarea>
                                 </td>
                                 <td>
-                                    <input type="file">
+                                    <input disabled type="file">
                                 </td>
                             </tr>
                         <?php } ?>
                 </table>
-                <input type="submit" name="addSyllabus" class="button">
+                <button type="submit" name="addSyllabus" class="button">
+                    Approve
+                </button>
                 </form>
             </div>
         </div>
@@ -171,5 +155,3 @@ else{
 </body>
 
 </html>
-
-<?php } ?>

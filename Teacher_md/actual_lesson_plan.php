@@ -112,7 +112,7 @@
                             extract($row1); ?>
                             <tr>
                                 <td>
-                                    <input type="hidden" id="row_id" name="row_id" value="<?php echo $row1['id']; ?>">
+                                    <input type="hidden" id="row_id" name="row_id[]" value="<?php echo $row1['id']; ?>">
                                     <input class="sem" type="text" name="planned_date[]" style="width:100px" value="<?php $plannedate = date("d-m-Y", strtotime($planned_date));
                                     echo $plannedate ?>">
                                 </td>

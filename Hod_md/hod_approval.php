@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>HOD Teacher Module
+    <title>HOD Module
     </title>
 </head>
 
@@ -54,6 +54,7 @@
                 </div>
             </li>
         </div>
+        <div class="main_c_cont" style="overflow:auto">
         <?php
         include "config.php";
 
@@ -62,24 +63,16 @@
         while ($row = mysqli_fetch_array($qry)) {
             $techs[] = "'" . $row['preparedby'] . "'";
         }
-
         $techString = implode(',', $techs);
+        if ($techString != null) {
         $view = mysqli_query($con, "SELECT * FROM teacherinfo WHERE firstName != 'Admin' AND firstName != 'Head' AND teacherId IN ({$techString})") or die(mysqli_error($con));
-        ?>
-        <div class="main_c_cont" style="overflow:auto">
-            <!-- <div class="w_card">
-                <h3>
-                    <div class="icon"><span class="material-symbols-outlined" style="margin-right: 10px;">
-                            error
-                        </span></div> No Existing Teachers
-                </h3>
-            </div> -->
-            <?php
+        
+            
             $i = 1;
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>
                 <div class="m_card" style="padding:10px">
-                    <a href="hod_one_course.php?id=<?php echo $teacherId; ?>">
+                    <a href="hod_approval_course.php?id=<?php echo $teacherId; ?>">
                         <h3>
                             Prof.
                             <?php echo $row['firstName']; ?>
@@ -88,7 +81,13 @@
                         </h3>
                     </a>
                 </div>
-            <?php } ?>
+            <?php }
+            
+            }
+        else{
+            echo '<div class="m_card"><h3>No Approvals Pending</h3></div>';
+        }
+        ?>
 
         </div>
 

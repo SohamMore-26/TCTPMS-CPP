@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Loop through each set of data submitted
-    for ($i = 0; $i < count($_POST['unit_name']); $i++) {
+    for ($i = 0; $i < $_POST['row_id']; $i++) {
 
 
         $id = $_POST['row_id'][$i];
