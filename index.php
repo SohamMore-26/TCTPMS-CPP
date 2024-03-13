@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
         if ($_SESSION['designation'] == "Lecturer") {
             header("location: Teacher_md/tch_home.php");
         } elseif ($_SESSION['designation'] == "Head of Department") {
-            header("location: Hod_md\hod_home.html");
+            header("location: Hod_md\hod_home.php");
         } else {
             header("location: Admin_md\adm_home.php");
 

@@ -56,7 +56,15 @@
         </div>
         <?php
         include "config.php";
-        $view = mysqli_query($con, "select * from teacherinfo where firstName != 'Admin' and firstName != 'Head'") or die(mysqli_error($con));
+
+        $qry = mysqli_query($con, "SELECT * FROM lesson_plan WHERE flag = 'Not approved'") or die(mysqli_error($con));
+        $techs = [];
+        while ($row = mysqli_fetch_array($qry)) {
+            $techs[] = "'" . $row['preparedby'] . "'";
+        }
+
+        $techString = implode(',', $techs);
+        $view = mysqli_query($con, "SELECT * FROM teacherinfo WHERE firstName != 'Admin' AND firstName != 'Head' AND teacherId IN ({$techString})") or die(mysqli_error($con));
         ?>
         <div class="main_c_cont" style="overflow:auto">
             <!-- <div class="w_card">
@@ -88,6 +96,12 @@
 
     </div>
     </div>
+
+
+    <style>
+        let aa="<?php echo $row[$techs_string]; ?>";
+        console.log(aa);
+    </style>
 
 </body>
 

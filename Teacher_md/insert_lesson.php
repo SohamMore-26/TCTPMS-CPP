@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "config.php";
-$a = $_SESSION['firstName'] . " " . $_SESSION['middleName'] . " " . $_SESSION['lastName'];
+$a = $_SESSION['teacherId'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,11 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $topic = $_POST['topic'][$i];
         $sub_topic = $_POST['sub_topic'][$i];
         $teaching_aids = $_POST['teaching_aids'][$i];
-
         // Insert data into the database
         $sql = "INSERT INTO `lesson_plan`(`course`, `coursecode`, `lecno`, `planned_date`, `unit_name`, `course_outcome`, `unit_outcome`, `topic`, `sub_topic`, `teaching_aids`, `preparedby`) VALUES ('$sub','$code','$lecno','$planned_date','$unit_name','$unit_outcome','$course_outcome','$topic','$sub_topic','$teaching_aids','$a')" or die(mysqli_error($con));
         if ($con->query($sql) === TRUE) {
-
             echo "<script>";
             echo 'window.location.href="tch_courses.php";';
             echo "</script>";
@@ -35,4 +33,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-?>; 
+?>;

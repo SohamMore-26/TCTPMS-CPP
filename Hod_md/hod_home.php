@@ -47,7 +47,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                 </div>
 
                 <div class="side_card">
-                    <a href="tch_courses.php">
+                    <a href="hod_approval.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
                             </span>Approvals</ul>
