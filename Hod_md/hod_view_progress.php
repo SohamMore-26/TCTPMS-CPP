@@ -85,7 +85,7 @@
             $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column;margin-left: 430px;">
+            <div style="display: flex;align-items:center;flex-direction: column;margin-left: 80px;">
 
                 <table class="tablecss tb_card">
                     <form id="your_form" method="post" action="actual.php">
@@ -105,15 +105,12 @@
                             <th>Actual Coverage</th>
                             <th>Status</th>
                             <th>Actual Date</th>
-                            <th>Add Assignments</th>
-                            <th>Submit</th>
                         </tr>
                         <?php
                         while ($row1 = mysqli_fetch_array($view1)) {
                             extract($row1); ?>
                             <tr>
                                 <td>
-                                    <input type="hidden" id="row_id" name="row_id[]" value="<?php echo $row1['id']; ?>">
                                     <?php $plannedate = date("d-m-Y", strtotime($planned_date));
                                     echo $plannedate ?>
                                 </td>
@@ -133,20 +130,13 @@
                                     <?php echo $row1['sub_topic']; ?>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20"
-                                        name="actual_coverage[]"></textarea>
+                                    <?php echo $row1['actual_coverage']; ?>
                                 </td>
                                 <td>
-                                    <input class="sem" type="checkbox" value="Done" name="status">
+                                    <?php echo $row1['status']; ?>
                                 </td>
                                 <td>
-                                    <input class="sem" type="date" name="actual_date[]">
-                                </td>
-                                <td>
-                                    <input type="file">
-                                </td>
-                                <td>
-                                    <input class="button" type="submit" onclick="submitForm(this)">
+                                    <?php echo $row1['actual_date']; ?>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -4,15 +4,17 @@ if (isset($_GET['course'])) {
     $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
     $row2 = mysqli_fetch_array($view1);
 }
+if($row2 != null){
 
-extract($row2);
-$x=$row2['course'];
-if ($row2['flag'] == "Approved") {
-?>
-    <script>
-    window.location.href="actual_lesson_plan.php?course=<?php echo $x; ?>";
-    </script>
-<?php
+    extract($row2);
+    $x=$row2['course'];
+    if ($row2['flag'] == "Approved") {
+    ?>
+        <script>
+        window.location.href="actual_lesson_plan.php?course=<?php echo $x; ?>";
+        </script>
+    <?php
+    }
 }
 else{
 ?>

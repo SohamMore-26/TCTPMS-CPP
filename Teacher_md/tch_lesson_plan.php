@@ -86,13 +86,15 @@
                 extract($row); ?>
                 <a href="fill_lesson_plan.php?course=<?php echo $courseAbrevation; ?>">
                     <div class="m_card">
-                    <h3>
-                        <div class="icon"><span class="material-symbols-outlined">
-                                menu_book
-                            </span></div>
-                        <?php echo $row['courseTitle']; ?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)
-                    </h3>
-                </div>
+                        <h3>
+                            <div class="icon">
+                                <span class="material-symbols-outlined">
+                                   menu_book
+                                </span>
+                            </div>
+                            <?php echo $row['courseTitle']; ?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)
+                        </h3>
+                    </div>
                 </a>
                 
             <?php } ?>

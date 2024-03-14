@@ -1,33 +1,38 @@
 <?php
 session_start();
 include "config.php";
-$a = $_SESSION['firstName'] . " " . $_SESSION['middleName'] . " " . $_SESSION['lastName'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['middleName'] . " " . $_SESSION['lastName'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $con->connect_error == false) {
 
-    if ($con->connect_error) {
-        die("Connection failed: " . $con->connect_error);
+    $id = $_POST['row_id'];
+    $actual_date = $_POST['actual_date'];
+    $status = $_POST['status'];
+    $actual_coverage = $_POST['actual_coverage'];
+
+    // Ensure $status is converted to a string for SQL query
+    if (!is_string($status)) {
+        $status = implode(',', $status);
+    }
+    if (!is_string($id)) {
+        $id = implode(',', $id);
+    }
+    if (!is_string($actual_coverage)) {
+        $actual_coverage = implode('', $actual_coverage);
+    }
+    if (!is_string($actual_date)) {
+        $actual_date = implode('', $actual_date);
     }
 
-    // Loop through each set of data submitted
-    for ($i = 0; $i < $_POST['row_id']; $i++) {
-
-
-        $id = $_POST['row_id'][$i];
-        $actual_date = $_POST['actual_date'][$i];
-        $status = $_POST['status'][$i];
-    }
-    // Insert data into the database
-    $sql = "UPDATE `lesson_plan` SET `status`='$status',`actual_date`='$actual_date' WHERE id = '$id'" or die(mysqli_error($con));
+    $sql = "UPDATE `lesson_plan` SET `status`='$status',`actual_date`='$actual_date',`actual_coverage`='$actual_coverage' WHERE id = '$id'";
+    echo $sql; 
+    
     if ($con->query($sql) === TRUE) {
-
-        echo $status;
-        echo "hello";
-        // echo "<script>";
-        // echo 'window.location.href="tch_courses.php";';
-        // echo "</script>";
+        echo "<script>";
+        echo "alert('Done Successfully');";
+        echo "</script>";
+        
     } else {
-        // echo "Error: " . $sql . "<br>" . $con->error;
+        echo "Error updating record: " . $con->error;
     }
 }
-?>

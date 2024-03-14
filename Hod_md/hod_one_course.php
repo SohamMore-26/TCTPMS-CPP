@@ -70,7 +70,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             <?php
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>
-                <a href="tch_one_course.php?id=<?php echo $id; ?>">
+                <a href="hod_view_progress.php?course=<?php echo $row['courseAbrevation']; ?>">
                     <div class="m_card">
                     <h3>
                         <div class="icon"><span class="material-symbols-outlined">
