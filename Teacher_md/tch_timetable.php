@@ -121,6 +121,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             ?>
 
             <div class="t_tb_card t_tablecss">
+            <h1>All Sem TimeTable</h1>
                 <table>
                     <tr>
                         <th>Day/Time</th>

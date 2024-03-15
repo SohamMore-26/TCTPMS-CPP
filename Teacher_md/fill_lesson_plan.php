@@ -1,23 +1,3 @@
-<?php
-include "config.php";
-if (isset($_GET['course'])) {
-    $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
-    $row2 = mysqli_fetch_array($view1);
-}
-if($row2 != null){
-
-    extract($row2);
-    $x=$row2['course'];
-    if ($row2['flag'] == "Approved") {
-    ?>
-        <script>
-        window.location.href="actual_lesson_plan.php?course=<?php echo $x; ?>";
-        </script>
-    <?php
-    }
-}
-else{
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +14,16 @@ else{
 <body>
     <?php
     include "config.php";
-    if (isset($_GET['course'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die(mysqli_error($con));
-        $row = mysqli_fetch_array($view);
-    }
-    extract($row); ?>
+    $sub = $_POST['sub'];
+    $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die(mysqli_error($con));
+    $row = mysqli_fetch_array($view);
+
+    extract($row);
+    $resultt = mysqli_query($con, "select teachingHours from courseinfo where courseAbrevation = '$sub'") or die(mysqli_error($con));
+    $row11 = mysqli_fetch_assoc($resultt);
+    $no_of_lec = $row11['teachingHours'];
+    
+    ?>
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
@@ -101,11 +86,11 @@ else{
         </div>
         <?php
         include "config.php";
-        if (isset($_GET['course'])) {
-            $view1 = mysqli_query($con, "select * from syllabus where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
-        } ?>
+
+        $view1 = mysqli_query($con, "select * from syllabus where course = '$sub'") or die(mysqli_error($con));
+        ?>
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 480px;">
+            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 180px;">
                 <table class="tablecss tb_card">
                     <form method="post" action="insert_lesson.php">
                         <h2>Enter Lesson Plan of
@@ -173,5 +158,3 @@ else{
 </body>
 
 </html>
-
-<?php } ?>
