@@ -6,6 +6,11 @@ let lecperweek=3
 let lastDate=[]
 
 lastDate = dates(48,semStartDate,dt,lecperweek)
+
+for (let i = 0; i < lastDate.length; i++) {
+  console.log(i,lastDate[i])
+  
+}
 console.log(lastDate);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -14,30 +19,37 @@ console.log(lastDate);
 function dates(noOfLec,semStartDate,dt,lecperweek)
 {
     let date=[]
+    let temp
 
-    let loopCounter = 0 
     
 
-    for(let i = 0 ; i < noOfLec ; i++)
+    for(let i = 0 ; i < lecperweek ; i++)
     {
-        date[i] = getNextDayFromDate(semStartDate, dt[loopCounter])
+      temp = new Date(getNextDayFromDate(semStartDate, dt[i]))
 
-        loopCounter++
-        if(loopCounter == lecperweek)
-            loopCounter=0
+      date.push(temp.toDateString())
         
-        lastDate.push(date[i].toDateString())
-        console.log(i+1,date[i].toDateString())
+    }
+    let tempDate
+
+    for (let i = 0; i < noOfLec-lecperweek; i++) 
+    {
+      tempDate = new Date(date[i])
+      
+      temp=tempDate.getDate()+7
+      tempDate.setDate(temp)
+      date.push(tempDate.toDateString())
     }
     
     
     return date
 }
 
-function getNextDayFromDate(date, day) {
+function getNextDayFromDate(date, day) 
+{
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const inputDayIndex = daysOfWeek.indexOf(day);
-    const inputDate = new Date(date);
+    let inputDate = new Date(date);
   
     while (inputDate.getDay() !== inputDayIndex) {
       inputDate.setDate(inputDate.getDate() + 1);
@@ -45,7 +57,6 @@ function getNextDayFromDate(date, day) {
   
     // Advance to the next occurrence of the given day
     inputDate.setDate(inputDate.getDate());
-  
     return inputDate;
   }
 
