@@ -26,21 +26,80 @@ $semend = $row['sem_duration_to']; // sem end date
 
 $time = mysqli_query($con, "select * from timetable where aca_year = '$acaYear' AND semester = '$sem' AND scheme = '$sch' AND division = '$div' AND course = '$sub'") or die(mysqli_error($con));
 
+$days = array(); // Declare an empty array
+
 while ($row1 = mysqli_fetch_array($time)) {
     extract($row1);
     $day = $row1['day'];
-    if (!is_string($day)) {
-        $day = implode(',', $day);
+    array_push($days, $day); // Push each day value into the array
+}
+?>
+
+
+<script>
+let dt= ["Monday","Wednesday","Friday"];
+// let d = ;
+let semStartDate = new Date(<?php echo $semstart?>);
+let date1=[]
+let lecperweek=3
+
+let lastDate=[]
+
+lastDate = dates(48,semStartDate,dt,lecperweek)
+
+for (let i = 0; i < lastDate.length; i++) {
+  console.log(i,lastDate[i])
+  
+}
+console.log(lastDate);
+console.log(semStartDate);
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+function dates(noOfLec,semStartDate,dt,lecperweek)
+{
+    let date=[]
+    let temp
+
+    
+
+    for(let i = 0 ; i < lecperweek ; i++)
+    {
+      temp = new Date(getNextDayFromDate(semStartDate, dt[i]))
+
+      date.push(temp.toDateString())
+        
     }
-    echo $day;
+    let tempDate
+
+    for (let i = 0; i < noOfLec-lecperweek; i++) 
+    {
+      tempDate = new Date(date[i])
+      
+      temp=tempDate.getDate()+7
+      tempDate.setDate(temp)
+      date.push(tempDate.toDateString())
+    }
+    
+    
+    return date
 }
 
+function getNextDayFromDate(date, day) 
+{
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const inputDayIndex = daysOfWeek.indexOf(day);
+    let inputDate = new Date(date);
+  
+    while (inputDate.getDay() !== inputDayIndex) {
+      inputDate.setDate(inputDate.getDate() + 1);
+    }
+  
+    // Advance to the next occurrence of the given day
+    inputDate.setDate(inputDate.getDate());
+    console.log(inputDate); 
+    return inputDate;
+  }
 
-// $subarray = $row1['course'];
-// echo $semend;
-// echo $sem;
-// echo $sch;
-// echo $sub;
-// echo $NOW;
-// echo $div;
-?>
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+</script>
