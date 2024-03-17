@@ -1,5 +1,5 @@
 let dt=["Monday","Wednesday","Friday"]
-let semStartDate = new Date("1-1-2024")
+let semStartDate = new Date("2024-01-01")
 let date1=[]
 let lecperweek=3
 

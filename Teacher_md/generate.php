@@ -15,8 +15,7 @@ if ($sem == "1") {
     $sem1 = "Odd (3,5)";
 }
 
-// echo $sem1;
-// echo $acaYear;
+
 
 $aca = mysqli_query($con, "select * from academic_cal where aca_year = '$acaYear' AND semester = '$sem1'") or die(mysqli_error($con));
 $row = mysqli_fetch_array($aca);
@@ -25,34 +24,37 @@ $semend = $row['sem_duration_to']; // sem end date
 
 
 $time = mysqli_query($con, "select * from timetable where aca_year = '$acaYear' AND semester = '$sem' AND scheme = '$sch' AND division = '$div' AND course = '$sub'") or die(mysqli_error($con));
-
 $days = array(); // Declare an empty array
-
 while ($row1 = mysqli_fetch_array($time)) {
-    extract($row1);
-    $day = $row1['day'];
-    array_push($days, $day); // Push each day value into the array
+  extract($row1);
+  $day = $row1['day'];
+  array_push($days, $day); // Push each day value into the array
 }
+
+$course = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
+$row2 = mysqli_fetch_array($course);
+$noOfLec = $row2['teachingHours'];
+$lecperweek = $row2['lecturePW'];
+
 ?>
 
 
 <script>
-let dt= ["Monday","Wednesday","Friday"];
-// let d = ;
-let semStartDate = new Date(<?php echo $semstart?>);
-let date1=[]
-let lecperweek=3
+let dt = <?php echo json_encode($days); ?>;
+let semStartDate = new Date("<?php echo $semstart?>");
+let date1=[];
+let lecperweek= <?php echo $lecperweek?>;
+let noOfLec = <?php echo $noOfLec?>;
+let lastDate=[];
 
-let lastDate=[]
-
-lastDate = dates(48,semStartDate,dt,lecperweek)
+lastDate = dates(noOfLec,semStartDate,dt,lecperweek)
 
 for (let i = 0; i < lastDate.length; i++) {
   console.log(i,lastDate[i])
   
 }
-console.log(lastDate);
-console.log(semStartDate);
+// console.log(lastDate);
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -97,9 +99,6 @@ function getNextDayFromDate(date, day)
   
     // Advance to the next occurrence of the given day
     inputDate.setDate(inputDate.getDate());
-    console.log(inputDate); 
     return inputDate;
   }
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
 </script>
