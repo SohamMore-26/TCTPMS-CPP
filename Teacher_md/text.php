@@ -15,5 +15,4 @@ if (isset($_POST['lastDate'])) {
 } else {
     echo "Error: No lecture dates received.";
 }
-
 ?>

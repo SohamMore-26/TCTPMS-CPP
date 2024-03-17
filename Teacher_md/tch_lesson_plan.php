@@ -134,8 +134,6 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die(mysqli_error($
                                 <?php echo $row['courseAbrevation']; ?>
                             <?php } ?>
                     </select>
-                    <b><label for="aca_year" class="label">No. Of Weeks :</label></b>
-                    <input class="sem" type="text" name="week" placeholder="Eg. 15">
                     <center>
                         <input type="submit" name="addSyllabus" class="button">
                     </center>
