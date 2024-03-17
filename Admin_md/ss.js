@@ -2,7 +2,6 @@ let dt=["Monday","Wednesday","Friday"]
 let semStartDate = new Date("1-1-2024")
 let date1=[]
 let lecperweek=3
-
 let lastDate=[]
 
 lastDate = dates(48,semStartDate,dt,lecperweek)
