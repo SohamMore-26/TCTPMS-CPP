@@ -62,7 +62,7 @@ function dates(noOfLec,semStartDate,dt,lecperweek,semEndDate)
         break
         
       }
-      date[i]=a.getDate()+"/"+(a.getMonth()+1)+"/"+a.getFullYear()
+      date[i]=a.getFullYear()+"/"+(a.getMonth()+1)+"/"+a.getDate()
       
     }
     
