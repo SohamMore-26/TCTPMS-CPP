@@ -63,9 +63,14 @@ $courseC = $row2['courseCode'];
 
   <div class="">
 
-  <h2> As Per <?php echo $courseT; ?> (<?php echo $sub ." " .$courseC;?>), there are <?php echo $lecperweek; ?> lectures per week and <?php echo $prperweek; ?> practicals per week. Do you want to generate your plan ??</h2>
+    <h2> As Per
+      <?php echo $courseT; ?> (
+      <?php echo $sub . " " . $courseC; ?>), there are
+      <?php echo $lecperweek; ?> lectures per week and
+      <?php echo $prperweek; ?> practicals per week. Do you want to generate your plan ??
+    </h2>
 
- <center> <button class="button">Generate</button> </center>
+    <center> <button class="button" onclick="generate()">Yes</button> </center>
   </div>
 
 </body>
@@ -167,11 +172,12 @@ $courseC = $row2['courseCode'];
       }
     };
     xhr.send(params);
+    alert('Done Successfully');
+    window.location.href="fill_lesson_plan.php";
   }
+
 </script>
 <?php
-
-include "config.php";
 
 // Check if lastDate parameter is received
 if (isset ($_POST['lastDate'])) {
@@ -179,10 +185,9 @@ if (isset ($_POST['lastDate'])) {
   $lastDate = json_decode($_POST['lastDate']);
 
   // Loop through the array and insert each date into the database
-  foreach ($lastDate as $lectureDate) {
-    mysqli_query($con, "INSERT INTO `test` (`date`) VALUES ('$lectureDate') ") or die (mysqli_error($con));
+  for ($i = 0; $i < count($lastDate); $i++) {
+    $lectureDate = $lastDate[$i];
+    $sql = mysqli_query($con, "INSERT INTO `test` (`date`) VALUES ('$lectureDate') ") or die (mysqli_error($con));
   }
-
-  echo "Lecture dates inserted successfully.";
 }
 ?>

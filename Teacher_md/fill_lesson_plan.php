@@ -12,18 +12,6 @@
 </head>
 
 <body>
-    <?php
-    include "config.php";
-    $sub = $_POST['sub'];
-    $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die(mysqli_error($con));
-    $row = mysqli_fetch_array($view);
-
-    extract($row);
-    $resultt = mysqli_query($con, "select teachingHours from courseinfo where courseAbrevation = '$sub'") or die(mysqli_error($con));
-    $row11 = mysqli_fetch_assoc($resultt);
-    $no_of_lec = $row11['teachingHours'];
-    
-    ?>
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
@@ -94,10 +82,7 @@
                 <table class="tablecss tb_card">
                     <form method="post" action="insert_lesson.php">
                         <h2>Enter Lesson Plan of
-                            <?php echo $row['courseTitle'] ?> (
-                            <?php echo $row['branch'] ?>
-                            <?php echo $row['semester'] ?>
-                            <?php echo $row['scheme'] ?>)
+                            <?php echo $row['courseTitle'] ?> (<?php echo $row['branch'] ?><?php echo $row['semester'] ?><?php echo $row['scheme'] ?>)
                         </h2>
                         <tr>
                             <th>Planned Date</th>
