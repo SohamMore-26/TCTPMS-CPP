@@ -36,67 +36,99 @@ $row2 = mysqli_fetch_array($course);
 $noOfLec = $row2['teachingHours'];
 $lecperweek = $row2['lecturePW'];
 
+echo "Generating Lesson Plan...";
+echo "It will take some while...";
 ?>
 
 
 <script>
   let dt = <?php echo json_encode($days); ?>;
   let semStartDate = new Date("<?php echo $semstart ?>");
+  let semEndDate = new Date("<?php echo $semend ?>");
   let date1 = [];
   let lecperweek = <?php echo $lecperweek ?>;
   let noOfLec = <?php echo $noOfLec ?>;
   let lastDate = [];
 
-  lastDate = dates(noOfLec, semStartDate, dt, lecperweek)
+  lastDate = dates(48,semStartDate,dt,lecperweek,semEndDate)
 
-  for (let i = 0; i < lastDate.length; i++) {
-    console.log(i, lastDate[i])
+for (let i = 0; i < lastDate.length; i++) {
+  console.log(i+1,lastDate[i])
+  
+}
+console.log(lastDate);
 
-  }
-  // console.log(lastDate);
-
-  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-  function dates(noOfLec, semStartDate, dt, lecperweek) {
-    let date = []
+function dates(noOfLec,semStartDate,dt,lecperweek,semEndDate)
+{
+    let date=[]
     let temp
 
-
-
-    for (let i = 0; i < lecperweek; i++) {
+    for(let i = 0 ; i < lecperweek ; i++)
+    {
       temp = new Date(getNextDayFromDate(semStartDate, dt[i]))
 
       date.push(temp.toDateString())
-
+        
     }
+    
     let tempDate
 
-    for (let i = 0; i < noOfLec - lecperweek; i++) {
+    for (let i = 0; i < noOfLec-lecperweek; i++) 
+    {
       tempDate = new Date(date[i])
+      
 
-      temp = tempDate.getDate() + 7
-      tempDate.setDate(temp)
-      date.push(tempDate.toDateString())
+      tempDate.setDate(tempDate.getDate()+7)
+
+      if (tempDate.getTime() > semEndDate.getTime())
+      {
+
+        for (let j = 0; j < noOfLec-i-lecperweek; j++) 
+        {
+          date.push("Extra Lecture")  
+        }
+        break
+      }
+      else
+      {
+        date.push(tempDate.toDateString())
+      }
     }
 
+    for (let i = 0; i < date.length; i++) 
+    {
+      let a = new Date(date[i])
 
+      if (date[i] == "Extra Lecture") {
+        break
+        
+      }
+      date[i]=a.getFullYear()+"-"+(a.getMonth()+1)+"-"+a.getDate()
+      
+    }
+    
+    
     return date
-  }
+}
 
-  function getNextDayFromDate(date, day) {
+function getNextDayFromDate(date, day) 
+{
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const inputDayIndex = daysOfWeek.indexOf(day);
     let inputDate = new Date(date);
-
+  
     while (inputDate.getDay() !== inputDayIndex) {
       inputDate.setDate(inputDate.getDate() + 1);
     }
-
+  
     // Advance to the next occurrence of the given day
     inputDate.setDate(inputDate.getDate());
     return inputDate;
   }
+
 
 
   let xhr = new XMLHttpRequest();
