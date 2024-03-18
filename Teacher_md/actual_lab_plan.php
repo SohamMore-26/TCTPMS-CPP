@@ -1,3 +1,15 @@
+<?php
+
+include "config.php";
+$acaYear = $_POST['aca_year'];
+$sem = $_POST['semester'];
+$sch = $_POST['scheme'];
+$sub = $_POST['sub'];
+$div = $_POST['div'];
+$batch = $_POST['batch'];
+
+$view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca_year = '$acaYear' AND batch = '$batch' AND division ='$div '") or die (mysqli_error($con));
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +21,10 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Teacher Home Module
     </title>
-
 </head>
 
 <body>
+
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion</h1>
@@ -63,6 +75,7 @@
                     </a>
                 </div>
 
+
                 <div class="side_card">
                     <a href="tch_lab_plan.php">
                         <ul><span class="material-symbols-outlined">
@@ -72,67 +85,76 @@
                 </div>
             </li>
         </div>
-
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column;">
+            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 180px;">
+                <table class="tablecss tb_card">
+                    <form method="post" action="insert_lab.php">
+                        <h2>Actual Laboratory Plan of
+                            <?php echo $sub ?> for Batch
+                            <?php echo $div . "" . $batch . ""; ?>
 
-                <h2>Enter Practical Syllabus </h2>
-                <form method="post" action="insertpr.php">
-                    <table class="tablecss tb_card">
+                        </h2>
                         <tr>
                             <th>Practical No.</th>
-                            <th>Unit Name</th>
-                            <th>Course Outcome</th>
+                            <th>Planned Date</th>
                             <th>Practical Outcome</th>
-                            <th>Practical Name</th>
+                            <th>Planned Practical</th>
+                            <th>Status</th>
+                            <th>Actual Date</th>
+                            <th>Actual Coverage</th>
+                            <th>Save</th>
                         </tr>
                         <?php
-                        include "config.php";
-                        if (isset ($_GET['id'])) {
-                            $view = mysqli_query($con, "select * from courseinfo where id = '" . $_GET['id'] . "'") or die (mysqli_error($con));
-                            $row = mysqli_fetch_array($view);
-                        }
-                        extract($row);
-
-                        $lc = $row['practicalHours'];
-
-                        $coursecode = $row['courseCode'];
-
-                        // echo $row['courseTitle'];
-                        // Loop to generate 48 rows
-                        for ($i = 1; $i <= $lc; $i++) {
-                            ?>
+                        while ($row = mysqli_fetch_array($view)) {
+                            extract($row); ?>
                             <tr>
+                                <input class="sema" type="text" name="aca_year[]" value="<?php echo $acaYear ?>"
+                                    style="display: none;">
+                                <input class="sema" type="text" name="sem[]" value="<?php echo $sem ?>"
+                                    style="display: none;">
+                                <input class="sema" type="text" name="sch[]" value="<?php echo $sch ?>"
+                                    style="display: none;">
+                                <input class="sema" type="text" name="batch[]" value="<?php echo $batch ?>"
+                                    style="display: none;">
+
                                 <td>
-                                    <input class="sema" type="text" name="lecno[]" value="<?php echo $i; ?>">
-                                    <input class="sema" type="text" name="sub[]"
-                                        value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
-                                    <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
+                                    <?php echo $row['pr_no'] ?>
+                                    <input class="sema" type="text" name="sub[]" value="<?php echo $row['course'] ?>"
+                                        style="display: none;">
+                                    <input class="sema" type="text" name="code[]" value="<?php echo $row['coursecode'] ?>"
                                         style="display: none;">
                                 </td>
+                                <td>
+                                    <?php echo $row['planned_date'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['pr_outcome']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['topic']; ?>
+                                </td>
+                                <td>
+                                    <input class="sem" type="checkbox" value="Done" name="status">
 
-                                <td>
-                                    <textarea class="sema" type="text" cols="10" name="unit_no[]"> </textarea>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20" name="course_outcome[]"> </textarea>
+                                    <input class="sem" type="date" name="actual_date[]">
+
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20" name="pr_outcome[]"> </textarea>
+                                    <textarea class="sem" type="text" cols="20" name="actual_coverage[]"></textarea>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="30" name="pr_topic[]">  </textarea>
+                                    <input class="button" type="submit" onclick="submitForm(this)" value="Save">
                                 </td>
                             </tr>
-                            <?php
-                        }
-                        ?>
-                        <input type="submit" name="addprSyllabus" class="button">
-                </form>
+                        <?php } ?>
                 </table>
+                </form>
             </div>
         </div>
-    </div>
+
+
 </body>
 
 </html>

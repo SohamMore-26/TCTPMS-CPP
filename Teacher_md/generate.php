@@ -183,7 +183,6 @@ $courseC = $row2['courseCode'];
 // Check if lastDate parameter is received
 if (isset ($_POST['lastDate'])) {
   // Decode the JSON array received from JavaScript
-  $sem2 = $sem;
   $lastDate = json_decode($_POST['lastDate']);
   $noOfLec = json_decode($_POST['noOfLec']);
     // Loop through the array and insert each date into the database

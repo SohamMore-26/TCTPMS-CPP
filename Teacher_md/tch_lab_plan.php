@@ -1,3 +1,13 @@
+<?php
+include "config.php";
+session_start();
+if (isset ($_SESSION['id'])) {
+    $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['teacherId'] . "' AND teachingHours > 0") or die (mysqli_error($con));
+}
+
+$view1 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
+$view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,34 +83,93 @@
         </div>
         <?php
         include "config.php";
-        session_start();
-        if (isset($_SESSION['firstName'])) {
-            $view = mysqli_query($con, "SELECT * FROM courseinfo WHERE teacher = '" . $_SESSION['teacherId'] . "' AND practicalHours > 0") or die(mysqli_error($con));
+        if (isset ($_SESSION['firstName'])) {
+            $view = mysqli_query($con, "SELECT * FROM courseinfo WHERE teacher = '" . $_SESSION['teacherId'] . "' AND practicalHours > 0") or die (mysqli_error($con));
         }
         ?>
         <div class="main_c_cont" id="cont_M">
             <h1 style="margin-left:15px ; margin-top:0px">Laboratory Plan</h1>
-            <?php
-            while ($row = mysqli_fetch_array($view)) {
-                extract($row); ?>
-                <a href="fill_lab_plan.php?id=<?php echo $id; ?>">
-                    <div class="m_card">
-                        <h3>
-                            <div class="icon"><span class="material-symbols-outlined">
-                                    menu_book
-                                </span></div>
-                            <?php echo $row['courseTitle'] ?> (
-                            <?php echo $row['branch'] ?>
-                            <?php echo $row['semester'] ?>
-                            <?php echo $row['scheme'] ?>)
-                        </h3>
-                    </div>
-                </a>
-            <?php } ?>
+            <div class="main_c_cont" id="cont_M">
+                <div style=" display: flex; align-items: center; justify-content: center;">
+                    <form method="post" action="fill_lab_plan.php"
+                        style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center;"
+                        ;>
+                        <div style="display:flex; flex-direction:row;align-items:center;">
+                            <b><label for="aca_year" class="label">Academic Year:</label></b>
+                            <select id="aca_year" name="aca_year" class="sem">
+                                <option value="">Select Academic Year</option>
+
+                                <?php while ($row1 = mysqli_fetch_array($view1)) {
+                                    extract($row1); ?>
+                                    <option value="<?php echo $row1['aca_year']; ?>">
+                                        <?php echo $row1['aca_year']; ?>
+                                        <?php echo $row1['semester']; ?>
+                                    <?php } ?>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; flex-direction:row;align-items:center;">
+                            <b><label for="aca_year" class="label">Semester:</label></b>
+                            <select id="aca_year" name="semester" class="sem">
+                                <option value="">Select Semester</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; flex-direction:row;align-items:center;">
+                            <b><label for="div" class="label">Divison:</label></b>
+                            <select id="div" name="div" class="sem">
+                                <option value="">Select Divison</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div style="display:flex; flex-direction:row;align-items:center;">
+                            <b><label for="batch" class="label">Batch:</label></b>
+                            <select id="batch" name="batch" class="sem">
+                                <option value="">Select Batch</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; flex-direction:row;align-items:center;">
+                            <b><label for="aca_year" class="label">Scheme:</label></b>
+                            <select id="aca_year" name="scheme" class="sem">
+                                <option value="">Select Scheme</option>
+                                <option value="I">I</option>
+                                <option value="K">K</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; flex-direction:row;align-items:center;">
+                            <b><label for="sub" class="label">Course:</label></b>
+                            <select id="sub" name="sub" class="sem">
+                                <option value="">Select Course</option>
+                                <?php
+                                while ($row = mysqli_fetch_array($view)) {
+                                    extract($row); ?>
+                                    <option value="<?php echo $row['courseAbrevation']; ?>">
+                                        <?php echo $row['courseAbrevation']; ?>
+                                    <?php } ?>
+                            </select>
+                        </div>
+
+
+                        <input type="submit" name="add" class="button">
+                        <input type="submit" name="view" class="button" value="View Lab Plan" formaction="actual_lab_plan.php">
+                    </form>
+                </div>
+            </div>
+
+
         </div>
-
-
-    </div>
 </body>
 
 </html>
