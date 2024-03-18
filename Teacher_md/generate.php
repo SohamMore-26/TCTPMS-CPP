@@ -38,8 +38,6 @@ $prperweek = $row2['practicalPW'];
 $courseT = $row2['courseTitle'];
 $courseC = $row2['courseCode'];
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -176,21 +174,22 @@ $courseC = $row2['courseCode'];
     };
     xhr.send(params);
     alert('Done Successfully');
-    window.location.href="fill_lesson_plan.php";
+    window.location.href = "fill_lesson_plan.php";
   }
 
 </script>
 <?php
-
 // Check if lastDate parameter is received
 if (isset ($_POST['lastDate'])) {
   // Decode the JSON array received from JavaScript
   $lastDate = json_decode($_POST['lastDate']);
-
-  // Loop through the array and insert each date into the database
+    // Loop through the array and insert each date into the database
   for ($i = 0; $i < count($lastDate); $i++) {
     $lectureDate = $lastDate[$i];
-    $sql = mysqli_query($con, "INSERT INTO `test` (`date`) VALUES ('$lectureDate') ") or die (mysqli_error($con));
+    $j = $i;
+    $j += 1;
+    $sql = mysqli_query($con, "INSERT INTO `test`(`date`, `lecno` , `semester`) VALUES ('$lectureDate','$j','$sem2')") or die (mysqli_error($con));
   }
 }
+
 ?>
