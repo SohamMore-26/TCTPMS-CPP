@@ -84,9 +84,13 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
 
         <div class="main_c_cont" id="cont_M">
             <h1 style="margin-left:15px ; margin-top:0px"> Lesson Plan </h1>
-            <div style=" display: flex; align-items: center; ">
-                    <form method="post" action="generate.php" style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center"; >
-                        <b><label for="aca_year" class="label">Academic Year :</label></b>
+            <div style=" display: flex; align-items: center; justify-content: center;">
+                <form method="post" action="generate.php"
+                    style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center;"
+                    ;>
+
+                    <div style="display:flex; flex-direction:row;align-items:center;">
+                        <b><label for="aca_year" class="label">Academic Year:</label></b>
                         <select id="aca_year" name="aca_year" class="sem">
                             <option value="">Select Academic Year</option>
 
@@ -97,9 +101,10 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                                     <?php echo $row1['semester']; ?>
                                 <?php } ?>
                         </select>
+                    </div>
 
-
-                        <b><label for="aca_year" class="label">Semester :</label></b>
+                    <div style="display:flex; flex-direction:row;align-items:center;">
+                        <b><label for="aca_year" class="label">Semester:</label></b>
                         <select id="aca_year" name="semester" class="sem">
                             <option value="">Select Semester</option>
                             <option value="1">1</option>
@@ -108,23 +113,29 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
+                    </div>
 
-                        <b><label for="divison" class="label">Divison :</label></b>
+                    <div style="display:flex; flex-direction:row;align-items:center;">
+                        <b><label for="divison" class="label">Divison:</label></b>
                         <select id="divison" name="divison" class="sem">
                             <option value="">Select Divison</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                         </select>
+                    </div>
 
-                        <b><label for="aca_year" class="label">Scheme :</label></b>
+                    <div style="display:flex; flex-direction:row;align-items:center;">
+                        <b><label for="aca_year" class="label">Scheme:</label></b>
                         <select id="aca_year" name="scheme" class="sem">
                             <option value="">Select Scheme</option>
                             <option value="I">I</option>
                             <option value="K">K</option>
                         </select>
-                        <b><label for="sub" class="label">Course :</label></b>
+                    </div>
+
+                    <div style="display:flex; flex-direction:row;align-items:center;">
+                        <b><label for="sub" class="label">Course:</label></b>
                         <select id="sub" name="sub" class="sem">
                             <option value="">Select Course</option>
                             <?php
@@ -135,9 +146,11 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                                     <?php echo $row['courseAbrevation']; ?>
                                 <?php } ?>
                         </select>
-                        
-                            <input type="submit" name="addSyllabus" class="button">
-                    </form>
+                    </div>
+
+
+                    <input type="submit" name="addSyllabus" class="button">
+                </form>
             </div>
 
         </div>

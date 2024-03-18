@@ -37,6 +37,9 @@ $lecperweek = $row2['lecturePW'];
 $prperweek = $row2['practicalPW'];
 $courseT = $row2['courseTitle'];
 $courseC = $row2['courseCode'];
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
