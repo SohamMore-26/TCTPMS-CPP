@@ -165,6 +165,7 @@ $courseC = $row2['courseCode'];
     let xhr = new XMLHttpRequest();
     let url = "generate.php";
     let params = "lastDate=" + JSON.stringify(lastDate);
+    let params1 = "noOfLec=" + JSON.stringify(noOfLec);
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
@@ -172,7 +173,7 @@ $courseC = $row2['courseCode'];
         console.log(xhr.responseText);
       }
     };
-    xhr.send(params);
+    xhr.send(params,params1);
     alert('Done Successfully');
     window.location.href = "fill_lesson_plan.php";
   }
@@ -182,10 +183,13 @@ $courseC = $row2['courseCode'];
 // Check if lastDate parameter is received
 if (isset ($_POST['lastDate'])) {
   // Decode the JSON array received from JavaScript
+  $sem2 = $sem;
   $lastDate = json_decode($_POST['lastDate']);
+  $noOfLec = json_decode($_POST['noOfLec']);
     // Loop through the array and insert each date into the database
   for ($i = 0; $i < count($lastDate); $i++) {
     $lectureDate = $lastDate[$i];
+    $sem2 = $noOfLec[$i];
     $j = $i;
     $j += 1;
     $sql = mysqli_query($con, "INSERT INTO `test`(`date`, `lecno` , `semester`) VALUES ('$lectureDate','$j','$sem2')") or die (mysqli_error($con));
