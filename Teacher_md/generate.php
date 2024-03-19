@@ -215,13 +215,13 @@ if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POS
   }
   if ($stmt->execute()) {
     echo "<script>";
-    echo "jQuery(document).ready(function() {";
     echo "alert('Dates Generated Successfully');";
-    echo "});";
     echo "</script>";
-} else {
+  } else {
     echo "Error: " . $stmt->error;
   }
-
+  
 }
+
 ?>
+
