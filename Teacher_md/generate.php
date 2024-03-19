@@ -62,137 +62,124 @@ $courseC = $row2['courseCode'];
     </div>
   </div>
 
-  <div class="">
 
-    <center>
-      <h2> As Per
-        <?php echo $courseT; ?> (
-        <?php echo $sub . " " . $courseC; ?>), there are
-        <?php echo $lecperweek; ?> lectures per week for Divison '
-        <?php echo $div; ?>' . Do you want to generate your plan ??
-      </h2>
-    </center>
-    <center> <button class="button" onclick="generate()"> Yes </button> </center>
-  </div>
+
 
 </body>
 
 </html>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
 <script>
+  let dt = <?php echo json_encode($days); ?>;
+  let semStartDate = new Date("<?php echo $semstart ?>");
+  let semEndDate = new Date("<?php echo $semend ?>");
+  let date1 = [];
+  let lecperweek = <?php echo $lecperweek ?>;
+  let noOfLec = <?php echo $noOfLec ?>;
+  var acaYear = "<?php echo $acaYear ?>";
+  var sem = <?php echo $sem ?>;
+  var sch = "<?php echo $sch ?>";
+  var sub = "<?php echo $sub ?>";
+  var div = "<?php echo $div ?>";
 
-  function generate() {
-    let dt = <?php echo json_encode($days); ?>;
-    let semStartDate = new Date("<?php echo $semstart ?>");
-    let semEndDate = new Date("<?php echo $semend ?>");
-    let date1 = [];
-    let lecperweek = <?php echo $lecperweek ?>;
-    let noOfLec = <?php echo $noOfLec ?>;
-    var acaYear = "<?php echo $acaYear ?>";
-    var sem = <?php echo $sem ?>;
-    var sch = "<?php echo $sch ?>";
-    var sub = "<?php echo $sub ?>";
-    var div = "<?php echo $div ?>";
-
-    let lastDate = [];
+  let lastDate = [];
 
 
-    lastDate = dates(noOfLec, semStartDate, dt, lecperweek, semEndDate)
+  lastDate = dates(noOfLec, semStartDate, dt, lecperweek, semEndDate)
 
-    for (let i = 0; i < lastDate.length; i++) {
-      console.log(i + 1, lastDate[i])
-
-    }
-    console.log(lastDate);
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-    function dates(noOfLec, semStartDate, dt, lecperweek, semEndDate) {
-      let date = []
-      let temp
-
-      for (let i = 0; i < lecperweek; i++) {
-        temp = new Date(getNextDayFromDate(semStartDate, dt[i]))
-
-        date.push(temp.toDateString())
-
-      }
-
-      let tempDate
-
-      for (let i = 0; i < noOfLec - lecperweek; i++) {
-        tempDate = new Date(date[i])
-
-
-        tempDate.setDate(tempDate.getDate() + 7)
-
-        if (tempDate.getTime() > semEndDate.getTime()) {
-
-          for (let j = 0; j < noOfLec - i - lecperweek; j++) {
-            date.push("Extra Lecture")
-          }
-          break
-        }
-        else {
-          date.push(tempDate.toDateString())
-        }
-      }
-
-      for (let i = 0; i < date.length; i++) {
-        let a = new Date(date[i])
-
-        if (date[i] == "Extra Lecture") {
-          break
-
-        }
-        date[i] = a.getFullYear() + "-" + (a.getMonth() + 1) + "-" + a.getDate()
-
-      }
-
-
-      return date
-    }
-
-    function getNextDayFromDate(date, day) {
-      const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      const inputDayIndex = daysOfWeek.indexOf(day);
-      let inputDate = new Date(date);
-
-      while (inputDate.getDay() !== inputDayIndex) {
-        inputDate.setDate(inputDate.getDate() + 1);
-      }
-
-      // Advance to the next occurrence of the given day
-      inputDate.setDate(inputDate.getDate());
-      return inputDate;
-    }
-
-
-
-    $.ajax({
-      url: 'generate.php',
-      type: 'POST',
-      data: {
-        acaYear: acaYear,
-        sem: sem,
-        sch: sch,
-        sub: sub,
-        div: div,
-        lastDate: JSON.stringify(lastDate)
-      },
-      success: function (response) {
-        console.log(response);
-      }
-    });
-
-
+  for (let i = 0; i < lastDate.length; i++) {
+    console.log(i + 1, lastDate[i])
 
   }
+  console.log(lastDate);
 
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+  function dates(noOfLec, semStartDate, dt, lecperweek, semEndDate) {
+    let date = []
+    let temp
+
+    for (let i = 0; i < lecperweek; i++) {
+      temp = new Date(getNextDayFromDate(semStartDate, dt[i]))
+
+      date.push(temp.toDateString())
+
+    }
+
+    let tempDate
+
+    for (let i = 0; i < noOfLec - lecperweek; i++) {
+      tempDate = new Date(date[i])
+
+
+      tempDate.setDate(tempDate.getDate() + 7)
+
+      if (tempDate.getTime() > semEndDate.getTime()) {
+
+        for (let j = 0; j < noOfLec - i - lecperweek; j++) {
+          date.push("Extra Lecture")
+        }
+        break
+      }
+      else {
+        date.push(tempDate.toDateString())
+      }
+    }
+
+    for (let i = 0; i < date.length; i++) {
+      let a = new Date(date[i])
+
+      if (date[i] == "Extra Lecture") {
+        break
+
+      }
+      date[i] = a.getFullYear() + "-" + (a.getMonth() + 1) + "-" + a.getDate()
+
+    }
+
+
+    return date
+  }
+
+  function getNextDayFromDate(date, day) {
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const inputDayIndex = daysOfWeek.indexOf(day);
+    let inputDate = new Date(date);
+
+    while (inputDate.getDay() !== inputDayIndex) {
+      inputDate.setDate(inputDate.getDate() + 1);
+    }
+
+    // Advance to the next occurrence of the given day
+    inputDate.setDate(inputDate.getDate());
+    return inputDate;
+  }
+
+
+
+  $.ajax({
+    url: 'generate.php',
+    type: 'POST',
+    data: {
+      acaYear: acaYear,
+      sem: sem,
+      sch: sch,
+      sub: sub,
+      div: div,
+      lastDate: JSON.stringify(lastDate)
+    },
+    success: function (response) {
+      console.log(response);
+    }
+  });
+  alert('Dates Generated Successfully');
+  window.location.href = "fill_lesson_plan.php";
 </script>
 <?php
+session_start();
+include "config.php";
 if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST['lastDate'], $_POST['div'])) {
 
   $acaYear = $_POST['acaYear'];
@@ -201,10 +188,11 @@ if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POS
   $sub = $_POST['sub'];
   $div = $_POST['div'];
   $lastDate = json_decode($_POST['lastDate'], true);
-
-  echo $acaYear;
-  // Process and store the arrays in the database
-  // Assuming $con is your database connection
+  $_SESSION['acaYear'] = $acaYear;
+  $_SESSION['sem'] = $sem;
+  $_SESSION['sch'] = $sch;
+  $_SESSION['sub'] = $sub;
+  $_SESSION['div'] = $div;
   foreach ($lastDate as $index => $date) {
     $stmt = $con->prepare("INSERT INTO test (lecno, aca_year, semester, divison, scheme, course,date) VALUES (?,?,?,?,?,?,?)");
     $i = $index + 1;
@@ -214,14 +202,10 @@ if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POS
     $stmt->execute();
   }
   if ($stmt->execute()) {
-    echo "<script>";
-    echo "alert('Dates Generated Successfully');";
-    echo "</script>";
+
   } else {
     echo "Error: " . $stmt->error;
   }
-  
+
 }
-
 ?>
-

@@ -13,9 +13,10 @@
 
 <body>
     <?php
+    session_start();
     include "config.php";
-    if (isset ($_GET['course'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die (mysqli_error($con));
+    if (isset ($_SESSION['sub'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_SESSION['sub'] . "'") or die (mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
@@ -81,8 +82,8 @@
         </div>
         <?php
         include "config.php";
-        if (isset ($_GET['course'])) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die (mysqli_error($con));
+        if (isset ($_SESSION['sub'])) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_SESSION['sub'] . "'") or die (mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;margin-left: 430px;">
