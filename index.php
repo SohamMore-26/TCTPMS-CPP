@@ -2,9 +2,9 @@
 include "Admin_md\config.php";
 $login = false;
 $showError = false;
-if (isset($_POST['login'])) {
+if (isset ($_POST['login'])) {
     extract($_POST);
-    $log = mysqli_query($con, "select * from teacherinfo where teacherId='" . $_POST['userid'] . "' AND password='" . $_POST['password'] . "'") or die(mysqli_error($con));
+    $log = mysqli_query($con, "select * from teacherinfo where teacherId='" . $_POST['userid'] . "' AND password='" . $_POST['password'] . "'") or die (mysqli_error($con));
     if (mysqli_num_rows($log) > 0) {
         $fetch = mysqli_fetch_array($log);
         $login = true;
@@ -47,8 +47,13 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-    <div class="login-container">
+    <div class="nav_head">
+        <div class="title_div">
+            <h1 id="h1">Teacher's Companion</h1>
+        </div>
+    </div>
 
+    <div class="login-container">
         <div class="Teach" id="teach">
             <form class="login-form" method="post">
                 <h1>Login</h1>

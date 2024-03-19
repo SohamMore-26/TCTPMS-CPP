@@ -1,3 +1,15 @@
+<?php
+
+include "config.php";
+$acaYear = $_POST['aca_year'];
+$sem = $_POST['semester'];
+$sch = $_POST['scheme'];
+$sub = $_POST['sub'];
+$div = $_POST['div'];
+$batch = $_POST['batch'];
+
+$view = mysqli_query($con, "select * from pr_syllabus where course = '$sub'") or die(mysqli_error($con));
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,10 +85,66 @@
                 </div>
             </li>
         </div>
+        <div class="C_contain_scroll">
+            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 180px;">
+                <table class="tablecss tb_card">
+                    <form method="post" action="insert_lab.php">
+                        <h2>Enter Laboratory Plan of <?php echo $sub?> for Batch <?php echo $div."".$batch."" ;?>
+                            
+                        </h2>
+                        <tr>
+                            <th>Practical No.</th>
+                            <th>Planned Date</th>
+                            <th>Unit Name</th>
+                            <th>Course Outcome</th>
+                            <th>Practical Outcome</th>
+                            <th>Planned Practical</th>
+                        </tr>
+                        <?php
+                        while ($row = mysqli_fetch_array($view)) {
+                            extract($row); ?>
+                            <tr>
+                            <input class="sema" type="text" name="aca_year[]" value="<?php echo $acaYear ?>" style="display: none;">
+                            <input class="sema" type="text" name="sem[]" value="<?php echo $sem ?>" style="display: none;">
+                            <input class="sema" type="text" name="sch[]" value="<?php echo $sch ?>" style="display: none;">
+                            <input class="sema" type="text" name="division[]" value="<?php echo $div ?>" style="display: none;">
+                            <input class="sema" type="text" name="batch[]" value="<?php echo $batch ?>" style="display: none;">
+
+                                <td>
+                                    <input class="sema" type="text" name="pr_no[]" value="<?php echo $row['pr_no'] ?>">
+                                    <input class="sema" type="text" name="sub[]"
+                                        value="<?php echo $row['course'] ?>" style="display: none;">
+                                    <input class="sema" type="text" name="code[]" value="<?php echo $row['coursecode'] ?>"
+                                        style="display: none;">
+                                </td>
+                                <td>
+                                    <input class="sem" type="date" name="planned_date[]">
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="10"
+                                        name="unit_name[]"> <?php echo $row['unit_no']; ?> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20"
+                                        name="course_outcome[]"> <?php echo $row['course_outcome']; ?> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="20"
+                                        name="pr_outcome[]"> <?php echo $row['pr_outcome']; ?> </textarea>
+                                </td>
+                                <td>
+                                    <textarea class="sem" type="text" cols="30"
+                                        name="topic[]"> <?php echo $row['pr_topic']; ?>  </textarea>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                </table>
+                <input type="submit" name="addSyllabus" class="button">
+                </form>
+            </div>
+        </div>
 
 
-
-       
 </body>
 
 </html>
