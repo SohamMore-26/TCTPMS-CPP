@@ -66,17 +66,19 @@ $courseC = $row2['courseCode'];
 
     <center>
       <h2> As Per
-        <?php echo $courseT; ?> (<?php echo $sub . " " . $courseC; ?>), there are
+        <?php echo $courseT; ?> (
+        <?php echo $sub . " " . $courseC; ?>), there are
         <?php echo $lecperweek; ?> lectures per week for Divison '
         <?php echo $div; ?>' . Do you want to generate your plan ??
       </h2>
     </center>
-    <center> <button class="button" onclick="generate()">Yes</button> </center>
+    <center> <button class="button" onclick="generate()"> Yes </button> </center>
   </div>
 
 </body>
 
 </html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
 
@@ -87,7 +89,14 @@ $courseC = $row2['courseCode'];
     let date1 = [];
     let lecperweek = <?php echo $lecperweek ?>;
     let noOfLec = <?php echo $noOfLec ?>;
+    var acaYear = "<?php echo $acaYear ?>";
+    var sem = <?php echo $sem ?>;
+    var sch = "<?php echo $sch ?>";
+    var sub = "<?php echo $sub ?>";
+    var div = "<?php echo $div ?>";
+
     let lastDate = [];
+
 
     lastDate = dates(noOfLec, semStartDate, dt, lecperweek, semEndDate)
 
@@ -162,41 +171,57 @@ $courseC = $row2['courseCode'];
 
 
 
-    let xhr = new XMLHttpRequest();
-    let url = "generate.php";
-    let params = "lastDate=" + JSON.stringify(lastDate);
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(xhr.responseText);
+    $.ajax({
+      url: 'generate.php',
+      type: 'POST',
+      data: {
+        acaYear: acaYear,
+        sem: sem,
+        sch: sch,
+        sub: sub,
+        div: div,
+        lastDate: JSON.stringify(lastDate)
+      },
+      success: function (response) {
+        console.log(response);
       }
-    };
-    xhr.send(params);
-    alert('Done Successfully');
-    window.location.href = "fill_lesson_plan.php";
+    });
+
+
+
   }
 
 </script>
 <?php
-// Check if lastDate parameter is received
-if (isset ($_POST['lastDate'])) {
-  // Decode the JSON array received from JavaScript
-  $lastDate = json_decode($_POST['lastDate']);
-  // Loop through the array and insert each date into the database
-  for ($i = 0; $i < count($lastDate); $i++) {
-    $lectureDate = $lastDate[$i];
-    $j = $i;
-    $j += 1;
-    $sql = mysqli_query($con, "INSERT INTO `test`(`date`, `lecno` , `semester`,`divison`) VALUES ('$lectureDate','$j','$sem','$div')") or die (mysqli_error($con));
+if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST['lastDate'], $_POST['div'])) {
+
+  $acaYear = $_POST['acaYear'];
+  $sem = $_POST['sem'];
+  $sch = $_POST['sch'];
+  $sub = $_POST['sub'];
+  $div = $_POST['div'];
+  $lastDate = json_decode($_POST['lastDate'], true);
+
+  echo $acaYear;
+  // Process and store the arrays in the database
+  // Assuming $con is your database connection
+  foreach ($lastDate as $index => $date) {
+    $stmt = $con->prepare("INSERT INTO test (lecno, aca_year, semester, divison, scheme, course,date) VALUES (?,?,?,?,?,?,?)");
+    $i = $index + 1;
+    $stmt->bind_param("sssssss", $i, $acaYear, $sem, $div, $sch, $sub, $date);
+    $lastDateSerialized = serialize($lastDate);
+
+    $stmt->execute();
+  }
+  if ($stmt->execute()) {
+    echo "<script>";
+    echo "jQuery(document).ready(function() {";
+    echo "alert('Dates Generated Successfully');";
+    echo "});";
+    echo "</script>";
+} else {
+    echo "Error: " . $stmt->error;
   }
 
-  
-  for ($i = 0; $i < count($lastDate); $i++) {
-    $j = $i;
-    $j += 1;
-    $sql = mysqli_query($con, "UPDATE `test` SET `aca_year`='$acaYear' WHERE lecno = '$j'") or die (mysqli_error($con));
-  }
 }
-
 ?>
