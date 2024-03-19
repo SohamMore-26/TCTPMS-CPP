@@ -109,23 +109,3 @@ function getNextDayFromDate(date, day) {
   
     return inputDate;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

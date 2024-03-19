@@ -14,8 +14,8 @@
 <body>
     <?php
     include "config.php";
-    if (isset($_GET['course'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+    if (isset ($_GET['course'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die (mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
@@ -31,14 +31,14 @@
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.php">
+                    <a href="hod_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.php">
+                    <a href="tch_timetable.html">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -46,43 +46,25 @@
                 </div>
 
                 <div class="side_card">
-                    <a href="tch_courses.php">
+                    <a href="hod_approval.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
-                            </span> Courses</ul>
+                            </span>Approvals</ul>
                     </a>
                 </div>
-                <!-- 
                 <div class="side_card">
-                    <a href="tch_AcademicCal.php">
-                        <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
-                    </a>
-                </div> -->
-
-                <div class="side_card">
-                    <a href="tch_lesson_plan.php">
+                    <a href="hod_teacher.php">
                         <ul><span class="material-symbols-outlined">
                                 group
-                            </span> Lesson Plan</ul>
-                    </a>
-                </div>
-
-
-                <div class="side_card">
-                    <a href="tch_lab_plan.php">
-                        <ul><span class="material-symbols-outlined">
-                                pending_actions
-                            </span> Laboratory Plan</ul>
+                            </span> View Progress</ul>
                     </a>
                 </div>
             </li>
         </div>
         <?php
         include "config.php";
-        if (isset($_GET['course'])) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+        if (isset ($_GET['course'])) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die (mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;margin-left: 80px;">

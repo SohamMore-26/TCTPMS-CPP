@@ -88,7 +88,7 @@ $view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column; margin-left: 180px;">
                 <table class="tablecss tb_card">
-                    <form method="post" action="insert_lab.php">
+                    <form id="your_form" method="post" action="actualpr.php">
                         <h2>Actual Laboratory Plan of
                             <?php echo $sub ?> for Batch
                             <?php echo $div . "" . $batch . ""; ?>
@@ -108,6 +108,7 @@ $view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca
                         while ($row = mysqli_fetch_array($view)) {
                             extract($row); ?>
                             <tr>
+                                <input type="hidden" id="row_id" name="row_id[]" value="<?php echo $row['id']; ?>">
                                 <input class="sema" type="text" name="aca_year[]" value="<?php echo $acaYear ?>"
                                     style="display: none;">
                                 <input class="sema" type="text" name="sem[]" value="<?php echo $sem ?>"
@@ -125,7 +126,8 @@ $view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca
                                         style="display: none;">
                                 </td>
                                 <td>
-                                    <?php echo $row['planned_date'] ?>
+                                    <?php $newdate2 = date("d-m-Y", strtotime($planned_date));
+                                    echo "$newdate2"; ?>
                                 </td>
                                 <td>
                                     <?php echo $row['pr_outcome']; ?>
@@ -134,15 +136,31 @@ $view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca
                                     <?php echo $row['topic']; ?>
                                 </td>
                                 <td>
-                                    <input class="sem" type="checkbox" value="Done" name="status">
+                                    <?php if ($row['status'] == "Done") { ?>
+                                        <span class="material-symbols-outlined" style="color:#42f554;font-weight:bold;">
+                                            done
+                                        </span>
+                                    <?php } else { ?>
+                                        <input class="sem" type="checkbox" value="Done" name="status">
+                                    <?php } ?>
 
                                 </td>
                                 <td>
-                                    <input class="sem" type="date" name="actual_date[]">
+                                    <?php if ($row['actual_date'] != "0000-00-00") { ?>
+                                        
+                                        <?php $newdate2 = date("d-m-Y", strtotime($actual_date));
+                                    echo "$newdate2"; ?>
+                                    <?php } else { ?>
+                                        <input class="sem" type="date" name="actual_date[]">
+                                    <?php } ?>
 
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20" name="actual_coverage[]"></textarea>
+                                    <?php if ($row['actual_coverage'] != "null") { ?>
+                                        <?php echo $row['actual_coverage']; ?>
+                                    <?php } else { ?>
+                                        <textarea class="sem" type="text" cols="20" name="actual_coverage[]"></textarea>
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <input class="button" type="submit" onclick="submitForm(this)" value="Save">
@@ -158,3 +176,11 @@ $view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca
 </body>
 
 </html>
+<script>
+    function submitForm(button) {
+        var row = button.closest('tr');
+        var id = row.querySelector('[name="row_id[]"]').value;
+        document.getElementById('row_id').value = id;
+        document.getElementById('your_form').submit();
+    }
+</script>

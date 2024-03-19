@@ -4,7 +4,7 @@ $acaYear = $_POST['aca_year'];
 $sem = $_POST['semester'];
 $sch = $_POST['scheme'];
 $sub = $_POST['sub'];
-$div = $_POST['divison'];
+$div = $_POST['div'];
 
 if ($sem == "1") {
   $sem1 = "1st Sem";
@@ -64,13 +64,13 @@ $courseC = $row2['courseCode'];
 
   <div class="">
 
-    <h2> As Per
-      <?php echo $courseT; ?> (
-      <?php echo $sub . " " . $courseC; ?>), there are
-      <?php echo $lecperweek; ?> lectures per week and
-      <?php echo $prperweek; ?> practicals per week. Do you want to generate your plan ??
-    </h2>
-
+    <center>
+      <h2> As Per
+        <?php echo $courseT; ?> (<?php echo $sub . " " . $courseC; ?>), there are
+        <?php echo $lecperweek; ?> lectures per week for Divison '
+        <?php echo $div; ?>' . Do you want to generate your plan ??
+      </h2>
+    </center>
     <center> <button class="button" onclick="generate()">Yes</button> </center>
   </div>
 
@@ -179,19 +179,23 @@ $courseC = $row2['courseCode'];
 
 </script>
 <?php
-
-echo $sem;
-echo $div;
 // Check if lastDate parameter is received
 if (isset ($_POST['lastDate'])) {
   // Decode the JSON array received from JavaScript
   $lastDate = json_decode($_POST['lastDate']);
-    // Loop through the array and insert each date into the database
+  // Loop through the array and insert each date into the database
   for ($i = 0; $i < count($lastDate); $i++) {
     $lectureDate = $lastDate[$i];
     $j = $i;
     $j += 1;
     $sql = mysqli_query($con, "INSERT INTO `test`(`date`, `lecno` , `semester`,`divison`) VALUES ('$lectureDate','$j','$sem','$div')") or die (mysqli_error($con));
+  }
+
+  
+  for ($i = 0; $i < count($lastDate); $i++) {
+    $j = $i;
+    $j += 1;
+    $sql = mysqli_query($con, "UPDATE `test` SET `aca_year`='$acaYear' WHERE lecno = '$j'") or die (mysqli_error($con));
   }
 }
 

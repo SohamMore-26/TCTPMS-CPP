@@ -14,8 +14,8 @@
 <body>
     <?php
     include "config.php";
-    if (isset($_GET['course'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+    if (isset ($_GET['course'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die (mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
@@ -81,8 +81,8 @@
         </div>
         <?php
         include "config.php";
-        if (isset($_GET['course'])) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+        if (isset ($_GET['course'])) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die (mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;margin-left: 430px;">
@@ -102,9 +102,9 @@
                             <th>Unit Outcome</th>
                             <th>Planned Topic</th>
                             <th>Planned Sub-Topic</th>
-                            <th>Actual Coverage</th>
                             <th>Status</th>
                             <th>Actual Date</th>
+                            <th>Actual Coverage</th>
                             <th>Add Assignments</th>
                             <th>Submit</th>
                         </tr>
@@ -133,18 +133,35 @@
                                     <?php echo $row1['sub_topic']; ?>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20"
-                                        name="actual_coverage[]"></textarea>
-                                </td>
-                                <td>
-                                    <input class="sem" type="checkbox" value="Done" name="status">
-                                </td>
-                                <td>
-                                    <input class="sem" type="date" name="actual_date[]">
-                                </td>
-                                <td>
-                                    <input type="file">
-                                </td>
+                                    <?php if ($row1['status'] == "Done") { ?>
+                                        <span class="material-symbols-outlined" style="color:#42f554;font-weight:bold;">
+                                            done
+                                        </span>
+                                        <?php } else { ?>
+                                            <input class="sem" type="checkbox" value="Done" name="status">
+                                            <?php } ?>
+                                            
+                                        </td>
+                                        <td>
+                                            <?php if ($row1['actual_date'] != "0000-00-00") { ?>
+                                                
+                                                <?php $newdate2 = date("d-m-Y", strtotime($actual_date));
+                                        echo "$newdate2"; ?>
+                                    <?php } else { ?>
+                                        <input class="sem" type="date" name="actual_date[]">
+                                        <?php } ?>
+                                        
+                                    </td>
+                                    <td>
+                                        <?php if ($row1['actual_coverage'] != "null") { ?>
+                                            <?php echo $row1['actual_coverage']; ?>
+                                        <?php } else { ?>
+                                            <textarea class="sem" type="text" cols="20" name="actual_coverage[]"></textarea>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <input type="file">
+                                    </td>
                                 <td>
                                     <input class="button" type="submit" onclick="submitForm(this)">
                                 </td>
