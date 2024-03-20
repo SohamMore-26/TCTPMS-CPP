@@ -90,126 +90,127 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
         <div class="main_c_cont" id="cont_M">
             <h1 style="margin-left:15px ; margin-top:0px">Laboratory Plan</h1>
             <div class="main_c_cont" id="cont_M">
-                <div style=" display: flex; align-items: center; justify-content: center;">
-                    <table>
-                        <form method="post" action="fill_lab_plan.php"
-                            style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center;"
-                            ;>
-                            <tr>
-                                <td>
-                                    <div style="display:flex; flex-direction:row;align-items:center;">
+                <div class="lesson_card">
+                    <div style=" display: flex; align-items: center; justify-content: center;">
+                        <table>
+                            <form method="post" action="fill_lab_plan.php"
+                                style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center;"
+                                ;>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row;align-items:center;">
 
-                                        <b><label for="aca_year" class="label">Academic Year:</label></b>
-                                    </div>
+                                            <b><label for="aca_year" class="label">Academic Year:</label></b>
+                                        </div>
 
-                                </td>
-                                <td><select id="aca_year" name="aca_year" class="sem">
-                                        <option value="">Select Academic Year</option>
+                                    </td>
+                                    <td><select id="aca_year" name="aca_year" class="sem">
+                                            <option value="">Select Academic Year</option>
 
-                                        <?php while ($row1 = mysqli_fetch_array($view1)) {
-                                            extract($row1); ?>
-                                            <option value="<?php echo $row1['aca_year']; ?>">
-                                                <?php echo $row1['aca_year']; ?>
-                                                <?php echo $row1['semester']; ?>
-                                            <?php } ?>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div style="display:flex; flex-direction:row;align-items:center;">
-                                        <b><label for="aca_year" class="label">Semester:</label></b>
-                                    </div>
-                                </td>
-                                <td><select id="aca_year" name="semester" class="sem">
-                                        <option value="">Select Semester</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                    </select></td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <div style="display:flex; flex-direction:row;align-items:center;">
-                                        <b><label for="div" class="label">Divison:</label></b>
-
-                                    </div>
-                                </td>
-                                <td> <select id="div" name="div" class="sem">
-                                        <option value="">Select Divison</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div style="display:flex; flex-direction:row;align-items:center;">
-                                        <b><label for="batch" class="label">Batch:</label></b>
-
-                                    </div>
-                                </td>
-
-                                <td><select id="batch" name="batch" class="sem">
-                                        <option value="">Select Batch</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div style="display:flex; flex-direction:row;align-items:center;">
-                                        <b><label for="aca_year" class="label">Scheme:</label></b>
-                                    </div>
-                                </td>
-
-                                <td><select id="aca_year" name="scheme" class="sem">
-                                        <option value="">Select Scheme</option>
-                                        <option value="I">I</option>
-                                        <option value="K">K</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <div style="display:flex; flex-direction:row;align-items:center;">
-                                        <b><label for="sub" class="label">Course:</label></b>
-
-                                    </div>
-                                </td>
-                                <td><select id="sub" name="sub" class="sem">
-                                        <option value="">Select Course</option>
-                                        <?php
-                                        while ($row = mysqli_fetch_array($view)) {
-                                            extract($row); ?>
-                                            <option value="<?php echo $row['courseAbrevation']; ?>">
-                                                <?php echo $row['courseAbrevation']; ?>
-                                            <?php } ?>
-                                    </select>
-                                </td>
-                            </tr>
+                                            <?php while ($row1 = mysqli_fetch_array($view1)) {
+                                                extract($row1); ?>
+                                                <option value="<?php echo $row1['aca_year']; ?>">
+                                                    <?php echo $row1['aca_year']; ?>
+                                                    <?php echo $row1['semester']; ?>
+                                                <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row;align-items:center;">
+                                            <b><label for="aca_year" class="label">Semester:</label></b>
+                                        </div>
+                                    </td>
+                                    <td><select id="aca_year" name="semester" class="sem">
+                                            <option value="">Select Semester</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                        </select></td>
+                                </tr>
 
 
-                            <tr>
-                                <td><input type="submit" name="add" class="button">
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row;align-items:center;">
+                                            <b><label for="div" class="label">Divison:</label></b>
 
-                                </td>
-                                <td><input type="submit" name="view" class="button" value="View Lab Plan"
-                                        formaction="actual_lab_plan.php"></td>
-                            </tr>
+                                        </div>
+                                    </td>
+                                    <td> <select id="div" name="div" class="sem">
+                                            <option value="">Select Divison</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row;align-items:center;">
+                                            <b><label for="batch" class="label">Batch:</label></b>
+
+                                        </div>
+                                    </td>
+
+                                    <td><select id="batch" name="batch" class="sem">
+                                            <option value="">Select Batch</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row;align-items:center;">
+                                            <b><label for="aca_year" class="label">Scheme:</label></b>
+                                        </div>
+                                    </td>
+
+                                    <td><select id="aca_year" name="scheme" class="sem">
+                                            <option value="">Select Scheme</option>
+                                            <option value="I">I</option>
+                                            <option value="K">K</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row;align-items:center;">
+                                            <b><label for="sub" class="label">Course:</label></b>
+
+                                        </div>
+                                    </td>
+                                    <td><select id="sub" name="sub" class="sem">
+                                            <option value="">Select Course</option>
+                                            <?php
+                                            while ($row = mysqli_fetch_array($view)) {
+                                                extract($row); ?>
+                                                <option value="<?php echo $row['courseAbrevation']; ?>">
+                                                    <?php echo $row['courseAbrevation']; ?>
+                                                <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
 
 
-                        </form>
-                    </table>
+                                <tr>
+                                    <td><input type="submit" name="add" class="button" value="Generate">
+
+                                    </td>
+                                    <td><input type="submit" name="view" class="button" value="View"
+                                            formaction="actual_lab_plan.php"></td>
+                                </tr>
+                            </form>
+                        </table>
+                    </div>
                 </div>
+
             </div>
 
 
