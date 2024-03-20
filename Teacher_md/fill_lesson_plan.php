@@ -73,10 +73,25 @@
             </li>
         </div>
         <?php
+        session_start();
+        $acaYear = $_SESSION['acaYear'];
+        $sem = $_SESSION['sem'];
+        $sch = $_SESSION['sch'];
+        $sub = $_SESSION['sub'];
+        $div = $_SESSION['div'];
         include "config.php";
 
-        $view1 = mysqli_query($con, "select * from syllabus where course = '$sub'") or die(mysqli_error($con));
-        ?>
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die (mysqli_error($con));
+        $row = mysqli_fetch_array($view);
+        extract($row);
+
+        $view1 = "SELECT *
+        FROM test 
+        FULL JOIN syllabus 
+        ON test.lecno = syllabus.lecno 
+        AND test.course = syllabus.course
+        WHERE test.aca_year = '$acaYear'
+        " ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column; margin-left: 180px;">
                 <table class="tablecss tb_card">
@@ -99,11 +114,17 @@
                             extract($row1); ?>
                             <tr>
                                 <td>
-                                    <input class="sem" type="date" name="planned_date[]">
+                                    <?php
+                                    while ($row2 = mysqli_fetch_array($view2)) {
+                                        extract($row2); ?>
+                                        <input class="sem" type="text" name="planned_date[]"
+                                            value="<?php echo $row2['date'] ?>">
+                                    <?php } ?>
                                     <input class="sema" type="text" name="sub[]"
                                         value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
                                     <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
                                         style="display: none;">
+
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="10"
