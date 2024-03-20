@@ -85,19 +85,18 @@
         $row = mysqli_fetch_array($view);
         extract($row);
 
-        $view1 = "SELECT *
-        FROM test 
-        FULL JOIN syllabus 
-        ON test.lecno = syllabus.lecno 
-        AND test.course = syllabus.course
-        WHERE test.aca_year = '$acaYear'
-        " ?>
+        $view1 = mysqli_query($con, "SELECT * FROM test JOIN syllabus ON syllabus.course = test.course AND syllabus.lecno = test.lecno  WHERE syllabus.course = '$sub'") or die (mysqli_error($con));
+        ?>
+
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 180px;">
+            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 530px;">
                 <table class="tablecss tb_card">
                     <form method="post" action="insert_lesson.php">
                         <h2>Enter Lesson Plan of
-                            <?php echo $row['courseTitle'] ?> (<?php echo $row['branch'] ?><?php echo $row['semester'] ?><?php echo $row['scheme'] ?>)
+                            <?php echo $row['courseTitle'] ?> (
+                            <?php echo $row['branch'] ?>
+                            <?php echo $row['semester'] ?>
+                            <?php echo $row['scheme'] ?>)
                         </h2>
                         <tr>
                             <th>Planned Date</th>
@@ -114,12 +113,9 @@
                             extract($row1); ?>
                             <tr>
                                 <td>
-                                    <?php
-                                    while ($row2 = mysqli_fetch_array($view2)) {
-                                        extract($row2); ?>
-                                        <input class="sem" type="text" name="planned_date[]"
-                                            value="<?php echo $row2['date'] ?>">
-                                    <?php } ?>
+
+                                    <input class="sem" type="text" name="planned_date[]"
+                                        value="<?php echo $row1['date'] ?>">
                                     <input class="sema" type="text" name="sub[]"
                                         value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
                                     <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
@@ -155,7 +151,7 @@
                             </tr>
                         <?php } ?>
                 </table>
-                <input type="submit" name="addSyllabus" class="button">
+                <input type="submit" name="addSyllabus" class="button" value="Verify">
                 </form>
             </div>
         </div>

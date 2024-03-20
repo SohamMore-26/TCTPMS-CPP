@@ -15,8 +15,13 @@
     <?php
     session_start();
     include "config.php";
-    if (isset ($_GET['sub'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['sub'] . "'") or die (mysqli_error($con));
+    $acaYear = $_POST['aca_year'];
+    $sem = $_POST['semester'];
+    $sch = $_POST['scheme'];
+    $sub = $_POST['sub'];
+    $div = $_POST['div'];
+    if ($sub) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die (mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
@@ -82,8 +87,9 @@
         </div>
         <?php
         include "config.php";
-        if (isset ($_GET['sub'])) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['sub'] . "'") or die (mysqli_error($con));
+       
+        if ($sub) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '$sub' ") or die (mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;margin-left: 430px;">
@@ -138,31 +144,31 @@
                                         <span class="material-symbols-outlined" style="color:#42f554;font-weight:bold;">
                                             done
                                         </span>
-                                        <?php } else { ?>
-                                            <input class="sem" type="checkbox" value="Done" name="status">
-                                            <?php } ?>
-                                            
-                                        </td>
-                                        <td>
-                                            <?php if ($row1['actual_date'] != "0000-00-00") { ?>
-                                                
-                                                <?php $newdate2 = date("d-m-Y", strtotime($actual_date));
+                                    <?php } else { ?>
+                                        <input class="sem" type="checkbox" value="Done" name="status">
+                                    <?php } ?>
+
+                                </td>
+                                <td>
+                                    <?php if ($row1['actual_date'] != "0000-00-00") { ?>
+
+                                        <?php $newdate2 = date("d-m-Y", strtotime($actual_date));
                                         echo "$newdate2"; ?>
                                     <?php } else { ?>
                                         <input class="sem" type="date" name="actual_date[]">
-                                        <?php } ?>
-                                        
-                                    </td>
-                                    <td>
-                                        <?php if ($row1['actual_coverage'] != "null") { ?>
-                                            <?php echo $row1['actual_coverage']; ?>
-                                        <?php } else { ?>
-                                            <textarea class="sem" type="text" cols="20" name="actual_coverage[]"></textarea>
-                                        <?php } ?>
-                                    </td>
-                                    <td>
-                                        <input type="file">
-                                    </td>
+                                    <?php } ?>
+
+                                </td>
+                                <td>
+                                    <?php if ($row1['actual_coverage'] != null) { ?>
+                                        <?php echo $row1['actual_coverage']; ?>
+                                    <?php } else { ?>
+                                        <textarea class="sem" type="text" cols="20" name="actual_coverage[]"></textarea>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <input type="file">
+                                </td>
                                 <td>
                                     <input class="button" type="submit" onclick="submitForm(this)">
                                 </td>
