@@ -24,12 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $con->connect_error == false) {
         $actual_date = implode('', $actual_date);
     }
 
-    $sql = "UPDATE `lesson_plan` SET `status`='$status',`actual_date`='$actual_date',`actual_coverage`='$actual_coverage' WHERE id = '$id'";    
+    $sql = "UPDATE `lesson_plan` SET `status`='$status',`actual_date`='$actual_date',`actual_coverage`='$actual_coverage' WHERE id = '$id'";
     if ($con->query($sql) === TRUE) {
         echo "<script>";
         echo "alert('Done Successfully');";
+        echo 'window.location.href="actual_lesson_plan.php";';
         echo "</script>";
-        
+
     } else {
         echo "Error updating record: " . $con->error;
     }
