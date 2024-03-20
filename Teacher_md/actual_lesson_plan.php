@@ -82,8 +82,8 @@
         </div>
         <?php
         include "config.php";
-        if (isset ($_SESSION['sub'])) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_SESSION['sub'] . "'") or die (mysqli_error($con));
+        if (isset ($_GET['sub'])) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['sub'] . "'") or die (mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;margin-left: 430px;">
