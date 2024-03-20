@@ -15,8 +15,8 @@
     <?php
     session_start();
     include "config.php";
-    if (isset ($_SESSION['sub'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_SESSION['sub'] . "'") or die (mysqli_error($con));
+    if (isset ($_GET['sub'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['sub'] . "'") or die (mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
