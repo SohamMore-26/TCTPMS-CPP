@@ -67,13 +67,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             include "config.php";
             $qry = mysqli_query($con, "SELECT * FROM lesson_plan WHERE flag = 'Not approved'") or die(mysqli_error($con));
             $techs = [];
-            while ($row = mysqli_fetch_array($qry)) {
-                $techs[] = "'" . $row['course'] . "'";
+            while ($row1 = mysqli_fetch_array($qry)) {
+                $techs[] = "'" . $row1['course'] . "'";
             }
             $techs_str = implode(',', $techs);
             if ($techs_str != null) {
-                $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_GET['id'] . "' AND courseAbrevation IN ($techs_str)") or die(mysqli_error($con));
-                while ($row = mysqli_fetch_array($view)) {
+                $view1 = mysqli_query($con, "select * from courseinfo where teacher = '" . $_GET['id'] . "' AND courseAbrevation IN ($techs_str)") or die(mysqli_error($con));
+                while ($row = mysqli_fetch_array($view1)) {
                     ?>
                     <a href="hod_approve_form.php?course=<?php echo $row['courseAbrevation'] ?>">
                         <div class="m_card">

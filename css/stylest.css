@@ -861,6 +861,11 @@ td {
     overflow: auto;
     overflow-x: hidden;
 }
+.tr_contain_scroll {
+    width: auto;
+    overflow: auto;
+    overflow-x: hidden;
+}
 
 .C_contain_scroll {
     display: flex;
@@ -1271,4 +1276,11 @@ textarea {
   
   .separator:not(:empty)::after {
     margin-left: .25em;
+  }
+
+  .tablecss td{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: auto;
   }

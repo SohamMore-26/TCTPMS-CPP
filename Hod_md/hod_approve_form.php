@@ -14,8 +14,8 @@
 <body>
     <?php
     include "config.php";
-    if (isset($_GET['course'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+    if (isset ($_GET['course'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die (mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
@@ -81,13 +81,13 @@
         </div>
         <?php
         include "config.php";
-        if (isset($_GET['course'])) {
-            $view1 = mysqli_query($con, "select * from syllabus where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
+        if (isset ($_GET['course'])) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die (mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 480px;">
+            <div style="display: flex;align-items:center;flex-direction: column;">
                 <table class="tablecss tb_card">
-                    <form method="post" action="approve_lesson.php">
+                    <form method="post" action="approve_lesson.php?code">
                         <h2>Enter Lesson Plan of
                             <?php echo $row['courseTitle'] ?> (
                             <?php echo $row['branch'] ?>
@@ -109,34 +109,30 @@
                             extract($row1); ?>
                             <tr>
                                 <td>
-                                    <input class="sem" type="date" name="planned_date[]">
+                                    <?php echo $row1['planned_date']; ?>
                                     <input class="sema" type="text" name="sub[]"
                                         value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
                                     <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
                                         style="display: none;">
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="10"
-                                        name="unit_name[]"> <?php echo $row1['unit_name']; ?> </textarea>
+                                    <input class="sema" type="text" name="unit_name[]" value="<?php echo $row1['unit_name'] ?>"
+                                        style="display: none;">
+                                    <?php echo $row1['unit_name']; ?>
+                                <td>
+                                    <?php echo $row1['course_outcome']; ?>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20" name="course_outcome[]"
-                                        disabled> <?php echo $row1['course_outcome']; ?> </textarea>
+                                    <?php echo $row1['unit_outcome']; ?>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20"
-                                        name="unit_outcome[]"> <?php echo $row1['unit_outcome']; ?> </textarea>
+                                    <?php echo $row1['topic']; ?>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="30"
-                                        name="topic[]"> <?php echo $row1['topic']; ?>  </textarea>
+                                    <?php echo $row1['sub_topic']; ?>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="29" rows="5"
-                                        name="sub_topic[]"><?php echo $row1['sub_topic']; ?> </textarea>
-                                </td>
-                                <td>
-                                    <textarea class="sem" type="text" cols="29" rows="5" name="teaching_aids[]"> </textarea>
+                                    <?php echo $row1['teaching_aids']; ?>
                                 </td>
                                 <td>
                                     <input disabled type="file">

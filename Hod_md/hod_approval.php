@@ -55,39 +55,85 @@
             </li>
         </div>
         <div class="main_c_cont" style="overflow:auto">
-        <?php
-        include "config.php";
+            <?php
+            include "config.php";
 
-        $qry = mysqli_query($con, "SELECT * FROM lesson_plan WHERE flag = 'Not approved'") or die(mysqli_error($con));
-        $techs = [];
-        while ($row = mysqli_fetch_array($qry)) {
-            $techs[] = "'" . $row['preparedby'] . "'";
-        }
-        $techString = implode(',', $techs);
-        if ($techString != null) {
-        $view = mysqli_query($con, "SELECT * FROM teacherinfo WHERE firstName != 'Admin' AND firstName != 'Head' AND teacherId IN ({$techString})") or die(mysqli_error($con));
-        
-            
-            $i = 1;
-            while ($row = mysqli_fetch_array($view)) {
-                extract($row); ?>
-                <div class="m_card" style="padding:10px">
-                    <a href="hod_approval_course.php?id=<?php echo $teacherId; ?>">
-                        <h3>
-                            Prof.
-                            <?php echo $row['firstName']; ?>
-                            <?php echo $row['middleName']; ?>
-                            <?php echo $row['lastName']; ?>
-                        </h3>
-                    </a>
-                </div>
-            <?php }
-            
+            $qry = mysqli_query($con, "SELECT * FROM lesson_plan WHERE flag = 'Not approved'") or die (mysqli_error($con));
+            $techs = [];
+            while ($row = mysqli_fetch_array($qry)) {
+                $techs[] = "'" . $row['preparedby'] . "'";
             }
-        else{
-            echo '<div class="m_card"><h3>No Approvals Pending</h3></div>';
-        }
-        ?>
+
+            $techString = implode(',', $techs);
+
+            $qry = mysqli_query($con, "SELECT * FROM lesson_plan WHERE flag = 'Not approved'") or die (mysqli_error($con));
+            $techs = [];
+            while ($row1 = mysqli_fetch_array($qry)) {
+                $techs[] = "'" . $row1['course'] . "'";
+            }
+            $techs_str = implode(',', $techs);
+
+
+            if ($techString != null) {
+                $view = mysqli_query($con, "SELECT * FROM teacherinfo WHERE firstName != 'Admin' AND firstName != 'Head' AND teacherId IN ({$techString})") or die (mysqli_error($con));
+                $view1 = mysqli_query($con, "SELECT * from courseinfo where teacher IN ({$techString}) AND courseAbrevation IN ($techs_str)") or die (mysqli_error($con));
+                ?>
+                <table class="tb_card tablecss" style="padding:10px">
+                    <tr>
+                        <th>
+                            Teacher ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Subject
+                        </th>
+                        <th>
+                            Division
+                        </th>
+                        <th>
+                            View Plan
+                        </th>
+                    </tr>
+                    <?php
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($view)) {
+                        extract($row); ?>
+                        <?php
+                        $i = 1;
+                        while ($row1 = mysqli_fetch_array($view1)) {
+                            extract($row1); ?>
+                            <tr>
+                                <td>
+                                    <?php echo $row['teacherId']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['firstName']; ?>
+                                    <?php echo $row['middleName']; ?>
+                                    <?php echo $row['lastName']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row1['courseAbrevation']; ?>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <a href="hod_approve_form.php?course=<?php echo $row1['courseAbrevation'] ?>">
+                                        view
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </table>
+                    <?php }
+                    }
+
+            } else {
+                echo '<div class="m_card"><h3>No Approvals Pending</h3></div>';
+            }
+            ?>
 
         </div>
 
