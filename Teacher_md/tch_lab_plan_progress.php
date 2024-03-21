@@ -5,7 +5,7 @@ if (isset ($_SESSION['id'])) {
     $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['teacherId'] . "' AND teachingHours > 0") or die (mysqli_error($con));
 }
 
-$view1 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
+$view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or die (mysqli_error($con));
 $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
 ?>
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_lab_plan.php">
+                    <a href="tch_lab_plan_progress.php">
                         <ul><span class="material-symbols-outlined">
                                 pending_actions
                             </span> Laboratory Plan</ul>

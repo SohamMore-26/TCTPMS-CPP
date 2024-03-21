@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -59,7 +59,7 @@
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
-        
+
                 <div class="separator">Mark Daily Progress</div>
 
                 <div class="side_card">
@@ -92,7 +92,7 @@
         extract($row);
 
         $view1 = mysqli_query($con, "SELECT * FROM test JOIN syllabus ON syllabus.course = test.course AND syllabus.lecno = test.lecno  WHERE syllabus.course = '$sub'") or die (mysqli_error($con));
-        ?>
+       ?>
 
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column; margin-left: 530px;">
@@ -112,7 +112,6 @@
                             <th>Topic</th>
                             <th>Sub-Topic</th>
                             <th>Teaching Aids</th>
-                            <th>Add PPTS</th>
                         </tr>
                         <?php
                         while ($row1 = mysqli_fetch_array($view1)) {
@@ -120,8 +119,14 @@
                             <tr>
                                 <td>
 
-                                    <input class="sem" type="text" name="planned_date[]"
-                                        value="<?php echo $row1['date'] ?>">
+                                    <input class="sem" type="text" name="planned_date[]" value="<?php
+                                    if ($row1['date'] != "Extra Lecture") {
+                                        $plannedate = date("d-m-Y", strtotime($date));
+                                        echo $plannedate;
+                                    } else {
+                                        echo "Extra Lecture";
+                                    }
+                                    ?>">
                                     <input class="sema" type="text" name="sub[]"
                                         value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
                                     <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
@@ -150,9 +155,6 @@
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="29" rows="5" name="teaching_aids[]"> </textarea>
-                                </td>
-                                <td>
-                                    <input type="file">
                                 </td>
                             </tr>
                         <?php } ?>

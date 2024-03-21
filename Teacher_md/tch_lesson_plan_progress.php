@@ -5,8 +5,7 @@ if (isset ($_SESSION['id'])) {
     $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['teacherId'] . "' AND teachingHours > 0") or die (mysqli_error($con));
 }
 
-$view1 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
-$view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
+$view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or die (mysqli_error($con));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +112,6 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                                             extract($row1); ?>
                                             <option value="<?php echo $row1['aca_year']; ?>">
                                                 <?php echo $row1['aca_year']; ?>
-                                                <?php echo $row1['semester']; ?>
                                             <?php } ?>
                                     </select>
                                 </td>
@@ -124,7 +122,7 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                                         <b><label for="aca_year" class="label">Semester:</label></b>
                                     </div>
                                 </td>
-                                <td><select id="aca_year" name="semester" class="sem">
+                                <td><select id="semester" name="semester" class="sem" onchange="loadCourses(this.value)">
                                         <option value="">Select Semester</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -158,7 +156,7 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                                     </div>
                                 </td>
 
-                                <td><select id="aca_year" name="scheme" class="sem">
+                                <td><select id="scheme" name="scheme" class="sem">
                                         <option value="">Select Scheme</option>
                                         <option value="I">I</option>
                                         <option value="K">K</option>

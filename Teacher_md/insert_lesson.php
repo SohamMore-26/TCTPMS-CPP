@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO `lesson_plan`(`course`, `coursecode`, `lecno`, `planned_date`, `unit_name`, `course_outcome`, `unit_outcome`, `topic`, `sub_topic`, `teaching_aids`, `preparedby`) VALUES ('$sub','$code','$lecno','$planned_date','$unit_name','$unit_outcome','$course_outcome','$topic','$sub_topic','$teaching_aids','$a')" or die(mysqli_error($con));
         if ($con->query($sql) === TRUE) {
             echo "<script>";
-            echo 'window.location.href="tch_courses.php";';
+            echo 'window.location.href="tch_lesson_plan_progress.php";';
             echo "</script>";
         } else {
             // echo "Error: " . $sql . "<br>" . $con->error;
