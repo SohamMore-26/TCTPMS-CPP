@@ -98,7 +98,7 @@
             $view1 = mysqli_query($con, "select * from lesson_plan where course = '$sub' ") or die (mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column;margin-left: 430px;">
+            <div style="display: flex;align-items:center;flex-direction: column;margin-left: 1050px;">
 
                 <table class="tablecss tb_card">
                     <form id="your_form" method="post" action="actual.php">
@@ -111,8 +111,8 @@
                         <tr>
                             <th>Planned Date</th>
                             <th>Unit Name</th>
-                            <th>Course Outcome</th>
-                            <th>Unit Outcome</th>
+                            <th>Course<br>Outcome</th>
+                            <th>Unit<br>Outcome</th>
                             <th>Planned Topic</th>
                             <th>Planned Sub-Topic</th>
                             <th>Status</th>
