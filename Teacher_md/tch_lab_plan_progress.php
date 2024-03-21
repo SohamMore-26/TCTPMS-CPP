@@ -31,7 +31,7 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -69,18 +69,18 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
-        
+
                 <div class="separator">Mark Daily Progress</div>
 
                 <div class="side_card">
-                    <a href="tch_lesson_plan_progress.php">
+                    <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 group
                             </span> Lesson Plan</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_lab_plan_progress.php">
+                    <a href="tch_lab_plan.php">
                         <ul><span class="material-symbols-outlined">
                                 pending_actions
                             </span> Laboratory Plan</ul>
@@ -95,12 +95,12 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
         }
         ?>
         <div class="main_c_cont" id="cont_M">
-            <h1 style="margin-left:15px ; margin-top:0px">Generate Laboratory Plan</h1>
+            <h1 style="margin-left:15px ; margin-top:0px">Select Laboratory Plan</h1>
             <div class="main_c_cont" id="cont_M">
                 <div class="lesson_card">
                     <div style=" display: flex; align-items: center; justify-content: center;">
                         <table>
-                            <form method="post" action="fill_lab_plan.php"
+                            <form method="post" action="actual_lab_plan.php"
                                 style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center;"
                                 ;>
                                 <tr>
@@ -207,7 +207,7 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
 
 
                                 <tr>
-                                    <td><input type="submit" name="add" class="button" value="Generate">
+                                    <td><input type="submit" name="add" class="button" value="View">
 
                                     </td>
                                     <td><input type="submit" name="view" class="button" value="Cancel"

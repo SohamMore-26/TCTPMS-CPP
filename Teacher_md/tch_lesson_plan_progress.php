@@ -90,11 +90,11 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
         </div>
 
         <div class="main_c_cont" id="cont_M">
-            <h1 style="margin-left:15px ; margin-top:0px">Generate Lesson Plan</h1>
+            <h1 style="margin-left:15px ; margin-top:0px">Select Lesson Plan</h1>
             <div class="lesson_card">
                 <div style=" display: flex; align-items: center; justify-content: center;">
                     <table>
-                        <form method="post" action="generate.php"
+                        <form method="post" action="actual_lesson_plan.php"
                             style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center;"
                             ;>
 
@@ -188,7 +188,7 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
 
                             <tr>
                                 <td>
-                                    <input type="submit" name="add" class="button" value="Generate">
+                                    <input type="submit" name="add" class="button" value="View">
                                 </td>
                                 <td><input type="submit" name="view" class="button" value="Cancel"
                                         formaction="tch_home.php"></td>
