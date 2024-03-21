@@ -838,10 +838,6 @@ td {
     padding: 10px 20px;
 }
 
-table {
-    margin-top: 20px;
-}
-
 td {
     text-align-last: center;
     font-size: 15px;
@@ -883,6 +879,25 @@ td {
     flex-direction: column;
     overflow-x: auto; 
     white-space: nowrap;
+}
+
+.C_C_contain_scroll {
+    /* display: flex;
+    width: 94.50%;
+    padding: 20px;
+    padding-bottom: 10px;
+    height: 90%;
+    box-shadow: inset -3px -3px 7px #c7c7c773, inset 3px 3px 5px rgba(0, 0, 0, 0.418);
+    border-radius: 10px;
+    margin: 20px;
+    margin-right: 40px; */
+    width: 100%;
+    height: 95%;
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 20px;
 }
 
 .branch_cont {

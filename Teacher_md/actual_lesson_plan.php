@@ -97,10 +97,10 @@
         if ($sub) {
             $view1 = mysqli_query($con, "select * from lesson_plan where course = '$sub' ") or die (mysqli_error($con));
         } ?>
-        <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column;margin-left: 1050px;">
+        <div class="C_C_contain_scroll">
+            <div style="display: flex;align-items:center;flex-direction: column;">
 
-                <table class="tablecss tb_card">
+                <table class="tablecss" style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;">
                     <form id="your_form" method="post" action="actual.php">
                         <h2>Actual Lesson Plan Of
                             <?php echo $row['courseTitle'] ?> (
