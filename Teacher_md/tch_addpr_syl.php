@@ -22,9 +22,9 @@
         </div>
     </div>
     <div class="main_cont">
-        <div class="sidebar">
+    <div class="sidebar">
             <li>
-                <div class="side_card">
+                <div class=" side_card">
                     <a href="tch_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
@@ -46,15 +46,6 @@
                             </span> Courses</ul>
                     </a>
                 </div>
-                <!-- 
-                <div class="side_card">
-                    <a href="tch_AcademicCal.php">
-                        <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
-                    </a>
-                </div> -->
-
                 <div class="side_card">
                     <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
@@ -62,7 +53,6 @@
                             </span> Lesson Plan</ul>
                     </a>
                 </div>
-
                 <div class="side_card">
                     <a href="tch_lab_plan.php">
                         <ul><span class="material-symbols-outlined">
@@ -70,9 +60,25 @@
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
+        
+                <div class="separator">Mark Daily Progress</div>
+
+                <div class="side_card">
+                    <a href="tch_lesson_plan_progress.php">
+                        <ul><span class="material-symbols-outlined">
+                                group
+                            </span> Lesson Plan</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="tch_lab_plan_progress.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan</ul>
+                    </a>
+                </div>
             </li>
         </div>
-
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;">
 
