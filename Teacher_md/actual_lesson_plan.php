@@ -15,10 +15,10 @@
     <?php
     session_start();
     include "config.php";
-    $acaYear = $_POST['aca_year'];
-    $sem = $_POST['semester'];
+    $acaYear = $_SESSION['aca_year'] = $_POST['aca_year'];
+    $sem = $_SESSION['semester'] = $_POST['semester'];
     $sch = $_POST['scheme'];
-    $sub = $_POST['sub'];
+    $sub = $_SESSION['sub'] = $_POST['sub'];
     $div = $_POST['div'];
     if ($sub) {
         $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die (mysqli_error($con));
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -72,7 +72,7 @@
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
-        
+
                 <div class="separator">Mark Daily Progress</div>
 
                 <div class="side_card">
@@ -93,7 +93,7 @@
         </div>
         <?php
         include "config.php";
-       
+
         if ($sub) {
             $view1 = mysqli_query($con, "select * from lesson_plan where course = '$sub' ") or die (mysqli_error($con));
         } ?>

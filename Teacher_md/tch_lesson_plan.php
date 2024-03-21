@@ -5,7 +5,7 @@ if (isset ($_SESSION['id'])) {
     $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['teacherId'] . "' AND teachingHours > 0") or die (mysqli_error($con));
 }
 
-$view1 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
+$view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or die (mysqli_error($con));
 $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
 ?>
 <!DOCTYPE html>
@@ -113,7 +113,6 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                                             extract($row1); ?>
                                             <option value="<?php echo $row1['aca_year']; ?>">
                                                 <?php echo $row1['aca_year']; ?>
-                                                <?php echo $row1['semester']; ?>
                                             <?php } ?>
                                     </select>
                                 </td>
