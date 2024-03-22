@@ -166,7 +166,7 @@
                     </div>
                     <div class="buttons">
                         <button type="submit" name="addCal" class="button">Add</button>
-                        <button type="submit" class="button">Cancel</button>
+                        <a href="adm_AcademicCal.php"> <button type="button" class="button">Cancel</button></a>
                     </div>
 
                 </div>
