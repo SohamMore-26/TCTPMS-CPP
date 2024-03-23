@@ -147,7 +147,7 @@
                         </div>
                         <div class="form_button_cont">
                             <button type="submit" class="button" name="addTeacher">Add</button>
-                            <button type="button" href="adm_teacher.php" class="button">Cancel</button>
+                            <a href="adm_teacher.php"> <button type="button" href="adm_teacher.php" class="button">Cancel</button></a>
                         </div>
                     </div>
                 </form>

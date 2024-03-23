@@ -166,7 +166,7 @@
 <?php
 
 include "config.php";
-if (isset($_POST['addCourse'])) {
+if (isset($_POST['addCourse']) ) {
     extract($_POST);
 
     $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `lecturePW`, `practicalPW`, `tutorialPW`, `teachingHours`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$lecturePW','$practicalPW','$tutorialPW','$teachingHours')") or die(mysqli_error($con));
