@@ -88,17 +88,18 @@
             <div style="display: flex;align-items:center;flex-direction: column;">
                 <table class="tablecss tb_card">
                     <form method="post" action="approve_lesson.php?code">
-                        <h2>Enter Lesson Plan of
+                        <h2>Lesson Plan of
                             <?php echo $row['courseTitle'] ?> (
                             <?php echo $row['branch'] ?>
                             <?php echo $row['semester'] ?>
                             <?php echo $row['scheme'] ?>)
+                             For Approval
                         </h2>
                         <tr>
                             <th>Planned Date</th>
                             <th>Unit Name</th>
-                            <th>Course Outcome</th>
-                            <th>Unit Outcome</th>
+                            <th>Course <br> Outcome</th>
+                            <th>Unit <br>Outcome</th>
                             <th>Topic</th>
                             <th>Sub-Topic</th>
                             <th>Teaching Aids</th>

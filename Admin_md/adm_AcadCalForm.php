@@ -19,7 +19,7 @@
             <h1>Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-           <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -64,12 +64,12 @@
         </div>
         <div class="main_c_cont_at">
             <form method="post">
-                <div style="margin-top:100px" >
+                <div style="margin-top:100px">
                     <h1 id="h1">Add Academic Calendar</h1>
                     <div class="branch_cont">
                         <b><label for="semester" class="label">Semester:</label></b>
                         <select id="semester" name="semester" class="sem">
-                            <option value="">Select Semester</option>
+                            <option value="inp">Select Semester</option>
                             <option value="1st Sem">1st Sem</option>
                             <option value="Odd (3,5)">Odd (3,5)</option>
                             <option value="Even (2,4,6)">Even (2,4,6)</option>
@@ -77,7 +77,7 @@
 
                         <b><label for="scheme" class="label">Scheme:</label></b>
                         <select id="scheme" name="scheme" class="sem">
-                            <option value="">Select Scheme</option>
+                            <option value="inp">Select Scheme</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -92,15 +92,15 @@
 
                     </div>
                     <div class="cont_r_l">
-                        <div class="cont_right">
+                        <div style="width:90%">
                             <div class="label1">
                                 <b><label>Academic Year :</label></b>
                             </div>
-                            <div class="">
+                            <div class="inp">
 
-                                <b><label for="from" class="label">From :</label></b>
+                                <b><label for="from" class="label">From:</label></b>
                                 <input class="sem" type="text" id="from" name="aystdatefrom"  required>
-                                <b><label for="to" class="label1">To :</label></b>
+                                <b><label for="to" class="label1">To:</label></b>
                                 <input class="sem" type="text" id="to" name="aystdateto" required>
 
                             </div>
@@ -108,45 +108,39 @@
                             <div class="label1">
                                 <b><label>Semester Duration :</label></b>
                             </div>
-                            <div class="">
-                                <b><label for="stsemfrom" class="label">From :</label></b>
+                            <div class="inp">
+                                <b><label for="stsemfrom" class="label">From:</label></b>
                                 <input class="sem" type="date" id="stsemfrom" name="stsemfrom" required>
-                                <b><label for="stsemto" class="label1">To :</label></b>
+                                <b><label for="stsemto" class="label1">To:</label></b>
                                 <input class="sem" type="date" id="stsemto" name="stfromto" required>
                             </div>
                             <div class="label1">
                                 <b><label>Class Test - 1 Schedule :</label></b>
                             </div>
-                            <div class="">
-                                <b><label for="ct1from" class="label">From :</label></b>
+                            <div class="inp">
+                                <b><label for="ct1from" class="label">From:</label></b>
                                 <input class="sem" type="date" id="ct1from" name="ct1from" required>
-                                <b><label for="ct1to" class="label1">To :</label></b>
+                                <b><label for="ct1to" class="label1">To:</label></b>
                                 <input class="sem" type="date" id="ct1to" name="ct1to" required>
 
                             </div>
-                        </div>
-
-                        <div class="cont_left">
-
-
                             <div class="label1">
                                 <b><label>Class Test - 2 Schedule :</label></b>
                             </div>
-                            <div class="">
-                                <b><label for="ct2from" class="label">From :</label></b>
+                            <div class="inp">
+                                <b><label for="ct2from" class="label">From:</label></b>
                                 <input class="sem" type="date" id="ct2from" name="ct2from" required>
-                                <b><label for="ct2to" class="label1">To :</label></b>
+                                <b><label for="ct2to" class="label1">To:</label></b>
                                 <input class="sem" type="date" id="ct2to" name="ct2to" required>
-
                             </div>
 
                             <div class="label1">
                                 <b><label>Practical Examination Schedule :</label></b>
                             </div>
-                            <div class="">
-                                <b><label for="prefrom" class="label">From :</label></b>
+                            <div class="inp">
+                                <b><label for="prefrom" class="label">From:</label></b>
                                 <input class="sem" type="date" id="prefrom" name="prefrom" required>
-                                <b><label for="preto" class="label1">To :</label></b>
+                                <b><label for="preto" class="label1">To:</label></b>
                                 <input class="sem" type="date" id="preto" name="preto" required>
 
                             </div>
@@ -154,10 +148,10 @@
                             <div class="label1">
                                 <b><label>Theory Examination Schedule :</label></b>
                             </div>
-                            <div class="">
-                                <b><label for="thform" class="label">From :</label></b>
+                            <div class="inp">
+                                <b><label for="thform" class="label">From:</label></b>
                                 <input class="sem" type="date" id="thfrom" name="thfrom" required>
-                                <b><label for="thto" class="label1">To :</label></b>
+                                <b><label for="thto" class="label1">To:</label></b>
                                 <input class="sem" type="date" id="thto" name="thto" required>
 
                             </div>
@@ -183,15 +177,15 @@
 <?php
 include "config.php";
 
-if (isset($_POST['addCal'])) {
+if (isset ($_POST['addCal'])) {
     // Extract form data
     extract($_POST);
 
     // Check if required variables are set
-    if (isset($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
+    if (isset ($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die(mysqli_error($con));
+        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die (mysqli_error($con));
 
         if ($add) {
             echo "<script>";

@@ -100,7 +100,7 @@
         <div class="C_C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;">
 
-                <table class="tablecss" style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;">
+                <table class="tablecss" style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;background-color:">
                     <form id="your_form" method="post" action="actual.php">
                         <h2>Actual Lesson Plan Of
                             <?php echo $row['courseTitle'] ?> (

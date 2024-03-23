@@ -79,7 +79,13 @@
                 $view1 = mysqli_query($con, "SELECT * from courseinfo where teacher IN ({$techString}) AND courseAbrevation IN ($techs_str)") or die (mysqli_error($con));
                 ?>
                 <table class="tb_card tablecss" style="padding:10px">
+                <h2>
+                    Approvals Pending
+                </h2>
                     <tr>
+                        <th>
+                            Sr no.
+                        </th>
                         <th>
                             Teacher ID
                         </th>
@@ -90,9 +96,6 @@
                             Subject
                         </th>
                         <th>
-                            Division
-                        </th>
-                        <th>
                             View Plan
                         </th>
                     </tr>
@@ -101,23 +104,25 @@
                     while ($row = mysqli_fetch_array($view)) {
                         extract($row); ?>
                         <?php
-                        $i = 1;
+                        $j = 1;
                         while ($row1 = mysqli_fetch_array($view1)) {
                             extract($row1); ?>
                             <tr>
                                 <td>
+                                <?php echo $j; ?>
+                                <?php $j += 1 ?>
+                                </td>
+                                <td>
                                     <?php echo $row['teacherId']; ?>
                                 </td>
                                 <td>
+                                    Prof.
                                     <?php echo $row['firstName']; ?>
                                     <?php echo $row['middleName']; ?>
                                     <?php echo $row['lastName']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row1['courseAbrevation']; ?>
-                                </td>
-                                <td>
-
                                 </td>
                                 <td>
                                     <a href="hod_approve_form.php?course=<?php echo $row1['courseAbrevation'] ?>">
@@ -127,7 +132,7 @@
                             </tr>
 
                         </table>
-                    <?php }
+                    <?php  }
                     }
 
             } else {

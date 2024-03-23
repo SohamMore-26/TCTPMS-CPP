@@ -94,9 +94,9 @@
         $view1 = mysqli_query($con, "SELECT * FROM test JOIN syllabus ON syllabus.course = test.course AND syllabus.lecno = test.lecno  WHERE syllabus.course = '$sub'") or die (mysqli_error($con));
        ?>
 
-        <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column; margin-left: 530px;">
-                <table class="tablecss tb_card">
+        <div class="C_C_contain_scroll">
+            <div style="display: flex;align-items:center;flex-direction: column;">
+                <table class="tablecss" style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;">
                     <form method="post" action="insert_lesson.php">
                         <h2>Enter Lesson Plan of
                             <?php echo $row['courseTitle'] ?> (
@@ -119,7 +119,7 @@
                             <tr>
                                 <td>
 
-                                    <input class="sem" type="text" name="planned_date[]" value="<?php
+                                    <input class="sem" type="text" name="planned_date[]" style="width:90px" value="<?php
                                     if ($row1['date'] != "Extra Lecture") {
                                         $plannedate = date("d-m-Y", strtotime($date));
                                         echo $plannedate;
@@ -127,7 +127,7 @@
                                         echo "Extra Lecture";
                                     }
                                     ?>">
-                                    <input class="sema" type="text" name="sub[]"
+                                    <input class="sem" type="text" name="sub[]"
                                         value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
                                     <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
                                         style="display: none;">
@@ -138,12 +138,12 @@
                                         name="unit_name[]"> <?php echo $row1['unit_name']; ?> </textarea>
                                 </td>
                                 <td>
-                                    <textarea class="sem" type="text" cols="20"
-                                        name="course_outcome[]"> <?php echo $row1['course_outcome']; ?> </textarea>
-                                </td>
+                                    <input class="sema" type="text" cols="20"
+                                        name="course_outcome[]" value="<?php echo $row1['course_outcome']; ?>" > 
+                                </td> 
                                 <td>
-                                    <textarea class="sem" type="text" cols="20"
-                                        name="unit_outcome[]"> <?php echo $row1['unit_outcome']; ?> </textarea>
+                                    <input class="sema" type="text" cols="20"
+                                        name="unit_outcome[]" value="<?php echo $row1['unit_outcome']; ?>" >
                                 </td>
                                 <td>
                                     <textarea class="sem" type="text" cols="30"
