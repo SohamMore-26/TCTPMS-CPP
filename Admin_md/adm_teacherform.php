@@ -9,6 +9,8 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Academic Time Table
     </title>
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
 </head>
 
 <body>
@@ -18,7 +20,7 @@
             <h1>Teacher's Companion</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -143,11 +145,12 @@
                                     Retried
                                 </div>
                             </div> -->
-                            
+
                         </div>
                         <div class="form_button_cont">
                             <button type="submit" class="button" name="addTeacher">Add</button>
-                            <a href="adm_teacher.php"> <button type="button" href="adm_teacher.php" class="button">Cancel</button></a>
+                            <a href="adm_teacher.php"> <button type="button" href="adm_teacher.php"
+                                    class="button">Cancel</button></a>
                         </div>
                     </div>
                 </form>
@@ -227,14 +230,23 @@
 <?php
 
 include "config.php";
-if (isset($_POST['addTeacher'])) {
+if (isset ($_POST['addTeacher'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `currentStatus`, `leavingDate` ,`password`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$currentStatus','$leavingDate' ,'$password')") or die(mysqli_error($con));
+    $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate` ,`password`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$password')") or die (mysqli_error($con));
 
     if ($add) {
         echo "<script>";
-        echo "alert('Successfully Added...');";
+        echo "window.onload = function() {
+            swal({
+                title: 'Success',
+                text: 'Teacher added successfully!',
+                icon: 'success',
+                button: 'OK'
+            }).then(function() {
+                window.location.href = 'adm_teacher.php';
+            });
+        }";
         echo "</script>";
     } else {
         echo "<script>";

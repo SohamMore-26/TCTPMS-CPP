@@ -58,6 +58,7 @@ $view = mysqli_query($con, "select * from pr_syllabus where course = '$sub'") or
                             </span> Courses</ul>
                     </a>
                 </div>
+                <div class="separator">Create Lesson & Laboratory Plan</div>
                 <div class="side_card">
                     <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">

@@ -59,6 +59,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Courses</ul>
                     </a>
                 </div>
+                <div class="separator">Create Lesson & Laboratory Plan</div>
+
                 <div class="side_card">
                     <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">

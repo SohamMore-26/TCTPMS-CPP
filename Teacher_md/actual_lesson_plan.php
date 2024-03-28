@@ -58,6 +58,7 @@
                             </span> Courses</ul>
                     </a>
                 </div>
+                <div class="separator">Create Lesson & Laboratory Plan</div>
                 <div class="side_card">
                     <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
@@ -100,7 +101,8 @@
         <div class="C_C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;">
 
-                <table class="tablecss" style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;background-color:">
+                <table class="tablecss"
+                    style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;background-color:">
                     <form id="your_form" method="post" action="actual.php">
                         <h2>Actual Lesson Plan Of
                             <?php echo $row['courseTitle'] ?> (
