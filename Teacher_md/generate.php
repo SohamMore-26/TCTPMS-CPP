@@ -6,6 +6,24 @@ $sch = $_POST['scheme'];
 $sub = $_POST['sub'];
 $div = $_POST['div'];
 
+
+
+// $c = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die (mysqli_error($con));
+// $r = mysqli_fetch_array($c);
+// $code = $r['courseCode'];
+
+// $sql=mysqli_query($con,"SELECT * FROM lesson_plan WHERE aca_year = '$acaYear' and sem='$sem' and sch='$sch' and coursecode='$code' and div1 = '$div'") or die (mysqli_error($con));
+// $s = mysqli_fetch_array($sql);
+
+// if(isset($s))
+// {
+//   echo "<script> alert 'Plan already exists' </script>";
+// }
+// else 
+// {
+  
+
+
 if ($sem == "1") {
   $sem1 = "1st Sem";
 } elseif ($sem % 2 == 0) {
@@ -209,4 +227,5 @@ if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POS
   }
 
 }
+// }
 ?>
