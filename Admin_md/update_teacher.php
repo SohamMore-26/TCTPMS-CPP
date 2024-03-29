@@ -141,8 +141,8 @@
                         </div>
 
                         <div class="form_button_cont">
-                            <button type="submit"  class="button" name="updateTeacher">Add</button>
-                            <button type="button" href="adm_teacher.php" class="button" >Cancel</button>
+                            <button type="submit"  class="button" name="updateTeacher">Update</button>
+                            <a href="adm_teacher.php"> <button type="button" href="adm_teacher.php" class="button" >Cancel</button></a>
                         </div>
                     </div>
                 </form>
@@ -161,7 +161,9 @@ include "config.php";
 if (isset($_POST['updateTeacher'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "UPDATE `teacherinfo` SET `firstName`='$firstName',`middleName`='$middleName', `lastName`='$lastName',`teacherId`='$teacherId',`car_comp`='$car_comp',`designation`='$designation',`branch`='$branch',`joiningDate`='$joiningDate',`currentStatus`='$currentStatus',`leavingDate`='$leavingDate' WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+
+
+    $add = mysqli_query($con,"UPDATE `teacherinfo` SET `firstName`='$firstName',`middleName`='$middleName', `lastName`='$lastName',`teacherId`='$teacherId',`car_comp`='$car_comp',`designation`='$designation',`branch`='$branch',`joiningDate`='$joiningDate',`currentStatus`='$currentStatus',`leavingDate`='$leavingDate' WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";
