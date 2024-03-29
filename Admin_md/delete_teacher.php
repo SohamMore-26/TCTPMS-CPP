@@ -8,7 +8,7 @@
         {
             echo "<script>";
             echo "alert('Teacher Deleted.....!');";
-            echo "window.location.href='adm_teacherForm.php';";
+            echo "window.location.href='adm_teacher.php';";
             echo "</script>";
         }
         else
