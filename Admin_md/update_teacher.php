@@ -65,14 +65,15 @@
         <?php
                         include "config.php";
                         if (isset($_GET['id'])) {
-                            $view = mysqli_query($con, "select * from teacherinfo where id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+                            $view = mysqli_query($con, "select * from teacherinfo where id = '".$_GET['id']."'") or die(mysqli_error($con));
                             $row = mysqli_fetch_array($view);
+                            
                         }
                         ?>
 
         <div class="main_c_cont_t">
             <div class="form_cont">
-                <h1 id="h1">Create a Teacher</h1>
+                <h1 id="h1">Update Teacher Details</h1>
                 <form method="post" class="aca-form">
                     <div class="form_c_cont">
                         <div class="name_cont">
@@ -163,7 +164,7 @@ if (isset($_POST['updateTeacher'])) {
 
 
 
-    $add = mysqli_query($con,"UPDATE `teacherinfo` SET `firstName`='$firstName',`middleName`='$middleName', `lastName`='$lastName',`teacherId`='$teacherId',`car_comp`='$car_comp',`designation`='$designation',`branch`='$branch',`joiningDate`='$joiningDate',`currentStatus`='$currentStatus',`leavingDate`='$leavingDate' WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+    $add = mysqli_query($con,"UPDATE `teacherinfo` SET `firstName`='$firstName',`middleName`='$middleName', `lastName`='$lastName',`teacherId`='$teacherId',`designation`='$designation',`branch`='$branch',`joiningDate`='$joiningDate',`currentStatus`='$currentStatus',`leavingDate`='$leavingDate' WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
 
     if ($add) {
         echo "<script>";
