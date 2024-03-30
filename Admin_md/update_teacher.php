@@ -163,7 +163,22 @@ if (isset($_POST['updateTeacher'])) {
     extract($_POST);
 
 
+    $check_query = mysqli_query($con, "SELECT * FROM `teacherinfo` WHERE `teacherId` = '$teacherId'");
+    $count = mysqli_num_rows($check_query);
 
+    if ($count > 0) {
+        echo "<script>";
+        echo "window.onload = function() {
+            swal({
+                title: 'Error',
+                text: 'Teacher ID already exists!',
+                icon: 'error',
+                button: 'OK'
+            });
+        }";
+        echo "</script>";
+    }
+    else{
     $add = mysqli_query($con,"UPDATE `teacherinfo` SET `firstName`='$firstName',`middleName`='$middleName', `lastName`='$lastName',`teacherId`='$teacherId',`designation`='$designation',`branch`='$branch',`joiningDate`='$joiningDate',`currentStatus`='$currentStatus',`leavingDate`='$leavingDate' WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
 
     if ($add) {
@@ -175,4 +190,5 @@ if (isset($_POST['updateTeacher'])) {
         echo "alert('ERROR ! Fail..!')";
         echo "</script>";
     }
+}
 }
