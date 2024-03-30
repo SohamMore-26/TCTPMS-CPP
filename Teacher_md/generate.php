@@ -6,8 +6,10 @@ $sch = $_POST['scheme'];
 $sub = $_POST['sub'];
 $div = $_POST['div'];
 
-$c = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
-$r = mysqli_fetch_array($c);
+
+//  khalcha code fakt subject abb varun code kadhto ignore karava
+$codeSub = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
+$row0 = mysqli_fetch_array($codeSub);
 $code = $r['courseCode'];
 
 
@@ -19,6 +21,8 @@ $result = $stmt->get_result();
 // Check if any rows are returned
 if ($result->num_rows > 0) {
     // Plan exists, redirect to tch_lesson_plan.php
+
+    // alert takava
     header("Location: tch_lesson_plan.php");
     exit(); 
 } 
@@ -230,6 +234,5 @@ if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POS
   {
     echo "Error: " . $stmt->error;
   }
-
 }
 ?>
