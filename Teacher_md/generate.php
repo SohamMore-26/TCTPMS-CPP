@@ -20,14 +20,15 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     // Plan exists, redirect to tch_lesson_plan.php
     header("Location: tch_lesson_plan.php");
-    exit(); // Make sure to exit after redirection
+    exit(); 
 } 
 
 $stmt->close();
 
 if ($sem == "1") {
   $sem1 = "1st Sem";
-} elseif ($sem % 2 == 0) {
+} elseif ($sem % 2 == 0) 
+{
   $sem1 = "Even (2,4,6)";
 } else {
   $sem1 = "Odd (3,5)";
