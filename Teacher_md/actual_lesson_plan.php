@@ -149,14 +149,11 @@
                                     <?php echo $row1['sub_topic']; ?>
                                 </td>
                                 <td>
-                                    <?php if ($row1['status'] == "Done") { ?>
+                                    <?php if ($row1['actual_coverage'] != null) { ?>
                                         <span class="material-symbols-outlined" style="color:#42f554;font-weight:bold;">
                                             done
                                         </span>
-                                    <?php } else { ?>
-                                        <input class="sem" type="checkbox" value="Done" name="status">
                                     <?php } ?>
-
                                 </td>
                                 <td>
                                     <?php if ($row1['actual_date'] != "0000-00-00") { ?>
@@ -179,7 +176,7 @@
                                     <input type="file">
                                 </td>
                                 <td>
-                                    <input class="button" type="submit" onclick="submitForm(this)">
+                                    <input class="button" type="submit" onclick="submitForm(this)" value="Save"> 
                                 </td>
                             </tr>
                         <?php } ?>

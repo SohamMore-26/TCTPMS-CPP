@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+session_start();
 $acaYear = $_POST['aca_year'];
 $sem = $_POST['semester'];
 $sch = $_POST['scheme'];
@@ -10,7 +11,7 @@ $div = $_POST['div'];
 //  khalcha code fakt subject abb varun code kadhto ignore karava
 $codeSub = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
 $row0 = mysqli_fetch_array($codeSub);
-$code = $r['courseCode'];
+$code = $row0['courseCode'];
 
 
 $stmt = $con->prepare("SELECT * FROM lesson_plan WHERE aca_year = ? AND sem = ? AND sch = ? AND coursecode = ? AND div1 = ?");
@@ -20,19 +21,24 @@ $result = $stmt->get_result();
 
 // Check if any rows are returned
 if ($result->num_rows > 0) {
-    // Plan exists, redirect to tch_lesson_plan.php
-
-    // alert takava
-    header("Location: tch_lesson_plan.php");
-    exit(); 
-} 
+  echo "<script>
+                swal({
+                    title: 'Success',
+                    text: 'Lesson Plan Already Eicts',
+                    icon: 'success',
+                    button: 'OK'
+                }).then(function() {
+                    window.location.href = 'tch_lesson_plan.php'; 
+                });
+            </script>";
+  exit();
+}
 
 $stmt->close();
 
 if ($sem == "1") {
   $sem1 = "1st Sem";
-} elseif ($sem % 2 == 0) 
-{
+} elseif ($sem % 2 == 0) {
   $sem1 = "Even (2,4,6)";
 } else {
   $sem1 = "Odd (3,5)";
@@ -40,13 +46,13 @@ if ($sem == "1") {
 
 
 
-$aca = mysqli_query($con, "select * from academic_cal where aca_year = '$acaYear' AND semester = '$sem1'") or die (mysqli_error($con));
+$aca = mysqli_query($con, "select * from academic_cal where aca_year = '$acaYear' AND semester = '$sem1'") or die(mysqli_error($con));
 $row = mysqli_fetch_array($aca);
 $semstart = $row['sem_duration_from']; // sem start date
 $semend = $row['sem_duration_to']; // sem end date
 
 
-$time = mysqli_query($con, "select * from timetable where aca_year = '$acaYear' AND semester = '$sem' AND scheme = '$sch' AND division = '$div' AND course = '$sub'") or die (mysqli_error($con));
+$time = mysqli_query($con, "select * from timetable where aca_year = '$acaYear' AND semester = '$sem' AND scheme = '$sch' AND division = '$div' AND course = '$sub'") or die(mysqli_error($con));
 $days = array(); // Declare an empty array
 while ($row1 = mysqli_fetch_array($time)) {
   extract($row1);
@@ -54,7 +60,7 @@ while ($row1 = mysqli_fetch_array($time)) {
   array_push($days, $day); // Push each day value into the array
 }
 
-$course = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die (mysqli_error($con));
+$course = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
 $row2 = mysqli_fetch_array($course);
 $noOfLec = $row2['teachingHours'];
 $lecperweek = $row2['lecturePW'];
@@ -70,6 +76,7 @@ $courseC = $row2['courseCode'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <title>Teacher Home Module
@@ -199,15 +206,19 @@ $courseC = $row2['courseCode'];
       console.log(response);
     }
   });
-  alert('Dates Generated Successfully');
-  window.location.href = "fill_lesson_plan.php";
+  swal({
+    title: 'Success',
+    text: 'Dates Generated  Successfully!',
+    icon: 'success',
+    button: 'OK'
+  }).then(function () {
+    window.location.href = 'fill_lesson_plan.php';
+  });
 </script>
 <?php
-session_start();
 include "config.php";
-if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST['lastDate'], $_POST['div'])) 
-{
-
+if (isset($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST['lastDate'], $_POST['div'])) {
+  
   $acaYear = $_POST['acaYear'];
   $sem = $_POST['sem'];
   $sch = $_POST['sch'];
@@ -227,11 +238,9 @@ if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POS
 
     $stmt->execute();
   }
-  if ($stmt->execute()) 
-  {
+  if ($stmt->execute()) {
 
-  } else 
-  {
+  } else {
     echo "Error: " . $stmt->error;
   }
 }
