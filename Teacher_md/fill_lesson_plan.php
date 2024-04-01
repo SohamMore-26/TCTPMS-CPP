@@ -128,8 +128,16 @@
                                         echo "Extra Lecture";
                                     }
                                     ?>">
-                                    <input class="sem" type="text" name="sub[]"
-                                        value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
+                                    <input class="sem" type="text" name="acaYear[]"
+                                        value="<?php echo $acaYear ?>" style="display: none;">
+                                    <input class="sem" type="text" name="sem[]"
+                                        value="<?php echo $sem ?>" style="display: none;">
+                                    <input class="sem" type="text" name="sch[]"
+                                        value="<?php echo $sch ?>" style="display: none;">
+                                    <input class="sem" type="text" name="div[]"
+                                        value="<?php echo $div ?>" style="display: none;">
+                                    <input class="sema" type="text" name="sub[]" value="<?php echo $row['courseAbrevation'] ?>"
+                                        style="display: none;">
                                     <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
                                         style="display: none;">
 
