@@ -11,13 +11,26 @@
     </title>
     <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <!-- <script>
+        function validTeacherForm()
+        {
+            swal("Oops", " Please Enter A Valid Name!", "error");
+            var x=document.forms["TeacherAdd"]["firstName"].value;
+            if(x == "" || !isNaN(x))
+            {
+                swal("Oops", " Please Enter A Valid Name!", "error");
+                return false;
+            }
+        }
+        </script> -->
 </head>
 
 <body>
 
     <div class="nav_head">
         <div class="title_div">
-            <h1>Teacher's Companion</h1>
+        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -66,7 +79,7 @@
         <div class="main_c_cont_t">
             <div class="form_cont">
                 <h1 id="h1">Create a Teacher</h1>
-                <form method="post" class="aca-form">
+                <form method="post" class="aca-form" name="TeacherAdd" onsubmit="return validTeacherForm()">
                     <div class="form_c_cont">
                         <div class="name_cont">
                             <div class="name">
@@ -148,7 +161,7 @@
 
                         </div>
                         <div class="form_button_cont">
-                            <button type="submit" class="button" name="addTeacher">Add</button>
+                            <button type="submit" class="button" name="addTeacher" >Add</button>
                             <a href="adm_teacher.php"> <button type="button" href="adm_teacher.php"
                                     class="button">Cancel</button></a>
                         </div>
@@ -228,31 +241,78 @@
 
 </html>
 <?php
-
 include "config.php";
-if (isset ($_POST['addTeacher'])) {
+
+if (isset($_POST['addTeacher'])) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate` ,`password`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$password')") or die (mysqli_error($con));
+    // Check if Teacher ID already exists
+    $check_query = mysqli_query($con, "SELECT * FROM `teacherinfo` WHERE `teacherId` = '$teacherId'");
+    $count = mysqli_num_rows($check_query);
 
-    if ($add) {
+    if ($count > 0) {
         echo "<script>";
         echo "window.onload = function() {
             swal({
-                title: 'Success',
-                text: 'Teacher added successfully!',
-                icon: 'success',
+                title: 'Error',
+                text: 'Teacher ID already exists!',
+                icon: 'error',
                 button: 'OK'
-            }).then(function() {
-                window.location.href = 'adm_teacher.php';
             });
         }";
         echo "</script>";
     } else {
-        echo "<script>";
-        echo "alert('ERROR ! Fail..!')";
-        echo "</script>";
+        // Insert the record if Teacher ID doesn't exist
+        $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate`, `password`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$password')") or die(mysqli_error($con));
+
+        if ($add) {
+            echo "<script>";
+            echo "window.onload = function() {
+                swal({
+                    title: 'Success',
+                    text: 'Teacher added successfully!',
+                    icon: 'success',
+                    button: 'OK'
+                }).then(function() {
+                    window.location.href = 'adm_teacher.php';
+                });
+            }";
+            echo "</script>";
+        } else {
+            echo "<script>";
+            echo "alert('ERROR ! Fail..!')";
+            echo "</script>";
+        }
     }
 }
 
 ?>
+<!-- <?php
+
+// include "config.php";
+// if (isset ($_POST['addTeacher'])) {
+//     extract($_POST);
+    
+//     $add = mysqli_query($con, "INSERT INTO `teacherinfo`(`firstName`, `middleName`, `lastName`, `teacherId`, `designation`, `branch`, `joiningDate` ,`password`) VALUES ('$firstName','$middleName','$lastName','$teacherId','$designation','$branch','$joiningDate','$password')") or die (mysqli_error($con));
+
+//     if ($add) {
+//         echo "<script>";
+//         echo "window.onload = function() {
+//             swal({
+//                 title: 'Success',
+//                 text: 'Teacher added successfully!',
+//                 icon: 'success',
+//                 button: 'OK'
+//             }).then(function() {
+//                 window.location.href = 'adm_teacher.php';
+//             });
+//         }";
+//         echo "</script>";
+//     } else {
+//         echo "<script>";
+//         echo "alert('ERROR ! Fail..!')";
+//         echo "</script>";
+//     }
+// }
+
+?> -->

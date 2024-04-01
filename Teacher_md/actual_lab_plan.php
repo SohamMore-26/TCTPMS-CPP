@@ -10,6 +10,14 @@ $batch = $_POST['batch'];
 
 $view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca_year = '$acaYear' AND batch = '$batch' AND division ='$div '") or die (mysqli_error($con));
 ?>
+<?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    $showError = "Login Failed...!";
+    header("location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +35,8 @@ $view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca
 
     <div class="nav_head">
         <div class="title_div">
-            <h1 id="h1">Teacher's Companion</h1>
+        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+      
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>

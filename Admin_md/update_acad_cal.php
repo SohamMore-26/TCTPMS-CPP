@@ -62,10 +62,18 @@
                 </div>
             </li>
         </div>
+        <?php
+            include "config.php";
+                // $view = mysqli_query($con, "select * from teacherinfo where firstName != 'Admin'") or die(mysqli_error($con));
+                $view2 = mysqli_query($con, "select * from academic_cal where id = '".$_GET['id']."'") or die(mysqli_error($con));
+                $row2 = mysqli_fetch_array($view2);
+
+
+            ?>
         <div class="main_c_cont_at">
             <form method="post">
                 <div style="margin-top:100px">
-                    <h1 id="h1">Add Academic Calendar</h1>
+                    <h1 id="h1">Update Academic Calendar</h1>
                     <div class="branch_cont">
                         <b><label for="semester" class="label">Semester:</label></b>
                         <select id="semester" name="semester" class="sem">
@@ -99,9 +107,9 @@
                             <div class="inp">
 
                                 <b><label for="from" class="label">From:</label></b>
-                                <input class="sem" type="text" id="from" name="aystdatefrom"  required>
+                                <input class="sem" type="text" id="from" name="aystdatefrom"  value="<?php echo $row2['aca_year']; ?>" required>
                                 <b><label for="to" class="label1">To:</label></b>
-                                <input class="sem" type="text" id="to" name="aystdateto" required>
+                                <input class="sem" type="text" id="to" name="aystdateto" value="<?php echo $row2['aca_year']; ?>" required>
 
                             </div>
 
@@ -110,18 +118,18 @@
                             </div>
                             <div class="inp">
                                 <b><label for="stsemfrom" class="label">From:</label></b>
-                                <input class="sem" type="date" id="stsemfrom" name="stsemfrom" required>
+                                <input class="sem" type="date" id="stsemfrom" name="stsemfrom" value="<?php echo $row2['sem_duration_from']; ?>" required>
                                 <b><label for="stsemto" class="label1">To:</label></b>
-                                <input class="sem" type="date" id="stsemto" name="stfromto" required>
+                                <input class="sem" type="date" id="stsemto" name="stfromto" value="<?php echo $row2['sem_duration_to']; ?>" required>
                             </div>
                             <div class="label1">
                                 <b><label>Class Test - 1 Schedule :</label></b>
                             </div>
                             <div class="inp">
                                 <b><label for="ct1from" class="label">From:</label></b>
-                                <input class="sem" type="date" id="ct1from" name="ct1from" required>
+                                <input class="sem" type="date" id="ct1from" name="ct1from" value="<?php echo $row2['class_test1_from']; ?>" required>
                                 <b><label for="ct1to" class="label1">To:</label></b>
-                                <input class="sem" type="date" id="ct1to" name="ct1to" required>
+                                <input class="sem" type="date" id="ct1to" name="ct1to" value="<?php echo $row2['class_test1_to']; ?>" required>
 
                             </div>
                             <div class="label1">
@@ -129,9 +137,9 @@
                             </div>
                             <div class="inp">
                                 <b><label for="ct2from" class="label">From:</label></b>
-                                <input class="sem" type="date" id="ct2from" name="ct2from" required>
+                                <input class="sem" type="date" id="ct2from" name="ct2from" value="<?php echo $row2['class_test2_from']; ?>" required>
                                 <b><label for="ct2to" class="label1">To:</label></b>
-                                <input class="sem" type="date" id="ct2to" name="ct2to" required>
+                                <input class="sem" type="date" id="ct2to" name="ct2to" value="<?php echo $row2['class_test2_to']; ?>" required>
                             </div>
 
                             <div class="label1">
@@ -139,9 +147,9 @@
                             </div>
                             <div class="inp">
                                 <b><label for="prefrom" class="label">From:</label></b>
-                                <input class="sem" type="date" id="prefrom" name="prefrom" required>
+                                <input class="sem" type="date" id="prefrom" name="prefrom" value="<?php echo $row2['practical_exam_from']; ?>" required>
                                 <b><label for="preto" class="label1">To:</label></b>
-                                <input class="sem" type="date" id="preto" name="preto" required>
+                                <input class="sem" type="date" id="preto" name="preto" value="<?php echo $row2['practical_exam_to']; ?>" required>
 
                             </div>
 
@@ -150,16 +158,16 @@
                             </div>
                             <div class="inp">
                                 <b><label for="thform" class="label">From:</label></b>
-                                <input class="sem" type="date" id="thfrom" name="thfrom" required>
+                                <input class="sem" type="date" id="thfrom" name="thfrom" value="<?php echo $row2['theory_exam_from']; ?>" required>
                                 <b><label for="thto" class="label1">To:</label></b>
-                                <input class="sem" type="date" id="thto" name="thto" required>
+                                <input class="sem" type="date" id="thto" name="thto" value="<?php echo $row2['theory_exam_to']; ?>"required>
 
                             </div>
 
                         </div>
                     </div>
                     <div class="buttons">
-                        <button type="submit" name="addCal" class="button">Add</button>
+                        <button type="submit" name="addCal" class="button">Update</button>
                         <a href="adm_AcademicCal.php"> <button type="button" class="button">Cancel</button></a>
                     </div>
 
@@ -182,24 +190,30 @@ if (isset ($_POST['addCal'])) {
     extract($_POST);
 
     // Check if required variables are set
-    if (isset ($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
+    $update = mysqli_query($con, "UPDATE `academic_cal` SET 
+        `semester` = '$semester',
+        `scheme` = '$scheme',
+        `branch` = '$branch',
+        `aca_year` = '$aystdatefrom - $aystdateto',
+        `sem_duration_from` = '$stsemfrom',
+        `sem_duration_to` = '$stfromto',
+        `class_test1_from` = '$ct1from',
+        `class_test1_to` = '$ct1to',
+        `class_test2_from` = '$ct2from',
+        `class_test2_to` = '$ct2to',
+        `practical_exam_from` = '$prefrom',
+        `practical_exam_to` = '$preto',
+        `theory_exam_from` = '$thfrom',
+        `theory_exam_to` = '$thto'
+        WHERE <put your condition here>") or die(mysqli_error($con));
 
-        // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die (mysqli_error($con));
-
-        if ($add) {
-            echo "<script>";
-            echo "alert(' Data Inserted Successfully !!')";
-            echo "</script>";
-        } else {
-            echo "<script>";
-            echo "alert('ERROR ! Fail..!')";
-            echo "</script>";
-        }
-
+    if ($update) {
+        echo "<script>";
+        echo "alert('Data Updated Successfully !!')";
+        echo "</script>";
     } else {
         echo "<script>";
-        echo "alert('One or more required fields are missing. Please fill in all the fields.');";
+        echo "alert('ERROR ! Fail..!')";
         echo "</script>";
     }
 }

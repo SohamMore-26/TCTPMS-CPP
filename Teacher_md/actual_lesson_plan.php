@@ -27,7 +27,8 @@
     extract($row); ?>
     <div class="nav_head">
         <div class="title_div">
-            <h1 id="h1">Teacher's Companion</h1>
+        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+      
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>

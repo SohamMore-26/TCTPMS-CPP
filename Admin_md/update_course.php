@@ -16,7 +16,7 @@
 <body>
     <div class="nav_head">
         <div class="title_div">
-            <h1 id="h1">Teacher's Companion</h1>
+        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -65,11 +65,13 @@
         <div class="C_contain_scroll">
             <?php
             include "config.php";
-            $view = mysqli_query($con, "select * from teacherinfo where firstName != 'Admin'") or die(mysqli_error($con));
+                $view = mysqli_query($con, "select * from teacherinfo where firstName != 'Admin'") or die(mysqli_error($con));
+                $view2 = mysqli_query($con, "select * from courseinfo where id = '".$_GET['id']."'") or die(mysqli_error($con));
+                $row2 = mysqli_fetch_array($view2);
 
 
             ?>
-            <h2>Add Course Details</h2>
+            <h2>Update Course Details</h2>
             <div class="add_course" id="add_course">
                 <div class="add_course_card_cont">
                     <div class="add_course_card">
@@ -119,17 +121,17 @@
                                 <div class="name">
                                     <b><label for="courseTitle" class="label">Course Title :</label></b>
                                     <input class="sem" type="text" id="courseTitle" name="courseTitle"
-                                        placeholder="Enter Course Title" required>
+                                    value="<?php echo $row2['courseTitle']; ?>" required>
                                 </div>
                                 <div class="name">
                                     <b><label for="courseAbrevation" class="label">Course Abrevation :</label></b>
                                     <input class="sem" type="text" id="courseAbrevation" name="courseAbrevation"
-                                        placeholder="Enter Course Abrevation" required>
+                                    value="<?php echo $row2['courseAbrevation']; ?>" required>
                                 </div>
                                 <div class="name">
                                     <b><label for="courseCode" class="label">Course Code :</label></b>
                                     <input class="sem" type="" id="courseCode" name="courseCode"
-                                        placeholder="Enter Course Code" required>
+                                    value="<?php echo $row2['courseCode']; ?>" required>
                                 </div>
 
 
@@ -152,13 +154,13 @@
                                 <div class="name">
                                     <b><label for="lecturePW" class="label">Lectures per week :</label></b>
                                     <input class="sem" type="text" id="lecturePW" name="lecturePW"
-                                        placeholder="Enter Lectures Per Week" required>
+                                    value="<?php echo $row2['lecturePW']; ?>" required>
                                 </div>
 
                                 <div class="name">
                                     <b><label for="practicalPW" class="label">Practicals per week :</label></b>
                                     <input class="sem" type="text" id="practicalPW" name="practicalPW"
-                                        placeholder="Enter Practicals per week" required>
+                                    value="<?php echo $row2['practicalPW']; ?>" required>
                                 </div>
 
 
@@ -167,34 +169,34 @@
                                 <div class="name">
                                     <b><label for="tutorialPW" class="label">Tutorials per week :</label></b>
                                     <input class="sem" type="text" id="tutorialPW" name="tutorialPW"
-                                        placeholder="Enter Tutorials per week" required>
+                                    value="<?php echo $row2['tutorialPW']; ?>" required>
                                 </div>
                                 <div class="name">
                                     <b><label for="teachingHours" class="label">Teaching Hours :</label></b>
                                     <input class="sem" type="text" id="teachingHours" name="teachingHours"
-                                        placeholder="Enter Teaching Hours" required>
+                                    value="<?php echo $row2['teachingHours']; ?>" required>
                                 </div>
                                 <div class="name">
                                     <b><label for="practicalHours" class="label">Practical Hours :</label></b>
                                     <input class="sem" type="text" id="teachingHours" name="practicalHours"
-                                        placeholder="Enter Practical Hours" required>
+                                    value="<?php echo $row2['teachingHours']; ?>" required>
                                 </div>
                                 <div class="name">
                                     <b><label for="selfhours" class="label">Self Learning Hours :</label></b>
                                     <input class="sem" type="text" id="selfhours" name="selfhours"
-                                        placeholder="Enter Teaching Hours" required>
+                                    value="<?php echo $row2['selfhours']; ?>" required>
                                 </div>
                             </div>
                             <div class="name_cont">
                                 <div class="name">
                                     <b><label for="ikshours" class="label">IKS Hours :</label></b>
                                     <input class="sem" type="text" id="ikshours" name="ikshours"
-                                        placeholder="Enter IKS Hours" required>
+                                    value="<?php echo $row2['ikshours']; ?>" required>
                                 </div>
                                 <div class="name">
                                     <b><label for="totalcredits" class="label">Total Credits :</label></b>
                                     <input class="sem" type="text" id="totalcredits" name="totalcredits"
-                                        placeholder="Enter Total Credits" required>
+                                    value="<?php echo $row2['totalcredits']; ?>" required>
                                 </div>
                                 <div class="name">
                                     <b><label for="teacher" class="label">Course Teacher:</label></b>
@@ -241,19 +243,29 @@ include "config.php";
 if (isset($_POST['updateCourse']  )) {
     extract($_POST);
 
-    $add = mysqli_query($con, "INSERT INTO `courseinfo`(`semester`, `branch`, `scheme`, `courseTitle`, `courseAbrevation`, `courseCode`, `lecturePW`, `practicalPW`, `tutorialPW`, `teachingHours`) VALUES ('$semester','$branch','$scheme','$courseTitle','$courseAbrevation','$courseCode','$lecturePW','$practicalPW','$tutorialPW','$teachingHours')") or die(mysqli_error($con));
+    $update = mysqli_query($con, "UPDATE `courseinfo` SET 
+    `semester` = '$semester',
+    `branch` = '$branch',
+    `scheme` = '$scheme',
+    `courseTitle` = '$courseTitle',
+    `courseAbrevation` = '$courseAbrevation',
+    `courseCode` = '$courseCode',
+    `lecturePW` = '$lecturePW',
+    `practicalPW` = '$practicalPW',
+    `tutorialPW` = '$tutorialPW',
+    `teachingHours` = '$teachingHours'
+    WHERE `id` = '".$_GET['id']."'") or die(mysqli_error($con));
 
-    if ($add) {
-        echo "<script>";
-        echo "alert('Successfully Updated...');";
-        echo "</script>";
-    } else {
-        echo "<script>";
-        echo "alert('ERROR ! Fail..!')";
-        echo "</script>";
-    }
+if ($update) {
+    echo "<script>";
+    echo "alert('Successfully Updated...');";
+    echo "</script>";
+} else {
+    echo "<script>";
+    echo "alert('ERROR ! Fail..!')";
+    echo "</script>";
+}
 
-    $delete = mysqli_query($con,"delete from courseinfo where id = '".$_GET['id']."'") or die(mysqli_error($con));
 } 
 
 ?>

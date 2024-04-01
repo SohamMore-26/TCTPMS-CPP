@@ -14,7 +14,7 @@
 <body>
     <div class="nav_head">
         <div class="title_div">
-            <h1 id="h1">Teacher's Companion</h1>
+        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
         </div>
         <div class="lgt_div">
         <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -147,7 +147,7 @@
                                 echo "$newdate9"; ?>
                             </td>
                             <td>
-                                <a href="update_teacher.php"> <span class="material-symbols-outlined">
+                                <a href="update_acad_cal.php?id=<?php echo $id; ?>"> <span class="material-symbols-outlined">
                                         edit
                                     </span> </a>
                             </td>

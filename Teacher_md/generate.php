@@ -6,9 +6,33 @@ $sch = $_POST['scheme'];
 $sub = $_POST['sub'];
 $div = $_POST['div'];
 
+
+//  khalcha code fakt subject abb varun code kadhto ignore karava
+$codeSub = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
+$row0 = mysqli_fetch_array($codeSub);
+$code = $r['courseCode'];
+
+
+$stmt = $con->prepare("SELECT * FROM lesson_plan WHERE aca_year = ? AND sem = ? AND sch = ? AND coursecode = ? AND div1 = ?");
+$stmt->bind_param("sssss", $acaYear, $sem, $sch, $code, $div);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Check if any rows are returned
+if ($result->num_rows > 0) {
+    // Plan exists, redirect to tch_lesson_plan.php
+
+    // alert takava
+    header("Location: tch_lesson_plan.php");
+    exit(); 
+} 
+
+$stmt->close();
+
 if ($sem == "1") {
   $sem1 = "1st Sem";
-} elseif ($sem % 2 == 0) {
+} elseif ($sem % 2 == 0) 
+{
   $sem1 = "Even (2,4,6)";
 } else {
   $sem1 = "Odd (3,5)";
@@ -181,7 +205,8 @@ $courseC = $row2['courseCode'];
 <?php
 session_start();
 include "config.php";
-if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST['lastDate'], $_POST['div'])) {
+if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST['lastDate'], $_POST['div'])) 
+{
 
   $acaYear = $_POST['acaYear'];
   $sem = $_POST['sem'];
@@ -202,11 +227,12 @@ if (isset ($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POS
 
     $stmt->execute();
   }
-  if ($stmt->execute()) {
+  if ($stmt->execute()) 
+  {
 
-  } else {
+  } else 
+  {
     echo "Error: " . $stmt->error;
   }
-
 }
 ?>

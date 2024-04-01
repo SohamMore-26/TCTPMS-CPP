@@ -22,7 +22,9 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 <body>
     <div class="nav_head">
         <div class="title_div">
-            <h1 id="h1">Teacher's Companion</h1>
+            <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+             </h1>
+          
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -90,9 +92,7 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
         <div class="main_c_cont">
 
             <div class="wel_card">
-                <h1>Welcome
-                    <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
-                </h1>
+            
             </div>
 
         </div>
