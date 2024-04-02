@@ -87,7 +87,7 @@
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;">
                 <table class="tablecss tb_card">
-                    <form method="post" action="approve_lesson.php?code">
+                    <form method="post" action="approve_lesson.php">
                         <h2>Lesson Plan of
                             <?php echo $row['courseTitle'] ?> (
                             <?php echo $row['branch'] ?>
