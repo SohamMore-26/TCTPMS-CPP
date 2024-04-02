@@ -95,7 +95,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
             </li>
         </div>
         <div class="main_c_cont" id="cont_M">
-            <h1 style="margin-left:15px ; margin-top:0px" >Courses</h1>
+            <h1 style="margin-left:15px ; margin-top:0px" >Add Courses Syllabus</h1>
             <?php
             while ($row = mysqli_fetch_array($view)) {
                 extract($row); ?>

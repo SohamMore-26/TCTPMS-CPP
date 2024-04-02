@@ -1,74 +1,3 @@
-<?php
-include "config.php";
-session_start();
-$acaYear = $_POST['aca_year'];
-$sem = $_POST['semester'];
-$sch = $_POST['scheme'];
-$sub = $_POST['sub'];
-$div = $_POST['div'];
-
-
-//  khalcha code fakt subject abb varun code kadhto ignore karava
-$codeSub = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
-$row0 = mysqli_fetch_array($codeSub);
-$code = $row0['courseCode'];
-
-
-$stmt = $con->prepare("SELECT * FROM lesson_plan WHERE aca_year = ? AND sem = ? AND sch = ? AND coursecode = ? AND div1 = ?");
-$stmt->bind_param("sssss", $acaYear, $sem, $sch, $code, $div);
-$stmt->execute();
-$result = $stmt->get_result();
-
-// Check if any rows are returned
-if ($result->num_rows > 0) {
-  echo "<script>
-                swal({
-                    title: 'Success',
-                    text: 'Lesson Plan Already Eicts',
-                    icon: 'success',
-                    button: 'OK'
-                }).then(function() {
-                    window.location.href = 'tch_lesson_plan.php'; 
-                });
-            </script>";
-  exit();
-}
-
-$stmt->close();
-
-if ($sem == "1") {
-  $sem1 = "1st Sem";
-} elseif ($sem % 2 == 0) {
-  $sem1 = "Even (2,4,6)";
-} else {
-  $sem1 = "Odd (3,5)";
-}
-
-
-
-$aca = mysqli_query($con, "select * from academic_cal where aca_year = '$acaYear' AND semester = '$sem1'") or die(mysqli_error($con));
-$row = mysqli_fetch_array($aca);
-$semstart = $row['sem_duration_from']; // sem start date
-$semend = $row['sem_duration_to']; // sem end date
-
-
-$time = mysqli_query($con, "select * from timetable where aca_year = '$acaYear' AND semester = '$sem' AND scheme = '$sch' AND division = '$div' AND course = '$sub'") or die(mysqli_error($con));
-$days = array(); // Declare an empty array
-while ($row1 = mysqli_fetch_array($time)) {
-  extract($row1);
-  $day = $row1['day'];
-  array_push($days, $day); // Push each day value into the array
-}
-
-$course = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
-$row2 = mysqli_fetch_array($course);
-$noOfLec = $row2['teachingHours'];
-$lecperweek = $row2['lecturePW'];
-$prperweek = $row2['practicalPW'];
-$courseT = $row2['courseTitle'];
-$courseC = $row2['courseCode'];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +24,77 @@ $courseC = $row2['courseCode'];
   <div class="loader"></div>
 
 
+  <?php
+  include "config.php";
+  session_start();
+  $acaYear = $_POST['aca_year'];
+  $sem = $_POST['semester'];
+  $sch = $_POST['scheme'];
+  $sub = $_POST['sub'];
+  $div = $_POST['div'];
 
+
+  //  khalcha code fakt subject abb varun code kadhto ignore karava
+  $codeSub = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
+  $row0 = mysqli_fetch_array($codeSub);
+  $code = $row0['courseCode'];
+
+
+  $stmt = $con->prepare("SELECT * FROM lesson_plan WHERE aca_year = ? AND sem = ? AND sch = ? AND coursecode = ? AND div1 = ?");
+  $stmt->bind_param("sssss", $acaYear, $sem, $sch, $code, $div);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  // Check if any rows are returned
+  if ($result->num_rows > 0) {
+    echo "<script>
+                swal({
+                    title: 'Warning',
+                    text: 'Lesson Plan Already Exists',
+                    icon: 'warning',
+                    button: 'OK'
+                }).then(function() {
+                    window.location.href = 'tch_lesson_plan.php'; 
+                });
+            </script>";
+    exit();
+  }
+
+  $stmt->close();
+
+  if ($sem == "1") {
+    $sem1 = "1st Sem";
+  } elseif ($sem % 2 == 0) {
+    $sem1 = "Even (2,4,6)";
+  } else {
+    $sem1 = "Odd (3,5)";
+  }
+
+
+
+  $aca = mysqli_query($con, "select * from academic_cal where aca_year = '$acaYear' AND semester = '$sem1'") or die(mysqli_error($con));
+  $row = mysqli_fetch_array($aca);
+  $semstart = $row['sem_duration_from']; // sem start date
+  $semend = $row['sem_duration_to']; // sem end date
+  
+
+  $time = mysqli_query($con, "select * from timetable where aca_year = '$acaYear' AND semester = '$sem' AND scheme = '$sch' AND division = '$div' AND course = '$sub'") or die(mysqli_error($con));
+  $days = array(); // Declare an empty array
+  while ($row1 = mysqli_fetch_array($time)) {
+    extract($row1);
+    $day = $row1['day'];
+    array_push($days, $day); // Push each day value into the array
+  }
+
+  $course = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
+  $row2 = mysqli_fetch_array($course);
+  $noOfLec = $row2['teachingHours'];
+  $lecperweek = $row2['lecturePW'];
+  $prperweek = $row2['practicalPW'];
+  $courseT = $row2['courseTitle'];
+  $courseC = $row2['courseCode'];
+
+  ?>
 
 </body>
 
