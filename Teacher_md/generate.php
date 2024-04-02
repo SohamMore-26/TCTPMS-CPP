@@ -117,6 +117,7 @@ $courseC = $row2['courseCode'];
 
   let lastDate = [];
 
+  let extralecture = 1;
 
   lastDate = dates(noOfLec, semStartDate, dt, lecperweek, semEndDate)
 
@@ -125,7 +126,6 @@ $courseC = $row2['courseCode'];
 
   }
   console.log(lastDate);
-
   // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -149,7 +149,7 @@ $courseC = $row2['courseCode'];
       tempDate.setDate(tempDate.getDate() + 7)
 
       if (tempDate.getTime() > semEndDate.getTime()) {
-
+        extralecture += noOfLec - i - lecperweek;
         for (let j = 0; j < noOfLec - i - lecperweek; j++) {
           date.push("Extra Lecture")
         }
@@ -207,8 +207,8 @@ $courseC = $row2['courseCode'];
     }
   });
   swal({
-    title: 'Success',
-    text: 'Dates Generated  Successfully!',
+    title: 'Dates Generated  Successfully!',
+    text: 'Extra Lectures Need To Be Conducted Are : ' + extralecture,
     icon: 'success',
     button: 'OK'
   }).then(function () {
@@ -218,7 +218,7 @@ $courseC = $row2['courseCode'];
 <?php
 include "config.php";
 if (isset($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST['lastDate'], $_POST['div'])) {
-  
+
   $acaYear = $_POST['acaYear'];
   $sem = $_POST['sem'];
   $sch = $_POST['sch'];

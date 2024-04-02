@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
 <?php
 session_start();
 include "config.php";
@@ -24,12 +33,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO `syllabus`(`course`, `coursecode`, `lecno`, `unit_name`, `unit_outcome`, `course_outcome`, `topic`, `sub_topic`, `preparedby`) VALUES ('$sub','$code','$lecno','$unit_name','$unit_outcome','$course_outcome','$topic','$sub_topic','$a')" or die(mysqli_error($con));
         if ($con->query($sql) === TRUE) {
 
-            echo "<script>";
-            echo 'window.location.href="tch_courses.php";';
-            echo "</script>";
+            echo "<script>
+                swal({
+                    title: 'Success',
+                text: 'Syllabus Entred Successfully!',
+                icon: 'success',
+                button: 'OK'
+              }).then(function () {
+                window.location.href = 'tch_courses.php';
+              });
+            </script>";
         } else {
-            // echo "Error: " . $sql . "<br>" . $con->error;
+            echo "Error: " . $sql . "<br>" . $con->error;
         }
     }
 }
-?>;
+?>
+</body>
+</html>
