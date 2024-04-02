@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Actual Lesson Plan
     </title>
 </head>
@@ -20,8 +21,37 @@
     $sch = $_POST['scheme'];
     $sub = $_SESSION['sub'] = $_POST['sub'];
     $div = $_POST['div'];
+
+    $checkApprove = mysqli_query($con, "select * from lesson_plan where course = '$sub' AND sem = '$sem' AND sch = '$sch' AND aca_year ='$acaYear' And flag = 'Approved'") or die(mysqli_error($con));
+    if ($checkApprove->num_rows < 0) {
+        echo "<script>
+        swal({
+            title: 'Warning',
+            text: 'Lesson Plan Does Not Exists',
+            icon: 'warning',
+            button: 'OK'
+        }).then(function() {
+            window.location.href = 'tch_lesson_plan_progress.php'; 
+        });
+     </script>";
+        exit();
+    }
+    elseif ($checkApprove->num_rows < 0) {
+        echo "<script>
+        swal({
+            title: 'Warning',
+            text: 'Lesson Plan Is Not Approved!!',
+            icon: 'warning',
+            button: 'OK'
+        }).then(function() {
+            window.location.href = 'tch_lesson_plan_progress.php'; 
+        });
+     </script>";
+        exit();
+
+    }
     if ($sub) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die (mysqli_error($con));
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die(mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
@@ -103,7 +133,7 @@
         include "config.php";
 
         if ($sub) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '$sub' ") or die (mysqli_error($con));
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '$sub' ") or die(mysqli_error($con));
         } ?>
         <div class="C_C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;">
@@ -182,7 +212,7 @@
                                     <input type="file">
                                 </td>
                                 <td>
-                                    <input class="button" type="submit" onclick="submitForm(this)" value="Save"> 
+                                    <input class="button" type="submit" onclick="submitForm(this)" value="Save">
                                 </td>
                             </tr>
                         <?php } ?>
