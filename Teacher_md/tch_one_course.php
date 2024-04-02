@@ -23,14 +23,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            <h1 id="h1">Teacher's Companion
+            </h1>
+
+        </div>
+        <div class="title_div">
+            <h1 id="h1"> Welcome Prof.
+                <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            </h1>
+
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -69,7 +77,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
-        
+
                 <div class="separator">Mark Daily Progress</div>
 
                 <div class="side_card">
@@ -103,7 +111,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                 ?>
 
                 <h2>
-                    <?php echo $row['courseTitle']; ?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)
+                    <?php echo $row['courseTitle']; ?> (
+                    <?php echo $row['branch'] ?>
+                    <?php echo $row['semester'] ?>
+                    <?php echo $row['scheme'] ?>)
                 </h2>
                 <h4>Course Code:
                     <?php echo $row['courseCode']; ?>
@@ -115,18 +126,16 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                     <?php echo $row['branch']; ?>
                 </h4>
                 <h4>
-                <?php 
-                    if($row['teachingHours'] > 0 &&  $row['practicalHours'] > 0){
-                        echo "No of lectures :" . $row['teachingHours']."<br><br>";         
+                    <?php
+                    if ($row['teachingHours'] > 0 && $row['practicalHours'] > 0) {
+                        echo "No of lectures :" . $row['teachingHours'] . "<br><br>";
+                        echo "No of practicals :" . $row['practicalHours'];
+                    } elseif ($row['teachingHours'] > 0) {
+                        echo "No of lectures :" . $row['teachingHours'];
+                    } else {
                         echo "No of practicals :" . $row['practicalHours'];
                     }
-                    elseif( $row['teachingHours'] > 0){
-                        echo "No of lectures :" . $row['teachingHours'];         
-                    }
-                    else{
-                        echo "No of practicals :" . $row['practicalHours'];
-                    }
-                ?>
+                    ?>
                 </h4>
 
 

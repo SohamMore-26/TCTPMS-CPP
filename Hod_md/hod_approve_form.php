@@ -96,6 +96,7 @@
                              For Approval
                         </h2>
                         <tr>
+                            <th>Lec no</th>
                             <th>Planned Date</th>
                             <th>Unit Name</th>
                             <th>Course <br> Outcome</th>
@@ -106,9 +107,15 @@
                             <th>Add PPTS</th>
                         </tr>
                         <?php
+                        $i = 1;
                         while ($row1 = mysqli_fetch_array($view1)) {
                             extract($row1); ?>
                             <tr>
+                                <td>
+                                <input class="sema" type="text" name="lec_no[]" value="<?php echo $i ?>"
+                                        style="display: none;">
+                                    <?php echo $i; ?>
+                                </td>
                                 <td>
                                     <?php echo $row1['planned_date']; ?>
                                     <input class="sema" type="text" name="sub[]"
@@ -139,7 +146,7 @@
                                     <input disabled type="file">
                                 </td>
                             </tr>
-                        <?php } ?>
+                        <?php  $i+=1;}  ?>
                 </table>
                 <button type="submit" name="addSyllabus" class="button">
                     Approve

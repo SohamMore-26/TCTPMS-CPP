@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     $showError = "Login Failed...!";
     header("location: index.php");
     exit;
@@ -30,14 +30,22 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     extract($row); ?>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            <h1 id="h1">Teacher's Companion
+            </h1>
+
+        </div>
+        <div class="title_div">
+            <h1 id="h1"> Welcome Prof.
+                <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            </h1>
+
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -76,7 +84,7 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
-        
+
                 <div class="separator">Mark Daily Progress</div>
 
                 <div class="side_card">
@@ -101,7 +109,12 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
                 <table class="tablecss tb_card">
                     <form method="post" action="insert.php">
-                        <h2>Enter Syllabus of <?php echo $row['courseTitle']?> (<?php echo $row['branch']?><?php echo $row['semester']?><?php echo $row['scheme']?>)</h2>
+                        <h2>Enter Syllabus of
+                            <?php echo $row['courseTitle'] ?> (
+                            <?php echo $row['branch'] ?>
+                            <?php echo $row['semester'] ?>
+                            <?php echo $row['scheme'] ?>)
+                        </h2>
                         <tr>
                             <th>Lec. No.</th>
                             <th>Unit Name</th>
@@ -119,8 +132,10 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             <tr>
                                 <td>
                                     <input class="sema" type="text" name="lecno[]" value="<?php echo $i; ?>">
-                                    <input class="sema" type="text" name="sub[]" value="<?php echo $row['courseAbrevation']?>" style="display: none;">
-                                    <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode']?>" style="display: none;" > 
+                                    <input class="sema" type="text" name="sub[]"
+                                        value="<?php echo $row['courseAbrevation'] ?>" style="display: none;">
+                                    <input class="sema" type="text" name="code[]" value="<?php echo $row['courseCode'] ?>"
+                                        style="display: none;">
                                 </td>
 
                                 <td>
@@ -145,7 +160,7 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
 
                 </table>
-                 <input type="submit" name="addSyllabus" class="button"></form>
+                <input type="submit" name="addSyllabus" class="button"></form>
             </div>
         </div>
     </div>

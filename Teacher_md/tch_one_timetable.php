@@ -30,14 +30,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     ?>
     <div class="nav_head">
         <div class="title_div">
-            <h1 id="h1">Teacher's Companion</h1>
+            <h1 id="h1">Teacher's Companion
+            </h1>
+
+        </div>
+        <div class="title_div">
+            <h1 id="h1"> Welcome Prof.
+                <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            </h1>
+
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -77,7 +85,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
-        
+
                 <div class="separator">Mark Daily Progress</div>
 
                 <div class="side_card">
