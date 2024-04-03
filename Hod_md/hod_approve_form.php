@@ -14,14 +14,15 @@
 <body>
     <?php
     include "config.php";
-    if (isset ($_GET['course'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die (mysqli_error($con));
+    if (isset($_GET['course'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die(mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Head of Department</h1>
+            <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Head of
+                Department</h1>
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -31,14 +32,14 @@
         <div class="sidebar">
             <li>
                 <div class="side_card">
-                    <a href="tch_home.php">
+                    <a href="hod_home.php">
                         <ul><span class="material-symbols-outlined">
                                 home
                             </span> Home</ul>
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.php">
+                    <a href="tch_timetable.html">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -46,43 +47,25 @@
                 </div>
 
                 <div class="side_card">
-                    <a href="tch_courses.php">
+                    <a href="hod_approval.php">
                         <ul><span class="material-symbols-outlined">
                                 menu_book
-                            </span> Courses</ul>
+                            </span>Approvals</ul>
                     </a>
                 </div>
-                <!-- 
                 <div class="side_card">
-                    <a href="tch_AcademicCal.php">
-                        <ul><span class="material-symbols-outlined">
-                                calendar_clock
-                            </span> Academic Calendar</ul>
-                    </a>
-                </div> -->
-
-                <div class="side_card">
-                    <a href="tch_lesson_plan.php">
+                    <a href="hod_teacher.php">
                         <ul><span class="material-symbols-outlined">
                                 group
-                            </span> Lesson Plan</ul>
-                    </a>
-                </div>
-
-
-                <div class="side_card">
-                    <a href="tch_lab_plan.php">
-                        <ul><span class="material-symbols-outlined">
-                                pending_actions
-                            </span> Laboratory Plan</ul>
+                            </span> View Progress</ul>
                     </a>
                 </div>
             </li>
         </div>
         <?php
         include "config.php";
-        if (isset ($_GET['course'])) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die (mysqli_error($con));
+        if (isset($_GET['course'])) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;">
@@ -93,7 +76,7 @@
                             <?php echo $row['branch'] ?>
                             <?php echo $row['semester'] ?>
                             <?php echo $row['scheme'] ?>)
-                             For Approval
+                            For Approval
                         </h2>
                         <tr>
                             <th>Lec no</th>
@@ -112,7 +95,7 @@
                             extract($row1); ?>
                             <tr>
                                 <td>
-                                <input class="sema" type="text" name="lec_no[]" value="<?php echo $i ?>"
+                                    <input class="sema" type="text" name="lec_no[]" value="<?php echo $i ?>"
                                         style="display: none;">
                                     <?php echo $i; ?>
                                 </td>
@@ -124,8 +107,8 @@
                                         style="display: none;">
                                 </td>
                                 <td>
-                                    <input class="sema" type="text" name="unit_name[]" value="<?php echo $row1['unit_name'] ?>"
-                                        style="display: none;">
+                                    <input class="sema" type="text" name="unit_name[]"
+                                        value="<?php echo $row1['unit_name'] ?>" style="display: none;">
                                     <?php echo $row1['unit_name']; ?>
                                 <td>
                                     <?php echo $row1['course_outcome']; ?>
@@ -146,7 +129,8 @@
                                     <input disabled type="file">
                                 </td>
                             </tr>
-                        <?php  $i+=1;}  ?>
+                            <?php $i += 1;
+                        } ?>
                 </table>
                 <button type="submit" name="addSyllabus" class="button">
                     Approve
