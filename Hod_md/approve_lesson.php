@@ -18,40 +18,41 @@ session_start();
 include "config.php";
 $a = $_SESSION['teacherId'];
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     if ($con->connect_error) {
         die("Connection failed: " . $con->connect_error);
     }
 
-
-    $sub = $_POST['unit_name'];
+    $sub = $_POST['lec_no'];
     // Loop through each set of data submitted
+    $code = $_POST['code'];
+
+    if (!is_string($code)) {
+        $code = implode($code);
+    }
+
+    $codez = substr($code, 0, 5); // Extract the first 5 characters of the entire data
+
     for ($i = 0; $i < $sub; $i++) {
-
-        $code = $_POST['code'][$i];
-
         // Insert data into the database
-        $sql = "UPDATE `lesson_plan` SET `flag` = 'Approved', `approvedby` = '$a' WHERE flag = 'Not Approved' AND coursecode = '$code'" or die(mysqli_error($con));
+        $sql = "UPDATE `lesson_plan` SET `flag` = 'Approved', `approvedby` = '$a' WHERE flag = 'Not Approved' AND coursecode = '$codez'";
         if ($con->query($sql) === TRUE) {
-            
-            echo "Hello";
-            // echo die();
+            // Display SweetAlert
             echo "<script>
-            swal({
-                title: 'Success',
-                text: 'Lesson Plan is Approved!',
-                icon: 'success',
-                button: 'OK'
-            }).then(function() {
-                window.location.href = 'hod_approval.php'; 
-            });
-            </script>";
+                    swal({
+                        title: 'Success',
+                        text: 'Lesson Plan is Approved!',
+                        icon: 'success',
+                        button: 'OK'
+                    }).then(function() {
+                        window.location.href = 'hod_approval.php'; 
+                    });
+                </script>";
+            exit(); // Terminate PHP execution after redirecting
         } else {
-            // echo "Error: " . $sql . "<br>" . $con->e$sql = "UPDATE `lesson_plan` SET `flag` = 'approved'" or die(mysqli_error($con));rror;
+            // Handle error
+            echo "Error: " . $con->error;
         }
     }
-        
 }
-?>;
+?>

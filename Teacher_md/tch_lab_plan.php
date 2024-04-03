@@ -1,12 +1,12 @@
 <?php
 include "config.php";
 session_start();
-if (isset ($_SESSION['id'])) {
-    $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['teacherId'] . "' AND teachingHours > 0") or die (mysqli_error($con));
+if (isset($_SESSION['id'])) {
+    $view = mysqli_query($con, "select * from courseinfo where teacher = '" . $_SESSION['teacherId'] . "' AND teachingHours > 0") or die(mysqli_error($con));
 }
 
-$view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or die (mysqli_error($con));
-$view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error($con));
+$view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or die(mysqli_error($con));
+$view2 = mysqli_query($con, "select * from academic_cal ") or die(mysqli_error($con));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +24,15 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
 <body>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
-    
+            <h1 id="h1">Teacher's Companion
+            </h1>
+
+        </div>
+        <div class="title_div">
+            <h1 id="h1"> Welcome Prof.
+                <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            </h1>
+
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -93,8 +100,8 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
         </div>
         <?php
         include "config.php";
-        if (isset ($_SESSION['firstName'])) {
-            $view = mysqli_query($con, "SELECT * FROM courseinfo WHERE teacher = '" . $_SESSION['teacherId'] . "' AND practicalHours > 0") or die (mysqli_error($con));
+        if (isset($_SESSION['firstName'])) {
+            $view = mysqli_query($con, "SELECT * FROM courseinfo WHERE teacher = '" . $_SESSION['teacherId'] . "' AND practicalHours > 0") or die(mysqli_error($con));
         }
         ?>
         <div class="main_c_cont" id="cont_M">
