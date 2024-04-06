@@ -38,7 +38,7 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
         </div>
     </div>
     <div class="main_cont">
-        <div class="sidebar">
+    <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -63,7 +63,6 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                     </a>
                 </div>
                 <div class="separator">Create Lesson & Laboratory Plan</div>
-
                 <div class="side_card">
                     <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
@@ -93,6 +92,14 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                         <ul><span class="material-symbols-outlined">
                                 pending_actions
                             </span> Laboratory Plan</ul>
+                    </a>
+                </div>
+                <div class="separator">Reports</div>
+                <div class="side_card">
+                    <a href="lesson_plan_report.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Lesson Plan Report</ul>
                     </a>
                 </div>
             </li>
