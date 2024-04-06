@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 // if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 //     $showError = "Login Failed...!";
 //     header("location: index.php");
@@ -95,7 +95,7 @@
             </li>
         </div>
         <?php
-        session_start();
+        // session_start();
         $acaYear = $_SESSION['acaYear'];
         $sem = $_SESSION['sem'];
         $sch = $_SESSION['sch'];

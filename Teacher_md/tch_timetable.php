@@ -151,7 +151,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
                     <?php
                     foreach ($timeSlots as $timeSlot) {
-                        echo "<tr><td>" . $timeSlot['time'] . "</td>";
 
                         // Loop through views for each slot
                         for ($i = 1; $i <= 6; $i++) {
