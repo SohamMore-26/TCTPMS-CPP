@@ -14,14 +14,17 @@
 <body>
     <?php
     include "config.php";
-    if (isset ($_GET['course'])) {
-        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die (mysqli_error($con));
+    if (isset($_GET['course'])) {
+        $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '" . $_GET['course'] . "'") or die(mysqli_error($con));
         $row = mysqli_fetch_array($view);
     }
     extract($row); ?>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Head of Department</h1>
+            <h1 id="h1">Teacher's Companion </h1>
+        </div>
+        <div class="title_div">
+            <h1 id="h1">Welcome Head of Department</h1>
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -63,8 +66,8 @@
         </div>
         <?php
         include "config.php";
-        if (isset ($_GET['course'])) {
-            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die (mysqli_error($con));
+        if (isset($_GET['course'])) {
+            $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;margin-left: 80px;">
