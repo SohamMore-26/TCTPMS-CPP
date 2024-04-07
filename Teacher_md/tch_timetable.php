@@ -45,7 +45,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
         </div>
     </div>
     <div class="main_cont">
-        <div class="sidebar">
+    <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -101,6 +101,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
+                <div class="separator">Reports</div>
+                <div class="side_card">
+                    <a href="lesson_plan_report.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Lesson Plan Report</ul>
+                    </a>
+                </div>
             </li>
         </div>
         <div class="main_c_cont">
@@ -151,7 +159,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
                     <?php
                     foreach ($timeSlots as $timeSlot) {
-                        echo "<tr><td>" . $timeSlot['time'] . "</td>";
 
                         // Loop through views for each slot
                         for ($i = 1; $i <= 6; $i++) {

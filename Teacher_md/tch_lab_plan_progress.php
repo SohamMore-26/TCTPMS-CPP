@@ -37,7 +37,7 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
         </div>
     </div>
     <div class="main_cont">
-        <div class="sidebar">
+    <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -62,7 +62,6 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                     </a>
                 </div>
                 <div class="separator">Create Lesson & Laboratory Plan</div>
-
                 <div class="side_card">
                     <a href="tch_lesson_plan.php">
                         <ul><span class="material-symbols-outlined">
@@ -81,7 +80,7 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                 <div class="separator">Mark Daily Progress</div>
 
                 <div class="side_card">
-                    <a href="tch_lesson_plan.php">
+                    <a href="tch_lesson_plan_progress.php">
                         <ul><span class="material-symbols-outlined">
                                 group
                             </span> Lesson Plan</ul>
@@ -92,6 +91,14 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                         <ul><span class="material-symbols-outlined">
                                 pending_actions
                             </span> Laboratory Plan</ul>
+                    </a>
+                </div>
+                <div class="separator">Reports</div>
+                <div class="side_card">
+                    <a href="lesson_plan_report.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Lesson Plan Report</ul>
                     </a>
                 </div>
             </li>

@@ -92,6 +92,14 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Laboratory Plan</ul>
                     </a>
                 </div>
+                <div class="separator">Reports</div>
+                <div class="side_card">
+                    <a href="lesson_plan_report.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Lesson Plan Report</ul>
+                    </a>
+                </div>
             </li>
         </div>
         <div class="main_c_cont">
