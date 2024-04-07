@@ -22,14 +22,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 <body>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Head of Department</h1>
+            <h1 id="h1">Teacher's Companion</h1>
+        </div>
+        <div class="title_div">
+            <h1 id="h1">Welcome Head of Department</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class="side_card">
                     <a href="hod_home.php">
@@ -72,13 +75,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                 extract($row); ?>
                 <a href="hod_view_progress.php?course=<?php echo $row['courseAbrevation']; ?>">
                     <div class="m_card">
-                    <h3>
-                        <div class="icon"><span class="material-symbols-outlined">
-                                menu_book
-                            </span></div>
-                        <?php echo $row['courseTitle']; ?>
-                    </h3>
-                </div>
+                        <h3>
+                            <div class="icon"><span class="material-symbols-outlined">
+                                    menu_book
+                                </span></div>
+                            <?php echo $row['courseTitle']; ?>
+                        </h3>
+                    </div>
                 </a>
             <?php } ?>
         </div>
