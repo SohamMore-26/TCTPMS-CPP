@@ -99,6 +99,30 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
         <?php
         // Initialize a counter for the entries
         $entryCounter = 0;
+        ?>
+        
+        <br><br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        Week wise lesson plan
+                    </th>
+                    <th colspan="2">Week no.: </th>
+                </tr>
+                <tr>
+                    <th>Sem.: </th>
+                    <th>Course Title: </th>
+                    <th>Course Code: </th>
+                    <th>Name of Faculty: </th>
+                </tr>
+            </thead>
+        </table>
+        
+
+        <?php
+
+
 
         // Start the first table
         echo '<table>';
@@ -128,10 +152,30 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
             echo '</tr>';
             // If the counter is a multiple of 3, close the current table and start a new one
             if ($entryCounter % 3 == 0) {
-                echo '</tbody>';
+                echo '</br>';
                 echo '</table>';
 
                 // Start a new table
+                ?>
+                <br><br><br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                Week wise lesson plan
+                            </th>
+                            <th colspan="2">Week no.: </th>
+                        </tr>
+                        <tr>
+                            <th>Sem.: </th>
+                            <th>Course Title: </th>
+                            <th>Course Code: </th>
+                            <th>Name of Faculty: </th>
+                        </tr>
+                    </thead>
+                </table>
+                
+                <?php
                 echo '<table>';
                 echo '<thead>';
                 echo '<tr>';
@@ -141,6 +185,7 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
                 echo '</tr>';
                 echo '</thead>';
                 echo '<tbody>';
+                
             }
         }
 
@@ -150,43 +195,7 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
             echo '</table>';
         }
         ?>
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="2">
-                        Week wise lesson plan
-                    </th>
-                    <th colspan="2">Week no.: </th>
-                </tr>
-                <tr>
-                    <th>Sem.: </th>
-                    <th>Course Title: </th>
-                    <th>Course Code: </th>
-                    <th>Name of Faculty: </th>
-                </tr>
-            </thead>
-        </table>
-        <table>
-            <thead>
-                <tr>
-                    <th>Lecture no. & Date</th>
-                    <th>Topic to be covered and
-                        Assignment / Home Work Given</th>
-                    <th>Remarks</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1.</td>
-                    <td></td>
-                    <td rowspan="2"></td>
-                </tr>
-                <tr>
-                    <td>Assignment / Homework</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+
     </center>
 </body>
 
