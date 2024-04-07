@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <div class="side_card">
-                    <a href="tch_timetable.html">
+                    <a href="hod_timetable.php">
                         <ul><span class="material-symbols-outlined">
                                 today
                             </span>View Time Table</ul>
@@ -115,7 +115,7 @@
                                     <?php echo $row1['actual_coverage']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row1['status']; ?>
+                                    <?php echo $row1['flag']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row1['actual_date']; ?>
