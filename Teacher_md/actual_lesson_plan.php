@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Actual Lesson Plan
     </title>
 </head>
@@ -22,34 +22,34 @@
     $sub = $_SESSION['sub'] = $_POST['sub'];
     $div = $_POST['div'];
 
-    $checkApprove = mysqli_query($con, "select * from lesson_plan where course = '$sub' AND sem = '$sem' AND sch = '$sch' AND aca_year ='$acaYear' And flag = 'Approved'") or die(mysqli_error($con));
-    if ($checkApprove->num_rows < 0) {
+    $checkApprove = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = '$sub' AND sem = '$sem' AND sch = '$sch' AND aca_year = '$acaYear'") or die(mysqli_error($con));
+    $checkApprove0 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = '$sub' AND sem = '$sem' AND sch = '$sch' AND aca_year = '$acaYear' AND flag = 'Approved'") or die(mysqli_error($con));
+    if ($checkApprove->num_rows == 0) {
         echo "<script>
-        swal({
-            title: 'Warning',
-            text: 'Lesson Plan Does Not Exists',
-            icon: 'warning',
-            button: 'OK'
-        }).then(function() {
-            window.location.href = 'tch_lesson_plan_progress.php'; 
-        });
-     </script>";
+    swal({
+        title: 'Warning',
+        text: 'Lesson Plan Does Not Exist',
+        icon: 'warning',
+        button: 'OK'
+    }).then(function() {
+        window.location.href = 'tch_lesson_plan_progress.php'; 
+    });
+    </script>";
+        exit();
+    } elseif ($checkApprove0->num_rows == 0) {
+        echo "<script>
+    swal({
+        title: 'Warning',
+        text: 'Lesson Plan Is Not Approved!!',
+        icon: 'warning',
+        button: 'OK'
+    }).then(function() {
+        window.location.href = 'tch_lesson_plan_progress.php'; 
+    });
+    </script>";
         exit();
     }
-    elseif ($checkApprove->num_rows < 0) {
-        echo "<script>
-        swal({
-            title: 'Warning',
-            text: 'Lesson Plan Is Not Approved!!',
-            icon: 'warning',
-            button: 'OK'
-        }).then(function() {
-            window.location.href = 'tch_lesson_plan_progress.php'; 
-        });
-     </script>";
-        exit();
 
-    }
     if ($sub) {
         $view = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub'") or die(mysqli_error($con));
         $row = mysqli_fetch_array($view);
@@ -58,20 +58,21 @@
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion
-             </h1>
-          
+            </h1>
+
         </div>
         <div class="title_div">
-            <h1 id="h1"> Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
-             </h1>
-          
+            <h1 id="h1"> Welcome Prof.
+                <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            </h1>
+
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -144,17 +145,19 @@
             $view1 = mysqli_query($con, "select * from lesson_plan where course = '$sub' ") or die(mysqli_error($con));
         } ?>
         <div class="C_C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column;">
+            <center>
+                <h2>Actual Lesson Plan Of
+                    <?php echo $row['courseTitle'] ?> (
+                    <?php echo $row['branch'] ?>
+                    <?php echo $row['semester'] ?>
+                    <?php echo $row['scheme'] ?>)
+                </h2>
+            </center>
+            <div style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;">
 
                 <table class="tablecss"
-                    style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;background-color:">
+                    style="display: flex;align-items: flex-start;flex-direction: column;align-content: flex-start;">
                     <form id="your_form" method="post" action="actual.php">
-                        <h2>Actual Lesson Plan Of
-                            <?php echo $row['courseTitle'] ?> (
-                            <?php echo $row['branch'] ?>
-                            <?php echo $row['semester'] ?>
-                            <?php echo $row['scheme'] ?>)
-                        </h2>
                         <tr>
                             <th>Planned Date</th>
                             <th>Unit Name</th>

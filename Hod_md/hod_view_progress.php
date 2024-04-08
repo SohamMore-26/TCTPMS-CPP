@@ -72,7 +72,7 @@
         <div class="C_contain_scroll">
             <div style="display: flex;align-items:center;flex-direction: column;width: 100%;">
 
-                <table class="tablecss tb_card" >
+                <table class="tablecss tb_card">
                     <form id="your_form" method="post" action="actual.php">
                         <h2>Actual Lesson Plan Of
                             <?php echo $row['courseTitle'] ?> (
@@ -118,11 +118,39 @@
                                     <?php echo $row1['actual_coverage']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row1['flag']; ?>
+                                    <?php if ($row1['actual_coverage'] != null) { ?>
+                                        <span class="material-symbols-outlined" style="color:#42f554;font-weight:bold;">
+                                            done
+                                        </span>
+                                    <?php } ?>
                                 </td>
-                                <td>
-                                    <?php echo $row1['actual_date']; ?>
-                                </td>
+
+                                <?php
+
+                                if ($row1['actual_date'] != null) {
+                                    ?>
+                                    <td style="<?php
+                                    // Format actual date or set to "00-00-0000" if empty or invalid
+                                    $actualdate = date("d-m-Y", strtotime($row1['actual_date']));
+                                    // Apply styles based on comparison with planned date
+                                    echo ($actualdate == date("d-m-Y", strtotime($plannedate))) ? 'color: #42f554; font-weight: bold;' : 'color: red; font-weight: bold;';
+                                    ?>">
+                                        <?php
+                                        echo $actualdate;
+                                        ?>
+                                    </td>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <td style="color:#ffcd00d4;font-weight: bold;">
+                                        00-00-0000
+                                    </td>
+                                    <?php
+                                }
+                                ?>
+
+
+
                             </tr>
                         <?php } ?>
                 </table>
