@@ -70,9 +70,9 @@
             $view1 = mysqli_query($con, "select * from lesson_plan where course = '" . $_GET['course'] . "'") or die(mysqli_error($con));
         } ?>
         <div class="C_contain_scroll">
-            <div style="display: flex;align-items:center;flex-direction: column;margin-left: 80px;">
+            <div style="display: flex;align-items:center;flex-direction: column;width: 100%;">
 
-                <table class="tablecss tb_card">
+                <table class="tablecss tb_card" >
                     <form id="your_form" method="post" action="actual.php">
                         <h2>Actual Lesson Plan Of
                             <?php echo $row['courseTitle'] ?> (

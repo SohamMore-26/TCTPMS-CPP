@@ -207,7 +207,7 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
 
                             <tr>
                                 <td>
-                                    <input type="submit" name="add" class="button" value="View Report">
+                                    <input type="submit" name="add" class="button" value="View">
                                 </td>
                                 <td><input type="submit" name="view" class="button" value="Cancel"
                                         formaction="tch_home.php"></td>

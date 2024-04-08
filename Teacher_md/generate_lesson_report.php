@@ -7,7 +7,7 @@ $sch = $_POST['scheme'];
 $sub = $_POST['sub'];
 $div = $_POST['div'];
 $tch_id = $_POST['tch_id'];
-$conn = new PDO('mysql:host=localhost;dbname=tctpms-db', 'root', '');
+$conn = new PDO('mysql:host=localhost:3307;dbname=tctpms-db', 'root', '');
 $sql = "SELECT * FROM lesson_plan WHERE course = '$sub' AND aca_year = '$acaYear' AND sem = '$sem' AND div1 = '$div' AND sch='$sch'AND preparedby = '$tch_id'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -60,8 +60,8 @@ $html = '<!DOCTYPE html>
     <th>CO (Mention only no.)</th>
     <th>UO (Mention only no.)</th>
     <th>Title/Details</th>
-    <th>Planned Date</th>
-    <th>Actual Date</th>
+    <th style="width: 80px;">Planned Date</th>
+    <th style="width: 80px;">Actual Date</th>
     <th>Teaching Method / Media</th>
     <th>Remarks</th>
 </tr></thead>

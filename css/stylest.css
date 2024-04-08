@@ -324,7 +324,7 @@ a {
 
 .tb_card {
     background-color: #E9FBFF;
-    width: 100%;
+    /* width: 100%; */
     height: auto;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -335,6 +335,8 @@ a {
     margin: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .t_tb_card {
@@ -1037,7 +1039,7 @@ td {
 }
 
 .tablecss {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .tablecss table {
@@ -1295,7 +1297,7 @@ textarea {
 
   .tablecss td{
     word-wrap: break-word;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
     white-space: normal;
     width: auto;
   }

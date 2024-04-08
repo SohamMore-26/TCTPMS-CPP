@@ -185,9 +185,9 @@ if (isset ($_POST['addCal'])) {
     if (isset ($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
 
         // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto')") or die (mysqli_error($con));
-
-        if ($add) {
+        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`,`running`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto' , 'true' )") or die (mysqli_error($con));
+        $update = mysqli_query($con, "UPDATE `academic_cal` set `running` = 'false' WHERE `aca_year`!='$aystdatefrom - $aystdateto' ") or die (mysqli_error($con));
+        if ($add and $update) {
             echo "<script>";
             echo "alert(' Data Inserted Successfully !!')";
             echo "</script>";
@@ -196,6 +196,7 @@ if (isset ($_POST['addCal'])) {
             echo "alert('ERROR ! Fail..!')";
             echo "</script>";
         }
+        
 
     } else {
         echo "<script>";
