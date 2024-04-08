@@ -21,8 +21,6 @@
       <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
     </div>
   </div>
-  <div class="loader"></div>
-
 
   <?php
   include "config.php";
