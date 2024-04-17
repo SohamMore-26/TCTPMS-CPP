@@ -106,14 +106,13 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
         </div>
         <div class="main_c_cont">
 
-            <div class="lesson_card">
+            <div class="lesson_card" style=" overflow:auto">
                 <h1>Reports Here</h1>
                 <div style=" display: flex; align-items: center; justify-content: center;">
                     <table>
                         <form method="post" action="generate_lesson_report.php"
                             style="display: flex; flex-direction:column; width:200px; align-items:center ; justify-content: center;"
                             ;>
-
                             <tr>
                                 <td>
                                     <div style="display:flex; flex-direction:row;align-items:center;">
@@ -203,7 +202,21 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                                     </select>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <div style="display:flex; flex-direction:row;align-items:center;">
+                                        <b><label for="sub" class="label">Report Type:</label></b>
 
+                                    </div>
+                                </td>
+                                <td><select id="type" name="type" class="sem">
+                                    <option value="">Select Report Type</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="lessonPlan">lesson plan</option>
+                                </select>
+                            </td>
+                            </tr>
+                            
 
                             <tr>
                                 <td>

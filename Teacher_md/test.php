@@ -1,10 +1,23 @@
 <?php
-include "config.php";
+require_once 'vendor/autoload.php'; // Include the Dompdf autoload file
+
+use Dompdf\Dompdf; // Import the Dompdf class
+
+include "config.php"; // Include your database configuration file
 session_start();
 
-$view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND aca_year = '2023 - 2024' AND sem = '6' AND div1 = 'A' ") or die(mysqli_error($con));
-?>
+$acaYear = $_GET['aca_year'];
+$sem = $_GET['semester'];
+$sch = $_GET['scheme'];
+$sub = $_GET['sub'];
+$div = $_GET['div'];
+$tch_id = $_GET['tch_id'];
+$type = $_GET['type'];
 
+$view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = '$sub' AND aca_year = '$acaYear' AND sem = '$sem' AND div1 = '$div' AND sch='$sch' AND preparedby = '$tch_id'") or die(mysqli_error($con));
+$row1 = mysqli_fetch_assoc($view1);
+// HTML content to be displayed inside the PDF
+$html = '
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +27,7 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
     <title>Document</title>
     <style>
         .d table {
-            width: 60%;
+            width: 100%;
             border-collapse: collapse;
         }
 
@@ -40,7 +53,7 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
 <body>
     <div class="d" >
         <center>
-        <h1>S.S.V.P.S's B. S. Deore Polytechnic, Dhule</h1>
+        <h1>S.S.V.P.S\'s B. S. Deore Polytechnic, Dhule</h1>
         <h3>(Academic Year: 2023 - 2024)</h3>
         <h2>Lesson Plan</h2>
 
@@ -49,9 +62,10 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
             <tbody>
                 <tr>
                     <th>
-                        Name of Faculty: <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+                        Name of Faculty: ' . $_SESSION['firstName'] . ' ' . $_SESSION['middleName'] . ' ' . $_SESSION['lastName'] . '
+                    </th>
                     <th>
-                        Program: Computer Engineering
+                        Program: CO
                     </th>
                 </tr>
                 <tr>
@@ -64,7 +78,7 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
                 </tr>
                 <tr>
                     <th>
-                        Semester: 6
+                        Semester: '.$row1["sem"].'
                     </th>
                 </tr>
             </tbody>
@@ -88,118 +102,117 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
                 <td>T</td>
             </tr>
             <tr>
-                <td rowspan="2"></td>
-                <td rowspan="2">225806</td>
+                <td rowspan="2">'.$sub.'</td>
+                <td rowspan="2">'.$row1["coursecode"].'</td>
                 <td colspan="1">3</td>
                 <td colspan="1">0</td>
                 <td colspan="1">0</td>
                 <td rowspan="2">3</td>
             </tr>
         </table>
-        <br><br>
-        <?php
-        // Initialize a counter for the entries
-        $entryCounter = 0;
-        ?>
-        
-        <br><br><br>
+        <br><br>';
+
+// Initialize a counter for the entries
+$entryCounter = 0;
+
+$week = 2;
+
+$html .= '<br><br><br>
         <table>
             <thead>
                 <tr>
                     <th colspan="2">
                         Week wise lesson plan
                     </th>
-                    <th colspan="2">Week no.: </th>
+                    <th colspan="2">Week no.: 1 </th>
                 </tr>
                 <tr>
-                    <th>Sem.: </th>
-                    <th>Course Title: </th>
-                    <th>Course Code: </th>
-                    <th>Name of Faculty: </th>
+                    <th>Sem.: '.$row1["sem"].' </th>
+                    <th>Course Title:' .$sub. '</th>
+                    <th>Course Code: '.$row1["coursecode"].' </th>
+                    <th>Name of Faculty: ' . $_SESSION['firstName'] . ' ' . $_SESSION['middleName'] . ' ' . $_SESSION['lastName'] . ' </th>
                 </tr>
             </thead>
-        </table>
+        </table>';
+
+$html .= '<table>';
+$html .= '<thead>';
+$html .= '<tr>';
+$html .= '<th>Lecture no. & <br> Date</th>';
+$html .= '<th>Topic to be covered and Assignment / Home Work Given</th>';
+$html .= '<th>Remarks</th>';
+$html .= '</tr>';
+$html .= '</thead>';
+$html .= '<tbody>';
+
+// Loop through the fetched data
+while ($row = mysqli_fetch_assoc($view1)) {
+    // Increment the counter
+    $entryCounter++;
+
+    // Display the data in the table row
+    $html .= '<tr>';
+    $html .= '<td>' . $row['lecno'] . "<br>" . $row['planned_date'] . '</td>'; // Assuming \'lecture_no\' is the column name for lecture number
+    $html .= '<td>' . $row['topic'] . '</td>'; // Assuming \'topic\' is the column name for the topic
+    $html .= '<td rowspan="2">' . "" . '</td>'; // Assuming \'topic\' is the column name for the topic
+    $html .= '</tr>';
+    $html .= '<tr>';
+    $html .= '<td>' . "Assignment / Homework" . '</td>'; // Assuming \'lecture_no\' is the column name for lecture number
+    $html .= '<td>' . $row['assignment'] . '</td>'; // Assuming \'lecture_no\' is the column name for lecture number
+    $html .= '</tr>';
+    // If the counter is a multiple of 3, close the current table and start a new one
+    if ($entryCounter % 3 == 0) {
         
+        $html .= '</table>';
 
-        <?php
+        // Start a new table
+        $html .= '<br><br><br>';
+        $html .= '<table>';
+        $html .= '<thead>';
+        $html .= '<tr>';
+        $html .= '<th colspan="2">';
+        $html .= 'Week wise lesson plan';
+        $html .= '</th>';
+        $html .= '<th colspan="2">Week no.:'.$week.'</th>';
+        $week++;
+        $html .= '</tr>';
+        $html .= '<tr>';
+        $html .= '<th>Sem.:  '.$row1["sem"].' </th>';
+        $html .= '<th>Course Title: '.$row1["course"].' </th>';
+        $html .= '<th>Course Code:'.$row1["coursecode"].'</th>';
+        $html .= '<th>Name of Faculty:' . $_SESSION['firstName'] . ' ' . $_SESSION['middleName'] . ' ' . $_SESSION['lastName'] . '</th>';
+        $html .= '</tr>';
+        $html .= '</thead>';
+        $html .= '</table>';
+        
+        $html .= '<table>';
+        $html .= '<thead>';
+        $html .= '<tr>';
+        $html .= '<th>Lecture no. & Date</th>';
+        $html .= '<th>Topic to be covered and Assignment / Home Work Given</th>';
+        $html .= '<th>Remarks</th>';
+        $html .= '</tr>';
+        $html .= '</thead>';
+        $html .= '<tbody>';
+    }
+}
 
+// Close the last table if there are any remaining entries
+if ($entryCounter % 3 != 0) {
+    $html .= '</tbody>';
+    $html .= '</table>';
+}
 
-
-        // Start the first table
-        echo '<table>';
-        echo '<thead>';
-        echo '<tr>';
-        echo '<th>Lecture no. & <br> Date</th>';
-        echo '<th>Topic to be covered and Assignment / Home Work Given</th>';
-        echo '<th>Remarks</th>';
-        echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
-
-        // Loop through the fetched data
-        while ($row = mysqli_fetch_assoc($view1)) {
-            // Increment the counter
-            $entryCounter++;
-
-            // Display the data in the table row
-            echo '<tr>';
-            echo '<td>' . $row['lecno'] . "<br>" . $row['planned_date'] . '</td>'; // Assuming 'lecture_no' is the column name for lecture number
-            echo '<td>' . $row['topic'] . '</td>'; // Assuming 'topic' is the column name for the topic
-            echo '<td rowspan="2">' . "" . '</td>'; // Assuming 'topic' is the column name for the topic
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>' . "Assignment / Homework" . '</td>'; // Assuming 'lecture_no' is the column name for lecture number
-            echo '<td>' . $row['assignment'] . '</td>'; // Assuming 'lecture_no' is the column name for lecture number
-            echo '</tr>';
-            // If the counter is a multiple of 3, close the current table and start a new one
-            if ($entryCounter % 3 == 0) {
-                echo '</br>';
-                echo '</table>';
-
-                // Start a new table
-                ?>
-                <br><br><br>
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="2">
-                                Week wise lesson plan
-                            </th>
-                            <th colspan="2">Week no.: </th>
-                        </tr>
-                        <tr>
-                            <th>Sem.: </th>
-                            <th>Course Title: </th>
-                            <th>Course Code: </th>
-                            <th>Name of Faculty: </th>
-                        </tr>
-                    </thead>
-                </table>
-                
-                <?php
-                echo '<table>';
-                echo '<thead>';
-                echo '<tr>';
-                echo '<th>Lecture no. & Date</th>';
-                echo '<th>Topic to be covered and Assignment / Home Work Given</th>';
-                echo '<th>Remarks</th>';
-                echo '</tr>';
-                echo '</thead>';
-                echo '<tbody>';
-                
-            }
-        }
-
-        // Close the last table if there are any remaining entries
-        if ($entryCounter % 3 != 0) {
-            echo '</tbody>';
-            echo '</table>';
-        }
-        ?>
-
-    </center>
-    </div>
-    
+$html .= '</center>
+    </div>   
 </body>
 
-</html>
+</html>';
+
+// Create a Dompdf instance
+$dompdf = new Dompdf();
+$dompdf->loadHtml($html);
+$dompdf->setPaper('A4', 'portrait');
+$dompdf->render();
+$dompdf->stream('Weekly_Lesson_Plan_Report.pdf', ['Attachment' => 0]);
+?>
