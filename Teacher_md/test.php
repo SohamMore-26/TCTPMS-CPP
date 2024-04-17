@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+session_start();
 
 $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND aca_year = '2023 - 2024' AND sem = '6' AND div1 = 'A' ") or die(mysqli_error($con));
 ?>
@@ -12,24 +13,24 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table {
+        .d table {
             width: 60%;
             border-collapse: collapse;
         }
 
-        table,
-        th,
-        td {
+        .d table,
+        .d th,
+        .d td {
             border: 1px solid black;
         }
 
-        th,
-        td {
+        .d th,
+        .d td {
             padding: 5px;
             text-align: left;
         }
 
-        caption {
+        .d caption {
             font-size: larger;
             font-weight: bold;
         }
@@ -37,7 +38,8 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
 </head>
 
 <body>
-    <center>
+    <div class="d" >
+        <center>
         <h1>S.S.V.P.S's B. S. Deore Polytechnic, Dhule</h1>
         <h3>(Academic Year: 2023 - 2024)</h3>
         <h2>Lesson Plan</h2>
@@ -47,8 +49,7 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
             <tbody>
                 <tr>
                     <th>
-                        Name of Faculty: N. D. Patel
-                    </th>
+                        Name of Faculty: <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
                     <th>
                         Program: Computer Engineering
                     </th>
@@ -87,7 +88,7 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
                 <td>T</td>
             </tr>
             <tr>
-                <td rowspan="2">Emering Trends</td>
+                <td rowspan="2"></td>
                 <td rowspan="2">225806</td>
                 <td colspan="1">3</td>
                 <td colspan="1">0</td>
@@ -197,6 +198,8 @@ $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = 'MAD' AND 
         ?>
 
     </center>
+    </div>
+    
 </body>
 
 </html>
