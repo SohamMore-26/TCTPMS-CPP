@@ -203,7 +203,7 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <?php if ($row1['actual_date'] != "0000-00-00") { ?>
+                                    <?php if ($row1['actual_date'] != null) { ?>
 
                                         <?php $newdate2 = date("d-m-Y", strtotime($actual_date));
                                         echo "$newdate2"; ?>

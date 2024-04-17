@@ -133,7 +133,7 @@
                                     // Format actual date or set to "00-00-0000" if empty or invalid
                                     $actualdate = date("d-m-Y", strtotime($row1['actual_date']));
                                     // Apply styles based on comparison with planned date
-                                    echo ($actualdate == date("d-m-Y", strtotime($plannedate))) ? 'color: #42f554; font-weight: bold;' : 'color: red; font-weight: bold;';
+                                    echo ($actualdate == date("d-m-Y", strtotime($plannedate))) ? 'background-color: #42f554; color: white ; font-weight: bold;' : 'background-color: red ;color: white; font-weight: bold;';
                                     ?>">
                                         <?php
                                         echo $actualdate;
@@ -142,7 +142,7 @@
                                     <?php
                                 } else {
                                     ?>
-                                    <td style="color:#ffcd00d4;font-weight: bold;">
+                                    <td style="background-color:#ffcd00d4;color: white;font-weight: bold;">
                                         00-00-0000
                                     </td>
                                     <?php
