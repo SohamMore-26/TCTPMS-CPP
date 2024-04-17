@@ -13,6 +13,11 @@ $type = $_POST['type'];
 $conn = new PDO('mysql:host=localhost:3307;dbname=tctpms-db', 'root', '');
 $con = mysqli_connect("localhost:3307", "root", "", "tctpms-db");
 
+$sql = "SELECT * FROM lesson_plan WHERE course = '$sub' AND aca_year = '$acaYear' AND sem = '$sem' AND div1 = '$div' AND sch='$sch'AND preparedby = '$tch_id'";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 if ($type === 'lessonPlan') {
     // Fetch data for weekly lesson plan
