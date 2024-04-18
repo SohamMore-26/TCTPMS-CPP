@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
 <?php
 session_start();
 include "config.php";
@@ -22,12 +31,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $con->connect_error == false) {
 
     $sql = "UPDATE `lesson_plan` SET `actual_date`='$actual_date',`actual_coverage`='$actual_coverage' WHERE id = '$id'";
     if ($con->query($sql) === TRUE) {
-        echo "<script>";
-        echo "alert('Done Successfully');";
-        echo 'window.location.href="actual_lesson_plan.php";';
-        echo "</script>";
+        echo "<script>
+            swal({
+            title: 'Success',
+            text: 'Lesson Plan Updated Successfully!',
+            icon: 'success',
+            button: 'OK'
+            }).then(function() {
+            window.location.href = 'tch_lesson_plan_progress.php'; 
+            });
+            </script>";
 
     } else {
         echo "Error updating record: " . $con->error;
     }
 }
+?>
+</body>
+</html>

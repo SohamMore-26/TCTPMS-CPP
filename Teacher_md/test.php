@@ -15,12 +15,16 @@ $tch_id = $_GET['tch_id'];
 $type = $_GET['type'];
 
 $view1 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = '$sub' AND aca_year = '$acaYear' AND sem = '$sem' AND div1 = '$div' AND sch='$sch' AND preparedby = '$tch_id'") or die(mysqli_error($con));
-$row1 = mysqli_fetch_assoc($view1);
+$view0 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = '$sub' AND aca_year = '$acaYear' AND sem = '$sem' AND div1 = '$div' AND sch='$sch' AND preparedby = '$tch_id'") or die(mysqli_error($con));
+$view2 = mysqli_query($con, "SELECT * FROM courseinfo WHERE courseAbrevation = '$sub'") or die(mysqli_error($con));
+$row2 = mysqli_fetch_assoc($view2);
+$row1 = mysqli_fetch_assoc($view0);
+$creds = $row2["practicalPW"]+$row2["lecturePW"]+$row2["tutorialPW"];
 // HTML content to be displayed inside the PDF
 $html = '
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,11 +77,6 @@ $html = '
                         Designation: Lecturer
                     </th>
                     <th>
-                        Program Code:
-                    </th>
-                </tr>
-                <tr>
-                    <th>
                         Semester: '.$row1["sem"].'
                     </th>
                 </tr>
@@ -91,26 +90,28 @@ $html = '
         <table>
             <!-- <caption>Course Schedule and Student Progress Record</caption> -->
             <tr>
-                <th rowspan="2">Course Title</th>
-                <th rowspan="2">Course Code</th>
+                <th rowspan="1">Course Title</th>
+                <th rowspan="1">Course Code</th>
                 <th colspan="3">Teaching Scheme</th>
-                <th rowspan="2">Credits (L+P+T)</th>
+                <th rowspan="1">Credits (L+P+T)</th>
             </tr>
             <tr>
+                <td></td>
+                <td></td>
                 <td>L</td>
                 <td>P</td>
                 <td>T</td>
+                <td></td>
             </tr>
             <tr>
-                <td rowspan="2">'.$sub.'</td>
-                <td rowspan="2">'.$row1["coursecode"].'</td>
-                <td colspan="1">3</td>
-                <td colspan="1">0</td>
-                <td colspan="1">0</td>
-                <td rowspan="2">3</td>
+                <td rowspan="1">'.$sub.'</td>
+                <td rowspan="1">'.$row1["coursecode"].'</td>
+                <td colspan="1">'.$row2["lecturePW"].'</td>
+                <td colspan="1">'.$row2["practicalPW"].'</td>
+                <td colspan="1">'.$row2["tutorialPW"].'</td>
+                <td rowspan="1">'.$creds.'</td>
             </tr>
-        </table>
-        <br><br>';
+        </table>';
 
 // Initialize a counter for the entries
 $entryCounter = 0;
