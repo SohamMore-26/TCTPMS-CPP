@@ -210,6 +210,13 @@ $html .= '</center>
 
 </html>';
 
+$html .='
+<div class="sign">
+<h3>Sign of Faculty : </h3> 
+<h3>Sign of H. O. D. : </h3> 
+</div>
+';
+
 // Create a Dompdf instance
 $dompdf = new Dompdf();
 $dompdf->loadHtml($html);
