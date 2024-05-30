@@ -114,7 +114,7 @@
 
   let lastDate = [];
 
-  let extralecture = 1;
+  let extralecture = 0;
 
   lastDate = dates(noOfLec, semStartDate, dt, lecperweek, semEndDate)
 
