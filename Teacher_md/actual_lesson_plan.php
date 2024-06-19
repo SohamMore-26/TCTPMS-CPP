@@ -177,8 +177,12 @@
                             <tr>
                                 <td>
                                     <input type="hidden" id="row_id" name="row_id[]" value="<?php echo $row1['id']; ?>">
-                                    <?php $plannedate = date("d-m-Y", strtotime($planned_date));
-                                    echo $plannedate ?>
+                                    <?php if ($row1['planned_date'] != "Extra Lect") {
+                                        $plannedate = date("d-m-Y", strtotime($planned_date));
+                                        echo $plannedate;
+                                    } else {
+                                        echo "Extra Lecture";
+                                    } ?>
                                 </td>
                                 <td>
                                     <?php echo $row1['unit_name']; ?>
