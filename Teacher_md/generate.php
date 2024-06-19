@@ -227,13 +227,23 @@ if (isset($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST
   $_SESSION['sch'] = $sch;
   $_SESSION['sub'] = $sub;
   $_SESSION['div'] = $div;
+  $course = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
+  $row2 = mysqli_fetch_array($course);
+  $noOfLec = $row2['teachingHours'];
+
   foreach ($lastDate as $index => $date) {
-    $stmt = $con->prepare("INSERT INTO test (lecno, aca_year, semester, divison, scheme, course,date) VALUES (?,?,?,?,?,?,?)");
+    
+    if($index < $noOfLec){
+      $stmt = $con->prepare("INSERT INTO test (lecno, aca_year, semester, divison, scheme, course,date) VALUES (?,?,?,?,?,?,?)");
     $i = $index + 1;
     $stmt->bind_param("sssssss", $i, $acaYear, $sem, $div, $sch, $sub, $date);
     $lastDateSerialized = serialize($lastDate);
-
     $stmt->execute();
+    }
+    else{
+      break;
+    }
+    
   }
   if ($stmt->execute()) {
 

@@ -99,7 +99,7 @@ if ($type === 'lessonPlan') {
     </html>';
 } elseif ($type === 'weekly') {
     // Redirect to test.php with query parameters
-    $redirect_url = "test.php?";
+    $redirect_url = "weekly_report.php?";
     $redirect_url .= "aca_year=" . urlencode($acaYear) . "&";
     $redirect_url .= "semester=" . urlencode($sem) . "&";
     $redirect_url .= "scheme=" . urlencode($sch) . "&";
