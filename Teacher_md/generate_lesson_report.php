@@ -10,8 +10,8 @@ $div = $_POST['div'];
 $tch_id = $_POST['tch_id'];
 $type = $_POST['type'];
 
-$conn = new PDO('mysql:host=localhost:3307;dbname=tctpms-db', 'root', '');
-$con = mysqli_connect("localhost:3307", "root", "", "tctpms-db");
+$conn = new PDO('mysql:host=localhost:3306;dbname=tctpms-db', 'root', '');
+$con = mysqli_connect("localhost:3306", "root", "", "tctpms-db");
 
 $sql = "SELECT * FROM lesson_plan WHERE course = '$sub' AND aca_year = '$acaYear' AND sem = '$sem' AND div1 = '$div' AND sch='$sch'AND preparedby = '$tch_id'";
 $stmt = $conn->prepare($sql);
@@ -99,7 +99,7 @@ if ($type === 'lessonPlan') {
     </html>';
 } elseif ($type === 'weekly') {
     // Redirect to test.php with query parameters
-    $redirect_url = "weekly_report.php?";
+    $redirect_url = "test.php?";
     $redirect_url .= "aca_year=" . urlencode($acaYear) . "&";
     $redirect_url .= "semester=" . urlencode($sem) . "&";
     $redirect_url .= "scheme=" . urlencode($sch) . "&";

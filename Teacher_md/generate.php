@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
   <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <title>Teacher Home Module
-    </title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </title>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -114,7 +114,7 @@
 
   let lastDate = [];
 
-  let extralecture = 0;
+  let extralecture = 1;
 
   lastDate = dates(noOfLec, semStartDate, dt, lecperweek, semEndDate)
 
@@ -146,9 +146,9 @@
       tempDate.setDate(tempDate.getDate() + 7)
 
       if (tempDate.getTime() > semEndDate.getTime()) {
-        extralecture += noOfLec - i - lecperweek;
-        for (let j = 0; j < noOfLec - i - lecperweek; j++) {
-          date.push("Extra Lecture")
+        for (let j = 0 ; j < noOfLec - i - lecperweek; j++) {
+          date.push("Extra Lecture");
+          extralecture += 1;
         }
         break
       }
@@ -211,6 +211,7 @@
   }).then(function () {
     window.location.href = 'fill_lesson_plan.php';
   });
+  console.log(extralecture);
 </script>
 <?php
 include "config.php";
@@ -227,28 +228,17 @@ if (isset($_POST['acaYear'], $_POST['sem'], $_POST['sch'], $_POST['sub'], $_POST
   $_SESSION['sch'] = $sch;
   $_SESSION['sub'] = $sub;
   $_SESSION['div'] = $div;
-  $course = mysqli_query($con, "select * from courseinfo where courseAbrevation = '$sub' ") or die(mysqli_error($con));
-  $row2 = mysqli_fetch_array($course);
-  $noOfLec = $row2['teachingHours'];
 
   foreach ($lastDate as $index => $date) {
-    
-    if($index < $noOfLec){
-      $stmt = $con->prepare("INSERT INTO test (lecno, aca_year, semester, divison, scheme, course,date) VALUES (?,?,?,?,?,?,?)");
+    $stmt = $con->prepare("INSERT INTO test (lecno, aca_year, semester, divison, scheme, course,date) VALUES (?,?,?,?,?,?,?)");
     $i = $index + 1;
     $stmt->bind_param("sssssss", $i, $acaYear, $sem, $div, $sch, $sub, $date);
     $lastDateSerialized = serialize($lastDate);
     $stmt->execute();
-    }
-    else{
-      break;
-    }
-    
-  }
-  if ($stmt->execute()) {
 
-  } else {
-    echo "Error: " . $stmt->error;
   }
+  //  else {
+  //   echo "Error: " . $stmt->error;
+  // }
 }
 ?>
