@@ -224,7 +224,11 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <input type="file">
+                                <?php if ($row1['assignment'] != null) { ?>
+                                        <?php echo $row1['assignment']; ?>
+                                    <?php } else { ?>
+                                        <textarea class="sem" type="text" cols="20" name="assignment[]"></textarea>
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <input class="button" type="submit" onclick="submitForm(this)" value="Save">
