@@ -101,20 +101,20 @@ if ($type === 'lessonPlan') {
     </div>
     </body>
     </html>';
-
-} elseif ($type === 'weekly') {
-    // Redirect to test.php with query parameters
-    $redirect_url = "test.php?";
-    $redirect_url .= "aca_year=" . urlencode($acaYear) . "&";
-    $redirect_url .= "semester=" . urlencode($sem) . "&";
-    $redirect_url .= "scheme=" . urlencode($sch) . "&";
-    $redirect_url .= "sub=" . urlencode($sub) . "&";
-    $redirect_url .= "div=" . urlencode($div) . "&";
-    $redirect_url .= "tch_id=" . urlencode($tch_id) . "&";
-    $redirect_url .= "type=" . urlencode($type);
-    header("Location: $redirect_url");
-    exit; // Ensure that no other code executes after the redirect
 }
+//  elseif ($type === 'weekly') {
+//     // Redirect to test.php with query parameters
+//     $redirect_url = "test.php?";
+//     $redirect_url .= "aca_year=" . urlencode($acaYear) . "&";
+//     $redirect_url .= "semester=" . urlencode($sem) . "&";
+//     $redirect_url .= "scheme=" . urlencode($sch) . "&";
+//     $redirect_url .= "sub=" . urlencode($sub) . "&";
+//     $redirect_url .= "div=" . urlencode($div) . "&";
+//     $redirect_url .= "tch_id=" . urlencode($tch_id) . "&";
+//     $redirect_url .= "type=" . urlencode($type);
+//     header("Location: $redirect_url");
+//     exit; // Ensure that no other code executes after the redirect
+// }
 
 $dompdf = new Dompdf();
 $dompdf->loadHtml($html);

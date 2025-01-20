@@ -114,7 +114,7 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
         <div class="main_c_cont">
 
             <div class="lesson_card" style=" overflow:auto">
-                <h1>Reports Here</h1>
+                <h1>Laboratory Reports Here</h1>
                 <div style=" display: flex; align-items: center; justify-content: center;">
                     <table>
                         <form method="post" action="generate_lesson_report.php"
@@ -159,8 +159,7 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                                         <option value="6">6</option>
                                     </select></td>
                             </tr>
-
-
+                            
                             <tr>
                                 <td>
                                     <div style="display:flex; flex-direction:row;align-items:center;">
@@ -175,7 +174,21 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                                     </select>
                                 </td>
                             </tr>
+                            <tr>
+                                    <td>
+                                        <div style="display:flex; flex-direction:row;align-items:center;">
+                                            <b><label for="batch" class="label">Batch:</label></b>
 
+                                        </div>
+                                    </td>
+
+                                    <td><select id="batch" name="batch" class="sem">
+                                            <option value="">Select Batch</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select></td>
+                                </tr>
                             <tr>
                                 <td>
                                     <div style="display:flex; flex-direction:row;align-items:center;">
@@ -209,22 +222,6 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                                     </select>
                                 </td>
                             </tr>
-                            <!-- <tr>
-                                <td>
-                                    <div style="display:flex; flex-direction:row;align-items:center;">
-                                        <b><label for="sub" class="label">Report Type:</label></b>
-
-                                    </div>
-                                </td>
-                                <td><select id="type" name="type" class="sem">
-                                    <option value="">Select Report Type</option>
-                                        <option value="weekly">Weekly</option>
-                                        <option value="lessonPlan">lesson plan</option>
-                                </select>
-                            </td>
-                            </tr> -->
-                            
-
                             <tr>
                                 <td>
                                     <input type="submit" name="add" class="button" value="View">
