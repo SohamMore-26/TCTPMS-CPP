@@ -101,6 +101,13 @@ if (!isset ($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                             </span> Lesson Plan Report</ul>
                     </a>
                 </div>
+                <div class="side_card">
+                    <a href="lab_report.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan Report</ul>
+                    </a>
+                </div>
             </li>
         </div>
         <div class="C_contain_scroll">

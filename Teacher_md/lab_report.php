@@ -209,7 +209,7 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td>
                                     <div style="display:flex; flex-direction:row;align-items:center;">
                                         <b><label for="sub" class="label">Report Type:</label></b>
@@ -222,7 +222,7 @@ $view1 = mysqli_query($con, "select DISTINCT aca_year from academic_cal ") or di
                                         <option value="lessonPlan">lesson plan</option>
                                 </select>
                             </td>
-                            </tr>
+                            </tr> -->
                             
 
                             <tr>

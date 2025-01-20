@@ -102,6 +102,13 @@ $view2 = mysqli_query($con, "select * from academic_cal ") or die (mysqli_error(
                             </span> Lesson Plan Report</ul>
                     </a>
                 </div>
+                <div class="side_card">
+                    <a href="lab_report.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan Report</ul>
+                    </a>
+                </div>
             </li>
         </div>
 

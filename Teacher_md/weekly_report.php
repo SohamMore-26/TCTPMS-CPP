@@ -19,7 +19,7 @@ $view0 = mysqli_query($con, "SELECT * FROM lesson_plan WHERE course = '$sub' AND
 $view2 = mysqli_query($con, "SELECT * FROM courseinfo WHERE courseAbrevation = '$sub'") or die(mysqli_error($con));
 $row2 = mysqli_fetch_assoc($view2);
 $row1 = mysqli_fetch_assoc($view0);
-$creds = $row2["practicalPW"]+$row2["lecturePW"]+$row2["tutorialPW"];
+$creds = $row2["practicalPW"] + $row2["lecturePW"] + $row2["tutorialPW"];
 // HTML content to be displayed inside the PDF
 $html = '
 <!DOCTYPE html>
@@ -77,7 +77,7 @@ $html = '
                         Designation: Lecturer
                     </th>
                     <th>
-                        Semester: '.$row1["sem"].'
+                        Semester: ' . $row1["sem"] . '
                     </th>
                 </tr>
             </tbody>
@@ -104,12 +104,12 @@ $html = '
                 <td></td>
             </tr>
             <tr>
-                <td rowspan="1">'.$sub.'</td>
-                <td rowspan="1">'.$row1["coursecode"].'</td>
-                <td colspan="1">'.$row2["lecturePW"].'</td>
-                <td colspan="1">'.$row2["practicalPW"].'</td>
-                <td colspan="1">'.$row2["tutorialPW"].'</td>
-                <td rowspan="1">'.$creds.'</td>
+                <td rowspan="1">' . $sub . '</td>
+                <td rowspan="1">' . $row1["coursecode"] . '</td>
+                <td colspan="1">' . $row2["lecturePW"] . '</td>
+                <td colspan="1">' . $row2["practicalPW"] . '</td>
+                <td colspan="1">' . $row2["tutorialPW"] . '</td>
+                <td rowspan="1">' . $creds . '</td>
             </tr>
         </table>';
 
@@ -128,9 +128,9 @@ $html .= '<br><br><br>
                     <th colspan="2">Week no.: 1 </th>
                 </tr>
                 <tr>
-                    <th>Sem.: '.$row1["sem"].' </th>
-                    <th>Course Title:' .$sub. '</th>
-                    <th>Course Code: '.$row1["coursecode"].' </th>
+                    <th>Sem.: ' . $row1["sem"] . ' </th>
+                    <th>Course Title:' . $sub . '</th>
+                    <th>Course Code: ' . $row1["coursecode"] . ' </th>
                     <th>Name of Faculty: ' . $_SESSION['firstName'] . ' ' . $_SESSION['middleName'] . ' ' . $_SESSION['lastName'] . ' </th>
                 </tr>
             </thead>
@@ -163,7 +163,7 @@ while ($row = mysqli_fetch_assoc($view1)) {
     $html .= '</tr>';
     // If the counter is a multiple of 3, close the current table and start a new one
     if ($entryCounter % 3 == 0) {
-        
+
         $html .= '</table>';
 
         // Start a new table
@@ -174,18 +174,18 @@ while ($row = mysqli_fetch_assoc($view1)) {
         $html .= '<th colspan="2">';
         $html .= 'Week wise lesson plan';
         $html .= '</th>';
-        $html .= '<th colspan="2">Week no.:'.$week.'</th>';
+        $html .= '<th colspan="2">Week no.:' . $week . '</th>';
         $week++;
         $html .= '</tr>';
         $html .= '<tr>';
-        $html .= '<th>Sem.:  '.$row1["sem"].' </th>';
-        $html .= '<th>Course Title: '.$row1["course"].' </th>';
-        $html .= '<th>Course Code:'.$row1["coursecode"].'</th>';
+        $html .= '<th>Sem.:  ' . $row1["sem"] . ' </th>';
+        $html .= '<th>Course Title: ' . $row1["course"] . ' </th>';
+        $html .= '<th>Course Code:' . $row1["coursecode"] . '</th>';
         $html .= '<th>Name of Faculty:' . $_SESSION['firstName'] . ' ' . $_SESSION['middleName'] . ' ' . $_SESSION['lastName'] . '</th>';
         $html .= '</tr>';
         $html .= '</thead>';
         $html .= '</table>';
-        
+
         $html .= '<table>';
         $html .= '<thead>';
         $html .= '<tr>';
@@ -210,7 +210,7 @@ $html .= '</center>
 
 </html>';
 
-$html .='
+$html .= '
 <div class="sign">
 <h3>Sign of Faculty : </h3> 
 <h3>Sign of H. O. D. : </h3> 

@@ -18,7 +18,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
- 
+
 if ($type === 'lessonPlan') {
     // Fetch data for weekly lesson plan
     $sql = "SELECT * FROM lesson_plan WHERE course = '$sub' AND aca_year = '$acaYear' AND sem = '$sem' AND div1 = '$div' AND sch='$sch' AND preparedby = '$tch_id'";
@@ -79,24 +79,29 @@ if ($type === 'lessonPlan') {
             </tr>
             </thead>
             <tbody>';
-    
+
     foreach ($rows as $row) {
         $html .= '<tr>
-            <td>'.$row['lecno'].'</td>
-            <td>'.$row['course_outcome'].'</td>
-            <td>'.$row['unit_outcome'].'</td>
-            <td>'.$row['topic'].'</td>
-            <td>'.$row['planned_date'].'</td>
-            <td>'.$row['actual_date'].'</td>
-            <td>'.$row['teaching_aids'].'</td>
+            <td>' . $row['lecno'] . '</td>
+            <td>' . $row['course_outcome'] . '</td>
+            <td>' . $row['unit_outcome'] . '</td>
+            <td>' . $row['topic'] . '</td>
+            <td>' . $row['planned_date'] . '</td>
+            <td>' . $row['actual_date'] . '</td>
+            <td>' . $row['teaching_aids'] . '</td>
             <td></td>
         </tr>';
     }
-    
+
     $html .= '</tbody>
     </table>
+    <div class="sign">
+    <h3>Sign of Faculty : </h3> 
+    <h3>Sign of H. O. D. : </h3> 
+    </div>
     </body>
     </html>';
+
 } elseif ($type === 'weekly') {
     // Redirect to test.php with query parameters
     $redirect_url = "test.php?";

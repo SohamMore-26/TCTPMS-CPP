@@ -8,7 +8,7 @@ $sub = $_POST['sub'];
 $div = $_POST['div'];
 $batch = $_POST['batch'];
 
-$view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca_year = '$acaYear' AND batch = '$batch' AND division ='$div '") or die (mysqli_error($con));
+$view = mysqli_query($con, "select * from lab_plan where course = '$sub' AND aca_year = '$acaYear' AND batch = '$batch' AND division ='$div '") or die(mysqli_error($con));
 ?>
 <?php
 session_start();
@@ -36,20 +36,21 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion
-             </h1>
-          
+            </h1>
+
         </div>
         <div class="title_div">
-            <h1 id="h1"> Welcome Prof. <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
-             </h1>
-          
+            <h1 id="h1"> Welcome Prof.
+                <?php echo $_SESSION['firstName'] . $_SESSION['middleName'] . $_SESSION['lastName']; ?>
+            </h1>
+
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
-    <div class="sidebar">
+        <div class="sidebar">
             <li>
                 <div class=" side_card">
                     <a href="tch_home.php">
@@ -111,6 +112,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                         <ul><span class="material-symbols-outlined">
                                 pending_actions
                             </span> Lesson Plan Report</ul>
+                    </a>
+                </div>
+                <div class="side_card">
+                    <a href="lab_report.php">
+                        <ul><span class="material-symbols-outlined">
+                                pending_actions
+                            </span> Laboratory Plan Report</ul>
                     </a>
                 </div>
             </li>
@@ -177,9 +185,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
                                 </td>
                                 <td>
                                     <?php if ($row['actual_date'] != "0000-00-00") { ?>
-                                        
+
                                         <?php $newdate2 = date("d-m-Y", strtotime($actual_date));
-                                    echo "$newdate2"; ?>
+                                        echo "$newdate2"; ?>
                                     <?php } else { ?>
                                         <input class="sem" type="date" name="actual_date[]">
                                     <?php } ?>
