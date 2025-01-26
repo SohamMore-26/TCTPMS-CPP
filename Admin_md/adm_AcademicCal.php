@@ -14,10 +14,10 @@
 <body>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
+            <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
 
@@ -83,6 +83,8 @@
                         <th>Sr.No.</th>
                         <th>Semester</th>
                         <th>Scheme</th>
+                        <th>Status</th>
+                        
                         <th>Academic Year</th>
                         <th>Semester Duration</th>
                         <th>Class Test 1 From-To</th>
@@ -108,7 +110,11 @@
                                 <?php echo $row['scheme']; ?>
                             </td>
                             <td>
-                                <?php echo $row['aca_year']; ?> 
+                                <!-- Display "Active" if isActive is 1, otherwise display "Deactive" -->
+                                <?php echo $row['isActive'] == 1 ? "Active" : "Deactive"; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['aca_year']; ?>
                             </td>
                             <td>
 
@@ -147,7 +153,8 @@
                                 echo "$newdate9"; ?>
                             </td>
                             <td>
-                                <a href="update_acad_cal.php?id=<?php echo $id; ?>"> <span class="material-symbols-outlined">
+                                <a href="update_acad_cal.php?id=<?php echo $id; ?>"> <span
+                                        class="material-symbols-outlined">
                                         edit
                                     </span> </a>
                             </td>

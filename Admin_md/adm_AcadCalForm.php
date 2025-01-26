@@ -177,26 +177,29 @@
 <?php
 include "config.php";
 
-if (isset ($_POST['addCal'])) {
+if (isset($_POST['addCal'])) {
     // Extract form data
     extract($_POST);
 
     // Check if required variables are set
-    if (isset ($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
+    if (isset($semester, $scheme, $aystdatefrom, $aystdateto, $stsemfrom, $stfromto, $ct1from, $ct1to, $ct2from, $ct2to, $prefrom, $preto, $thfrom, $thto)) {
+        
+        $update = mysqli_query($con, "UPDATE `academic_cal` SET `isActive` = false WHERE `semester` = '$semester'");
+        // Insert data into the database and set isActive to true
+        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`, `scheme`, `aca_year`, `sem_duration_from`, `sem_duration_to`, `class_test1_from`, `class_test1_to`, `class_test2_from`, `class_test2_to`, `practical_exam_from`, `practical_exam_to`, `theory_exam_from`, `theory_exam_to`, `isActive`) 
+            VALUES ('$semester', '$scheme', '$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto', true)") or die(mysqli_error($con));
 
-        // Insert data into the database
-        $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`,`scheme`,`branch`,`aca_year`,`sem_duration_from`,`sem_duration_to`,`class_test1_from`,`class_test1_to`,`class_test2_from`,`class_test2_to`,`practical_exam_from`,`practical_exam_to`,`theory_exam_from`,`theory_exam_to`,`running`) VALUES ('$semester', '$scheme', '$branch','$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto' , 'true' )") or die (mysqli_error($con));
-        $update = mysqli_query($con, "UPDATE `academic_cal` set `running` = 'false' WHERE `aca_year`!='$aystdatefrom - $aystdateto' ") or die (mysqli_error($con));
+       
+
         if ($add and $update) {
             echo "<script>";
-            echo "alert(' Data Inserted Successfully !!')";
+            echo "alert('Data Inserted Successfully and isActive set to true!!');";
             echo "</script>";
         } else {
             echo "<script>";
-            echo "alert('ERROR ! Fail..!')";
+            echo "alert('ERROR! Failed to Insert Data.');";
             echo "</script>";
         }
-        
 
     } else {
         echo "<script>";

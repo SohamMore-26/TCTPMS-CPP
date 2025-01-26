@@ -1295,6 +1295,9 @@ textarea {
     margin-left: .25em;
   }
 
+  .form-group {
+    margin-bottom: 20px;
+}
   .tablecss td{
     word-wrap: break-word;
     overflow-wrap: anywhere;
