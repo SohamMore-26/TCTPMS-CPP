@@ -1,3 +1,16 @@
+<?php
+include "config.php";
+
+// Fetch the schemes from the database
+$scheme_query = "SELECT DISTINCT scheme FROM academic_cal";
+$scheme_result = mysqli_query($con, $scheme_query);
+
+// Check if the query was successful
+if (!$scheme_result) {
+    die('Error fetching schemes: ' . mysqli_error($con));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Academic Time Table</title>
 </head>
 
@@ -55,7 +67,6 @@
         </div>
 
         <?php
-        include "config.php";
         $view2 = mysqli_query($con, "SELECT * FROM academic_cal WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
         $row2 = mysqli_fetch_array($view2);
         ?>
@@ -76,16 +87,12 @@
                         <b><label for="scheme" class="label">Scheme:</label></b>
                         <select id="scheme" name="scheme" class="sem">
                             <option value="inp">Select Scheme</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="G">G</option>
-                            <option value="H">H</option>
-                            <option value="I">I</option>
-                            <option value="K">K</option>
+                            <?php
+                            // Dynamically populate the scheme dropdown
+                            while ($scheme = mysqli_fetch_assoc($scheme_result)) {
+                                echo "<option value='" . $scheme['scheme'] . "'>" . $scheme['scheme'] . "</option>";
+                            }
+                            ?>
                         </select>
                     </div>
 
@@ -123,8 +130,6 @@
                                 <b><label for="stsemto" class="label1">To:</label></b>
                                 <input class="sem" type="date" id="stsemto" name="stfromto" value="<?php echo $row2['sem_duration_to']; ?>" required>
                             </div>
-
-                            <!-- Other fields for class tests, practical exams, etc. -->
                         </div>
                     </div>
                     <div class="buttons">
@@ -140,6 +145,9 @@
     </div>
 
 </body>
+
+</html>
+
 
 </html>
 <?php
@@ -160,6 +168,11 @@ if (isset($_POST['addCal'])) {
     } else {
         // Convert status to true (1) or false (0)
         $status_value = ($status == 'Active') ? 1 : 0;
+
+        // If the status is being set to 'Active', update all other records with the same semester to 'Deactive'
+        if ($status_value == 1) {
+            $update_inactive = mysqli_query($con, "UPDATE `academic_cal` SET `isActive` = 0 WHERE `semester` = '$semester' AND `id` != '" . $_GET['id'] . "'") or die(mysqli_error($con));
+        }
 
         // Update the database with true/false for status
         $update = mysqli_query($con, "UPDATE `academic_cal` SET 
@@ -187,3 +200,4 @@ if (isset($_POST['addCal'])) {
     }
 }
 ?>
+

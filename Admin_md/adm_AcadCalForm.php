@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Academic Time Table
-    </title>
+    <title>Academic Time Table</title>
 </head>
 
 <body>
 
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
+            <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -76,20 +75,7 @@
                         </select>
 
                         <b><label for="scheme" class="label">Scheme:</label></b>
-                        <select id="scheme" name="scheme" class="sem">
-                            <option value="inp">Select Scheme</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                            <option value="G">G</option>
-                            <option value="H">H</option>
-                            <option value="I">I</option>
-                            <option value="K">K</option>
-                        </select>
-
+                        <input type="text" id="scheme" name="scheme" class="sem" placeholder="Enter Scheme (e.g. A, B, C)" required>
                     </div>
                     <div class="cont_r_l">
                         <div style="width:90%">
@@ -99,7 +85,7 @@
                             <div class="inp">
 
                                 <b><label for="from" class="label">From:</label></b>
-                                <input class="sem" type="text" id="from" name="aystdatefrom"  required>
+                                <input class="sem" type="text" id="from" name="aystdatefrom" required>
                                 <b><label for="to" class="label1">To:</label></b>
                                 <input class="sem" type="text" id="to" name="aystdateto" required>
 
@@ -188,8 +174,6 @@ if (isset($_POST['addCal'])) {
         // Insert data into the database and set isActive to true
         $add = mysqli_query($con, "INSERT INTO `academic_cal`(`semester`, `scheme`, `aca_year`, `sem_duration_from`, `sem_duration_to`, `class_test1_from`, `class_test1_to`, `class_test2_from`, `class_test2_to`, `practical_exam_from`, `practical_exam_to`, `theory_exam_from`, `theory_exam_to`, `isActive`) 
             VALUES ('$semester', '$scheme', '$aystdatefrom - $aystdateto', '$stsemfrom', '$stfromto', '$ct1from', '$ct1to', '$ct2from', '$ct2to', '$prefrom', '$preto', '$thfrom', '$thto', true)") or die(mysqli_error($con));
-
-       
 
         if ($add and $update) {
             echo "<script>";

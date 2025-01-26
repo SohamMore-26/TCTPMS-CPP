@@ -1,3 +1,41 @@
+<?php
+include "config.php";  // Assuming you have this file for database connection
+
+// Fetch distinct values for each filter
+$academicYears = mysqli_query($con, "SELECT DISTINCT aca_year FROM timetable ORDER BY aca_year ASC") or die(mysqli_error($con));
+$schemes = mysqli_query($con, "SELECT DISTINCT scheme FROM timetable ORDER BY scheme ASC") or die(mysqli_error($con));
+$divisions = mysqli_query($con, "SELECT DISTINCT division FROM timetable ORDER BY division ASC") or die(mysqli_error($con));
+$branches = mysqli_query($con, "SELECT DISTINCT branch FROM timetable ORDER BY branch ASC") or die(mysqli_error($con));
+
+// Get the selected filter values from the GET request
+$academic_year = isset($_GET['aca_year']) ? $_GET['aca_year'] : '';
+$scheme = isset($_GET['scheme']) ? $_GET['scheme'] : '';
+$division = isset($_GET['division']) ? $_GET['division'] : '';
+$branch = isset($_GET['branch']) ? $_GET['branch'] : '';
+
+// Construct the query with filters
+$query = "SELECT * FROM timetable WHERE 1=1"; // 1=1 is used to simplify adding conditions
+
+if ($academic_year) {
+    $query .= " AND academic_year = '$academic_year'";
+}
+
+if ($scheme) {
+    $query .= " AND scheme = '$scheme'";
+}
+
+if ($division) {
+    $query .= " AND division = '$division'";
+}
+
+if ($branch) {
+    $query .= " AND branch = '$branch'";
+}
+
+// Execute the query to get filtered data
+$filtered_data = mysqli_query($con, $query) or die(mysqli_error($con));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,17 +45,16 @@
     <link rel="stylesheet" href="/TCTPMS-CPP/css/stylest.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Admin Home Module
-    </title>
+    <title>Admin Home Module</title>
 </head>
 
 <body>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
+            <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
         </div>
         <div class="lgt_div">
-        <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
+            <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
     </div>
     <div class="main_cont">
@@ -60,7 +97,9 @@
                 </div>
             </li>
         </div>
+
         <div class="main_c_cont">
+            <!-- Add New Time Table Button -->
             <div class="m_card">
                 <a href="adm_timetableFormC.php">
                     <h3>
@@ -69,32 +108,56 @@
                             </span></div> Add New Time Table
                     </h3>
                 </a>
-
             </div>
-            <?php
-            include "config.php";
-            $view1 = mysqli_query($con, "select * from timetable WHERE slot = '1' OR slot = '7' OR slot = '13' OR slot = '19' OR slot = '25' OR slot = '31'") or die(mysqli_error($con));
-            ?>
-            <?php
-            include "config.php";
-            $view2 = mysqli_query($con, "select * from timetable WHERE slot = '2' OR slot = '8' OR slot = '14' OR slot = '20' OR slot = '26' OR slot = '32'") or die(mysqli_error($con));
-            ?>
-            <?php
-            include "config.php";
-            $view3 = mysqli_query($con, "select * from timetable WHERE slot = '3' OR slot = '9' OR slot = '15' OR slot = '21' OR slot = '27' OR slot = '33'") or die(mysqli_error($con));
-            ?>
-            <?php
-            include "config.php";
-            $view4 = mysqli_query($con, "select * from timetable WHERE slot = '4' OR slot = '10' OR slot = '16' OR slot = '22' OR slot = '28' OR slot = '34'") or die(mysqli_error($con));
-            ?>
-            <?php
-            include "config.php";
-            $view5 = mysqli_query($con, "select * from timetable WHERE slot = '5' OR slot = '11' OR slot = '17' OR slot = '23' OR slot = '29' OR slot = '35'") or die(mysqli_error($con));
-            ?>
-            <?php
-            include "config.php";
-            $view6 = mysqli_query($con, "select * from timetable WHERE slot = '6' OR slot = '12' OR slot = '18' OR slot = '24' OR slot = '30' OR slot = '36'") or die(mysqli_error($con));
-            ?>
+
+            <!-- Filters Form -->
+            <div class="filters">
+                <form method="GET" action="">
+                    <label for="academic_year">Academic Year:</label>
+                    <select name="academic_year" id="academic_year">
+                        <option value="">Select Academic Year</option>
+                        <?php while ($year = mysqli_fetch_array($academicYears)): ?>
+                            <option value="<?= $year['academic_year'] ?>" <?= ($academic_year == $year['academic_year']) ? 'selected' : '' ?>>
+                                <?= $year['academic_year'] ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+
+                    <label for="scheme">Scheme:</label>
+                    <select name="scheme" id="scheme">
+                        <option value="">Select Scheme</option>
+                        <?php while ($scheme_option = mysqli_fetch_array($schemes)): ?>
+                            <option value="<?= $scheme_option['scheme'] ?>" <?= ($scheme == $scheme_option['scheme']) ? 'selected' : '' ?>>
+                                <?= $scheme_option['scheme'] ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+
+                    <label for="division">Division:</label>
+                    <select name="division" id="division">
+                        <option value="">Select Division</option>
+                        <?php while ($division_option = mysqli_fetch_array($divisions)): ?>
+                            <option value="<?= $division_option['division'] ?>" <?= ($division == $division_option['division']) ? 'selected' : '' ?>>
+                                <?= $division_option['division'] ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+
+                    <label for="branch">Branch:</label>
+                    <select name="branch" id="branch">
+                        <option value="">Select Branch</option>
+                        <?php while ($branch_option = mysqli_fetch_array($branches)): ?>
+                            <option value="<?= $branch_option['branch'] ?>" <?= ($branch == $branch_option['branch']) ? 'selected' : '' ?>>
+                                <?= $branch_option['branch'] ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+
+                    <button type="submit" id="filter_button">Apply Filters</button>
+                </form>
+            </div>
+
+            <!-- Table to Display Timetable -->
             <div class="t_tb_card t_tablecss">
                 <table>
                     <tr>
@@ -106,154 +169,86 @@
                         <th>Friday</th>
                         <th>Saturday</th>
                     </tr>
-                    <tr>
 
+                    <!-- 07:30 AM - 08:30 AM -->
+                    <tr>
                         <td>07:30 AM - 08:30 AM</td>
                         <?php
+                        $view1 = mysqli_query($con, "SELECT * FROM timetable WHERE slot = '1' AND aca_year = '$academic_year' AND scheme = '$scheme' AND division = '$division' AND branch = '$branch'") or die(mysqli_error($con));
                         while ($row1 = mysqli_fetch_array($view1)) {
-                            extract($row1); ?>
-                            <td>
-
-                                <?php if ($row1['course'] != null) {
-                                    echo $row1['course'];
-                                } ?>
-                                <?php if ($row1['batch1'] != null) {
-                                    echo $row1['batch1'] . " (" . $row1['division'] . "1)";
-                                } ?>
-                                <?php if ($row1['batch2'] != null) {
-                                    echo $row1['batch2'] . " (" . $row1['division'] . "2)";
-                                } ?>
-                                <?php if ($row1['batch3'] != null) {
-                                    echo $row1['batch3'] . " (" . $row1['division'] . "3)";
-                                } ?>
-                            </td>
-                        <?php } ?>
-
+                            echo "<td>" . ($row1['course'] ? $row1['course'] : 'No Course') . "</td>";
+                        }
+                        ?>
                     </tr>
+
+                    <!-- 08:30 AM - 09:30 AM -->
                     <tr>
                         <td>08:30 AM - 09:30 AM</td>
                         <?php
+                        $view2 = mysqli_query($con, "SELECT * FROM timetable WHERE slot = '2' AND aca_year = '$academic_year' AND scheme = '$scheme' AND division = '$division' AND branch = '$branch'") or die(mysqli_error($con));
                         while ($row2 = mysqli_fetch_array($view2)) {
-                            extract($row2); ?>
-                            <td>
-
-                                <?php if ($row2['course'] != null) {
-                                    echo $row2['course'];
-                                } ?>
-                                <?php if ($row2['batch1'] != null) {
-                                    echo $row2['batch1'] . " (" . $row2['division'] . "1)";
-                                } ?>
-                                <?php if ($row2['batch2'] != null) {
-                                    echo $row2['batch2'] . " (" . $row2['division'] . "2)";
-                                } ?>
-                                <?php if ($row2['batch3'] != null) {
-                                    echo $row2['batch3'] . " (" . $row2['division'] . "3)";
-                                } ?>
-                            </td>
-                        <?php } ?>
-
+                            echo "<td>" . ($row2['course'] ? $row2['course'] : 'No Course') . "</td>";
+                        }
+                        ?>
                     </tr>
+
+                    <!-- Break -->
                     <tr>
                         <td>09:30 AM - 10:00 AM</td>
                         <td colspan="6">Break</td>
                     </tr>
+
+                    <!-- 10:00 AM - 11:00 AM -->
                     <tr>
                         <td>10:00 AM - 11:00 AM</td>
                         <?php
+                        $view3 = mysqli_query($con, "SELECT * FROM timetable WHERE slot = '3' AND aca_year = '$academic_year' AND scheme = '$scheme' AND division = '$division' AND branch = '$branch'") or die(mysqli_error($con));
                         while ($row3 = mysqli_fetch_array($view3)) {
-                            extract($row3); ?>
-                            <td>
-
-                                <?php if ($row3['course'] != null) {
-                                    echo $row3['course'];
-                                } ?>
-                                <?php if ($row3['batch1'] != null) {
-                                    echo $row3['batch1'] . " (" . $row3['division'] . "1)";
-                                } ?>
-                                <?php if ($row3['batch2'] != null) {
-                                    echo $row3['batch2'] . " (" . $row3['division'] . "2)";
-                                } ?>
-                                <?php if ($row3['batch3'] != null) {
-                                    echo $row3['batch3'] . " (" . $row3['division'] . "3)";
-                                } ?>
-                            </td>
-                        <?php } ?>
+                            echo "<td>" . ($row3['course'] ? $row3['course'] : 'No Course') . "</td>";
+                        }
+                        ?>
                     </tr>
                     <tr>
                         <td>11:00 AM - 12:00 PM</td>
                         <?php
-                        while ($row4 = mysqli_fetch_array($view4)) {
-                            extract($row4); ?>
-                            <td>
-
-                                <?php if ($row4['course'] != null) {
-                                    echo $row4['course'];
-                                } ?>
-                                <?php if ($row4['batch1'] != null) {
-                                    echo $row4['batch1'] . " (" . $row4['division'] . "1)" . PHP_EOL;
-                                } ?>
-                                <?php if ($row4['batch2'] != null) {
-                                    echo $row4['batch2'] . " (" . $row4['division'] . "2)" . PHP_EOL;
-                                } ?>
-                                <?php if ($row4['batch3'] != null) {
-                                    echo $row4['batch3'] . " (" . $row4['division'] . "3)" . PHP_EOL;
-                                } ?>
-                            </td>
-                        <?php } ?>
+                        $view3 = mysqli_query($con, "SELECT * FROM timetable WHERE slot = '4' AND aca_year = '$academic_year' AND scheme = '$scheme' AND division = '$division' AND branch = '$branch'") or die(mysqli_error($con));
+                        while ($row3 = mysqli_fetch_array($view3)) {
+                            echo "<td>" . ($row3['course'] ? $row3['course'] : 'No Course') . "</td>";
+                        }
+                        ?>
                     </tr>
+
                     <tr>
                         <td>12:00 PM - 12:10 PM</td>
                         <td colspan="6">Break</td>
                     </tr>
+                    
                     <tr>
                         <td>12:10 PM - 01:10 PM</td>
                         <?php
-                        while ($row5 = mysqli_fetch_array($view5)) {
-                            extract($row5); ?>
-                            <td>
-
-                                <?php if ($row5['course'] != null) {
-                                    echo $row5['course'];
-                                } ?>
-                                <?php if ($row5['batch1'] != null) {
-                                    echo $row5['batch1'] . " (" . $row5['division'] . "1)" . PHP_EOL;
-                                } ?>
-                                <?php if ($row5['batch2'] != null) {
-                                    echo $row5['batch2'] . " (" . $row5['division'] . "2)" . PHP_EOL;
-                                } ?>
-                                <?php if ($row5['batch3'] != null) {
-                                    echo $row5['batch3'] . " (" . $row5['division'] . "3)" . PHP_EOL;
-                                } ?>
-                            </td>
-                        <?php } ?>
+                        $view3 = mysqli_query($con, "SELECT * FROM timetable WHERE slot = '5' AND aca_year = '$academic_year' AND scheme = '$scheme' AND division = '$division' AND branch = '$branch'") or die(mysqli_error($con));
+                        while ($row3 = mysqli_fetch_array($view3)) {
+                            echo "<td>" . ($row3['course'] ? $row3['course'] : 'No Course') . "</td>";
+                        }
+                        ?>
                     </tr>
                     <tr>
                         <td>01:10 PM - 02:10 PM</td>
                         <?php
-                        while ($row6 = mysqli_fetch_array($view6)) {
-                            extract($row6); ?>
-                            <td>
-
-                                <?php if ($row6['course'] != null) {
-                                    echo $row6['course'];
-                                } ?>
-                                <?php if ($row6['batch1'] != null) {
-                                    echo $row6['batch1'] . " (" . $row6['division'] . "1)" . PHP_EOL;
-                                } ?>
-                                <?php if ($row6['batch2'] != null) {
-                                    echo $row6['batch2'] . " (" . $row6['division'] . "2)" . PHP_EOL;
-                                } ?>
-                                <?php if ($row6['batch3'] != null) {
-                                    echo $row6['batch3'] . " (" . $row6['division'] . "3)" . PHP_EOL;
-                                } ?>
-                            </td>
-                        <?php } ?>
+                        $view3 = mysqli_query($con, "SELECT * FROM timetable WHERE slot = '6' AND aca_year = '$academic_year' AND scheme = '$scheme' AND division = '$division' AND branch = '$branch'") or die(mysqli_error($con));
+                        while ($row3 = mysqli_fetch_array($view3)) {
+                            echo "<td>" . ($row3['course'] ? $row3['course'] : 'No Course') . "</td>";
+                        }
+                        ?>
                     </tr>
+
+                    <!-- Additional slots can be added below in the same format -->
+                    <!-- Continue with other timeslots like 11:00 AM - 12:00 PM, 12:10 PM - 01:10 PM, etc. -->
+
                 </table>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
