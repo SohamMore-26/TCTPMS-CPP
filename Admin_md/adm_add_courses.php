@@ -1,3 +1,16 @@
+<?php
+include "config.php";
+
+// Fetch the schemes from the database
+$scheme_query = "SELECT DISTINCT scheme FROM academic_cal";
+$scheme_result = mysqli_query($con, $scheme_query);
+
+// Check if the query was successful
+if (!$scheme_result) {
+    die('Error fetching schemes: ' . mysqli_error($con));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +29,7 @@
 <body>
     <div class="nav_head">
         <div class="title_div">
-        <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
+            <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
         </div>
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
@@ -100,17 +113,13 @@
                                 <div class="name">
                                     <b><label for="scheme" class="label">Scheme:</label></b>
                                     <select id="scheme" name="scheme" class="sem">
-                                        <option value="">Select Scheme</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                        <option value="F">F</option>
-                                        <option value="G">G</option>
-                                        <option value="H">H</option>
-                                        <option value="I">I</option>
-                                        <option value="K">K</option>
+                                        <option value="inp">Select Scheme</option>
+                                        <?php
+                                        // Dynamically populate the scheme dropdown
+                                        while ($scheme = mysqli_fetch_assoc($scheme_result)) {
+                                            echo "<option value='" . $scheme['scheme'] . "'>" . $scheme['scheme'] . "</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
 
@@ -212,7 +221,7 @@
                                         ?>
                                     </select>
                                 </div>
-                                
+
                             </div>
                             <div class="buttons">
                                 <button type="submit" name="addCourse" class="button">Add</button>

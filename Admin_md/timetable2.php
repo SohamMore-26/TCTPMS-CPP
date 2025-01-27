@@ -8,27 +8,26 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Admin Module</title>
     <style>
-        /* Make labels bold */
+        /* Styling for input fields and dropdowns */
         label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            margin-left: 10px;  /* Add left margin to labels */
+            margin-left: 10px;
         }
 
-        /* Styling for input fields */
-        .course-abbreviation input, .batch-fields input {
+        .course-abbreviation input,
+        .batch-fields input {
             margin-top: 5px;
-            margin-left: 10px;  /* Add left margin to input fields */
-            margin-right: 10px;  /* Add right margin to input fields */
+            margin-left: 10px;
+            margin-right: 10px;
             padding: 5px;
             border-radius: 4px;
             border: 1px solid #ccc;
         }
 
-        /* Save button styling */
         .save-button {
-            background-color: #f44336; /* Same as the logout button */
+            background-color: #f44336;
             color: white;
             border: none;
             padding: 5px 15px;
@@ -38,37 +37,36 @@
         }
 
         .save-button:hover {
-            background-color: #e53935; /* Darker red for hover effect */
+            background-color: #e53935;
         }
 
-        .course-abbreviation, .batch-fields {
+        .course-abbreviation,
+        .batch-fields {
             margin-top: 10px;
         }
 
-        /* Table should use more width of its container */
         .tablecss {
-            width: 95%; /* Increase the width to take more space */
-            /* margin: 20px auto; */
+            width: 95%;
             border-collapse: collapse;
         }
 
-        .tablecss th, .tablecss td {
+        .tablecss th,
+        .tablecss td {
             padding: 10px;
             text-align: left;
         }
 
-        /* Dropdown styling */
         .dropdown-container {
             margin-bottom: 20px;
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
-            flex-wrap: wrap;  /* Allow items to wrap to the next line */
+            flex-wrap: wrap;
         }
 
         .dropdown-container div {
-            margin-bottom: 10px;  /* Add bottom margin to each dropdown */
-            width: 200px;  /* Set a fixed width for each dropdown */
+            margin-bottom: 10px;
+            width: 200px;
         }
 
         .dropdown-container select {
@@ -76,52 +74,27 @@
             font-size: 14px;
             border-radius: 4px;
             border: 1px solid #ccc;
-            width: 100%;  /* Make the dropdown take up the full width of the div */
+            width: 100%;
         }
 
         .dropdown-container label {
             font-size: 16px;
             margin-right: 10px;
         }
-
-        /* Make radio buttons appear side by side */
-        .side_card label {
-            display: inline-block; /* Make radio buttons appear horizontally */
-            margin-right: 15px;     /* Add some space between the radio buttons */
-        }
-
-        /* Adjust the radio buttons for better alignment */
-        .side_card input[type="radio"] {
-            margin-right: 5px; /* Space between the radio button and label */
-        }
-
-        /* Add margin between Batch fields */
-        .batch-fields label {
-            margin-right: 10px; /* Add margin to the right of each label */
-        }
-
-        .batch-fields input {
-            margin-right: 15px; /* Add margin between the input fields */
-            margin-top: 5px; /* Slight top margin for consistency */
-        }
     </style>
     <script>
-        // Function to display the corresponding input fields based on the slot type
         function updateSlotDetails(selectElement, slotRow) {
             const slotType = selectElement.value;
             const courseAbbreviationField = slotRow.querySelector('.course-abbreviation');
             const batchFields = slotRow.querySelector('.batch-fields');
-            
-            // Hide both Course Abbreviation and Batch fields initially
+
             courseAbbreviationField.style.display = 'none';
             batchFields.style.display = 'none';
 
-            // Show Course Abbreviation for Theory and Tutorial
             if (slotType === 'Theory' || slotType === 'Tutorial') {
                 courseAbbreviationField.style.display = 'block';
             }
-            
-            // Show Batch fields only for Practical
+
             if (slotType === 'Practical') {
                 batchFields.style.display = 'block';
             }
@@ -130,7 +103,6 @@
 </head>
 
 <body>
-
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
@@ -138,7 +110,8 @@
         <div class="lgt_div">
             <a href="\TCTPMS-CPP\logout.php"> <button type="button" id="button_lg" class="button">Logout</button></a>
         </div>
-    </div>    
+    </div>
+    
     <div class="main_cont">
         <div class="sidebar">
             <li>
@@ -171,18 +144,37 @@
         </div>
 
         <div class="C_contain_scroll">
-            <h2 style="text-align: center; margin-top: 20px;">Add Timetable</h2> <!-- Title -->
+            <h2 style="text-align: center; margin-top: 20px;">Add Timetable</h2>
+
+            <?php
+            include "config.php"; // Include database connection
+
+            // Fetch academic years from the database
+            $academic_year_query = "SELECT distinct aca_year FROM academic_cal";
+            $academic_year_result = $con->query($academic_year_query);
+
+            // Fetch schemes from the database
+            $scheme_query = "SELECT distinct scheme FROM academic_cal";
+            $scheme_result = $con->query($scheme_query);
+            ?>
 
             <!-- Dropdowns for Academic Year, Semester, Branch, and Division -->
             <div class="dropdown-container">
                 <div>
                     <label for="academic-year">Academic Year:</label>
                     <select id="academic-year" name="academic_year">
-                        <option value="2025-2026">2025-2026</option>
-                        <option value="2024-2025">2024-2025</option>
-                        <option value="2023-2024">2023-2024</option>
+                        <?php
+                        if ($academic_year_result->num_rows > 0) {
+                            while ($row = $academic_year_result->fetch_assoc()) {
+                                echo "<option value='" . $row['aca_year'] . "'>" . $row['aca_year'] . "</option>";
+                            }
+                        } else {
+                            echo "<option value=''>No academic years available</option>";
+                        }
+                        ?>
                     </select>
                 </div>
+                
                 <div>
                     <label for="semester">Semester:</label>
                     <select id="semester" name="semester">
@@ -190,6 +182,7 @@
                         <option value="2">Semester 2</option>
                     </select>
                 </div>
+                
                 <div>
                     <label for="branch">Branch:</label>
                     <select id="branch" name="branch">
@@ -198,41 +191,47 @@
                         <option value="ec">Electronics</option>
                     </select>
                 </div>
+                
                 <div>
                     <label for="division">Division:</label>
                     <select id="division" name="division">
                         <option value="a">A</option>
                         <option value="b">B</option>
-                        <option value="c">C</option>
                     </select>
                 </div>
 
                 <div>
                     <label for="scheme">Scheme:</label>
                     <select id="scheme" name="scheme">
-                        <option value="a">A</option>
-                        <option value="b">B</option>
-                        <option value="c">C</option>
+                        <?php
+                        if ($scheme_result->num_rows > 0) {
+                            while ($row = $scheme_result->fetch_assoc()) {
+                                echo "<option value='" . $row['scheme'] . "'>" . $row['scheme'] . "</option>";
+                            }
+                        } else {
+                            echo "<option value=''>No schemes available</option>";
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
 
             <!-- Timetable Table -->
             <div style="display: flex; align-items:center; flex-direction: column; margin-left: 180px;">
+            
                 <table class="tablecss tb_card">
                     <form method="post" action="adm_timetable.php">
                         <tr>
                             <th>Slot No.</th>
                             <th>Slot Details</th>
                         </tr>
-                        
+
                         <?php
                         // Loop to generate Slot Numbers from 1 to 64
                         for ($i = 1; $i <= 64; $i++) {
                             echo "<tr id='slot-row-$i'>
                                     <td>$i</td>
                                     <td>
-                                        <!-- Slot Type Radio Buttons -->
                                         <label><input type='radio' name='slot_type_$i' value='Theory' onchange='updateSlotDetails(this, document.getElementById(\"slot-row-$i\"))'> Theory</label>
                                         <label><input type='radio' name='slot_type_$i' value='Practical' onchange='updateSlotDetails(this, document.getElementById(\"slot-row-$i\"))'> Practical</label>
                                         <label><input type='radio' name='slot_type_$i' value='Tutorial' onchange='updateSlotDetails(this, document.getElementById(\"slot-row-$i\"))'> Tutorial</label>
@@ -254,14 +253,13 @@
                                   </tr>";
                         }
                         ?>
-                </table>
+                    </table>
                 
-                <!-- Buttons for Adding and Cancelling -->
-                <div class="buttons">
-                    <button type="submit" name="savetimetable" class="button">Add</button>
-                    <a href="adm_timetable.php"> <button type="button" class="button">Cancel</button></a>
-                </div>
-                
+                    <!-- Buttons for Adding and Cancelling -->
+                    <div class="buttons">
+                        <button type="submit" name="savetimetable" class="button">Add</button>
+                        <a href="adm_timetable.php"> <button type="button" class="button">Cancel</button></a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -278,12 +276,11 @@
 </html>
 
 <?php
+// Handling the form submission and saving data
 include "config.php";
 
-// Handling the form submission and saving data
 if (isset($_POST['savetimetable'])) {
-    // Collect common form data
-    $academic_year = $_POST['academic_year'];
+    $academic_year = $_POST['aca_year'];
     $semester = $_POST['semester'];
     $branch = $_POST['branch'];
     $division = $_POST['division'];
@@ -291,9 +288,7 @@ if (isset($_POST['savetimetable'])) {
 
     // Validate required fields
     if (empty($academic_year) || empty($semester) || empty($branch) || empty($division) || empty($scheme)) {
-        echo "<script>";
-        echo "alert('Please fill out all required fields.');";
-        echo "</script>";
+        echo "<script>alert('Please fill out all required fields.');</script>";
     } else {
         // Process each slot
         for ($i = 1; $i <= 64; $i++) {
@@ -304,7 +299,6 @@ if (isset($_POST['savetimetable'])) {
                 $batch2 = isset($_POST['batch2_' . $i]) ? $_POST['batch2_' . $i] : null;
                 $batch3 = isset($_POST['batch3_' . $i]) ? $_POST['batch3_' . $i] : null;
 
-                // Prepare and execute the SQL query
                 $stmt = $con->prepare("INSERT INTO timetable (aca_year, semester, branch, division, scheme, slot, th_pr, course, batch1, batch2, batch3) 
                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 if ($stmt === false) {
@@ -313,28 +307,17 @@ if (isset($_POST['savetimetable'])) {
 
                 $stmt->bind_param('sssssiissss', $academic_year, $semester, $branch, $division, $scheme, $i, $slot_type, $course_abbreviation, $batch1, $batch2, $batch3);
                 
-                // Execute the statement and check for success
                 if ($stmt->execute()) {
-                    // Success
-                    echo "<script>";
-                    echo "alert('Timetable saved successfully');";
-                    echo "</script>";
+                    echo "<script>alert('Timetable saved successfully');</script>";
                 } else {
-                    // If query failed, log the error
-                    echo "<script>";
-                    echo "alert('Error saving timetable: " . $stmt->error . "');";
-                    echo "</script>";
+                    echo "<script>alert('Error saving timetable: " . $stmt->error . "');</script>";
                 }
 
                 $stmt->close();
             }
         }
 
-        // Redirect to the same page after submission
-        echo "<script>";
-        echo "window.location.href = 'adm_timetable.php';";  // Redirect to timetable page
-        echo "</script>";
+        echo "<script>window.location.href = 'adm_timetable.php';</script>";
     }
 }
 ?>
-

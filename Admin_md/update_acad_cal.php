@@ -1,13 +1,29 @@
 <?php
 include "config.php";
 
-// Fetch the schemes from the database
+// Fetching unique 'scheme' values from the database
 $scheme_query = "SELECT DISTINCT scheme FROM academic_cal";
 $scheme_result = mysqli_query($con, $scheme_query);
 
 // Check if the query was successful
 if (!$scheme_result) {
     die('Error fetching schemes: ' . mysqli_error($con));
+}
+
+// Fetching distinct semesters from the database
+$semester_query = "SELECT DISTINCT semester FROM academic_cal";
+$semester_result = mysqli_query($con, $semester_query);
+
+// Check if the query was successful
+if (!$semester_result) {
+    die('Error fetching semesters: ' . mysqli_error($con));
+}
+
+// Fetch data to populate the form if editing an existing record
+$row2 = [];
+if (isset($_GET['id'])) {
+    $view2 = mysqli_query($con, "SELECT * FROM academic_cal WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
+    $row2 = mysqli_fetch_array($view2);
 }
 ?>
 
@@ -24,6 +40,7 @@ if (!$scheme_result) {
 
 <body>
 
+    <!-- Navigation Bar -->
     <div class="nav_head">
         <div class="title_div">
             <h1 id="h1">Teacher's Companion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Welcome Admin</h1>
@@ -35,6 +52,7 @@ if (!$scheme_result) {
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="main_cont">
         <div class="sidebar">
             <li>
@@ -66,11 +84,6 @@ if (!$scheme_result) {
             </li>
         </div>
 
-        <?php
-        $view2 = mysqli_query($con, "SELECT * FROM academic_cal WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
-        $row2 = mysqli_fetch_array($view2);
-        ?>
-
         <div class="main_c_cont_at">
             <form method="post">
                 <div style="margin-top:100px">
@@ -79,9 +92,13 @@ if (!$scheme_result) {
                         <b><label for="semester" class="label">Semester:</label></b>
                         <select id="semester" name="semester" class="sem">
                             <option value="inp">Select Semester</option>
-                            <option value="1st Sem">1st Sem</option>
-                            <option value="Odd (3,5)">Odd (3,5)</option>
-                            <option value="Even (2,4,6)">Even (2,4,6)</option>
+                            <?php
+                            // Dynamically populate the semester dropdown
+                            while ($semester = mysqli_fetch_assoc($semester_result)) {
+                                $selected = ($row2['semester'] == $semester['semester']) ? 'selected' : '';  // Mark the current semester as selected
+                                echo "<option value='" . $semester['semester'] . "' $selected>" . $semester['semester'] . "</option>";
+                            }
+                            ?>
                         </select>
 
                         <b><label for="scheme" class="label">Scheme:</label></b>
@@ -90,12 +107,14 @@ if (!$scheme_result) {
                             <?php
                             // Dynamically populate the scheme dropdown
                             while ($scheme = mysqli_fetch_assoc($scheme_result)) {
-                                echo "<option value='" . $scheme['scheme'] . "'>" . $scheme['scheme'] . "</option>";
+                                $selected = ($row2['scheme'] == $scheme['scheme']) ? 'selected' : '';  // Mark the current scheme as selected
+                                echo "<option value='" . $scheme['scheme'] . "' $selected>" . $scheme['scheme'] . "</option>";
                             }
                             ?>
                         </select>
                     </div>
 
+                    <!-- Additional Form Fields (Similar to your original structure) -->
                     <div class="cont_r_l">
                         <div style="width:90%">
                             <div class="label1">
@@ -113,14 +132,14 @@ if (!$scheme_result) {
                                 <b><label for="status" class="label">Academic Calendar Status:</label></b>
                             </div>
                             <div class="inp">
-                                <input type="radio" id="active" name="status" value="Active" <?php if($row2['isActive'] == 1) echo 'checked'; ?>>
+                                <input type="radio" id="active" name="status" value="Active" <?php if ($row2['isActive'] == 1) echo 'checked'; ?>>
                                 <label for="active">Active</label>
 
-                                <input type="radio" id="deactive" name="status" value="Deactive" <?php if($row2['isActive'] == 0) echo 'checked'; ?>>
+                                <input type="radio" id="deactive" name="status" value="Deactive" <?php if ($row2['isActive'] == 0) echo 'checked'; ?>>
                                 <label for="deactive">Deactive</label>
                             </div>
 
-                            <!-- Other fields for semester duration, tests, etc. -->
+                            <!-- Semester duration fields (if applicable) -->
                             <div class="label1">
                                 <b><label>Semester Duration :</label></b>
                             </div>
@@ -132,9 +151,10 @@ if (!$scheme_result) {
                             </div>
                         </div>
                     </div>
+
                     <div class="buttons">
                         <button type="submit" name="addCal" class="button">Update</button>
-                        <a href="adm_AcademicCal.php"> 
+                        <a href="adm_AcademicCal.php">
                             <button type="button" class="button">Cancel</button>
                         </a>
                     </div>
@@ -148,11 +168,7 @@ if (!$scheme_result) {
 
 </html>
 
-
-</html>
 <?php
-include "config.php";
-
 if (isset($_POST['addCal'])) {
     // Extract form data
     extract($_POST);
@@ -178,17 +194,8 @@ if (isset($_POST['addCal'])) {
         $update = mysqli_query($con, "UPDATE `academic_cal` SET 
             `semester` = '$semester',
             `scheme` = '$scheme',
-            `aca_year` = '$aystdatefrom - $aystdateto',
             `sem_duration_from` = '$stsemfrom',
             `sem_duration_to` = '$stfromto',
-            `class_test1_from` = '$ct1from',
-            `class_test1_to` = '$ct1to',
-            `class_test2_from` = '$ct2from',
-            `class_test2_to` = '$ct2to',
-            `practical_exam_from` = '$prefrom',
-            `practical_exam_to` = '$preto',
-            `theory_exam_from` = '$thfrom',
-            `theory_exam_to` = '$thto',
             `isActive` = '$status_value'
             WHERE id = '" . $_GET['id'] . "'") or die(mysqli_error($con));
 
@@ -200,4 +207,3 @@ if (isset($_POST['addCal'])) {
     }
 }
 ?>
-
